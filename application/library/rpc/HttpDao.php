@@ -17,28 +17,35 @@ class Rpc_HttpDao {
     /**
      * 查询
      *
-     * @param string $interfaceId            
-     * @param array $params            
-     * @param boolean $isJsonDecode            
-     * @param int $httpTimeout            
-     * @param boolean $isCache            
+     * @param string $interfaceId
+     * @param array $params
+     * @param boolean $isJsonDecode
+     * @param int $httpTimeout
+     * @param boolean $isCache
      * @param int $cacheTime
-     *            缓存时间单位是毫秒，如果不需要缓存则为-1
+     *            缓存时间单位是毫秒，如果不需要缓存则为-1,-2是代表不读但是需要写缓存
      * @return Ambigous <Ambigous, boolean, mixed, NULL>
      */
-    public function getResultRaw($interfaceId, $params, $isJsonDecode = true, $httpTimeout = 10, $isCache = false, $cacheTime = -1) {
-        $interfaceConfig = Rpc_UrlConfig::getConfig($interfaceId);
-        $cacheKey = $interfaceId . implode('&', $params);
-        $interfaceConfig['httpMethod'] = $interfaceConfig['httpMethod'] ? $interfaceConfig['httpMethod'] : 'GET';
+    public function getResultRaw($interfaceId, $params, $isCache = false, $cacheTime = -1, $isJsonDecode = true, $httpTimeout = 10) {
+        $interfaceConfig = Enum_Request::getUrlConfigById($interfaceId);
+        if (!$interfaceConfig) {
+            return array(
+                'code' => 1,
+                'msg' => '接口信息获取失败'
+            );
+        }
+        $interfaceConfig['httpMethod'] = isset($interfaceConfig['httpMethod']) ? $interfaceConfig['httpMethod'] : 'POST';
         $requestUrl = $this->getRequestUrl($interfaceConfig, $params);
         $result = false;
         if (strlen($requestUrl['url']) > 0) {
-            if ($isCache && $cacheTime > 0) {
-                $memcache = Cache_MemoryCache::getInstance();
+            $cacheKey = $this->getCacheKey($requestUrl['url'], $params);
+            if ($isCache && $cacheTime > 0 && $cacheKey) {
+                $memcache = Cache_Redis::getInstance();
                 $result = $memcache->get($cacheKey);
             }
-            if (! $result) {
-                $result = $this->getHttpResultRaw($interfaceId, $requestUrl, $isJsonDecode, $httpTimeout, $cacheTime, $interfaceConfig['httpMethod']);
+            if (!$result) {
+                $imgSize = $params['imgSize'] ? $params['imgSize'] : '';
+                $result = $this->getHttpResultRaw($interfaceId, $requestUrl, $isJsonDecode, $httpTimeout, $interfaceConfig['httpMethod'], $imgSize);
                 $this->setCache($result, $cacheKey, $isCache, $cacheTime, $isJsonDecode);
             } else {
                 $result = empty($isJsonDecode) ? $result : json_decode($result, true);
@@ -50,14 +57,26 @@ class Rpc_HttpDao {
         }
     }
 
+    private function getCacheKey($url, $params) {
+        $params = $params ? $params : array();
+        unset($params['timestamp']);
+        unset($params['sign']);
+        $makeKeyList[] = $url;
+        foreach ($params as $key => $param) {
+            $makeKeyList[] = $key;
+            $makeKeyList[] = (is_array($param) || is_object($param)) ? json_encode($param) : $param;
+        }
+        return md5(implode("-", $makeKeyList));
+    }
+
     private function setCache($result, $key, $isCache, $cacheTime, $isJsonDecode) {
-        if ($isCache && ($cacheTime > 0 || $cacheTime == - 2)) {
-            $cacheTime = $cacheTime == - 2 ? 3600 : $cacheTime;
-            $memcache = Cache_MemoryCache::getInstance();
-            if (! $isJsonDecode) {
+        if ($isCache && ($cacheTime > 0 || $cacheTime == -2)) {
+            $cacheTime = $cacheTime == -2 ? 3600 : $cacheTime;
+            $memcache = Cache_Redis::getInstance();
+            if (!$isJsonDecode) {
                 $result = json_decode($result, true);
             }
-            if (is_array($result) && ! $result['code']) {
+            if (is_array($result) && !$result['code']) {
                 $memcache->set($key, json_encode($result), $cacheTime);
             }
         }
@@ -66,10 +85,10 @@ class Rpc_HttpDao {
     /**
      * 并发查询
      *
-     * @param string $interfaceId            
-     * @param array $multiParams            
-     * @param boolean $isJsonDecode            
-     * @param int $httpTimeout            
+     * @param string $interfaceId
+     * @param array $multiParams
+     * @param boolean $isJsonDecode
+     * @param int $httpTimeout
      * @return Ambigous <Ambigous, boolean, mixed, unknown>
      */
     public function getResultRawMulti($interfaceId, $multiParams, $isJsonDecode = false, $httpTimeout = 1) {
@@ -86,14 +105,14 @@ class Rpc_HttpDao {
     /**
      * 并发读取接口
      *
-     * @param string $interfaceId            
-     * @param string $requestUrl            
-     * @param boolean $isJsonDecode            
-     * @param int $httpTimeout            
+     * @param string $interfaceId
+     * @param string $requestUrl
+     * @param boolean $isJsonDecode
+     * @param int $httpTimeout
      * @return Ambigous <mixed, string>|boolean
      */
     public function getHttpResultRawMulti($interfaceId, $requestUrls, $isJsonDecode = false, $httpTimeout = 1) {
-        foreach ((array) $requestUrls as $tKey => $requestUrl) {
+        foreach ((array)$requestUrls as $tKey => $requestUrl) {
             $requestUrl = $this->formatUrl($requestUrl);
             if ($this->isValidUrl($requestUrl)) {
                 $validRequestUrls[$tKey] = $requestUrl;
@@ -101,14 +120,14 @@ class Rpc_HttpDao {
         }
         $responseResult = false;
         if (count($validRequestUrls) > 0) {
-            
-            $httpTimeout = max(1, (int) $httpTimeout);
+
+            $httpTimeout = max(1, (int)$httpTimeout);
             foreach ($validRequestUrls as $urlKey => $requestUrl) {
                 Rpc_MultiCurl::add_curl($urlKey, Rpc_MultiCurl::mk_curl('get', $requestUrl, array(), array(
                     CURLOPT_TIMEOUT => $httpTimeout
                 )));
             }
-            
+
             $requestRaw = Rpc_MultiCurl::multi_exec();
             $requestStatus = '0';
             if (count($requestRaw['success']) > 0) {
@@ -116,8 +135,8 @@ class Rpc_HttpDao {
                 $requestStatus = '200';
             }
             $requestStatus -= (count($responseRaw['error']) > 0) ? 1 : 0;
-            
-            if (! empty($responseRaw)) {
+
+            if (!empty($responseRaw)) {
                 if ($isJsonDecode) {
                     $responseResult = json_decode($responseRaw, true);
                 } else {
@@ -125,21 +144,22 @@ class Rpc_HttpDao {
                 }
             }
         }
-        
+
         return $responseResult;
     }
 
     /**
      * 查询操作
      *
-     * @param string $interfaceId            
-     * @param string $requestUrl            
-     * @param boolean $isJsonDecode            
+     * @param string $interfaceId
+     * @param string $requestUrl
+     * @param boolean $isJsonDecode
      * @param int $httpTimeout
      *            -1=不执行http访问 >0=http超时时间
      * @return Ambigous <mixed, string>|boolean
      */
-    public function getHttpResultRaw($interfaceId, $requestUrl, $isJsonDecode = false, $httpTimeout = 1, $cacheTime = -1, $httpMethod = 'GET') {
+    public function getHttpResultRaw($interfaceId, $requestUrl, $isJsonDecode = false, $httpTimeout = 1, $httpMethod = 'GET', $imgSize) {
+        $serviceDebug = Util_Tools::getDebugServiceAddress();
         // $serviceDebug = true;
         if ($serviceDebug) {
             $debugUrl = $requestUrl['url'];
@@ -147,7 +167,7 @@ class Rpc_HttpDao {
             $debugUrl = str_replace("POST", 'get', $debugUrl);
             var_dump($debugUrl . '&' . http_build_query($requestUrl['param']));
         }
-        
+
         $responseResult = false;
         if ($httpMethod == 'POST') {
             $postData = $requestUrl['param'];
@@ -159,13 +179,12 @@ class Rpc_HttpDao {
         $requestUrl = $this->formatUrl($requestUrl);
         if ($this->isValidUrl($requestUrl)) {
             $responseRaw = null;
-            $httpTimeout = max(1, (int) $httpTimeout);
-            $httpRet = Rpc_Curl::_request($requestUrl, $httpMethod, $postData, $httpTimeout);
-            
+            $httpTimeout = max(1, (int)$httpTimeout);
+            $httpRet = Rpc_Curl::_request($requestUrl, $httpMethod, $postData, $httpTimeout, $imgSize);
             if ($httpRet['httpStatus']) {
                 $responseRaw = $httpRet['response'];
             }
-            if (! empty($responseRaw)) {
+            if (!empty($responseRaw)) {
                 if ($isJsonDecode) {
                     if (substr($responseRaw, 0, 3) == pack("CCC", 0xef, 0xbb, 0xbf)) {
                         $responseRaw = substr($responseRaw, 3);
@@ -176,14 +195,14 @@ class Rpc_HttpDao {
                 }
             }
         }
-        
+
         return $responseResult;
     }
 
     /**
      * 格式化url
      *
-     * @param string $url            
+     * @param string $url
      * @return string
      */
     private function formatUrl($url) {
@@ -193,7 +212,7 @@ class Rpc_HttpDao {
     /**
      * 判断url有效性
      *
-     * @param string $url            
+     * @param string $url
      * @return number
      */
     private function isValidUrl($url) {
@@ -203,8 +222,8 @@ class Rpc_HttpDao {
     /**
      * 获取url
      *
-     * @param array $interfaceConfig            
-     * @param array $params            
+     * @param array $interfaceConfig
+     * @param array $params
      * @return boolean|Ambigous <string, unknown>
      */
     private function getRequestUrl($interfaceConfig, $params) {
@@ -212,25 +231,24 @@ class Rpc_HttpDao {
         if ($interfaceConfig) {
             $paramPart = array();
             if ($interfaceConfig['auth']) {
-                // if (is_array($interfaceConfig ['param'])){
+                $interfaceConfig['param'] = $interfaceConfig['param'] ? $interfaceConfig['param'] : array();
                 $interfaceConfig['param'] = array_merge($interfaceConfig['param'], $this->getAuthParam());
-                // }
             }
             foreach ($interfaceConfig['param'] as $paramKey => $paramConfig) {
                 $paramValue = $this->formatParamValue($params[$paramKey], $paramConfig);
-                if ((isset($params[$paramKey]) && ! is_null($paramValue)) || isset($paramConfig['value'])) {
-                    // TODO 临时测试用
+                if ((isset($params[$paramKey]) && !is_null($paramValue)) || isset($paramConfig['value'])) {
                     $paramValue = (empty($paramValue) && isset($paramConfig['value'])) ? $paramConfig['value'] : $paramValue;
                     $paramPart[$paramKey] = $paramValue;
                 } elseif ($paramConfig['required'] == true) {
                     return false;
                 }
             }
-            
+
             $sign = Auth_Login::genSign($paramPart);
             $paramPart['sign'] = $sign;
             $requestUrl['param'] = $paramPart;
-            $requestUrl['url'] = $interfaceConfig['url'] . '?paramType=' . strtolower($interfaceConfig['httpMethod']);
+            $interfaceConfig['url'] = Enum_System::getServiceApiUrlByLink($interfaceConfig['url']);
+            $requestUrl['url'] = $interfaceConfig['url'] . '?';
         }
         return $requestUrl;
     }
@@ -242,35 +260,12 @@ class Rpc_HttpDao {
      */
     private function getAuthParam() {
         $param = array(
-            // 'paramType' => array(
-            // 'required' => true,
-            // 'format' => 'string',
-            // 'style' => 'interface',
-            // 'value' => 'get'
-            // ),
-            'timestamp' => array(
+            'time' => array(
                 'required' => true,
                 'format' => 'string',
                 'style' => 'interface',
                 'value' => time()
-            ),
-            'package' => array(
-                'required' => false,
-                'format' => 'string',
-                'style' => 'interface',
-                'value' => Enum_System::RPC_REQUEST_PACKAGE
-            ),
-            'otaId' => array(
-                'required' => false,
-                'format' => 'string',
-                'style' => 'interface'
             )
-                /*'sign' => array (
-                        'required' => true,
-                        'format' => 'string',
-                        'style' => 'interface',
-                        'value' => 'xx'
-                ) */
         );
         return $param;
     }
@@ -278,8 +273,8 @@ class Rpc_HttpDao {
     /**
      * 根据接口定义格式化类型
      *
-     * @param string $value            
-     * @param string $paramConfig            
+     * @param string $value
+     * @param string $paramConfig
      * @return string|number|unknown
      */
     private function formatParamValue($value, $paramConfig) {

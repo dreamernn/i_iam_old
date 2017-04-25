@@ -25,7 +25,8 @@ class LoginModel extends \BaseModel {
                 break;
             }
             $params['password'] = Enum_Login::getMd5Pass($params['password']);
-            $result = $this->rpcClient->getResultRaw('U001', $params);
+            $params['ip'] = Util_Http::getIP();
+            $result = $this->rpcClient->getResultRaw('AU001', $params);
         } while (false);
         return $result;
     }
@@ -51,17 +52,10 @@ class LoginModel extends \BaseModel {
                 $result = $errorResult;
                 break;
             }
-            if (empty($userInfo['partnerId'])) {
-                $result = $errorResult;
-                break;
-            }
             $auth = Auth_Login::genSIdAndAId($userInfo['id']);
-            $partnerList = $this->rpcClient->getResultRaw('P001', array())['data']['list'];
-            $partnerList = array_column($partnerList, 'name', 'id');
             $userInfo['sId'] = $auth['sId'];
-            $userInfo['partnerName'] = $partnerList[$userInfo['partnerId']];
             $key = Auth_Login::genLoginMemKey($auth['sId'], $auth['aId']);
-            $cache = Cache_MemoryCache::getInstance();
+            $cache = Cache_Redis::getInstance();
             if (! $cache->set($key, json_encode($userInfo), Enum_Login::LOGIN_TIMEOUT)) {
                 $result = $errorResult;
                 break;
@@ -77,6 +71,7 @@ class LoginModel extends \BaseModel {
             }
             $result['data']['insertId'] = $result['data']['id'];
             Enum_Record::setRecordData('adminId', $result['data']['id']);
+            Enum_Record::setRecordData('groupId', $result['data']['groupId']);
         } while (false);
         return $result;
     }
@@ -92,7 +87,7 @@ class LoginModel extends \BaseModel {
             $aId = Util_Http::getCookie(Enum_Login::LOGIN_INFO_COOKIE_KEY_AID);
             if ($sId && $aId) {
                 $memKey = Auth_Login::genLoginMemKey($sId, $aId);
-                Cache_MemoryCache::getInstance()->delete($memKey);
+                Cache_Redis::getInstance()->delete($memKey);
             }
             Util_Http::setCookie(Enum_Login::LOGIN_INFO_COOKIE_KEY_SID, '', time());
             Util_Http::setCookie(Enum_Login::LOGIN_INFO_COOKIE_KEY_AID, '', time());
@@ -101,22 +96,31 @@ class LoginModel extends \BaseModel {
     }
 
     /**
-     * 根据用户获取权限列表
+     * 修改用户密码
+     * ---
      *
-     * @return Ambigous
+     * @param $oldPass 原密码            
+     * @param $newPass 新密码            
+     * @return array
      */
-    public function getRuleList($paramList) {
+    public function changePass($paramList) {
         $params = $this->initParam($paramList);
+        
         do {
-            if (empty($params['id'])) {
+            $params['userid'] = intval($paramList['userId']);
+            $params['oldpass'] = trim($paramList['oldPass']);
+            $params['newpass'] = trim($paramList['newPass']);
+            
+            if (! $params['userid'] || ! $params['oldpass'] || ! $params['newpass']) {
                 $result = array(
                     'code' => 1,
-                    'msg' => '用户ID错误'
+                    'msg' => '参数错误'
                 );
                 break;
             }
-            $params['project'] = Enum_System::RULE_MENU_PROJECT_ID;
-            $result = $this->rpcClient->getResultRaw('U002', $params, true, 10, false, 1800);
+            $params['oldpass'] = Enum_Login::getMd5Pass($params['oldpass']);
+            $params['newpass'] = Enum_Login::getMd5Pass($params['newpass']);
+            $result = $this->rpcClient->getResultRaw('AU003', $params);
         } while (false);
         return $result;
     }

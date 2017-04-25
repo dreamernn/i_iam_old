@@ -8,12 +8,15 @@ class BaseController extends \Yaf_Controller_Abstract {
         $this->setPageWebConfig();
         $this->userInfo = Yaf_Registry::get('loginInfo');
         $this->setPageHeaderInfo($this->userInfo);
-        $this->setPageMenuList($this->userInfo);
+    }
+
+    protected function getGroupId() {
+        return $this->userInfo['groupId'];
     }
 
     private function setPageWebConfig() {
         $sysConfig = Yaf_Registry::get('sysConfig');
-        $webConfig['layoutPath'] = $sysConfig->application->layout_path;
+        $webConfig['layoutPath'] = $sysConfig->application->layout->directory;
         $webConfig['domain'] = $sysConfig->web->domain;
         $webConfig['imgDomain'] = $sysConfig->web->img_domain;
         $webConfig['assertPath'] = $sysConfig->web->assert_path;
@@ -23,21 +26,18 @@ class BaseController extends \Yaf_Controller_Abstract {
 
     private function setPageHeaderInfo($loginInfo) {
         $headerInfo['userName'] = $loginInfo['realName'] ? $loginInfo['realName'] : $loginInfo['userName'];
-        $headerInfo['partnerName'] = $loginInfo['partnerName'];
+        $headerInfo['adminPermission'] = $loginInfo['createAdmin'] ? 0 : 1;
+        $useLangugae = Enum_Lang::getSystemLang();
+        $languageNameList = Enum_Lang::getLangeNameList();
+        $headerInfo['useLanguage'] = $useLangugae;
+        $headerInfo['useLanguageShow'] = $languageNameList[$useLangugae];
         $this->getView()->assign('headerInfo', $headerInfo);
-    }
-
-    private function setPageMenuList($loginInfo) {
-        $loginModel = new LoginModel();
-        $paramList['id'] = $loginInfo['id'];
-        $menuList = $loginModel->getRuleList($paramList);
-        $this->_view->assign('menuList', $menuList['data']);
     }
 
     /**
      * 输出json
      *
-     * @param array $data            
+     * @param array $data
      */
     public function echoJson($data) {
         $response = $this->getResponse();
@@ -61,5 +61,46 @@ class BaseController extends \Yaf_Controller_Abstract {
     protected function jump404() {
         header('Location:/error/notfound');
         exit();
+    }
+
+    /**
+     * 获取GET
+     *
+     * @param string $key
+     *            GET的key，为空返回整个$_GET
+     * @param string $isJsonStr
+     *            是否为json字符串，json字符串还原防注入的转译
+     */
+    protected function getGet($key = "", $isJsonStr = false) {
+        if ($key) {
+            if ($this->getRequest()->getParam($key)) {
+                return $this->getRequest()->getParam($key);
+            }
+            if ($isJsonStr) {
+                return Util_Http::revertInject($_GET[$key]);
+            }
+            return $_GET[$key];
+        } else {
+            return $_GET;
+        }
+    }
+
+    /**
+     * 获取POST
+     *
+     * @param string $key
+     *            POST的key，为空返回整个$_POST
+     * @param string $isJsonStr
+     *            是否为json字符串，json字符串还原防注入的转译
+     */
+    protected function getPost($key = "", $isJsonStr = false) {
+        if ($key) {
+            if ($isJsonStr) {
+                return Util_Http::revertInject($_POST[$key]);
+            }
+            return $_POST[$key];
+        } else {
+            return $_POST;
+        }
     }
 }

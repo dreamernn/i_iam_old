@@ -2,12 +2,15 @@
 
 class Enum_System {
 
-    const RPC_REQUEST_PACKAGE = 'ota';
+    const RPC_REQUEST_PACKAGE = 'ia';
 
-    const RPC_REQUEST_UA = "YoupuTrip/1.0(ota;)";
+    //    const SERVICE_API_DOMAIN = 'http://testapi.liheinfo.com';
+    const SERVICE_API_DOMAIN = 'http://api-dev.easyiservice.com';
 
-    const SYSTEM_NAME = '游谱OTA后台系统';
-
-    const RULE_MENU_PROJECT_ID = 4;
+    public static function getServiceApiUrlByLink($url) {
+        $url = strpos('http', $url) ? $url : self::SERVICE_API_DOMAIN . $url;
+        return $url;
+    }
 }
+
 ?>

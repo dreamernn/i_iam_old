@@ -1,9 +1,8 @@
 <?php
 
 /**
- * 登录
+ * Class LoginController
  * @author ZXM
- * 2015年9月22日
  */
 class LoginController extends \BaseController {
 
@@ -12,7 +11,7 @@ class LoginController extends \BaseController {
      * ---
      */
     public function indexAction() {
-	if (Auth_Login::checkLogin()) {
+        if (Auth_Login::checkLogin()) {
             Util_Tools::redirect("/");
         }
         $this->_view->display('login/index.phtml');
@@ -29,5 +28,10 @@ class LoginController extends \BaseController {
         } else {
             Util_Tools::alert('退出登陆失败！');
         }
+    }
+
+    public function changePassAction() {
+        $this->_view->assign('userId', $this->userInfo['id']);
+        $this->_view->display('login/changePass.phtml');
     }
 }

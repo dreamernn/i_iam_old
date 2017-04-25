@@ -426,6 +426,97 @@ class Util_Tools {
         $idList = $idList ? $idList : array();
         return array_unique(array_filter($idList, "intval"));
     }
+
+    public static function getDebugServiceHost() {
+        if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+            $serviceHostGet = $_GET['debugService'];
+            $serviceHostCookie = Util_Http::getCookie('debugService');
+            if ($serviceHostGet && $serviceHostCookie != $serviceHostGet) {
+                Util_Http::setCookie('debugService', $serviceHostGet);
+            }
+            $serviceHost = $serviceHostGet ? $serviceHostGet : $serviceHostCookie;
+        }
+        return $serviceHost;
+    }
+
+    public static function getDebugServiceAddress() {
+        $debugStatusGet = $_GET['nobug'];
+        $debugStatusCookie = Util_Http::getCookie('debugServiceAddress');
+        if ($debugStatusGet && $debugStatusCookie != $debugStatusGet) {
+            Util_Http::setCookie('debugServiceAddress', $debugStatusGet);
+        }
+        $debugStatus = $debugStatusGet ? $debugStatusGet : $debugStatusCookie;
+        if (Util_Http::isAjax() && $debugStatus == 'ajax') {
+            return true;
+        } elseif ($debugStatus == 'all') {
+            return true;
+        }
+        return false;
+    }
+
+    public static function isJsFileDebug() {
+        return $_SERVER['SERVER_ADDR'] == '127.0.0.1';
+    }
+
+    public static function debugEcho($echo, $exit = 0) {
+        $debugCookie = "ypDebug";
+        if (Util_Http::getCookie($debugCookie) == 'a') {
+            var_dump($echo);
+            if ($exit) {
+                exit();
+            }
+        } else {
+            if ($_GET[$debugCookie] == "a") {
+                Util_Http::setCookie($debugCookie, 'a');
+                var_dump($echo);
+                if ($exit) {
+                    exit();
+                }
+            }
+        }
+    }
+
+    /**
+     * ip转为int
+     *
+     * @param string $ip            
+     * @return number
+     */
+    public static function ipton($ip) {
+        $ip_arr = explode('.', $ip);
+        foreach ($ip_arr as $value) {
+            $iphex = dechex($value);
+            if (strlen($iphex) < 2) {
+                $iphex = '0' . $iphex;
+            }
+            $ipstr .= $iphex;
+        }
+        return hexdec($ipstr);
+    }
+
+    /**
+     * 还原ip
+     *
+     * @param int $n            
+     * @return string
+     */
+    public static function ntoip($n) {
+        $iphex = dechex($n);
+        $len = strlen($iphex);
+        if (strlen($iphex) < 8) {
+            $iphex = '0' . $iphex;
+            $len = strlen($iphex);
+        }
+        for ($i = 0, $j = 0; $j < $len; $i = $i + 1, $j = $j + 2) {
+            $ippart = substr($iphex, $j, 2);
+            $fipart = substr($ippart, 0, 1);
+            if ($fipart == '0') {
+                $ippart = substr($ippart, 1, 1);
+            }
+            $ip[] = hexdec($ippart);
+        }
+        return implode('.', $ip);
+    }
 }
 
 ?>
