@@ -2,15 +2,62 @@
 
 class Lang_Zh_Nav {
 
-    const GROUPMANAGER = '集团管理';
-    const GROUPUSER = '帐号列表';
-    const HOTELLIST = '物业列表';
+    const HOTEL = '物业管理';
+    const HOTELINFO = '基本信息';
+    const HOTELFLOOR = '楼层管理';
+    const HOTELFACILITIES = '设施管理';
+    const HOTELTRAFFIC = '交通管理';
+    const HOTELPANORAMIC = '全景管理';
+    const HOTELPIC = '图片管理';
 
-    const ACTIVITYUSERMANAGER = '活动管理';
-    const ACTIVITYUSER = '活动报名用户';
+    const ACTIVITY = '活动管理';
+    const ACTIVITYTAG = '标签管理';
+    const ACTIVITYLIST = '物业活动';
+    const ACTIVITYORDER = '活动报名信息';
 
-    const APPMANAGER = 'APP管理';
-    const STARTMSGLIST = '启动消息管理';
-    const GROUPPUSH = '集团推送';
+    const LIFE = '雅士阁生活';
+    const LIFETAG = '标签管理';
+    const LIFELIST = '信息管理';
+
+    const POI = '本地攻略';
+    const POITAG = '标签管理';
+    const POILIST = '攻略管理';
+
+    const PROMOTION = '物业促销';
+    const PROMOTIONTAG = '标签管理';
+    const PROMOTIONLIST = '促销管理';
+
+    const ROOM = '客房管理';
+    const ROOMTYPE = '房型管理';
+    const ROOMRES = '物品管理';
+
+    const SHOPPING = '体验购物';
+    const SHOPPINGTAG = '标签管理';
+    const SHOPPINGLIST = '物品列表';
+    const SHOPPINGORDER = '购物订单';
+
+    const SHOWING = '预约看房';
+    const SHOWINGORDER = '预约看房订单';
+
+    const TEL = '电话黄页';
+    const TELTYPE = '分类管理';
+    const TELLIST = '号码管理';
+
+    const NEWS = '物业新闻';
+    const NEWSTAG = '标签管理';
+    const NEWSLIST = '新闻管理';
+
+    const NOTIC = '物业通知';
+    const NOTICTAG = '标签管理';
+    const NOTICLIST = '通知管理';
+
+    const FEEDBACK = '调查反馈';
+    const FEEDBACKLIST = '反馈表单';
+    const FEEDBACKRESULT = '反馈结果';
+
+    const APP = 'APP管理';
+    const APPPUSH = '物业推送';
+    const APPSHORTCUT = '快捷入口';
+    const APPSHARE = '分享设置';
 
 }

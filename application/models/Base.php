@@ -59,7 +59,7 @@ class BaseModel {
      * @param $path 待上传的文件类型
      * @return array
      */
-    public function uploadFile($file, $path) {
+    public function uploadFile($file, $path, $oldFileKey = '') {
         $result['code'] = 1;
         if ($file['error']) {
             switch ($file['error']) {
@@ -68,7 +68,7 @@ class BaseModel {
                     break;
             }
         } else {
-            $result = $this->rpcClient->getResultRaw('B003', array('uploadfile' => $file, 'type' => $path));
+            $result = $this->rpcClient->getResultRaw('B003', array('uploadfile' => $file, 'type' => $path, 'oldfilekey' => $oldFileKey));
         }
         return $result;
     }

@@ -8,9 +8,9 @@ class Enum_Login {
 
     const LOGIN_TIMEOUT = 14400;
 
-    const LOGIN_INFO_COOKIE_KEY_AID = 'igroupAid';
+    const LOGIN_INFO_COOKIE_KEY_AID = 'iHotelAid';
 
-    const LOGIN_INFO_COOKIE_KEY_SID = 'igroupSid';
+    const LOGIN_INFO_COOKIE_KEY_SID = 'iHotelSid';
 
     /**
      * 加密密码

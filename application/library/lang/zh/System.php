@@ -11,6 +11,7 @@ class Lang_Zh_System {
 
     const CREATE = '新建';
     const EDIT = '修改';
+    const ARTICLE = '正文';
     const ALL = '全部';
     const SEARCH = '查询';
     const SEARCHING = '查询中...';

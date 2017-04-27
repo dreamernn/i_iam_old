@@ -1,5 +1,5 @@
-var iGroup = iGroup || {};
-iGroup.loginIndex = (function ($, ypRecordVar) {
+var iHotel = iHotel || {};
+iHotel.loginIndex = (function ($, ypRecordVar) {
 
     var ajax = YP.ajax;
 
@@ -57,5 +57,5 @@ iGroup.loginIndex = (function ($, ypRecordVar) {
 })(jQuery, YP_RECORD_VARS);
 
 $(function () {
-    iGroup.loginIndex.init();
+    iHotel.loginIndex.init();
 })

@@ -10,21 +10,6 @@ class Interceptor_RecordConfig {
                 'changepass' => 2
             )
         ),
-        'Groupajax' => array(
-            'moduleType' => 2,
-            'action' => array(
-                'createuser' => 1,
-                'updateuser' => 2,
-            )
-        ),
-        'Appajax' => array(
-            'moduleType' => 3,
-            'action' => array(
-                'createstartmsg' => 1,
-                'updatestartmsg' => 2,
-                'createpush' => 3,
-            )
-        ),
     );
 
     /**

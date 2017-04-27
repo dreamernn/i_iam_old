@@ -1,5 +1,5 @@
-var iGroup = iGroup || {};
-iGroup.loginChangePass = (function($, ypRecordVar, ypGlobal) {
+var iHotel = iHotel || {};
+iHotel.loginChangePass = (function($, ypRecordVar, ypGlobal) {
 
     var tips = YP.alert;
 
@@ -40,5 +40,5 @@ iGroup.loginChangePass = (function($, ypRecordVar, ypGlobal) {
 })(jQuery, YP_RECORD_VARS, YP_GLOBAL_VARS);
 
 $(function() {
-    iGroup.loginChangePass.init();
+    iHotel.loginChangePass.init();
 })

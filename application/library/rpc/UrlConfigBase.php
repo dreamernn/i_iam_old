@@ -44,6 +44,11 @@ class Rpc_UrlConfigBase {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'oldfilekey' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'B004' => array(

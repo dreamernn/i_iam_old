@@ -8,10 +8,16 @@ class BaseController extends \Yaf_Controller_Abstract {
         $this->setPageWebConfig();
         $this->userInfo = Yaf_Registry::get('loginInfo');
         $this->setPageHeaderInfo($this->userInfo);
+        $this->setPermission($this->userInfo);
+        $this->setHotelLanguage($this->userInfo);
     }
 
-    protected function getGroupId() {
-        return $this->userInfo['groupId'];
+    protected function getHotelId() {
+        return $this->userInfo['hotelId'];
+    }
+
+    protected function getGroupId(){
+        return $this->userInfo['groupid'];
     }
 
     private function setPageWebConfig() {
@@ -32,6 +38,15 @@ class BaseController extends \Yaf_Controller_Abstract {
         $headerInfo['useLanguage'] = $useLangugae;
         $headerInfo['useLanguageShow'] = $languageNameList[$useLangugae];
         $this->getView()->assign('headerInfo', $headerInfo);
+    }
+
+    private function setPermission($loginInfo) {
+        $permissionList = explode(",", $loginInfo['permission']);
+        $this->_view->assign('permssionList', $permissionList);
+    }
+
+    private function setHotelLanguage($loginInfo) {
+        $this->_view->assign('hotelLanguageList', explode(',', $loginInfo['hotelLanguage']));
     }
 
     /**
@@ -102,5 +117,11 @@ class BaseController extends \Yaf_Controller_Abstract {
         } else {
             return $_POST;
         }
+    }
+
+    protected function setAllowUploadFileType($type, $pageKey) {
+        $baseModel = new BaseModel();
+        $allowType = $baseModel->getAllowUploadFileType($type);
+        $this->_view->assign($pageKey, array_keys($allowType['data']['list']));
     }
 }

@@ -160,7 +160,7 @@ class Rpc_HttpDao {
      */
     public function getHttpResultRaw($interfaceId, $requestUrl, $isJsonDecode = false, $httpTimeout = 1, $httpMethod = 'GET', $imgSize) {
         $serviceDebug = Util_Tools::getDebugServiceAddress();
-        // $serviceDebug = true;
+        //         $serviceDebug = true;
         if ($serviceDebug) {
             $debugUrl = $requestUrl['url'];
             $debugUrl = str_replace("post", 'get', $debugUrl);

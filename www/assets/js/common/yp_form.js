@@ -181,6 +181,7 @@ YP.form = function () {
             if (!YP_RECORD_VARS.isChange) {
                 formParams.modelDom.modal('hide');
                 formParams.saveButtonDom.button('reset');
+                formParams.saveSuccess({});
                 return true;
             }
             var ajaxParams = {

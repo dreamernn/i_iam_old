@@ -1,32 +1,155 @@
 <div class="span2">
     <div class="well side-nav">
         <ul class="nav nav-list" id="navList">
-            <li class="nav-header">
+            <?php if (in_array(1, $permssionList)) { ?>
+                <li class="nav-header">
                 <span class="nav-header-open">
-                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'groupManager'); ?>
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'hotel'); ?>
                 </span>
-                <ul class="nav nav-list nav-li-list hide">
-                    <li><a href="/group/userList"><?php echo Enum_Lang::getPageText('nav', 'groupUser'); ?></a></li>
-                    <li><a href="/hotel/hotelList"><?php echo Enum_Lang::getPageText('nav', 'hotelList'); ?></a></li>
-                </ul>
-            </li>
-            <li class="nav-header">
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/hotel/info"><?php echo Enum_Lang::getPageText('nav', 'hotelInfo'); ?></a></li>
+                        <li><a href="/hotel/floor"><?php echo Enum_Lang::getPageText('nav', 'hotelFloor'); ?></a></li>
+                        <li><a href="/hotel/facilities"><?php echo Enum_Lang::getPageText('nav', 'hotelFacilities'); ?></a></li>
+                        <li><a href="/hotel/traffic"><?php echo Enum_Lang::getPageText('nav', 'hotelTraffic'); ?></a></li>
+                        <li><a href="/hotel/panoramic"><?php echo Enum_Lang::getPageText('nav', 'hotelPanoramic'); ?></a></li>
+                        <li><a href="/hotel/pic"><?php echo Enum_Lang::getPageText('nav', 'hotelPic'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(2, $permssionList)) { ?>
+                <li class="nav-header">
                 <span class="nav-header-open">
-                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'activityUserManager'); ?>
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'activity'); ?>
                 </span>
-                <ul class="nav nav-list nav-li-list hide">
-                    <li><a href="/activity/activityUserList"><?php echo Enum_Lang::getPageText('nav', 'activityUser'); ?></a></li>
-                </ul>
-            </li>
-            <li class="nav-header">
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/activity/tag"><?php echo Enum_Lang::getPageText('nav', 'activityTag'); ?></a></li>
+                        <li><a href="/activity/list"><?php echo Enum_Lang::getPageText('nav', 'activityList'); ?></a></li>
+                        <li><a href="/activity/order"><?php echo Enum_Lang::getPageText('nav', 'activityOrder'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(3, $permssionList)) { ?>
+                <li class="nav-header">
                 <span class="nav-header-open">
-                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'appManager'); ?>
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'life'); ?>
                 </span>
-                <ul class="nav nav-list nav-li-list hide">
-                    <li><a href="/app/startMsgList"><?php echo Enum_Lang::getPageText('nav', 'startMsgList'); ?></a></li>
-                    <li><a href="/app/groupPush"><?php echo Enum_Lang::getPageText('nav', 'groupPush'); ?></a></li>
-                </ul>
-            </li>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/life/tag"><?php echo Enum_Lang::getPageText('nav', 'lifeTag'); ?></a></li>
+                        <li><a href="/life/list"><?php echo Enum_Lang::getPageText('nav', 'lifeList'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(4, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'poi'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/poi/tag"><?php echo Enum_Lang::getPageText('nav', 'poiTag'); ?></a></li>
+                        <li><a href="/poi/list"><?php echo Enum_Lang::getPageText('nav', 'poiList'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(5, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'promotion'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/promotion/tag"><?php echo Enum_Lang::getPageText('nav', 'promotionTag'); ?></a></li>
+                        <li><a href="/promotion/list"><?php echo Enum_Lang::getPageText('nav', 'promotionList'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(6, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'room'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/room/roomType"><?php echo Enum_Lang::getPageText('nav', 'roomType'); ?></a></li>
+                        <li><a href="/room/roomRes"><?php echo Enum_Lang::getPageText('nav', 'roomRes'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(7, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'shopping'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/shopping/tag"><?php echo Enum_Lang::getPageText('nav', 'shoppingTag'); ?></a></li>
+                        <li><a href="/shopping/list"><?php echo Enum_Lang::getPageText('nav', 'shoppingList'); ?></a></li>
+                        <li><a href="/shopping/order"><?php echo Enum_Lang::getPageText('nav', 'shoppingOrder'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(8, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'showing'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/showing/order"><?php echo Enum_Lang::getPageText('nav', 'showingOrder'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(9, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'tel'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/tel/telType"><?php echo Enum_Lang::getPageText('nav', 'telType'); ?></a></li>
+                        <li><a href="/tel/list"><?php echo Enum_Lang::getPageText('nav', 'telList'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(10, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'news'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/news/tag"><?php echo Enum_Lang::getPageText('nav', 'newsTag'); ?></a></li>
+                        <li><a href="/news/list"><?php echo Enum_Lang::getPageText('nav', 'newsList'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(11, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'notic'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/notic/tag"><?php echo Enum_Lang::getPageText('nav', 'noticTag'); ?></a></li>
+                        <li><a href="/notic/list"><?php echo Enum_Lang::getPageText('nav', 'noticList'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(12, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'feedback'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/feedback/list"><?php echo Enum_Lang::getPageText('nav', 'feedbackList'); ?></a></li>
+                        <li><a href="/feedback/result"><?php echo Enum_Lang::getPageText('nav', 'feedbackResult'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (in_array(13, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'app'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/app/push"><?php echo Enum_Lang::getPageText('nav', 'appPush'); ?></a></li>
+                        <li><a href="/app/shortcut"><?php echo Enum_Lang::getPageText('nav', 'appShortcut'); ?></a></li>
+                        <li><a href="/app/share"><?php echo Enum_Lang::getPageText('nav', 'appShare'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
         </ul>
     </div>
 </div>

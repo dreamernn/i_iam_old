@@ -40,19 +40,24 @@ class Enum_Lang {
         return Util_Http::setCookie('systemLang', $language, $expire);
     }
 
+    private static $languageFileCache = array();
+
     /**
      * 从语言文件获取文本信息
      */
     private static function getConstantText($language, $page, $key) {
         $text = '';
-        $sysConfig = Yaf_Registry::get('sysConfig');
-        $filePath = $sysConfig->application->directory . "/library/lang/{$language}/" . ucwords($page) . '.php';
-        if (file_exists($filePath)) {
-            $languageFile = "Lang_" . ucwords($language) . '_' . ucwords($page);
-            $languageClass = new ReflectionClass($languageFile);
-            $text = $languageClass->getConstant($key);
+        $languageFile = "Lang_" . ucwords($language) . '_' . ucwords($page);
+        if (!self::$languageFileCache[$languageFile]) {
+            $sysConfig = Yaf_Registry::get('sysConfig');
+            $filePath = $sysConfig->application->directory . "/library/lang/{$language}/" . ucwords($page) . '.php';
+            if (file_exists($filePath)) {
+                $languageClass = new ReflectionClass($languageFile);
+                self::$languageFileCache[$languageFile] = $languageClass->getConstants();
+            }
         }
-        return $text;
+        $text = self::$languageFileCache[$languageFile][$key];
+        return strval($text);
     }
 
     /**

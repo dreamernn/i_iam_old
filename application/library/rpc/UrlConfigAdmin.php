@@ -7,7 +7,7 @@ class Rpc_UrlConfigAdmin {
             'name' => '后台登录',
             'method' => 'getUserInfo',
             'auth' => true,
-            'url' => '/Administrator/login',
+            'url' => '/HotelAdministrator/login',
             'param' => array(
                 'username' => array(
                     'required' => true,
@@ -88,7 +88,7 @@ class Rpc_UrlConfigAdmin {
             'name' => '修改登录密码',
             'method' => 'changePass',
             'auth' => true,
-            'url' => '/Administrator/changePass',
+            'url' => '/HotelAdministrator/changePass',
             'param' => array(
                 'userid' => array(
                     'required' => true,
@@ -111,14 +111,14 @@ class Rpc_UrlConfigAdmin {
             'name' => '获取管理员列表',
             'method' => 'getAdministratorList',
             'auth' => true,
-            'url' => '/Administrator/getAdministratorList',
+            'url' => '/HotelAdministrator/getAdministratorList',
             'param' => array(
                 'id' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
-                'groupid' => array(
+                'hotelid' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
@@ -149,7 +149,7 @@ class Rpc_UrlConfigAdmin {
             'name' => '新建管理员',
             'method' => 'addAdministrator',
             'auth' => true,
-            'url' => '/Administrator/addAdministrator',
+            'url' => '/HotelAdministrator/addAdministrator',
             'param' => array(
                 'username' => array(
                     'required' => true,
@@ -171,7 +171,7 @@ class Rpc_UrlConfigAdmin {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
-                'groupid' => array(
+                'hotelid' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
@@ -192,7 +192,7 @@ class Rpc_UrlConfigAdmin {
             'name' => '更新管理员',
             'method' => 'updateAdministratorById',
             'auth' => true,
-            'url' => '/Administrator/updateAdministratorById',
+            'url' => '/HotelAdministrator/updateAdministratorById',
             'param' => array(
                 'id' => array(
                     'required' => true,
