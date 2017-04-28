@@ -10,6 +10,13 @@ class Enum_Hotel {
             'bookurl',
         );
     }
+
+    public static function getFloorMustInput() {
+        return array(
+            'floor',
+            'pic',
+        );
+    }
 }
 
 ?>

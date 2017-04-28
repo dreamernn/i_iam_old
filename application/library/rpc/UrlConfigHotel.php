@@ -169,6 +169,120 @@ class Rpc_UrlConfigHotel {
                 ),
             )
         ),
+        'GH003' => array(
+            'name' => '获取楼层列表',
+            'method' => 'getFloorList',
+            'auth' => true,
+            'url' => '/Floor/getFloorList',
+            'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'floor' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'page' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'limit' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                )
+            )
+        ),
+        'GH004' => array(
+            'name' => '新建楼层',
+            'method' => 'addFloor',
+            'auth' => true,
+            'url' => '/Floor/addFloor',
+            'param' => array(
+                'floor' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'GH005' => array(
+            'name' => '更新楼层',
+            'method' => 'updateFloorById',
+            'auth' => true,
+            'url' => '/Floor/updateFloorById',
+            'param' => array(
+                'id' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'floor' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'detail_lang1' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'detail_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'detail_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
     );
 
     /**

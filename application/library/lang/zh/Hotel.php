@@ -16,6 +16,11 @@ class Lang_Zh_Hotel {
     const INTRODUCTION = '物业介绍';
     const BOOKURL = '预定URL';
 
-    const floor = '';
+    const FLOOREDITTITLE = '编辑楼层信息';
+    const FLOOR = '楼层名称';
+    const FLOORPIC = '楼层图片';
+    const STATUS = '状态';
+    const ENABLE = '启用';
+    const DISABLE = '禁用';
 
 }
