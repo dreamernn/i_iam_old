@@ -10,9 +10,15 @@ class HotelajaxController extends \BaseController {
      */
     private $hotelModal;
 
+    /**
+     * @var Convertor_Hotel
+     */
+    private $hotelConvertor;
+
     public function init() {
         parent::init();
         $this->hotelModal = new HotelModel();
+        $this->hotelConvertor = new Convertor_Hotel();
     }
 
     /**
@@ -44,6 +50,39 @@ class HotelajaxController extends \BaseController {
         $paramList['introduction_lang2'] = trim($this->getPost("introductionLang2"));
         $paramList['introduction_lang3'] = trim($this->getPost("introductionLang3"));
         $result = $this->hotelModal->saveHotelDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    public function getFloorListAction() {
+        $paramList['id'] = intval($this->getPost('id'));
+        $paramList['hotelid'] = intval($this->getHotelId());
+        $paramList['floor'] = trim($this->getPost('floor'));
+        $status = $this->getPost('status');
+        $status !== 'all' && !is_null($status) ? $paramList['status'] = intval($status) : false;
+        $result = $this->hotelModal->getFloorList($paramList);
+        $result = $this->hotelConvertor->floorListConvertor($result);
+        $this->echoJson($result);
+    }
+
+    private function handlerFloorSaveParams() {
+        $paramList = array();
+        $paramList['hotelid'] = intval($this->getHotelId());
+        $paramList['pic'] = $_FILES['pic'];
+        $paramList['floor'] = $this->getPost("floor");
+        $paramList['status'] = intval($this->getPost("status"));
+        return $paramList;
+    }
+
+    public function createFloorAction() {
+        $paramList = $this->handlerFloorSaveParams();
+        $result = $this->hotelModal->saveFloorDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    public function updateFloorAction() {
+        $paramList = $this->handlerFloorSaveParams();
+        $paramList['id'] = intval($this->getPost("id"));
+        $result = $this->hotelModal->saveFloorDataInfo($paramList);
         $this->echoJson($result);
     }
 }

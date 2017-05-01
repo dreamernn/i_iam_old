@@ -95,4 +95,54 @@ class HotelModel extends \BaseModel {
         } while (false);
         return $result;
     }
+
+    public function getFloorList($paramList) {
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['floor'] ? $params['floor'] = $paramList['floor'] : false;
+            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
+            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            $result = $this->rpcClient->getResultRaw('GH003', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+    public function saveFloorDataInfo($paramList) {
+        $params = $this->initParam();
+        do {
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['floor'] ? $params['floor'] = $paramList['floor'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            !is_null($paramList['status']) ? $params['status'] = intval($paramList['status']) : false;
+            $params['pic'] = $paramList['pic'];
+
+            if (empty($params['id'])) {
+                $checkParams = Enum_Hotel::getFloorMustInput();
+                foreach ($checkParams as $checkParamOne) {
+                    if (empty($params[$checkParamOne])) {
+                        break 2;
+                    }
+                }
+            }
+
+            unset($params['pic']);
+            if ($paramList['pic']) {
+                $uploadResult = $this->uploadFile($paramList['pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = '楼层图上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pic'] = $uploadResult['data']['picKey'];
+            }
+            $interfaceId = $params['id'] ? 'GH005' : 'GH004';
+            $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+        } while (false);
+        return $result;
+    }
 }
