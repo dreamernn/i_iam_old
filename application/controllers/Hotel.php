@@ -26,19 +26,22 @@ class HotelController extends \BaseController {
     }
 
     public function facilitiesAction() {
-
+        $this->_view->display('hotel/facilities.phtml');
     }
 
     public function trafficAction() {
-
+        $this->_view->display('hotel/traffic.phtml');
     }
 
     public function panoramicAction() {
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_IMAGE, 'allowTypeImage');
+        $this->_view->display('hotel/panoramic.phtml');
 
     }
 
     public function picAction() {
-
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_IMAGE, 'allowTypeImage');
+        $this->_view->display('hotel/pic.phtml');
     }
 
 }

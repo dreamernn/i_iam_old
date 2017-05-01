@@ -44,6 +44,7 @@ iHotel.articleEditor = (function ($, ypGlobal) {
             xhr.done(function (data) {
                 saveButton.button('reset');
                 if (confirm("保存成功，即将关闭本页")) {
+                    window.parent.opener.location.reload();
                     window.opener = null;
                     window.open('', '_self');
                     window.close();

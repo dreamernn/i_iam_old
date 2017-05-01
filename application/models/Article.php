@@ -25,7 +25,7 @@ class ArticleModel extends \BaseModel {
             fwrite($handle, $content);
             fclose($handle);
             $uploadReslut = $this->uploadFile(array('tmp_name' => $tmpfname, 'name' => 'article.html'), Enum_Oss::OSS_PATH_HTML, $article);
-            if ($uploadReslut['code']) {
+            if ($uploadReslut['code'] || $article) {
                 $result = $uploadReslut;
                 break;
             } else {

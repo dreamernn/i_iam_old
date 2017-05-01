@@ -11,4 +11,8 @@ class Lang_Zh_Activity {
     const DISABLE = '禁用';
     const CREATETIME = '创建时间';
     const UPDATETIME = '更新时间';
+
+    const ACITVITYORDERNAME = '姓名';
+    const ACITVITYORDERPHONE = '联系电话';
+    const ACTIVITY = '活动';
 }

@@ -145,4 +145,143 @@ class HotelModel extends \BaseModel {
         } while (false);
         return $result;
     }
+
+    public function getFacilitiesList($paramList) {
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['name'] ? $params['name'] = $paramList['name'] : false;
+            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
+            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            $result = $this->rpcClient->getResultRaw('GH006', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+    public function saveFacilitiesDataInfo($paramList) {
+        $params = $this->initParam();
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['name_lang1'] ? $params['name_lang1'] = $paramList['name_lang1'] : false;
+            $paramList['name_lang2'] ? $params['name_lang2'] = $paramList['name_lang2'] : false;
+            $paramList['name_lang3'] ? $params['name_lang3'] = $paramList['name_lang3'] : false;
+            $paramList['introduct_lang1'] ? $params['introduct_lang1'] = $paramList['introduct_lang1'] : false;
+            $paramList['introduct_lang2'] ? $params['introduct_lang2'] = $paramList['introduct_lang2'] : false;
+            $paramList['introduct_lang3'] ? $params['introduct_lang3'] = $paramList['introduct_lang3'] : false;
+            !is_null($paramList['status']) ? $params['status'] = intval($paramList['status']) : false;
+
+            $interfaceId = $params['id'] ? 'GH008' : 'GH007';
+            $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+        } while (false);
+        return $result;
+    }
+
+    public function getTrafficList($paramList) {
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            $result = $this->rpcClient->getResultRaw('GH009', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+    public function saveTrafficDataInfo($paramList) {
+        $params = $this->initParam();
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['introduct_lang1'] ? $params['introduct_lang1'] = $paramList['introduct_lang1'] : false;
+            $paramList['introduct_lang2'] ? $params['introduct_lang2'] = $paramList['introduct_lang2'] : false;
+            $paramList['introduct_lang3'] ? $params['introduct_lang3'] = $paramList['introduct_lang3'] : false;
+
+            $interfaceId = $params['id'] ? 'GH011' : 'GH010';
+            $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+        } while (false);
+        return $result;
+    }
+
+    public function getPanoramicList($paramList) {
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['title'] ? $params['title'] = $paramList['title'] : false;
+            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            $result = $this->rpcClient->getResultRaw('GH012', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+    public function savePanoramicDataInfo($paramList) {
+        $params = $this->initParam();
+        do {
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['panoramic'] ? $params['panoramic'] = $paramList['panoramic'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['title_lang1'] ? $params['title_lang1'] = $paramList['title_lang1'] : false;
+            $paramList['title_lang2'] ? $params['title_lang2'] = $paramList['title_lang2'] : false;
+            $paramList['title_lang3'] ? $params['title_lang3'] = $paramList['title_lang3'] : false;
+
+            if (empty($params['title_lang1'])) {
+                break;
+            }
+
+            if ($paramList['pic']) {
+                $uploadResult = $this->uploadFile($paramList['pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = '全景预览图上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pic'] = $uploadResult['data']['picKey'];
+            }
+            $interfaceId = $params['id'] ? 'GH014' : 'GH013';
+            $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+        } while (false);
+        return $result;
+    }
+
+    public function getPicList($paramList) {
+        do {
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            $result = $this->rpcClient->getResultRaw('GH015', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+    public function savePicDataInfo($paramList) {
+        $params = $this->initParam();
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            !is_null($paramList['sort']) ? $params['sort'] = intval($paramList['sort']) : false;
+
+
+            if (empty($paramList['pic']) && empty($paramList['id'])) {
+                $result = array(
+                    'code' => 1,
+                    'msg' => '图片不能为空'
+                );
+                break;
+            }
+
+            if ($paramList['pic']) {
+                $uploadResult = $this->uploadFile($paramList['pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = '图上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pic'] = $uploadResult['data']['picKey'];
+            }
+            $interfaceId = $params['id'] ? 'GH017' : 'GH016';
+            $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+        } while (false);
+        return $result;
+    }
 }

@@ -23,4 +23,20 @@ class Lang_Zh_Hotel {
     const ENABLE = '启用';
     const DISABLE = '禁用';
 
+    const FACILITIESEDITTITLE = '编辑设施信息';
+    const FACILITIESTITLE = '设施标题';
+    const FACILITIESINTRODUCT = '设施介绍';
+    const CREATETIME = '创建时间';
+
+    const TRAFFICEDITTITLE = '编辑交通信息';
+    const TAFFICINTRODUCT = '交通介绍';
+
+    const PANORAMICEDITTITLE = '编辑全景信息';
+    const PANORMAICTITLE = '全景标题';
+    const PANORMAICPIC = '全景预览图';
+    const PANORMAICURL = '全景H5url';
+
+    const PICEDITTITLE = '编辑图片信息';
+    const PICPIC = '图片';
+    const PICSORT = '排序';
 }
