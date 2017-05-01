@@ -1,10 +1,10 @@
 <?php
-class Lang_En_AscottTag {
+class Lang_En_Ascott {
 
 	const EDITTAGTITLE = 'edit';
-	const TAGTITLE = 'title';
+	const TAGTITLE = 'tag title';
 
-	const ACTIVITYTITLE = 'activity title';
+	const ACTIVITYTITLE = 'title';
 	const STATUS = 'state';
 	const ENABLE = 'enable';
 	const DISABLE = 'disable';

@@ -1,5 +1,5 @@
 <?php
-class Lang_Zh_AscottTag {
+class Lang_Zh_Ascott {
 
 	const EDITTAGTITLE = '标签编辑';
 	const TAGTITLE = '标签名称';

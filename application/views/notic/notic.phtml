@@ -13,13 +13,13 @@
             <div class="cont-mod">
                 <div class="page-header page-header-custom">
                     <h1 class="h1-custom">
-                        <?php echo Enum_Lang::getPageText('nav', 'ascott'); ?>
+                        <?php echo Enum_Lang::getPageText('nav', 'notic'); ?>
                         <button id="createData" class="btn btn-info" style="margin-left: 5px;" type="button"
                                 data-toggle="modal" data-target="#editor"><?php echo Enum_Lang::getPageText('system', 'create'); ?>
                         </button>
                     </h1>
                 </div>
-                <?php include($webConfig['layoutPath'] . '/ascott/ascott_filter.phtml') ?>
+                <?php include($webConfig['layoutPath'] . '/notic/notic_filter.phtml') ?>
                 <div class="cont-mod">
                     <div class="page-header page-header-custom"></div>
                     <div class="reservation">
@@ -29,11 +29,11 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th><?php echo Enum_Lang::getPageText('ascott', 'ascottTitle'); ?></th>
-                                        <th><?php echo Enum_Lang::getPageText('ascott', 'tagTitle'); ?></th>
-                                        <th><?php echo Enum_Lang::getPageText('ascott', 'status'); ?></th>
-                                        <th><?php echo Enum_Lang::getPageText('ascott', 'createtime'); ?></th>
-                                        <th><?php echo Enum_Lang::getPageText('ascott', 'updatetime'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('notic', 'title'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('notic', 'tagTitle'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('notic', 'status'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('notic', 'createtime'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('notic', 'updatetime'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
                                     </tr>
                                     </thead>
@@ -48,13 +48,13 @@
         </div>
     </div>
 </div>
-<?php include($webConfig['layoutPath'] . '/ascott/ascott_edit.phtml'); ?>
+<?php include($webConfig['layoutPath'] . '/notic/notic_edit.phtml'); ?>
 <script type="text/javascript">
     var YP_GLOBAL_VARS = {
-        checkParams: '<?php echo json_encode(Enum_Ascott::getAscottMustInput());?>',
-        listUrl: '/ascottajax/getList',
-        createUrl: '/ascottajax/create',
-        updateUrl: '/ascottajax/update',
+        checkParams: '<?php echo json_encode(Enum_Notic::getNoticMustInput());?>',
+        listUrl: '/noticajax/getList',
+        createUrl: '/noticajax/create',
+        updateUrl: '/noticajax/update',
     };
 </script>
 <?php include($webConfig['layoutPath'] . '/common/list_common.phtml'); ?>
@@ -64,7 +64,7 @@
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/art.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/select2/select2.full.min.js" type="text/javascript"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/select2/zh-CN.js" type="text/javascript"></script>
-<script src="<?php echo $webConfig['imgDomain']; ?>js/ascott/list.js"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/notic/list.js"></script>
 </body>
 </html>
 <script id="dataList_tpl" type="text/html">

@@ -1,5 +1,5 @@
 <?php
-class Enum_Ascott {
+class Enum_Poi {
 
     public static function getTagMustInput() {
         return array(
@@ -7,7 +7,7 @@ class Enum_Ascott {
         );
     }
 
-    public static function getAscottMustInput() {
+    public static function getPoiMustInput() {
         return array(
             'titleLang1',
         );

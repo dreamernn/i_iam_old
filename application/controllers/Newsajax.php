@@ -1,14 +1,14 @@
 <?php
 
-class AscottajaxController extends \BaseController {
+class NewsajaxController extends \BaseController {
 	private $model;
 
 	private $convertor;
 
 	public function init() {
 		parent::init();
-		$this->model = new AscottModel();
-		$this->convertor = new Convertor_Ascott();
+		$this->model = new NewsModel();
+		$this->convertor = new Convertor_News();
 	}
 
 	/**

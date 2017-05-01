@@ -1,14 +1,14 @@
 <?php
 
-class AscottajaxController extends \BaseController {
+class PromotionajaxController extends \BaseController {
 	private $model;
 
 	private $convertor;
 
 	public function init() {
 		parent::init();
-		$this->model = new AscottModel();
-		$this->convertor = new Convertor_Ascott();
+		$this->model = new PromotionModel();
+		$this->convertor = new Convertor_Promotion();
 	}
 
 	/**
@@ -65,7 +65,7 @@ class AscottajaxController extends \BaseController {
 		$paramList['title'] = $this->getPost('title');
 		$status = $this->getPost('status');
 		$status !== 'all' && !is_null($status) ? $paramList['status'] = intval($status) : false;
-		$result = $this->model->getList($paramList);
+		$result = $this->model->getPromotionList($paramList);
 		$result = $this->convertor->getListConvertor($result);
 		$this->echoJson($result);
 	}

@@ -1,5 +1,5 @@
 <?php
-class Enum_Ascott {
+class Enum_News {
 
     public static function getTagMustInput() {
         return array(
@@ -7,7 +7,7 @@ class Enum_Ascott {
         );
     }
 
-    public static function getAscottMustInput() {
+    public static function getNewsMustInput() {
         return array(
             'titleLang1',
         );
