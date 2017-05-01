@@ -17,6 +17,24 @@ class Enum_Hotel {
             'pic',
         );
     }
+
+    public static function getFacilitiesInput() {
+        return array(
+            'nameLang1',
+        );
+    }
+
+    public static function getTrafficInput() {
+        return array(
+            'introductLang1',
+        );
+    }
+
+    public static function getPanoramicInput() {
+        return array(
+            'titleLang1',
+        );
+    }
 }
 
 ?>
