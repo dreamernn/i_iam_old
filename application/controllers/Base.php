@@ -124,4 +124,6 @@ class BaseController extends \Yaf_Controller_Abstract {
         $allowType = $baseModel->getAllowUploadFileType($type);
         $this->_view->assign($pageKey, array_keys($allowType['data']['list']));
     }
+    
+    
 }
