@@ -16,4 +16,11 @@ class ActivityController extends \BaseController {
         $this->_view->assign('tagList', $tagList['data']['list']);
         $this->_view->display('activity/activity.phtml');
     }
+
+    public function orderAction() {
+        $activityModel = new ActivityModel();
+        $activityList = $activityModel->getActivityList(array('hotelid' => $this->getHotelId()), 3600);
+        $this->_view->assign('activityList', $activityList['data']['list']);
+        $this->_view->display('activity/order.phtml');
+    }
 }

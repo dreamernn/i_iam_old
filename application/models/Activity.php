@@ -35,15 +35,20 @@ class ActivityModel extends \BaseModel {
         return $result;
     }
 
-    public function getActivityList($paramList) {
+    public function getActivityList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
-            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
-            $paramList['tagid'] ? $params['tagid'] = $paramList['tagid'] : false;
-            $paramList['title'] ? $params['title'] = $paramList['title'] : false;
-            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
-            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
-            $result = $this->rpcClient->getResultRaw('GA001', $params);
+            if ($cacheTime == 0) {
+                $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+                $paramList['tagid'] ? $params['tagid'] = $paramList['tagid'] : false;
+                $paramList['title'] ? $params['title'] = $paramList['title'] : false;
+                isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
+                $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            } else {
+                $params['limit'] = 0;
+            }
+            $isCache = $cacheTime != 0 ? true : false;
+            $result = $this->rpcClient->getResultRaw('GA001', $params, $isCache, $cacheTime);
         } while (false);
         return (array)$result;
     }
@@ -60,7 +65,22 @@ class ActivityModel extends \BaseModel {
             }
             $interfaceId = $params['id'] ? 'GA007' : 'GA006';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+            $this->getActivityList(array('hotelid' => $params['hotelid']), -2);
         } while (false);
         return $result;
+    }
+
+    public function getOrderList($paramList) {
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['name'] ? $params['name'] = $paramList['name'] : false;
+            $paramList['phone'] ? $params['phone'] = $paramList['phone'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['groupid'] ? $params['groupid'] = $paramList['groupid'] : false;
+            $paramList['activityid'] ? $params['activityid'] = $paramList['activityid'] : false;
+            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            $result = $this->rpcClient->getResultRaw('GA008', $params);
+        } while (false);
+        return (array)$result;
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-class Rpc_UrlConfigActivity {
+class Rpc_UrlConfigRoom {
 
     private static $config = array(
-        'GA001' => array(
-            'name' => '获取活动列表',
-            'method' => 'getActivityList',
+        'R001' => array(
+            'name' => '获取物品列表',
+            'method' => 'getRoomResList',
             'auth' => true,
-            'url' => '/activity/getActivityList',
+            'url' => '/RoomRes/getRoomResList',
             'param' => array(
                 'id' => array(
                     'required' => false,
@@ -19,13 +19,182 @@ class Rpc_UrlConfigActivity {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
-                'tagid' => array(
+                'icon' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'name' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'page' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'limit' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                )
+            )
+        ),
+        'R002' => array(
+            'name' => '新增物品',
+            'method' => 'addRoomRes',
+            'auth' => true,
+            'url' => '/RoomRes/addRoomRes',
+            'param' => array(
+                'icon' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'name_lang1' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'name_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'name_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'introduct_lang1' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'introduct_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'introduct_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'R003' => array(
+            'name' => '更新物品',
+            'method' => 'updateRoomResById',
+            'auth' => true,
+            'url' => '/RoomRes/updateRoomResById',
+            'param' => array(
+                'id' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'icon' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
                 'status' => array(
                     'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'name_lang1' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'name_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'name_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'introduct_lang1' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'introduct_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'introduct_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'detail_lang1' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'detail_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'detail_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'R004' => array(
+            'name' => '获取房型列表',
+            'method' => 'getRoomResList',
+            'auth' => true,
+            'url' => '/RoomType/getRoomTypeList',
+            'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => true,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
@@ -46,95 +215,14 @@ class Rpc_UrlConfigActivity {
                 )
             )
         ),
-        'GA002' => array(
-            'name' => '获取活动报名列表',
-            'method' => 'getActivityOrderList',
+        'R005' => array(
+            'name' => '新建房型',
+            'method' => 'addRoomtype',
             'auth' => true,
-            'url' => '/activityOrder/getActivityOrderList',
+            'url' => '/RoomType/addRoomtype',
             'param' => array(
-                'id' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'name' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'phone' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'hotelid' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'groupid' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'activityid' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'page' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'limit' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                )
-            )
-        ),
-        'GA003' => array(
-            'name' => '获取活动TAG列表',
-            'method' => 'getActivityTagList',
-            'auth' => true,
-            'url' => '/ActivityTag/getActivityTagList',
-            'param' => array(
-                'id' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'hotelid' => array(
-                    'required' => true,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'page' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'limit' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                )
-            )
-        ),
-        'GA004' => array(
-            'name' => '新建活动TAG',
-            'method' => 'addActivityTag',
-            'auth' => true,
-            'url' => '/ActivityTag/addActivityTag',
-            'param' => array(
-                'hotelid' => array(
-                    'required' => true,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
                 'title_lang1' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
@@ -148,17 +236,14 @@ class Rpc_UrlConfigActivity {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
-            )
-        ),
-        'GA005' => array(
-            'name' => '更新活动TAG',
-            'method' => 'updateActivityTagById',
-            'auth' => true,
-            'url' => '/ActivityTag/updateActivityTagById',
-            'param' => array(
-                'id' => array(
-                    'required' => true,
-                    'format' => 'int',
+                'size' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'panoramic' => array(
+                    'required' => false,
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
                 'hotelid' => array(
@@ -166,84 +251,31 @@ class Rpc_UrlConfigActivity {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
-                'title_lang1' => array(
-                    'required' => true,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'title_lang2' => array(
+                'bedtype_lang1' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
-                'title_lang3' => array(
+                'bedtype_lang2' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
-            )
-        ),
-        'GA006' => array(
-            'name' => '新建活动',
-            'method' => 'addActivity',
-            'auth' => true,
-            'url' => '/activity/addActivity',
-            'param' => array(
-                'hotelid' => array(
-                    'required' => true,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'groupid' => array(
-                    'required' => true,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'tagid' => array(
-                    'required' => true,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'status' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'title_lang1' => array(
-                    'required' => true,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'title_lang2' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'title_lang3' => array(
+                'bedtype_lang3' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
             )
         ),
-        'GA007' => array(
-            'name' => '更新活动',
-            'method' => 'updateActivityById',
+        'R006' => array(
+            'name' => '更新房型',
+            'method' => 'updateRoomtypeById',
             'auth' => true,
-            'url' => '/activity/updateActivityById',
+            'url' => '/RoomType/updateRoomtypeById',
             'param' => array(
                 'id' => array(
                     'required' => true,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'tagid' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'status' => array(
-                    'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
@@ -262,40 +294,12 @@ class Rpc_UrlConfigActivity {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
-                'article_lang1' => array(
+                'size' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
-                'article_lang2' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'article_lang3' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-            )
-        ),
-        'GA008' => array(
-            'name' => '获取活动报名列表',
-            'method' => 'getActivityOrderList',
-            'auth' => true,
-            'url' => '/activityOrder/getActivityOrderList',
-            'param' => array(
-                'id' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'name' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'phone' => array(
+                'panoramic' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
@@ -305,26 +309,41 @@ class Rpc_UrlConfigActivity {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
-                'groupid' => array(
+                'bedtype_lang1' => array(
                     'required' => false,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
-                'activityid' => array(
+                'bedtype_lang2' => array(
                     'required' => false,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
-                'page' => array(
+                'bedtype_lang3' => array(
                     'required' => false,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
-                'limit' => array(
+                'detail_lang1' => array(
                     'required' => false,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
-                )
+                ),
+                'detail_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'detail_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'resid_list' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
     );

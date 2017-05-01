@@ -100,4 +100,16 @@ class ActivityajaxController extends \BaseController {
         $result = $this->activityModel->saveActvityDataInfo($paramList);
         $this->echoJson($result);
     }
+
+    public function getOrderListAction() {
+        $paramList['id'] = intval($this->getPost('id'));
+        $paramList['name'] = trim($this->getPost('name'));
+        $paramList['phone'] = trim($this->getPost('phone'));
+        $paramList['activityid'] = intval($this->getPost('activityid'));
+        $paramList['hotelid'] = intval($this->getHotelId());
+        $paramList['groupid'] = intval($this->getGroupId());
+        $result = $this->activityModel->getOrderList($paramList);
+        $result = $this->activityConvertor->orderListConvertor($result);
+        $this->echoJson($result);
+    }
 }
