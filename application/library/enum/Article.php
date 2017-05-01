@@ -8,6 +8,7 @@ class Enum_Article {
     const ARTICLE_TYPE_TRAFFIC = 'traffic';
     const ARTICLE_TYPE_ROOMRES = 'roomRes';
     const ARTICLE_TYPE_ROOMTYPE = 'roomType';
+    const ARTICLE_TYPE_SHOPPING = 'shopping';
 
     private static $articleTypeList = array(
         self::ARTICLE_TYPE_ACTIVITY => array(
@@ -32,6 +33,10 @@ class Enum_Article {
         ),
         self::ARTICLE_TYPE_ROOMTYPE => array(
             'interfaceId' => 'R006',
+            'field' => 'detail_lang'
+        ),
+        self::ARTICLE_TYPE_SHOPPING => array(
+            'interfaceId' => 'GS007',
             'field' => 'detail_lang'
         ),
     );
