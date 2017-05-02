@@ -16,6 +16,7 @@ class AscottajaxController extends \BaseController {
 	 */
 	public function getTagListAction() {
 		$paramList['page'] = $this->getPost('page');
+		$paramList['limit'] = $this->getPost('limit');
 		$paramList['hotelid'] = $this->getHotelId();
 		$result = $this->model->getTagList($paramList);
 		$result = $this->convertor->tagListConvertor($result);

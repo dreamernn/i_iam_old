@@ -175,7 +175,6 @@ class Rpc_HttpDao {
         } else {
             $requestUrl = $requestUrl['url'] . '&' . http_build_query($requestUrl['param']);
         }
-        // var_dump($requestUrl);
         $requestUrl = $this->formatUrl($requestUrl);
         if ($this->isValidUrl($requestUrl)) {
             $responseRaw = null;
