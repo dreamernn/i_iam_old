@@ -2,7 +2,7 @@
 
 /**
  * 验证登录
- * @author ZXM
+ *
  * 2015年9月22日
  */
 class Auth_Login {

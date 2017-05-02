@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author ZXM
+ *Class HotelajaxController
  */
 class HotelajaxController extends \BaseController {
 

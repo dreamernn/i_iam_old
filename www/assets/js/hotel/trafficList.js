@@ -39,7 +39,7 @@ iHotel.hotelTrafficList = (function ($, ypGlobal) {
                 dataForm.updateParams({
                     saveUrl: saveParams.id > 0 ? ypGlobal.updateUrl : ypGlobal.createUrl
                 });
-                saveParams = dataForm.makeRecord(saveParams, saveParams.id, saveParams.nameLang1);
+                saveParams = dataForm.makeRecord(saveParams, saveParams.id, '交通信息');
                 return saveParams;
             },
             saveSuccess: function (data) {

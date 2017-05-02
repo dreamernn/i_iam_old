@@ -2,7 +2,7 @@
 
 /**
  * Class RoomController
- * @author ZXM
+ *
  */
 class RoomController extends \BaseController {
 

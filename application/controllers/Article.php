@@ -2,7 +2,7 @@
 
 /**
  * Class ArticleController
- * @author ZXM
+ *
  */
 class ArticleController extends \BaseController {
 

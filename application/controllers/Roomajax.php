@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author ZXM
+ *
  */
 class RoomajaxController extends \BaseController {
 

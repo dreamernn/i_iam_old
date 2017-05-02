@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author ZXM
+ *
  */
 class ShoppingajaxController extends \BaseController {
 
