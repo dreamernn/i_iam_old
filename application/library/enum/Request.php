@@ -2,7 +2,7 @@
 
 /**
  * 用户枚举
- * @author ZXM
+ *
  * 2015年7月13日
  */
 class Enum_Request {
@@ -19,6 +19,7 @@ class Enum_Request {
             'R' => 'Rpc_UrlConfigRoom',
             'GS' => 'Rpc_UrlConfigShopping',
             'GSH' => 'Rpc_UrlConfigShowing',
+            'F' => 'Rpc_UrlConfigFeedback',
         );
         $fileKey = preg_replace('/\d+/', '', $interfaceId);
         $fileNameKey = $config[$fileKey];

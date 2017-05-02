@@ -2,7 +2,7 @@
 
 /**
  * Class ActivityController
- * @author ZXM
+ *
  */
 class ActivityController extends \BaseController {
 

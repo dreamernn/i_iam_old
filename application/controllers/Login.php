@@ -2,7 +2,7 @@
 
 /**
  * Class LoginController
- * @author ZXM
+ *
  */
 class LoginController extends \BaseController {
 

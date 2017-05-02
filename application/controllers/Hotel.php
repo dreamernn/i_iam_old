@@ -2,7 +2,7 @@
 
 /**
  * Class HotelController
- * @author ZXM
+ *
  */
 class HotelController extends \BaseController {
 

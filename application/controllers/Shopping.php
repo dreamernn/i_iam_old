@@ -2,7 +2,7 @@
 
 /**
  * Class ShoppingController
- * @author ZXM
+ *
  */
 class ShoppingController extends \BaseController {
 

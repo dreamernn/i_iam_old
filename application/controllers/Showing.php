@@ -2,7 +2,7 @@
 
 /**
  * Class ShowingController
- * @author ZXM
+ *
  */
 class ShowingController extends \BaseController {
 

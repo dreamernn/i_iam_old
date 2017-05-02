@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author ZXM
+ *
  */
 class ActivityajaxController extends \BaseController {
 
