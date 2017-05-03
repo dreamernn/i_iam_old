@@ -4,120 +4,95 @@ class Rpc_UrlConfigApp {
 
     private static $config = array(
         'APP001' => array(
-            'name' => '获取APP启动消息列表',
-            'method' => 'getAppstartPicList',
+            'name' => '获取APP快捷图标列表',
+            'method' => 'getShortcutIconList',
             'auth' => true,
-            'url' => '/appStartMsg/getAppstartMsgList',
+            'url' => '/ShortcutIcon/getShortcutIconList',
             'param' => array(
-                'id' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'type' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'dataid' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'status' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'page' => array(
-                    'required' => false,
-                    'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'limit' => array(
-                    'required' => false,
+                'hotelid' => array(
+                    'required' => true,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
             )
         ),
         'APP002' => array(
-            'name' => '新建APP启动消息',
-            'method' => 'addAppstartMsg',
+            'name' => '新建APP快捷图标',
+            'method' => 'addShortcutIcon',
             'auth' => true,
-            'url' => '/appStartMsg/addAppstartMsg',
+            'url' => '/ShortcutIcon/addShortcutIcon',
             'param' => array(
-                'type' => array(
+                'hotelid' => array(
                     'required' => true,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
-                'dataid' => array(
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'key' => array(
                     'required' => true,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
-                'pic' => array(
+                'title_lang1' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang2' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
-                'msg' => array(
+                'title_lang3' => array(
                     'required' => false,
                     'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'url' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'status' => array(
-                    'required' => false,
-                    'format' => 'int',
                     'style' => 'interface'
                 ),
             )
         ),
         'APP003' => array(
-            'name' => '更新APP启动消息',
-            'method' => 'updateAppstartMsgById',
+            'name' => '修改APP快捷图标',
+            'method' => 'updateShortcutIconById',
             'auth' => true,
-            'url' => '/appStartMsg/updateAppstartMsgById',
+            'url' => '/ShortcutIcon/updateShortcutIconById',
             'param' => array(
                 'id' => array(
                     'required' => true,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
-                'type' => array(
+                'hotelid' => array(
                     'required' => true,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
-                'dataid' => array(
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'key' => array(
                     'required' => true,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
-                'pic' => array(
+                'title_lang1' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang2' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
-                'msg' => array(
+                'title_lang3' => array(
                     'required' => false,
                     'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'url' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'status' => array(
-                    'required' => false,
-                    'format' => 'int',
                     'style' => 'interface'
                 ),
             )
@@ -208,6 +183,37 @@ class Rpc_UrlConfigApp {
                 ),
                 'url' => array(
                     'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'APP006' => array(
+            'name' => '获取APP分享图标列表',
+            'method' => 'getShareIconList',
+            'auth' => true,
+            'url' => '/ShareIcon/getShareIconList',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'APP007' => array(
+            'name' => '更新APP分享图标',
+            'method' => 'updateShareByHotelId',
+            'auth' => true,
+            'url' => '/ShareIcon/updateShareByHotelId',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'share' => array(
+                    'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
