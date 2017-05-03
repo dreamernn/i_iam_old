@@ -16,6 +16,7 @@ class Enum_Request {
             'GH' => 'Rpc_UrlConfigHotel',
             'GA' => 'Rpc_UrlConfigActivity',
             'APP' => 'Rpc_UrlConfigApp',
+            'LI' => 'Rpc_UrlConfigLife',
             'R' => 'Rpc_UrlConfigRoom',
             'GS' => 'Rpc_UrlConfigShopping',
             'GSH' => 'Rpc_UrlConfigShowing',

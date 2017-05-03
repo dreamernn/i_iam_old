@@ -10,6 +10,7 @@ class Rpc_Curl {
      */
     public static function _request($url, $method = 'GET', $postData = '', $timeOut = 2, $imgSize = '') {
         $handle = curl_init ();
+        //var_dump($url);var_dump($postData);exit;
         curl_setopt ( $handle, CURLOPT_URL, $url );
         curl_setopt ( $handle, CURLOPT_RETURNTRANSFER, true );
         curl_setopt ( $handle, CURLOPT_USERAGENT, Enum_Request::RPC_REQUEST_UA );

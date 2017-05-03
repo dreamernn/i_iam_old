@@ -18,9 +18,9 @@ class Convertor_Ascott extends Convertor_Base {
             foreach ($result['list'] as $key => $value) {
                 $dataTemp = array();
                 $dataTemp['id'] = $value['id'];
-                $dataTemp['titleLang1'] = $value['title_lang1'];
-                $dataTemp['titleLang2'] = $value['title_lang2'];
-                $dataTemp['titleLang3'] = $value['title_lang3'];
+                $dataTemp['titleLang1'] = $value['titleLang1'];
+                $dataTemp['titleLang2'] = $value['titleLang2'];
+                $dataTemp['titleLang3'] = $value['titleLang3'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

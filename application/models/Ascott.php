@@ -11,7 +11,7 @@ class AscottModel extends \BaseModel {
                 $params['limit'] = 0;
             }
             $isCache = $cacheTime != 0 ? true : false;
-            $result = $this->rpcClient->getResultRaw('GA003', $params, $isCache, $cacheTime);
+            $result = $this->rpcClient->getResultRaw('LI002', $params, $isCache, $cacheTime);
         } while (false);
         return (array)$result;
     }
@@ -43,7 +43,7 @@ class AscottModel extends \BaseModel {
             $paramList['title'] ? $params['title'] = $paramList['title'] : false;
             isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
-            $result = $this->rpcClient->getResultRaw('GA001', $params);
+            $result = $this->rpcClient->getResultRaw('LI001', $params);
         } while (false);
         return (array)$result;
     }
