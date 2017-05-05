@@ -264,6 +264,12 @@ class Rpc_HttpDao {
                 'format' => 'string',
                 'style' => 'interface',
                 'value' => time()
+            ),
+            'package' => array(
+                'required' => true,
+                'format' => 'string',
+                'style' => 'interface',
+                'value' => Enum_System::RPC_REQUEST_PACKAGE
             )
         );
         return $param;
