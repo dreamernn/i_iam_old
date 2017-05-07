@@ -26,7 +26,7 @@ class AscottModel extends \BaseModel {
             if (empty($params['title_lang1']) || empty($params['hotelid'])) {
                 break;
             }
-            $interfaceId = $params['id'] ? 'GA005' : 'GA004';
+            $interfaceId = $params['id'] ? 'LI004' : 'LI005';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);
             if (!$result['code']) {
                 $this->getTagList(array('hotelid' => $params['hotelid']), -2);
