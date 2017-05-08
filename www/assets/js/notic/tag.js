@@ -37,7 +37,7 @@ iHotel.noticTagList = (function ($, ypGlobal) {
             modelDom: detailModal,
             saveBefore: function (saveParams) {
                 tagForm.updateParams({
-                    saveUrl: saveParams.id > 0 ? ypGlobal.updateUrl : ypGlobal.createTag
+                    saveUrl: saveParams.id > 0 ? ypGlobal.updateUrl : ypGlobal.createUrl
                 });
                 saveParams = tagForm.makeRecord(saveParams, saveParams.id, saveParams.titleLang1);
                 return saveParams;

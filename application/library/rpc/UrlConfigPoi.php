@@ -99,7 +99,7 @@ class Rpc_UrlConfigPoi {
             'name' => '新增tag详情',
             'method' => 'addTagInfo',
             'auth' => true,
-            'url' => '/pottype/addpoitype',
+            'url' => '/poitype/addpoitype',
             'param' => array(
                 'hotelid' => array(
                     'required' => true,
