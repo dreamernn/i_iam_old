@@ -8,6 +8,10 @@ iHotel.promotionList = (function ($, ypGlobal) {
      * 初始化列表
      */
     function initList() {
+        $("#filter_tag").select2({
+            placeholder: '全部',
+            language: 'zh-CN'
+        });
         promotionList.init({
             colCount: 9,
             autoLoad: true,
@@ -30,6 +34,11 @@ iHotel.promotionList = (function ($, ypGlobal) {
     function initEditor() {
         // 初始化表单保存
         var detailModal = $("#editor");
+        $("#edit_tagid").select2({
+            placeholder: '全部',
+            language: 'zh-CN',
+            width: 210
+        });
         promotionForm.init({
             editorDom: $("#listEditor"),
             saveButtonDom: $("#saveListData"),

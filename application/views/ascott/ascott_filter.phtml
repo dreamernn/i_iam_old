@@ -10,18 +10,7 @@
             <div class="pull-left control-item">
                 <span class="control-label"><?php echo Enum_Lang::getPageText('ascott', 'ascottTitle'); ?>：</span>
                 <div class="controls">
-                    <input id="filter_title" data-paramkey='title' type="text" class="form-control input-medium" op="filterCase"/>
-                </div>
-            </div>
-            <div class="pull-left control-item">
-                <span class="control-label"><?php echo Enum_Lang::getPageText('ascott', 'tagTitle'); ?>：</span>
-                <div class="controls">
-                    <select id="filter_tag" data-paramkey='tag' class="input-medium select-long" op="filterCase">
-                        <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
-                        <?php foreach ($tagList as $tag) { ?>
-                            <option value="<?php echo $tag['id']; ?>"><?php echo $tag['title_lang1']; ?></option>
-                        <?php } ?>
-                    </select>
+                    <input id="filter_name" data-paramkey='name' type="text" class="form-control input-medium" op="filterCase"/>
                 </div>
             </div>
             <div class="pull-left control-item">
@@ -31,6 +20,17 @@
                         <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
                         <option value="0"><?php echo Enum_Lang::getPageText('ascott', 'disable'); ?></option>
                         <option value="1"><?php echo Enum_Lang::getPageText('ascott', 'enable'); ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="pull-left control-item">
+                <span class="control-label"><?php echo Enum_Lang::getPageText('ascott', 'tagTitle'); ?>：</span>
+                <div class="controls">
+                    <select id="filter_type" data-paramkey='typeid' class="input-medium select-long" op="filterCase">
+                        <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
+                        <?php foreach ($tagList as $tag) { ?>
+                            <option value="<?php echo $tag['id']; ?>"><?php echo $tag['titleLang1']; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
             </div>

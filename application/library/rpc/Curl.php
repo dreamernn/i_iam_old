@@ -28,7 +28,7 @@ class Rpc_Curl {
         $result['httpStatus'] = curl_getinfo ( $handle, CURLINFO_HTTP_CODE );
         $result['fullInfo'] = curl_getinfo ( $handle );
         curl_close ( $handle );
-        
+
         return $result;
     }
 }

@@ -7,8 +7,6 @@ class PoiModel extends \BaseModel {
             $params['hotelid'] = $paramList['hotelid'];
             if ($cacheTime == 0) {
                 $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
-            } else {
-                $params['limit'] = 0;
             }
             $isCache = $cacheTime != 0 ? true : false;
             $result = $this->rpcClient->getResultRaw('PT002', $params, $isCache, $cacheTime);
@@ -39,8 +37,8 @@ class PoiModel extends \BaseModel {
         do {
             $params['hotelid'] = $paramList['hotelid'];
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
-            $paramList['tagid'] ? $params['tagid'] = $paramList['tagid'] : false;
-            $paramList['title'] ? $params['title'] = $paramList['title'] : false;
+            $paramList['typeid'] ? $params['typeid'] = $paramList['typeid'] : false;
+            $paramList['name'] ? $params['name'] = $paramList['name'] : false;
             isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
             $result = $this->rpcClient->getResultRaw('PT001', $params);
@@ -55,7 +53,7 @@ class PoiModel extends \BaseModel {
                 'code' => 1,
                 'msg' => '参数错误'
             );
-            if (empty($params['title_lang1']) || empty($params['hotelid'])) {
+            if (empty($params['name_lang1']) || empty($params['hotelid'])) {
                 break;
             }
             $interfaceId = $params['id'] ? 'PT006' : 'PT007';

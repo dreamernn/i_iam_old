@@ -29,7 +29,7 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th><?php echo Enum_Lang::getPageText('poi', 'title'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('poi', 'poiTitle'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('poi', 'tagTitle'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('poi', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('poi', 'createtime'); ?></th>
@@ -71,17 +71,26 @@
     {{each list as info i}}
     <tr dataId="{{info.id}}">
         <td type="id" data-value="{{info.id}}">{{info.id}}</td>
-        <td type="titleLang1" data-value="{{info.titleLang1}}">{{info.titleLang1}}</td>
-        <td type="tagid" data-value="{{info.tagid}}">{{info.tagShow}}</td>
+        <td type="nameLang1" data-value="{{info.nameLang1}}">{{info.nameLang1}}</td>
+        <td type="typeid" data-value="{{info.typeid}}">{{info.typeShow}}</td>
         <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
         <td type="createtime" data-value="{{info.createtime}}">{{info.createtime}}</td>
         <td type="updatetime" data-value="{{info.updatetime}}">{{info.updatetime}}</td>
-        <td type="titleLang2" data-value="{{info.titleLang2}}" style="display:none;"></td>
-        <td type="titleLang3" data-value="{{info.titleLang3}}" style="display:none;"></td>
+        <td type="nameLang2" data-value="{{info.nameLang2}}" style="display:none;"></td>
+        <td type="nameLang3" data-value="{{info.nameLang3}}" style="display:none;"></td>
+        <td type="addressLang1" data-value="{{info.addressLang1}}" style="display:none;"></td>
+        <td type="addressLang2" data-value="{{info.addressLang2}}" style="display:none;"></td>
+        <td type="addressLang3" data-value="{{info.addressLang3}}" style="display:none;"></td>
+        <td type="introductLang1" data-value="{{info.introductLang1}}" style="display:none;"></td>
+        <td type="introductLang2" data-value="{{info.introductLang2}}" style="display:none;"></td>
+        <td type="introductLang3" data-value="{{info.introductLang3}}" style="display:none;"></td>
+        <td type="tel" data-value="{{info.tel}}" style="display:none;"></td>
+        <td type="lat" data-value="{{info.lat}}" style="display:none;"></td>
+        <td type="lng" data-value="{{info.lng}}" style="display:none;"></td>
         <td>
             <button op="editDataOne" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}"><?php echo Enum_Lang::getPageText('system', 'edit'); ?></button>
             <?php foreach ($hotelLanguageList as $index => $language) { ?>
-                <button op="editArticle" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}" data-type="<?php echo Enum_Article::ARTICLE_TYPE_ACTIVITY; ?>_<?php echo $index + 1; ?>" data-article="{{info.articleLang<?php echo $index + 1; ?>}}"><?php echo Enum_Lang::getPageText('system', 'article'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</button>
+                <button op="editArticle" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}" data-type="<?php echo Enum_Article::ARTICLE_TYPE_POI; ?>_<?php echo $index + 1; ?>" data-article="{{info.detailLang<?php echo $index + 1; ?>}}"><?php echo Enum_Lang::getPageText('system', 'article'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</button>
             <?php } ?>
         </td>
     </tr>

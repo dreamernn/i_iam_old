@@ -14,6 +14,16 @@
                 </div>
             </div>
             <div class="pull-left control-item">
+                <span class="control-label"><?php echo Enum_Lang::getPageText('promotion', 'status'); ?>：</span>
+                <div class="controls">
+                    <select id="filter_status" data-paramkey='status' class="input-medium select-long" op="filterCase">
+                        <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
+                        <option value="0"><?php echo Enum_Lang::getPageText('promotion', 'disable'); ?></option>
+                        <option value="1"><?php echo Enum_Lang::getPageText('promotion', 'enable'); ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="pull-left control-item">
                 <span class="control-label"><?php echo Enum_Lang::getPageText('promotion', 'tagTitle'); ?>：</span>
                 <div class="controls">
                     <select id="filter_tag" data-paramkey='tag' class="input-medium select-long" op="filterCase">
@@ -21,16 +31,6 @@
                         <?php foreach ($tagList as $tag) { ?>
                             <option value="<?php echo $tag['id']; ?>"><?php echo $tag['title_lang1']; ?></option>
                         <?php } ?>
-                    </select>
-                </div>
-            </div>
-            <div class="pull-left control-item">
-                <span class="control-label"><?php echo Enum_Lang::getPageText('promotion', 'status'); ?>：</span>
-                <div class="controls">
-                    <select id="filter_status" data-paramkey='status' class="input-medium select-long" op="filterCase">
-                        <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
-                        <option value="0"><?php echo Enum_Lang::getPageText('promotion', 'disable'); ?></option>
-                        <option value="1"><?php echo Enum_Lang::getPageText('promotion', 'enable'); ?></option>
                     </select>
                 </div>
             </div>

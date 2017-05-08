@@ -1,6 +1,6 @@
 <?php
 
-class Rpc_UrlConfigNews {
+class Rpc_UrlConfigNotic {
 
     private static $config = array(
         'N001' => array(
@@ -9,6 +9,26 @@ class Rpc_UrlConfigNews {
             'auth' => true,
             'url' => '/notic/getnoticlist',
             'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'title' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'tagid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'hotelid' => array(
                     'required' => true,
                     'format' => 'int',

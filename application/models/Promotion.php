@@ -7,8 +7,6 @@ class PromotionModel extends \BaseModel {
             $params['hotelid'] = $paramList['hotelid'];
             if ($cacheTime == 0) {
                 $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
-            } else {
-                $params['limit'] = 0;
             }
             $isCache = $cacheTime != 0 ? true : false;
             $result = $this->rpcClient->getResultRaw('P002', $params, $isCache, $cacheTime);
@@ -35,7 +33,7 @@ class PromotionModel extends \BaseModel {
         return $result;
     }
 
-    public function getList($paramList) {
+    public function getPromotionList($paramList) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;

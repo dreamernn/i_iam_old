@@ -2,11 +2,11 @@
 
 class Convertor_Notic extends Convertor_Base {
 
-	/**
-	 * 标签列表转换器
-	 * @param array $list
-	 * @return array
-	 */
+    /**
+     * 标签列表转换器
+     * @param array $list
+     * @return array
+     */
     public function tagListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -30,7 +30,7 @@ class Convertor_Notic extends Convertor_Base {
         }
         return $data;
     }
-    
+
     /**
      * 列表转换器
      * @param array $list
@@ -54,11 +54,11 @@ class Convertor_Notic extends Convertor_Base {
                 $dataTemp['articleLang2'] = $value['article_lang2'];
                 $dataTemp['articleLang3'] = $value['article_lang3'];
                 $dataTemp['status'] = $value['status'];
-                $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('notic', 'enable') : Enum_Lang::getPageText('notic', 'disable');
-                $dataTemp['tagid'] = $value['tagid'];
-                $dataTemp['tagShow'] = $value['tagName'];
-                $dataTemp['createtime'] = $value['createtime'] ? date('Y-m-d H:i:s', $value['createtime']) : '';
-                $dataTemp['updatetime'] = $value['updatetime'] ? date('Y-m-d H:i:s', $value['updatetime']) : '';
+                $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('news', 'enable') : Enum_Lang::getPageText('news', 'disable');
+                $dataTemp['tagid'] = $value['tagId'];
+                $dataTemp['tagShow'] = $value['tagName_lang1'];
+                $dataTemp['createtime'] = $value['createTime'] ? date('Y-m-d H:i:s', $value['createTime']) : '';
+                $dataTemp['updatetime'] = $value['updateTime'] ? date('Y-m-d H:i:s', $value['updateTime']) : '';
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

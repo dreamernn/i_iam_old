@@ -8,6 +8,10 @@ iHotel.ascottList = (function ($, ypGlobal) {
      * 初始化列表
      */
     function initList() {
+        $("#filter_type").select2({
+            placeholder: '全部',
+            language: 'zh-CN'
+        });
         ascottList.init({
             colCount: 9,
             autoLoad: true,
@@ -30,6 +34,11 @@ iHotel.ascottList = (function ($, ypGlobal) {
     function initEditor() {
         // 初始化表单保存
         var detailModal = $("#editor");
+        $("#edit_typeid").select2({
+            placeholder: '全部',
+            language: 'zh-CN',
+            width: 210
+        });
         ascottForm.init({
             editorDom: $("#listEditor"),
             saveButtonDom: $("#saveListData"),
@@ -39,7 +48,7 @@ iHotel.ascottList = (function ($, ypGlobal) {
                 ascottForm.updateParams({
                     saveUrl: saveParams.id > 0 ? ypGlobal.updateUrl : ypGlobal.createUrl
                 });
-                saveParams = ascottForm.makeRecord(saveParams, saveParams.id, saveParams.titleLang1);
+                saveParams = ascottForm.makeRecord(saveParams, saveParams.id, saveParams.nameLang1);
                 return saveParams;
             },
             saveSuccess: function (data) {

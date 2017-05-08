@@ -7,8 +7,6 @@ class NewsModel extends \BaseModel {
             $params['hotelid'] = $paramList['hotelid'];
             if ($cacheTime == 0) {
                 $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
-            } else {
-                $params['limit'] = 0;
             }
             $isCache = $cacheTime != 0 ? true : false;
             $result = $this->rpcClient->getResultRaw('NT002', $params, $isCache, $cacheTime);

@@ -81,7 +81,7 @@
         <td>
             <button op="editDataOne" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}"><?php echo Enum_Lang::getPageText('system', 'edit'); ?></button>
             <?php foreach ($hotelLanguageList as $index => $language) { ?>
-                <button op="editArticle" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}" data-type="<?php echo Enum_Article::ARTICLE_TYPE_ACTIVITY; ?>_<?php echo $index + 1; ?>" data-article="{{info.articleLang<?php echo $index + 1; ?>}}"><?php echo Enum_Lang::getPageText('system', 'article'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</button>
+                <button op="editArticle" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}" data-type="<?php echo Enum_Article::ARTICLE_TYPE_NEWS; ?>_<?php echo $index + 1; ?>" data-article="{{info.articleLang<?php echo $index + 1; ?>}}"><?php echo Enum_Lang::getPageText('system', 'article'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</button>
             <?php } ?>
         </td>
     </tr>

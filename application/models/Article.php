@@ -7,6 +7,7 @@ class ArticleModel extends \BaseModel {
         $dataType = $paramList['datatype'];
         $article = $paramList['article'];
         $content = $paramList['content'];
+        $hotelid = $paramList['hotelid'];
 
         $articleTypeList = Enum_Article::getArticleTypeList();
         do {
@@ -31,6 +32,7 @@ class ArticleModel extends \BaseModel {
             } else {
                 $params = array();
                 $params['id'] = $dataId;
+                $params['hotelid'] = $hotelid;
                 $params[$articleConfig['field'] . $dataType[1]] = $uploadReslut['data']['picKey'];
                 $result = $this->rpcClient->getResultRaw($articleConfig['interfaceId'], $params);
             }

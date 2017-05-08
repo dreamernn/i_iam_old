@@ -9,6 +9,26 @@ class Rpc_UrlConfigPoi {
             'auth' => true,
             'url' => '/poi/getPoiList',
             'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'name' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'typeid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'hotelid' => array(
                     'required' => true,
                     'format' => 'int',
@@ -135,12 +155,12 @@ class Rpc_UrlConfigPoi {
                     'style' => 'interface'
                 ),
                 'hotelid' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
                 'typeid' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
@@ -224,19 +244,9 @@ class Rpc_UrlConfigPoi {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
-                'createtime' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'updatetime' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
             )
         ),
-    	'PT007' => array(
+        'PT007' => array(
             'name' => '新增详情',
             'method' => 'addInfo',
             'auth' => true,
@@ -330,16 +340,6 @@ class Rpc_UrlConfigPoi {
                 'status' => array(
                     'required' => false,
                     'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'createtime' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'updatetime' => array(
-                    'required' => false,
-                    'format' => 'string',
                     'style' => 'interface'
                 ),
             )

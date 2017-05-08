@@ -10,21 +10,23 @@
             <div class="modal-body" id="detailBody" mf="modalfix">
                 <form class="form-horizontal" id="listEditor">
                     <input type="hidden" id="edit_id" value="0">
-
                     <?php foreach ($hotelLanguageList as $index => $language) { ?>
+                        <?php $filedName = 'titleLang'; ?>
                         <?php $filedTitle = Enum_Lang::getPageText('promotion', 'title') . '（' . Enum_Lang::getPageText('language', $language) . '）'; ?>
                         <?php $filedIndex = $index + 1; ?>
                         <div class="control-group" op="editFiled">
-                            <label class="control-label" for="edit_titleLang<?php echo $filedIndex; ?>"><?php echo $filedTitle; ?>：</label>
+                            <label class="control-label" for="edit_<?php echo $filedName . $filedIndex; ?>"><?php echo $filedTitle; ?>：</label>
                             <div class="controls">
-                                <input type="text" id="edit_titleLang<?php echo $filedIndex; ?>" placeholder="<?php echo $filedTitle; ?>" class="span3" data-title="<?php echo $filedTitle; ?>">
+                                <input type="text" id="edit_<?php echo $filedName . $filedIndex; ?>" placeholder="<?php echo $filedTitle; ?>" class="span3" data-title="<?php echo $filedTitle; ?>">
                             </div>
                         </div>
                     <?php } ?>
                     <div class="control-group" op="editFiled">
-                        <label class="control-label" for="edit_tagid"><?php echo Enum_Lang::getPageText('promotion', 'tagTitle'); ?>：</label>
+                        <?php $filedName = 'tagid';
+                        $filedTitle = Enum_Lang::getPageText('promotion', 'tagTitle'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
                         <div class="controls">
-                            <select id="edit_tagid" data-title="标签">
+                            <select id="edit_<?php echo $filedName; ?>" data-title="<?php echo $filedTitle; ?>">
                                 <?php foreach ($tagList as $tag) { ?>
                                     <option value="<?php echo $tag['id']; ?>"><?php echo $tag['title_lang1']; ?></option>
                                 <?php } ?>

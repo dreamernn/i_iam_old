@@ -9,6 +9,26 @@ class Rpc_UrlConfigNews {
             'auth' => true,
             'url' => '/news/getnewsList',
             'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'title' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'tagid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'hotelid' => array(
                     'required' => true,
                     'format' => 'int',
@@ -135,7 +155,7 @@ class Rpc_UrlConfigNews {
                     'style' => 'interface'
                 ),
                 'hotelid' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
@@ -191,7 +211,7 @@ class Rpc_UrlConfigNews {
                 ),
             )
         ),
-    	'NT007' => array(
+        'NT007' => array(
             'name' => '新增详情',
             'method' => 'addInfo',
             'auth' => true,

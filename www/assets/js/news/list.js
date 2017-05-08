@@ -8,6 +8,10 @@ iHotel.newsList = (function ($, ypGlobal) {
      * 初始化列表
      */
     function initList() {
+        $("#filter_tag").select2({
+            placeholder: '全部',
+            language: 'zh-CN'
+        });
         newsList.init({
             colCount: 9,
             autoLoad: true,
@@ -30,6 +34,11 @@ iHotel.newsList = (function ($, ypGlobal) {
     function initEditor() {
         // 初始化表单保存
         var detailModal = $("#editor");
+        $("#edit_tagid").select2({
+            placeholder: '全部',
+            language: 'zh-CN',
+            width: 210
+        });
         newsForm.init({
             editorDom: $("#listEditor"),
             saveButtonDom: $("#saveListData"),

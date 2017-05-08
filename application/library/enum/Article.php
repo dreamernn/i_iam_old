@@ -9,6 +9,11 @@ class Enum_Article {
     const ARTICLE_TYPE_ROOMRES = 'roomRes';
     const ARTICLE_TYPE_ROOMTYPE = 'roomType';
     const ARTICLE_TYPE_SHOPPING = 'shopping';
+    const ARTICLE_TYPE_ASCOTT = 'ascott';
+    const ARTICLE_TYPE_POI = 'poi';
+    const ARTICLE_TYPE_PROMOTION = 'promotion';
+    const ARTICLE_TYPE_NEWS = 'news';
+    const ARTICLE_TYPE_NOTIC = 'notic';
 
     private static $articleTypeList = array(
         self::ARTICLE_TYPE_ACTIVITY => array(
@@ -38,6 +43,26 @@ class Enum_Article {
         self::ARTICLE_TYPE_SHOPPING => array(
             'interfaceId' => 'GS007',
             'field' => 'detail_lang'
+        ),
+        self::ARTICLE_TYPE_ASCOTT => array(
+            'interfaceId' => 'LI006',
+            'field' => 'detail_lang'
+        ),
+        self::ARTICLE_TYPE_POI => array(
+            'interfaceId' => 'PT006',
+            'field' => 'detail_lang'
+        ),
+        self::ARTICLE_TYPE_PROMOTION => array(
+            'interfaceId' => 'P006',
+            'field' => 'article_lang'
+        ),
+        self::ARTICLE_TYPE_NEWS => array(
+            'interfaceId' => 'NT006',
+            'field' => 'article_lang'
+        ),
+        self::ARTICLE_TYPE_NOTIC => array(
+            'interfaceId' => 'N006',
+            'field' => 'article_lang'
         ),
     );
 

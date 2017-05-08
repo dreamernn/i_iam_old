@@ -9,6 +9,26 @@ class Rpc_UrlConfigLife {
             'auth' => true,
             'url' => '/life/getLifeList',
             'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'name' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'typeid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'hotelid' => array(
                     'required' => true,
                     'format' => 'int',
@@ -135,12 +155,12 @@ class Rpc_UrlConfigLife {
                     'style' => 'interface'
                 ),
                 'hotelid' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
                 'typeid' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),

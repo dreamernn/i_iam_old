@@ -28,6 +28,7 @@ class ArticleController extends \BaseController {
         $paramList['datatype'] = trim($this->getPost('datatype'));
         $paramList['article'] = trim($this->getPost('article'));
         $paramList['content'] = $this->getPost('content');
+        $paramList['hotelid'] = $this->getHotelId();
 
         $articleModle = new ArticleModel();
         $result = $articleModle->saveArticleDataInfo($paramList);

@@ -55,10 +55,10 @@ class Convertor_Promotion extends Convertor_Base {
                 $dataTemp['articleLang3'] = $value['article_lang3'];
                 $dataTemp['status'] = $value['status'];
                 $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('promotion', 'enable') : Enum_Lang::getPageText('promotion', 'disable');
-                $dataTemp['tagid'] = $value['tagid'];
-                $dataTemp['tagShow'] = $value['tagName'];
-                $dataTemp['createtime'] = $value['createtime'] ? date('Y-m-d H:i:s', $value['createtime']) : '';
-                $dataTemp['updatetime'] = $value['updatetime'] ? date('Y-m-d H:i:s', $value['updatetime']) : '';
+                $dataTemp['tagid'] = $value['tagId'];
+                $dataTemp['tagShow'] = $value['tagName_lang1'];
+                $dataTemp['createtime'] = $value['createTime'] ? date('Y-m-d H:i:s', $value['createTime']) : '';
+                $dataTemp['updatetime'] = $value['updateTime'] ? date('Y-m-d H:i:s', $value['updateTime']) : '';
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

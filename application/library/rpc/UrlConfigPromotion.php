@@ -9,6 +9,26 @@ class Rpc_UrlConfigPromotion {
             'auth' => true,
             'url' => '/promotion/getPromotionList',
             'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'title' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'tagid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'hotelid' => array(
                     'required' => true,
                     'format' => 'int',
@@ -135,7 +155,7 @@ class Rpc_UrlConfigPromotion {
                     'style' => 'interface'
                 ),
                 'hotelid' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
@@ -191,7 +211,7 @@ class Rpc_UrlConfigPromotion {
                 ),
             )
         ),
-    	'P007' => array(
+        'P007' => array(
             'name' => '新增详情',
             'method' => 'addInfo',
             'auth' => true,
@@ -240,16 +260,6 @@ class Rpc_UrlConfigPromotion {
                 'status' => array(
                     'required' => false,
                     'format' => 'int',
-                    'style' => 'interface'
-                ),
-                'createtime' => array(
-                    'required' => false,
-                    'format' => 'string',
-                    'style' => 'interface'
-                ),
-                'updatetime' => array(
-                    'required' => false,
-                    'format' => 'string',
                     'style' => 'interface'
                 ),
             )

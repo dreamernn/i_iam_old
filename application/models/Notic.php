@@ -1,4 +1,5 @@
 <?php
+
 class NoticModel extends \BaseModel {
 
     public function getTagList($paramList, $cacheTime = 0) {
@@ -6,8 +7,6 @@ class NoticModel extends \BaseModel {
             $params['hotelid'] = $paramList['hotelid'];
             if ($cacheTime == 0) {
                 $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
-            } else {
-                $params['limit'] = 0;
             }
             $isCache = $cacheTime != 0 ? true : false;
             $result = $this->rpcClient->getResultRaw('N002', $params, $isCache, $cacheTime);
