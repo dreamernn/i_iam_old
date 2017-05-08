@@ -11,7 +11,7 @@ class PoiModel extends \BaseModel {
                 $params['limit'] = 0;
             }
             $isCache = $cacheTime != 0 ? true : false;
-            $result = $this->rpcClient->getResultRaw('GA003', $params, $isCache, $cacheTime);
+            $result = $this->rpcClient->getResultRaw('PT002', $params, $isCache, $cacheTime);
         } while (false);
         return (array)$result;
     }
@@ -26,7 +26,7 @@ class PoiModel extends \BaseModel {
             if (empty($params['title_lang1']) || empty($params['hotelid'])) {
                 break;
             }
-            $interfaceId = $params['id'] ? 'GA005' : 'GA004';
+            $interfaceId = $params['id'] ? 'PT004' : 'PT005';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);
             if (!$result['code']) {
                 $this->getTagList(array('hotelid' => $params['hotelid']), -2);
@@ -43,7 +43,7 @@ class PoiModel extends \BaseModel {
             $paramList['title'] ? $params['title'] = $paramList['title'] : false;
             isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
-            $result = $this->rpcClient->getResultRaw('GA001', $params);
+            $result = $this->rpcClient->getResultRaw('PT001', $params);
         } while (false);
         return (array)$result;
     }
@@ -58,7 +58,7 @@ class PoiModel extends \BaseModel {
             if (empty($params['title_lang1']) || empty($params['hotelid'])) {
                 break;
             }
-            $interfaceId = $params['id'] ? 'GA007' : 'GA006';
+            $interfaceId = $params['id'] ? 'PT006' : 'PT007';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);
         } while (false);
         return $result;

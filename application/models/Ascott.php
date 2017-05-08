@@ -58,7 +58,7 @@ class AscottModel extends \BaseModel {
             if (empty($params['title_lang1']) || empty($params['hotelid'])) {
                 break;
             }
-            $interfaceId = $params['id'] ? 'GA007' : 'GA006';
+            $interfaceId = $params['id'] ? 'LI006' : 'LI007';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);
         } while (false);
         return $result;
