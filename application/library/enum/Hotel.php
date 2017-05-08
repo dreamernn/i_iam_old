@@ -35,6 +35,13 @@ class Enum_Hotel {
             'titleLang1',
         );
     }
+
+    public static function getTitleInput() {
+        return array(
+            'key',
+            'titleLang1',
+        );
+    }
 }
 
 ?>

@@ -39,4 +39,8 @@ class Lang_Zh_Hotel {
     const PICEDITTITLE = '编辑图片信息';
     const PICPIC = '图片';
     const PICSORT = '排序';
+
+    const TITLEEDIT = '编辑标题信息';
+    const TITLEKEY = '标识';
+    const TITLETITLE = '标题';
 }

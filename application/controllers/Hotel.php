@@ -44,4 +44,8 @@ class HotelController extends \BaseController {
         $this->_view->display('hotel/pic.phtml');
     }
 
+    public function titleAction() {
+        $this->_view->display('hotel/title.phtml');
+    }
+
 }

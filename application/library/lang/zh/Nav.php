@@ -9,6 +9,7 @@ class Lang_Zh_Nav {
     const HOTELTRAFFIC = '交通管理';
     const HOTELPANORAMIC = '全景管理';
     const HOTELPIC = '图片管理';
+    const HOTELTITLE = '多语言标题管理';
 
     const ACTIVITY = '活动管理';
     const ACTIVITYTAG = '标签管理';

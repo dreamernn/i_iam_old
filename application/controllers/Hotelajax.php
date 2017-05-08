@@ -214,4 +214,36 @@ class HotelajaxController extends \BaseController {
         $result = $this->hotelModal->savePicDataInfo($paramList);
         $this->echoJson($result);
     }
+
+    public function getTitleListAction() {
+        $paramList['hotelid'] = intval($this->getHotelId());
+        $paramList['id'] = intval($this->getPost('id'));
+        $paramList['key'] = trim($this->getPost('key'));
+        $result = $this->hotelModal->getTitleList($paramList);
+        $result = $this->hotelConvertor->titleListConvertor($result);
+        $this->echoJson($result);
+    }
+
+    private function handlerTitleSaveParams() {
+        $paramList = array();
+        $paramList['key'] = trim($this->getPost("key"));
+        $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
+        $paramList['title_lang2'] = trim($this->getPost("titleLang2"));
+        $paramList['title_lang3'] = trim($this->getPost("titleLang3"));
+        $paramList['hotelid'] = intval($this->getHotelId());
+        return $paramList;
+    }
+
+    public function createTitleAction() {
+        $paramList = $this->handlerTitleSaveParams();
+        $result = $this->hotelModal->saveTitleDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    public function updateTitleAction() {
+        $paramList = $this->handlerTitleSaveParams();
+        $paramList['id'] = intval($this->getPost("id"));
+        $result = $this->hotelModal->saveTitleDataInfo($paramList);
+        $this->echoJson($result);
+    }
 }

@@ -284,4 +284,42 @@ class HotelModel extends \BaseModel {
         } while (false);
         return $result;
     }
+
+    public function getTitleList($paramList) {
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['key'] ? $params['key'] = $paramList['key'] : false;
+            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            $result = $this->rpcClient->getResultRaw('GH018', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+    public function saveTitleDataInfo($paramList) {
+        $params = $this->initParam();
+        do {
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['title_lang1'] ? $params['title_lang1'] = $paramList['title_lang1'] : false;
+            $paramList['title_lang2'] ? $params['title_lang2'] = $paramList['title_lang2'] : false;
+            $paramList['title_lang3'] ? $params['title_lang3'] = $paramList['title_lang3'] : false;
+            $paramList['key'] ? $params['key'] = $paramList['key'] : false;
+
+            $checkParams = Enum_Hotel::getTitleInput();
+            foreach ($checkParams as $checkParamOne) {
+                $checkParamOne = str_replace('Lang', '_lang', $checkParamOne);
+                if (empty($params[$checkParamOne])) {
+                    break 2;
+                }
+            }
+            $interfaceId = $params['id'] ? 'GH020' : 'GH019';
+            $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+        } while (false);
+        return $result;
+    }
 }

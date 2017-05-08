@@ -139,6 +139,31 @@ class Convertor_Hotel extends Convertor_Base {
         }
         return $data;
     }
+
+    public function titleListConvertor($list) {
+        $data = array(
+            'code' => intval($list['code']),
+            'msg' => $list['msg']
+        );
+        if (isset($list['code']) && !$list['code']) {
+            $result = $list['data'];
+            $tmp = array();
+            foreach ($result['list'] as $key => $value) {
+                $dataTemp = array();
+                $dataTemp['id'] = $value['id'];
+                $dataTemp['key'] = $value['key'];
+                $dataTemp['titleLang1'] = $value['title_lang1'];
+                $dataTemp['titleLang2'] = $value['title_lang2'];
+                $dataTemp['titleLang3'] = $value['title_lang3'];
+                $tmp[] = $dataTemp;
+            }
+            $data['data']['list'] = $tmp;
+            $data['data']['pageData']['page'] = intval($result['page']);
+            $data['data']['pageData']['rowNum'] = intval($result['total']);
+            $data['data']['pageData']['pageNum'] = ceil($result['total'] / $result['limit']);
+        }
+        return $data;
+    }
 }
 
 ?>

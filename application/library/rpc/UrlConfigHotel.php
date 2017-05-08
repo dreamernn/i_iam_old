@@ -729,6 +729,110 @@ class Rpc_UrlConfigHotel {
                 ),
             )
         ),
+        'GH018' => array(
+            'name' => '获取标题列表',
+            'method' => 'getAppTitleList',
+            'auth' => true,
+            'url' => '/AppTitle/getAppTitleList',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'key' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'page' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'limit' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                )
+            )
+        ),
+        'GH019' => array(
+            'name' => '新建标题',
+            'method' => 'addAppTitle',
+            'auth' => true,
+            'url' => '/AppTitle/addAppTitle',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'key' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang1' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'GH020' => array(
+            'name' => '更新标题',
+            'method' => 'updateAppTitleById',
+            'auth' => true,
+            'url' => '/AppTitle/updateAppTitleById',
+            'param' => array(
+                'id' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'key' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang1' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
     );
 
     /**
