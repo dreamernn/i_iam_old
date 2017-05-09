@@ -2,7 +2,7 @@
 
 class Lang_Zh_System {
 
-    const SYSTEMNAME = '游谱运营管理系统';
+    const SYSTEMNAME = 'EASYISERVICE物业管理后台';
     const CHANGEPASSWORD = '修改密码';
     const LOGOUT = '登出';
     const WELCOMEMSG = '欢迎';
