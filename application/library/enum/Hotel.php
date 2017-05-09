@@ -14,7 +14,6 @@ class Enum_Hotel {
     public static function getFloorMustInput() {
         return array(
             'floor',
-            'pic',
         );
     }
 

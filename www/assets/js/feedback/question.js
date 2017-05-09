@@ -1,7 +1,7 @@
 var iHotel = iHotel || {};
 iHotel.feedbackQuestion = (function ($, ypGlobal) {
 
-    var ajax = YP.ajax, tips = YP.alert, dateList = new YP.list, dataFrom = new YP.form;
+    var ajax = YP.ajax, tips = YP.alert, dateList = new YP.list, dataFrom = new YP.form, ypRecord = YP.record;
     var searchButton = $("#searchBtn");
 
     /**
@@ -111,6 +111,14 @@ iHotel.feedbackQuestion = (function ($, ypGlobal) {
                 return true;
             }
             var saveParams = {id: saveOption.data('questionid'), option: optionList}
+
+            recordLog = ypRecord.getEditLog({
+                modelName: '房型物品',
+                value: [{title: '问题选项', from: saveOption.data('old').join(','), to: optionList.join(',')}]
+            });
+            saveParams[YP_RECORD_VARS.recordPostId] = saveParams.id;
+            saveParams[YP_RECORD_VARS.recordPostVar] = recordLog;
+
             saveOption.button('loading');
             var xhr = ajax.ajax({
                 url: '/feedbackajax/updateOption',

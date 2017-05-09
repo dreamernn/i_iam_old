@@ -5,6 +5,7 @@ class Lang_Zh_News {
     const EDITTAGTITLE = '标签编辑';
     const TAGTITLE = '标签名称';
 
+    const EDITTITLE = '编辑新闻信息';
     const TITLE = '标题';
     const STATUS = '状态';
     const ENABLE = '启用';
