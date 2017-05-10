@@ -45,7 +45,7 @@
 <?php include($webConfig['layoutPath'] . '/app/shortcut_edit.phtml'); ?>
 <script type="text/javascript">
     var YP_GLOBAL_VARS = {
-        checkParams: '<?php echo json_encode(Enum_app::getShortcutMustInput());?>',
+        checkParams: '<?php echo json_encode(Enum_App::getShortcutMustInput());?>',
         listUrl: '/appajax/getShortcutList',
         createUrl: '/appajax/createShortcut',
         updateUrl: '/appajax/updateShortcut',
