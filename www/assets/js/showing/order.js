@@ -1,5 +1,5 @@
-var iGroup = iGroup || {};
-iGroup.showingOrderList = (function ($, ypGlobal) {
+var iHotel = iHotel || {};
+iHotel.showingOrderList = (function ($, ypGlobal) {
 
     var ajax = YP.ajax, tips = YP.alert, dataList = new YP.list;
 
@@ -33,5 +33,5 @@ iGroup.showingOrderList = (function ($, ypGlobal) {
 })(jQuery, YP_GLOBAL_VARS);
 
 $(function () {
-    iGroup.showingOrderList.init();
+    iHotel.showingOrderList.init();
 })

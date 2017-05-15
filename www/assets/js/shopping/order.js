@@ -1,5 +1,5 @@
-var iGroup = iGroup || {};
-iGroup.activityAcitivityUserList = (function ($, ypGlobal) {
+var iHotel = iHotel || {};
+iHotel.activityAcitivityUserList = (function ($, ypGlobal) {
 
     var ajax = YP.ajax, tips = YP.alert, acitivityUserList = new YP.list;
 
@@ -37,5 +37,5 @@ iGroup.activityAcitivityUserList = (function ($, ypGlobal) {
 })(jQuery, YP_GLOBAL_VARS);
 
 $(function () {
-    iGroup.activityAcitivityUserList.init();
+    iHotel.activityAcitivityUserList.init();
 })
