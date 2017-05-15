@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 物业管理Model
+ */
 class HotelModel extends \BaseModel {
 
+    /**
+     * 获取物业信息
+     */
     public function getHotelDetail($hotelId) {
         do {
             $params['id'] = intval($hotelId);
@@ -17,6 +23,9 @@ class HotelModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 更新物业信息
+     */
     public function saveHotelDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -96,6 +105,9 @@ class HotelModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取楼层列表
+     */
     public function getFloorList($paramList) {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
@@ -108,6 +120,9 @@ class HotelModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑楼层信息
+     */
     public function saveFloorDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -146,6 +161,9 @@ class HotelModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取设施列表
+     */
     public function getFacilitiesList($paramList) {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
@@ -158,6 +176,9 @@ class HotelModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑设施信息
+     */
     public function saveFacilitiesDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -177,6 +198,9 @@ class HotelModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取交通列表
+     */
     public function getTrafficList($paramList) {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
@@ -187,6 +211,9 @@ class HotelModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑交通信息
+     */
     public function saveTrafficDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -202,6 +229,9 @@ class HotelModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取全景列表
+     */
     public function getPanoramicList($paramList) {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
@@ -213,6 +243,9 @@ class HotelModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑全景
+     */
     public function savePanoramicDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -246,6 +279,9 @@ class HotelModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取物业图片列表
+     */
     public function getPicList($paramList) {
         do {
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
@@ -255,6 +291,9 @@ class HotelModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑物业图片
+     */
     public function savePicDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -285,6 +324,9 @@ class HotelModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取物业APP多语言标题列表
+     */
     public function getTitleList($paramList) {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
@@ -296,6 +338,9 @@ class HotelModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑物业APP多语言标题信息
+     */
     public function saveTitleDataInfo($paramList) {
         $params = $this->initParam();
         do {

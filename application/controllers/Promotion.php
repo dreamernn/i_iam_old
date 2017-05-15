@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 物业促销管理控制器
+ */
 class PromotionController extends BaseController {
 
     public function init() {
@@ -7,14 +10,14 @@ class PromotionController extends BaseController {
     }
 
     /**
-     * 获取标签列表
+     * 标签列表
      */
     public function tagListAction() {
         $this->_view->display('promotion/tag.phtml');
     }
 
     /**
-     * 获取标签列表
+     * 物业促销列表
      */
     public function listAction() {
         $promotionModel = new PromotionModel();

@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 客房管理Model
+ */
 class RoomModel extends \BaseModel {
 
+    /**
+     * 获取房间物品列表
+     */
     public function getRoomResList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -20,6 +26,9 @@ class RoomModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑房间物品信息
+     */
     public function saveRoomResDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -61,6 +70,9 @@ class RoomModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取房型列表
+     */
     public function getRoomTypeList($paramList) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -72,6 +84,9 @@ class RoomModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑房型
+     */
     public function saveRoomTypeDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -101,6 +116,9 @@ class RoomModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 更新房型物品
+     */
     public function saveRoomTypeRes($paramList) {
         $params = $this->initParam($paramList);
         do {

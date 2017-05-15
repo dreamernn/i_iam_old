@@ -1,9 +1,12 @@
 <?php
 
+/**
+ * 登录请求控制器
+ */
 class LoginajaxController extends \BaseController {
 
     /**
-     * 登陆请求
+     * 处理登录
      */
     public function doLoginAction() {
         $request = $this->getRequest();
@@ -17,6 +20,9 @@ class LoginajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 修改密码
+     */
     public function changePassAction() {
         $paramList['userId'] = $this->userInfo['id'];
         $paramList['oldPass'] = $this->getPost('oldPass');
@@ -27,6 +33,9 @@ class LoginajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 修改物业语言
+     */
     public function changeLangugaeAction() {
         $result = array('code' => 1);
         $language = $this->getPost('language');

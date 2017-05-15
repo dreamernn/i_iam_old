@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 基础控制器
+ */
 class BaseController extends \Yaf_Controller_Abstract {
 
+    /**
+     * 登录管理员信息
+     */
     protected $userInfo;
 
     public function init() {
@@ -12,14 +18,23 @@ class BaseController extends \Yaf_Controller_Abstract {
         $this->setHotelLanguage($this->userInfo);
     }
 
+    /**
+     * 获取物业Id
+     */
     protected function getHotelId() {
         return $this->userInfo['hotelId'];
     }
 
-    protected function getGroupId(){
+    /**
+     * 获取集团ID
+     */
+    protected function getGroupId() {
         return $this->userInfo['groupid'];
     }
 
+    /**
+     * 设置页面变量
+     */
     private function setPageWebConfig() {
         $sysConfig = Yaf_Registry::get('sysConfig');
         $webConfig['layoutPath'] = $sysConfig->application->layout->directory;
@@ -30,6 +45,9 @@ class BaseController extends \Yaf_Controller_Abstract {
         $this->getView()->assign('webConfig', $webConfig);
     }
 
+    /**
+     * 设置头部信息
+     */
     private function setPageHeaderInfo($loginInfo) {
         $headerInfo['userName'] = $loginInfo['realName'] ? $loginInfo['realName'] : $loginInfo['userName'];
         $headerInfo['adminPermission'] = $loginInfo['createAdmin'] ? 0 : 1;
@@ -40,11 +58,17 @@ class BaseController extends \Yaf_Controller_Abstract {
         $this->getView()->assign('headerInfo', $headerInfo);
     }
 
+    /**
+     * 设置权限
+     */
     private function setPermission($loginInfo) {
         $permissionList = explode(",", $loginInfo['permission']);
         $this->_view->assign('permssionList', $permissionList);
     }
 
+    /**
+     * 设置物业语言
+     */
     private function setHotelLanguage($loginInfo) {
         $this->_view->assign('hotelLanguageList', explode(',', $loginInfo['hotelLanguage']));
     }
@@ -73,6 +97,9 @@ class BaseController extends \Yaf_Controller_Abstract {
         $paramList['limit'] = empty($limit) ? 5 : $limit;
     }
 
+    /**
+     * 跳转404
+     */
     protected function jump404() {
         header('Location:/error/notfound');
         exit();
@@ -119,11 +146,14 @@ class BaseController extends \Yaf_Controller_Abstract {
         }
     }
 
+    /**
+     * 设置允许上传文件类型
+     */
     protected function setAllowUploadFileType($type, $pageKey) {
         $baseModel = new BaseModel();
         $allowType = $baseModel->getAllowUploadFileType($type);
         $this->_view->assign($pageKey, array_keys($allowType['data']['list']));
     }
-    
-    
+
+
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *Class HotelajaxController
+ * 物业管理请求
  */
 class HotelajaxController extends \BaseController {
 
@@ -22,7 +22,7 @@ class HotelajaxController extends \BaseController {
     }
 
     /**
-     * 更新集团信息
+     * 更新物业信息
      */
     public function updateHotelAction() {
         $paramList = array();
@@ -53,6 +53,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取楼层列表
+     */
     public function getFloorListAction() {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['hotelid'] = intval($this->getHotelId());
@@ -64,6 +67,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑楼层信息
+     */
     private function handlerFloorSaveParams() {
         $paramList = array();
         $paramList['hotelid'] = intval($this->getHotelId());
@@ -73,12 +79,18 @@ class HotelajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建楼层
+     */
     public function createFloorAction() {
         $paramList = $this->handlerFloorSaveParams();
         $result = $this->hotelModal->saveFloorDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 编辑楼层
+     */
     public function updateFloorAction() {
         $paramList = $this->handlerFloorSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -86,6 +98,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取设施列表
+     */
     public function getFacilitiesListAction() {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['hotelid'] = intval($this->getHotelId());
@@ -97,6 +112,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑设施信息
+     */
     private function handlerFacilitiesSaveParams() {
         $paramList = array();
         $paramList['hotelid'] = intval($this->getHotelId());
@@ -110,12 +128,18 @@ class HotelajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建设施
+     */
     public function createFacilitiesAction() {
         $paramList = $this->handlerFacilitiesSaveParams();
         $result = $this->hotelModal->saveFacilitiesDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新设施
+     */
     public function updateFacilitiesAction() {
         $paramList = $this->handlerFacilitiesSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -123,6 +147,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取交通列表
+     */
     public function getTrafficListAction() {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['hotelid'] = intval($this->getHotelId());
@@ -131,6 +158,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑交通信息
+     */
     private function handlerTrafficSaveParams() {
         $paramList = array();
         $paramList['hotelid'] = intval($this->getHotelId());
@@ -140,12 +170,18 @@ class HotelajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建交通
+     */
     public function createTrafficAction() {
         $paramList = $this->handlerTrafficSaveParams();
         $result = $this->hotelModal->saveTrafficDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 编辑交通
+     */
     public function updateTrafficAction() {
         $paramList = $this->handlerTrafficSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -153,6 +189,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取全景列表
+     */
     public function getPanoramicListAction() {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['title'] = trim($this->getPost('title'));
@@ -162,6 +201,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑全景
+     */
     private function handlerPanoramicSaveParams() {
         $paramList = array();
         $paramList['hotelid'] = intval($this->getHotelId());
@@ -173,12 +215,18 @@ class HotelajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建全景
+     */
     public function createPanoramicAction() {
         $paramList = $this->handlerPanoramicSaveParams();
         $result = $this->hotelModal->savePanoramicDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 编辑全景
+     */
     public function updatePanoramicAction() {
         $paramList = $this->handlerPanoramicSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -186,6 +234,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取物业图片列表
+     */
     public function getPicListAction() {
         $paramList['hotelid'] = intval($this->getHotelId());
         $result = $this->hotelModal->getPicList($paramList);
@@ -193,6 +244,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑物业图片
+     */
     private function handlerPicSaveParams() {
         $paramList = array();
         $paramList['hotelid'] = intval($this->getHotelId());
@@ -202,12 +256,18 @@ class HotelajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建物业图片
+     */
     public function createPicAction() {
         $paramList = $this->handlerPicSaveParams();
         $result = $this->hotelModal->savePicDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新物业图片
+     */
     public function updatePicAction() {
         $paramList = $this->handlerPicSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -215,6 +275,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取物业APP多语言标题列表
+     */
     public function getTitleListAction() {
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['id'] = intval($this->getPost('id'));
@@ -224,6 +287,9 @@ class HotelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑物业APP多语言标题信息
+     */
     private function handlerTitleSaveParams() {
         $paramList = array();
         $paramList['key'] = trim($this->getPost("key"));
@@ -234,12 +300,18 @@ class HotelajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建物业APP多语言标题
+     */
     public function createTitleAction() {
         $paramList = $this->handlerTitleSaveParams();
         $result = $this->hotelModal->saveTitleDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新物业APP多语言标题
+     */
     public function updateTitleAction() {
         $paramList = $this->handlerTitleSaveParams();
         $paramList['id'] = intval($this->getPost("id"));

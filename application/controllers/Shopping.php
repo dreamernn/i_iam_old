@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Class ShoppingController
- *
+ * 体验购物控制器
  */
 class ShoppingController extends \BaseController {
 
@@ -10,6 +9,9 @@ class ShoppingController extends \BaseController {
         $this->_view->display('shopping/tag.phtml');
     }
 
+    /**
+     * 体验购物管理
+     */
     public function listAction() {
         $shoppingModel = new ShoppingModel();
         $tagList = $shoppingModel->getTagList(array('hotelid' => $this->getHotelId()), 3600 * 3);
@@ -17,6 +19,9 @@ class ShoppingController extends \BaseController {
         $this->_view->display('shopping/shopping.phtml');
     }
 
+    /**
+     * 体验购物订单管理
+     */
     public function orderAction() {
         $shoppingModel = new ShoppingModel();
         $shoppingList = $shoppingModel->getShoppingList(array('hotelid' => $this->getHotelId()), 3600);

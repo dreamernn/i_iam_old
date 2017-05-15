@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 雅士阁生活请求控制器
+ */
 class AscottajaxController extends \BaseController {
     /**
      * @var AscottModel
@@ -61,8 +64,7 @@ class AscottajaxController extends \BaseController {
     }
 
     /**
-     * 获取活动列表
-     *
+     * 获取雅士阁生活列表
      */
     public function getListAction() {
         $paramList['page'] = $this->getPost('page');
@@ -77,6 +79,9 @@ class AscottajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑雅士阁生活信息
+     */
     private function handlerSaveParams() {
         $paramList = array();
         $paramList['name_lang1'] = trim($this->getPost("nameLang1"));
@@ -98,12 +103,18 @@ class AscottajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建雅士阁生活
+     */
     public function createAction() {
         $paramList = $this->handlerSaveParams();
         $result = $this->model->saveInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 编辑雅士阁生活
+     */
     public function updateAction() {
         $paramList = $this->handlerSaveParams();
         $paramList['id'] = intval($this->getPost("id"));

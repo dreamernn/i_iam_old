@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 活动Model
+ */
 class ActivityModel extends \BaseModel {
 
+    /**
+     * 获取tag列表
+     */
     public function getTagList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -16,6 +22,9 @@ class ActivityModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑tag信息数据
+     */
     public function saveTagDataInfo($paramList) {
         $params = $this->initParam($paramList);
         do {
@@ -35,6 +44,9 @@ class ActivityModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取活动列表
+     */
     public function getActivityList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -53,6 +65,9 @@ class ActivityModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑活动信息
+     */
     public function saveActvityDataInfo($paramList) {
         $params = $this->initParam($paramList);
         do {
@@ -70,6 +85,9 @@ class ActivityModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取活动参与订单列表
+     */
     public function getOrderList($paramList) {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;

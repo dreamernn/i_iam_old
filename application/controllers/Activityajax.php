@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * 活动请求控制器
  */
 class ActivityajaxController extends \BaseController {
 
@@ -63,6 +63,9 @@ class ActivityajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取活动列表
+     */
     public function getActivityListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
@@ -76,6 +79,9 @@ class ActivityajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑活动信息
+     */
     private function handlerActivitySaveParams() {
         $paramList = array();
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
@@ -88,12 +94,18 @@ class ActivityajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建活动
+     */
     public function createActivityAction() {
         $paramList = $this->handlerActivitySaveParams();
         $result = $this->activityModel->saveActvityDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新活动
+     */
     public function updateActivityAction() {
         $paramList = $this->handlerActivitySaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -101,6 +113,9 @@ class ActivityajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取活动参与订单列表
+     */
     public function getOrderListAction() {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['name'] = trim($this->getPost('name'));

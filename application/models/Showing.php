@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 预约看房Model
+ */
 class ShowingModel extends \BaseModel {
 
+    /**
+     * 获取预约看房订单列表
+     */
     public function getOrderList($paramList) {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;

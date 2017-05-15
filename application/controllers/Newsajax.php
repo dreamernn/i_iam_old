@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 物业新闻请求控制器
+ */
 class NewsajaxController extends \BaseController {
     /** @var  NewsModel */
     private $model;
@@ -55,8 +58,7 @@ class NewsajaxController extends \BaseController {
     }
 
     /**
-     * 获取活动列表
-     *
+     * 获取新闻列表
      */
     public function getListAction() {
         $paramList['page'] = $this->getPost('page');
@@ -71,6 +73,9 @@ class NewsajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑物业新闻
+     */
     private function handlerSaveParams() {
         $paramList = array();
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
@@ -83,12 +88,18 @@ class NewsajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建物业新闻
+     */
     public function createAction() {
         $paramList = $this->handlerSaveParams();
         $result = $this->model->saveInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新物业新闻
+     */
     public function updateAction() {
         $paramList = $this->handlerSaveParams();
         $paramList['id'] = intval($this->getPost("id"));

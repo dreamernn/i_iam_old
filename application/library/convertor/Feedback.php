@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 问卷调查数据转换器
+ */
 class Convertor_Feedback extends Convertor_Base {
 
+    /**
+     * 问卷调查问题列表
+     */
     public function questionListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -31,6 +37,9 @@ class Convertor_Feedback extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 提交的问卷调查列表
+     */
     public function resultListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),

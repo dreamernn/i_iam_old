@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 本地攻略控制器
+ */
 class PoiController extends BaseController {
 
     public function init() {
@@ -7,14 +10,14 @@ class PoiController extends BaseController {
     }
 
     /**
-     * 获取标签列表
+     * 标签列表
      */
     public function tagListAction() {
         $this->_view->display('poi/tag.phtml');
     }
 
     /**
-     * 获取标签列表
+     * 本地攻略列表
      */
     public function listAction() {
         $poiModel = new PoiModel();

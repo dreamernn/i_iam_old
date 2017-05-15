@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 活动管理数据转换器
+ */
 class Convertor_Activity extends Convertor_Base {
 
+    /**
+     * 活动标签
+     */
     public function activityTagListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -26,6 +32,9 @@ class Convertor_Activity extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 活动列表
+     */
     public function activityListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -59,6 +68,9 @@ class Convertor_Activity extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 提交活动订单列表
+     */
     public function orderListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),

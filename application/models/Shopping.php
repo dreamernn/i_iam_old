@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 体验购物Model
+ */
 class ShoppingModel extends \BaseModel {
 
+    /**
+     * 获取tag列表
+     */
     public function getTagList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -16,6 +22,9 @@ class ShoppingModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑tag信息数据
+     */
     public function saveTagDataInfo($paramList) {
         $params = $this->initParam($paramList);
         do {
@@ -35,6 +44,9 @@ class ShoppingModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取体验购物列表
+     */
     public function getShoppingList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -53,6 +65,9 @@ class ShoppingModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑体验购物信息
+     */
     public function saveShoppingDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -92,6 +107,9 @@ class ShoppingModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取体验购物订单列表
+     */
     public function getOrderList($paramList) {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;

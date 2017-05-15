@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * 预约看房请求控制器
  */
 class ShowingajaxController extends \BaseController {
 
@@ -21,6 +21,9 @@ class ShowingajaxController extends \BaseController {
         $this->showingConvertor = new Convertor_Showing();
     }
 
+    /**
+     * 获取预约看房订单列表
+     */
     public function getOrderListAction() {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['status'] = intval($this->getPost('status'));

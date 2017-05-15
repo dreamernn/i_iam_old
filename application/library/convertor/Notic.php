@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 物业通知数据转换器
+ */
 class Convertor_Notic extends Convertor_Base {
 
     /**

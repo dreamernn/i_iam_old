@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 电话黄页数据转换器
+ */
 class Convertor_Tel extends Convertor_Base {
 
+    /**
+     * 电话黄页分类列表
+     */
     public function telTypeListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -28,6 +34,9 @@ class Convertor_Tel extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 电话列表
+     */
     public function telListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),

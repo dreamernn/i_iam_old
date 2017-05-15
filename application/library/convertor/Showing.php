@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 预约看房数据转换器
+ */
 class Convertor_Showing extends Convertor_Base {
 
+    /**
+     * 预约看房订单列表
+     */
     public function orderListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),

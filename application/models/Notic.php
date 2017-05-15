@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 物业通知Model
+ */
 class NoticModel extends \BaseModel {
 
+    /**
+     * 获取tag列表
+     */
     public function getTagList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -14,6 +20,9 @@ class NoticModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑tag信息数据
+     */
     public function saveTagDataInfo($paramList) {
         $params = $this->initParam($paramList);
         do {
@@ -33,6 +42,9 @@ class NoticModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取通知列表
+     */
     public function getList($paramList) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -46,6 +58,9 @@ class NoticModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑物业通知
+     */
     public function saveInfo($paramList) {
         $params = $this->initParam($paramList);
         do {

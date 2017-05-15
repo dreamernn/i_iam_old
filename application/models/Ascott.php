@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 雅士阁生活Model
+ */
 class AscottModel extends \BaseModel {
 
+    /**
+     * 获取tag列表
+     */
     public function getTagList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -14,6 +20,9 @@ class AscottModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑tag信息数据
+     */
     public function saveTagDataInfo($paramList) {
         $params = $this->initParam($paramList);
         do {
@@ -33,6 +42,9 @@ class AscottModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取雅士阁生活列表
+     */
     public function getList($paramList) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -46,6 +58,9 @@ class AscottModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑雅士阁生活信息
+     */
     public function saveInfo($paramList) {
         $params = $this->initParam($paramList);
         do {

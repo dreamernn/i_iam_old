@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 文章管理Model
+ */
 class ArticleModel extends \BaseModel {
 
+    /**
+     * 保存文章
+     */
     public function saveArticleDataInfo($paramList) {
         $dataId = $paramList['dataid'];
         $dataType = $paramList['datatype'];

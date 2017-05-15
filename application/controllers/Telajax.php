@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class TelajaxController
+ * 电话黄页请求控制器
  */
 class TelajaxController extends \BaseController {
 
@@ -21,6 +21,9 @@ class TelajaxController extends \BaseController {
         $this->TelConvertor = new Convertor_Tel();
     }
 
+    /**
+     * 获取电话黄页分类列表
+     */
     public function getTelTypeListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
@@ -33,6 +36,9 @@ class TelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑分类信息
+     */
     private function handlerTelTypeSaveParams() {
         $paramList = array();
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
@@ -43,12 +49,18 @@ class TelajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建电话黄页分类
+     */
     public function createTelTypeAction() {
         $paramList = $this->handlerTelTypeSaveParams();
         $result = $this->TelModel->saveTelTypeDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新电话黄页分类信息
+     */
     public function updateTelTypeAction() {
         $paramList = $this->handlerTelTypeSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -56,6 +68,9 @@ class TelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取电话黄页列表
+     */
     public function getTelListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
@@ -70,6 +85,9 @@ class TelajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑电话黄页列表
+     */
     private function handlerTelSaveParams() {
         $paramList = array();
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
@@ -82,12 +100,18 @@ class TelajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建电话
+     */
     public function createTelAction() {
         $paramList = $this->handlerTelSaveParams();
         $result = $this->TelModel->saveTelDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新电话
+     */
     public function updateTelAction() {
         $paramList = $this->handlerTelSaveParams();
         $paramList['id'] = intval($this->getPost("id"));

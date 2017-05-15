@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 物业通知管理控制器
+ */
 class NoticController extends BaseController {
 
     public function init() {
@@ -7,14 +10,14 @@ class NoticController extends BaseController {
     }
 
     /**
-     * 获取标签列表
+     * 标签列表
      */
     public function tagListAction() {
         $this->_view->display('notic/tag.phtml');
     }
 
     /**
-     * 获取标签列表
+     * 物业通知管理
      */
     public function listAction() {
         $noticModel = new NoticModel();

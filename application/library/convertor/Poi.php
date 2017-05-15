@@ -1,12 +1,15 @@
 <?php
 
+/**
+ * 本地攻略数据转换器
+ */
 class Convertor_Poi extends Convertor_Base {
 
-	/**
-	 * 标签列表转换器
-	 * @param array $list
-	 * @return array
-	 */
+    /**
+     * 标签列表转换器
+     * @param array $list
+     * @return array
+     */
     public function tagListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -30,7 +33,7 @@ class Convertor_Poi extends Convertor_Base {
         }
         return $data;
     }
-    
+
     /**
      * 列表转换器
      * @param array $list

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 新闻管理控制器
+ */
 class NewsController extends BaseController {
 
     public function init() {
@@ -7,14 +10,14 @@ class NewsController extends BaseController {
     }
 
     /**
-     * 获取标签列表
+     * 标签列表
      */
     public function tagListAction() {
         $this->_view->display('news/tag.phtml');
     }
 
     /**
-     * 获取标签列表
+     * 新闻列表
      */
     public function listAction() {
         $newsModel = new NewsModel();

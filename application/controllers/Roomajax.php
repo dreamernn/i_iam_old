@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * 客房请求控制器
  */
 class RoomajaxController extends \BaseController {
 
@@ -21,6 +21,9 @@ class RoomajaxController extends \BaseController {
         $this->roomConvertor = new Convertor_Room();
     }
 
+    /**
+     * 获取房间物品列表
+     */
     public function getRoomResListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
@@ -34,6 +37,9 @@ class RoomajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑房间物品信息
+     */
     private function handlerRoomResSaveParams() {
         $paramList = array();
         $paramList['icon'] = trim($this->getPost("icon"));
@@ -49,12 +55,18 @@ class RoomajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建房间物品
+     */
     public function createRoomResAction() {
         $paramList = $this->handlerRoomResSaveParams();
         $result = $this->roomModel->saveRoomResDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新房间物品
+     */
     public function updateRoomResAction() {
         $paramList = $this->handlerRoomResSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -62,6 +74,9 @@ class RoomajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取房型列表
+     */
     public function getRoomTypeListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
@@ -72,6 +87,9 @@ class RoomajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑房型
+     */
     private function handlerRoomTypeSaveParams() {
         $paramList = array();
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
@@ -86,12 +104,18 @@ class RoomajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建房型
+     */
     public function createRoomTypeAction() {
         $paramList = $this->handlerRoomTypeSaveParams();
         $result = $this->roomModel->saveRoomTypeDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新房型
+     */
     public function updateRoomTypeAction() {
         $paramList = $this->handlerRoomTypeSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -99,6 +123,9 @@ class RoomajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 更新房型物品
+     */
     public function updateRoomTypeResAction() {
         $paramList['id'] = intval($this->getPost("id"));
         $paramList['resid_list'] = trim($this->getPost("typeres"));

@@ -1,11 +1,13 @@
 <?php
 
 /**
- * Class ArticleController
- *
+ * 文章管理控制器
  */
 class ArticleController extends \BaseController {
 
+    /**
+     * 文章编辑器
+     */
     public function editorAction() {
         $dataId = intval($this->getGet('dataid'));
         $dataType = trim($this->getGet('datatype'));
@@ -23,6 +25,9 @@ class ArticleController extends \BaseController {
         $this->_view->display('article/editor.phtml');
     }
 
+    /**
+     * 保存文章
+     */
     public function saveAction() {
         $paramList['dataid'] = intval($this->getPost('dataid'));
         $paramList['datatype'] = trim($this->getPost('datatype'));
@@ -35,6 +40,9 @@ class ArticleController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 上传文章图片
+     */
     public function uploadImageAction() {
         $baseModel = new BaseModel();
         $uploadResult = $baseModel->uploadFile($_FILES['upload'], Enum_Oss::OSS_PATH_IMAGE);

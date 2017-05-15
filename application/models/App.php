@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 活动Model
+ */
 class AppModel extends \BaseModel {
 
+    /**
+     * 获取物业推送列表
+     */
     public function getPushList($paramList) {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
@@ -15,6 +21,9 @@ class AppModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建物业推送
+     */
     public function createPush($paramList) {
         $params = $this->initParam();
         do {
@@ -43,6 +52,9 @@ class AppModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取快捷启动列表
+     */
     public function getShortCutList($paramList) {
         do {
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
@@ -51,6 +63,9 @@ class AppModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑快捷启动信息
+     */
     public function saveShortcutDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -80,6 +95,9 @@ class AppModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取分享平台列表
+     */
     public function getShareList($paramList) {
         do {
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
@@ -88,6 +106,9 @@ class AppModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 更新分享平台
+     */
     public function updateShare($paramList) {
         $params = $this->initParam();
         do {

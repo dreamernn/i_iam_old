@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 物业促销请求控制器
+ */
 class PromotionajaxController extends \BaseController {
     /**
      * @var PromotionModel
@@ -59,8 +62,7 @@ class PromotionajaxController extends \BaseController {
     }
 
     /**
-     * 获取活动列表
-     *
+     * 获取物业促销列表
      */
     public function getListAction() {
         $paramList['page'] = $this->getPost('page');
@@ -75,6 +77,9 @@ class PromotionajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑物业促销
+     */
     private function handlerSaveParams() {
         $paramList = array();
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
@@ -87,12 +92,18 @@ class PromotionajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建物业促销
+     */
     public function createAction() {
         $paramList = $this->handlerSaveParams();
         $result = $this->model->saveInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新物业促销
+     */
     public function updateAction() {
         $paramList = $this->handlerSaveParams();
         $paramList['id'] = intval($this->getPost("id"));

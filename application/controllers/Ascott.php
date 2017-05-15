@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 雅士阁生活控制器
+ */
 class AscottController extends BaseController {
 
     public function init() {
@@ -14,7 +17,7 @@ class AscottController extends BaseController {
     }
 
     /**
-     * 获取标签列表
+     * 获取雅士阁生活列表
      */
     public function listAction() {
         $ascottModel = new AscottModel();

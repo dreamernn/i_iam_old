@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 本地攻略请求控制器
+ */
 class PoiajaxController extends \BaseController {
     /**
      * @var PoiModel
@@ -59,8 +62,7 @@ class PoiajaxController extends \BaseController {
     }
 
     /**
-     * 获取活动列表
-     *
+     * 获取本地攻略列表
      */
     public function getListAction() {
         $paramList['page'] = $this->getPost('page');
@@ -75,6 +77,9 @@ class PoiajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑本地攻略信息
+     */
     private function handlerSaveParams() {
         $paramList = array();
         $paramList['name_lang1'] = trim($this->getPost("nameLang1"));
@@ -96,6 +101,9 @@ class PoiajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建本地攻略
+     */
     public function createAction() {
         $paramList = $this->handlerSaveParams();
 
@@ -103,6 +111,9 @@ class PoiajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 更新本地攻略
+     */
     public function updateAction() {
         $paramList = $this->handlerSaveParams();
         $paramList['id'] = intval($this->getPost("id"));

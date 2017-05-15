@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * 物业管理数据转换器
+ */
 class Convertor_Hotel extends Convertor_Base {
 
-
+    /**
+     * 楼层列表
+     */
     public function floorListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -31,6 +36,9 @@ class Convertor_Hotel extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 物业设施列表
+     */
     public function facilitiesListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -64,6 +72,9 @@ class Convertor_Hotel extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 交通列表
+     */
     public function trafficListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -91,6 +102,9 @@ class Convertor_Hotel extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 全景管理
+     */
     public function PanoramicListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -117,6 +131,9 @@ class Convertor_Hotel extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 物业图片列表
+     */
     public function PicListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -140,6 +157,9 @@ class Convertor_Hotel extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * APP多语言标题列表
+     */
     public function titleListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),

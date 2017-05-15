@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class FeedbackajaxController
+ * 调查问卷请求控制器
  */
 class FeedbackajaxController extends \BaseController {
 
@@ -21,6 +21,9 @@ class FeedbackajaxController extends \BaseController {
         $this->feedbackConvertor = new Convertor_Feedback();
     }
 
+    /**
+     * 获取问题列表
+     */
     public function getQuestionListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
@@ -34,6 +37,9 @@ class FeedbackajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建编辑问题信息
+     */
     private function handlerQuestionSaveParams() {
         $paramList = array();
         $paramList['question'] = trim($this->getPost("question"));
@@ -44,12 +50,18 @@ class FeedbackajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建问题
+     */
     public function createQuestionAction() {
         $paramList = $this->handlerQuestionSaveParams();
         $result = $this->feedbackModel->saveQuestionDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 编辑问题
+     */
     public function updateQuestionAction() {
         $paramList = $this->handlerQuestionSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -57,6 +69,9 @@ class FeedbackajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 保存问题选项
+     */
     public function updateOptionAction() {
         $paramList['id'] = intval($this->getPost("id"));
         $paramList['option'] = $this->getPost("option");
@@ -65,6 +80,9 @@ class FeedbackajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取调查反馈列表
+     */
     public function getResultListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();

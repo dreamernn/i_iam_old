@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 基础数据转换器
+ */
 class Convertor_Base {
 
     public function __construct() {

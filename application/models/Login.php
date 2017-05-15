@@ -1,11 +1,12 @@
 <?php
 
+/**
+ * 登录Model
+ */
 class LoginModel extends \BaseModel {
 
     /**
      * 获取登陆用户信息
-     * ---
-     *
      * @param $username 用户名
      * @param $password 密码
      * @return array
@@ -33,7 +34,6 @@ class LoginModel extends \BaseModel {
 
     /**
      * 执行登录
-     *
      * @param array $paramList
      * @return Ambigous <multitype:number string , multitype:>
      */
@@ -83,7 +83,6 @@ class LoginModel extends \BaseModel {
 
     /**
      * 退出登录
-     *
      * @return boolean
      */
     public function loginOut() {
@@ -102,8 +101,6 @@ class LoginModel extends \BaseModel {
 
     /**
      * 修改用户密码
-     * ---
-     *
      * @param $oldPass 原密码
      * @param $newPass 新密码
      * @return array

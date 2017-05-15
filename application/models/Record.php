@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 物业后台操作日志
+ */
 class RecordModel extends BaseModel {
 
+    /**
+     * 新建操作日志
+     */
     public function addOperateLog($paramList) {
         $params = $this->initParam(array());
         do {
@@ -24,6 +30,6 @@ class RecordModel extends BaseModel {
             }
             $result = $this->rpcClient->getResultRaw('AU002', $params);
         } while (false);
-        return (array) $result;
+        return (array)$result;
     }
 }

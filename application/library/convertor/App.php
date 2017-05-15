@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * APP管理数据转换器
+ */
 class Convertor_App extends Convertor_Base {
 
+    /**
+     * 物业推送列表
+     */
     public function pushListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -35,6 +41,9 @@ class Convertor_App extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 快捷启动列表
+     */
     public function shortcutListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -63,6 +72,9 @@ class Convertor_App extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 分享平台列表
+     */
     public function shareListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),

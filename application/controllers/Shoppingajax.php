@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * 体验购物请求控制器
  */
 class ShoppingajaxController extends \BaseController {
 
@@ -63,6 +63,9 @@ class ShoppingajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取体验购物列表
+     */
     public function getShoppingListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
@@ -76,6 +79,9 @@ class ShoppingajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 新建和编辑体验购物信息
+     */
     private function handlerShoppingSaveParams() {
         $paramList = array();
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
@@ -90,12 +96,18 @@ class ShoppingajaxController extends \BaseController {
         return $paramList;
     }
 
+    /**
+     * 新建体验购物
+     */
     public function createShoppingAction() {
         $paramList = $this->handlerShoppingSaveParams();
         $result = $this->shoppingModel->saveShoppingDataInfo($paramList);
         $this->echoJson($result);
     }
 
+    /**
+     * 更新体验购物
+     */
     public function updateShoppingAction() {
         $paramList = $this->handlerShoppingSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
@@ -103,6 +115,9 @@ class ShoppingajaxController extends \BaseController {
         $this->echoJson($result);
     }
 
+    /**
+     * 获取体验购物订单列表
+     */
     public function getOrderListAction() {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['shoppingid'] = intval($this->getPost('shoppingid'));

@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 客房管理数据转换器
+ */
 class Convertor_Room extends Convertor_Base {
 
+    /**
+     * 客房物品列表
+     */
     public function roomResListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -36,6 +42,9 @@ class Convertor_Room extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 房型列表
+     */
     public function roomTypeListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),

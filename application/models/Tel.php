@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 电话黄页Model
+ */
 class TelModel extends \BaseModel {
 
+    /**
+     * 获取电话黄页分类列表
+     */
     public function getTelTypeList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -19,6 +25,9 @@ class TelModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑分类信息
+     */
     public function saveTelTypeDataInfo($paramList) {
         $params = $this->initParam($paramList);
         do {
@@ -49,6 +58,9 @@ class TelModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取电话黄页列表
+     */
     public function getTelList($paramList) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -63,6 +75,9 @@ class TelModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建和编辑电话黄页列表
+     */
     public function saveTelDataInfo($paramList) {
         $params = $this->initParam($paramList);
         do {

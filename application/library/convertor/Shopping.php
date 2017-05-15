@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 体验购物数据转换器
+ */
 class Convertor_Shopping extends Convertor_Base {
 
+    /**
+     * 体验购物标签列表
+     */
     public function shoppingTagListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -26,6 +32,9 @@ class Convertor_Shopping extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 体验购物列表
+     */
     public function shoppingListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
@@ -60,6 +69,9 @@ class Convertor_Shopping extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 体验购物订单列表
+     */
     public function orderListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),

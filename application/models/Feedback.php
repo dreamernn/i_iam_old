@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * 调查问卷Model
+ */
 class FeedbackModel extends \BaseModel {
 
+    /**
+     * 获取问题列表
+     */
     public function getQuestionList($paramList) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
@@ -15,6 +21,9 @@ class FeedbackModel extends \BaseModel {
         return (array)$result;
     }
 
+    /**
+     * 新建编辑问题信息
+     */
     public function saveQuestionDataInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -43,6 +52,9 @@ class FeedbackModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 保存问题选项
+     */
     public function saveQuestionOptionInfo($paramList) {
         $params = $this->initParam();
         do {
@@ -62,6 +74,9 @@ class FeedbackModel extends \BaseModel {
         return $result;
     }
 
+    /**
+     * 获取调查反馈列表
+     */
     public function getResultList($paramList) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
