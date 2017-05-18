@@ -190,7 +190,17 @@ class HotelModel extends \BaseModel {
             $paramList['introduct_lang1'] ? $params['introduct_lang1'] = $paramList['introduct_lang1'] : false;
             $paramList['introduct_lang2'] ? $params['introduct_lang2'] = $paramList['introduct_lang2'] : false;
             $paramList['introduct_lang3'] ? $params['introduct_lang3'] = $paramList['introduct_lang3'] : false;
+            $paramList['video'] ? $params['video'] = $paramList['video'] : false;
             !is_null($paramList['status']) ? $params['status'] = intval($paramList['status']) : false;
+
+            if ($paramList['pdf']) {
+                $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
+                if ($uploadResult['code']) {
+                    $result['msg'] = 'pdf上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pdf'] = $uploadResult['data']['picKey'];
+            }
 
             $interfaceId = $params['id'] ? 'GH008' : 'GH007';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);

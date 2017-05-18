@@ -27,6 +27,8 @@ class Lang_Zh_Hotel {
     const FACILITIESTITLE = '设施标题';
     const FACILITIESINTRODUCT = '设施介绍';
     const CREATETIME = '创建时间';
+    const PDF = 'PDF';
+    const VIDEO = '视频';
 
     const TRAFFICEDITTITLE = '编辑交通信息';
     const TAFFICINTRODUCT = '交通介绍';

@@ -51,6 +51,7 @@ iHotel.hotelFacilitiesList = (function ($, ypGlobal) {
         });
         // 新建产品
         $("#createData").on('click', function () {
+            $("#ossfile").html("");
             dataForm.writeEditor({
                 editorDom: $("#listEditor")
             });
@@ -69,6 +70,7 @@ iHotel.hotelFacilitiesList = (function ($, ypGlobal) {
                 editorDom: $("#listEditor"),
                 writeData: dataList
             });
+            $("#ossfile").html("");
             detailModal.modal('show');
         });
     }

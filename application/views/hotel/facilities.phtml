@@ -2,6 +2,7 @@
 <html>
 <head>
     <?php include($webConfig['layoutPath'] . '/common/meta.phtml') ?>
+    <link type="text/css" rel="stylesheet" href="<?php echo $webConfig['imgDomain']; ?>css/video.css"/>
 </head>
 <body>
 <?php include($webConfig['layoutPath'] . '/common/header.phtml') ?>
@@ -28,6 +29,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'facilitiesTitle'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('hotel', 'pdf'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('hotel', 'video'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'createTime'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
@@ -58,6 +61,8 @@
 <script src="<?php echo $webConfig['imgDomain']; ?>js/common/yp_list.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/common/yp_form.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/art.js"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/lib/plupload/js/plupload.full.min.js" type="text/javascript"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/common/videoUpload.js" type="text/javascript"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/hotel/facilitiesList.js"></script>
 </body>
 </html>
@@ -66,6 +71,20 @@
     <tr dataId="{{info.id}}">
         <td type="id" data-value="{{info.id}}">{{info.id}}</td>
         <td type="nameLang1" data-value="{{info.nameLang1}}">{{info.nameLang1}}</td>
+        <td type="pdf" data-value="{{info.pdf}}">
+            {{if info.pdf}}
+            <a href="{{info.pdf}}" target="_blank">
+                <?php echo Enum_Lang::getPageText('system', 'view'); ?>
+            </a>
+            {{/if}}
+        </td>
+        <td type="video" data-value="{{info.video}}">
+            {{if info.video}}
+            <a href="{{info.videoShow}}" target="_blank">
+                <?php echo Enum_Lang::getPageText('system', 'view'); ?>
+            </a>
+            {{/if}}
+        </td>
         <td>{{info.createtime}}</td>
         <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
         <td type="nameLang2" data-value="{{info.nameLang2}}" style="display: none;"></td>

@@ -62,6 +62,9 @@ class Convertor_Hotel extends Convertor_Base {
                 $dataTemp['introductLang1'] = $value['introduct_lang1'];
                 $dataTemp['introductLang2'] = $value['introduct_lang2'];
                 $dataTemp['introductLang3'] = $value['introduct_lang3'];
+                $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
+                $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
+                $dataTemp['video'] = $value['video'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;
