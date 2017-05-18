@@ -51,6 +51,7 @@ class RoomajaxController extends \BaseController {
         $paramList['introduct_lang3'] = trim($this->getPost("introductLang3"));
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['status'] = intval($this->getPost('status'));
+        $paramList['pic'] = $_FILES['pic'];
         $paramList['pdf'] = $_FILES['pdf'];
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
@@ -102,6 +103,8 @@ class RoomajaxController extends \BaseController {
         $paramList['bedtype_lang1'] = trim($this->getPost("bedtypeLang1"));
         $paramList['bedtype_lang2'] = trim($this->getPost("bedtypeLang2"));
         $paramList['bedtype_lang3'] = trim($this->getPost("bedtypeLang3"));
+        $paramList['roomcount'] = intval($this->getPost("roomcount"));
+        $paramList['personcount'] = intval($this->getPost("personcount"));
         $paramList['hotelid'] = intval($this->getHotelId());
         return $paramList;
     }
@@ -132,6 +135,53 @@ class RoomajaxController extends \BaseController {
         $paramList['id'] = intval($this->getPost("id"));
         $paramList['resid_list'] = trim($this->getPost("typeres"));
         $result = $this->roomModel->saveRoomTypeRes($paramList);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 获取房间列表
+     */
+    public function getRoomListAction() {
+        $paramList['page'] = $this->getPost('page');
+        $paramList['hotelid'] = $this->getHotelId();
+        $paramList['id'] = intval($this->getPost('id'));
+        $paramList['room'] = $this->getPost('room');
+        $paramList['typeid'] = intval($this->getPost('typeid'));
+        $paramList['floor'] = intval($this->getPost('floor'));
+        $result = $this->roomModel->getRoomList($paramList);
+        $result = $this->roomConvertor->roomListConvertor($result);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 新建和编辑房间
+     */
+    private function handlerRoomSaveParams() {
+        $paramList = array();
+        $paramList['room'] = intval($this->getPost("room"));
+        $paramList['typeid'] = intval($this->getPost("typeid"));
+        $paramList['floor'] = intval($this->getPost("floor"));
+        $paramList['size'] = floatval($this->getPost("size"));
+        $paramList['hotelid'] = intval($this->getHotelId());
+        return $paramList;
+    }
+
+    /**
+     * 新建房间
+     */
+    public function createRoomAction() {
+        $paramList = $this->handlerRoomSaveParams();
+        $result = $this->roomModel->saveRoomDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 更新房间
+     */
+    public function updateRoomAction() {
+        $paramList = $this->handlerRoomSaveParams();
+        $paramList['id'] = intval($this->getPost("id"));
+        $result = $this->roomModel->saveRoomDataInfo($paramList);
         $this->echoJson($result);
     }
 }

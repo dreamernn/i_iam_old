@@ -72,6 +72,11 @@ class Rpc_UrlConfigRoom {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
                 'pdf' => array(
                     'required' => false,
                     'format' => 'string',
@@ -138,6 +143,11 @@ class Rpc_UrlConfigRoom {
                 'status' => array(
                     'required' => false,
                     'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
                 'sort' => array(
@@ -286,6 +296,16 @@ class Rpc_UrlConfigRoom {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'roomcount' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'personcount' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
             )
         ),
         'R006' => array(
@@ -362,6 +382,130 @@ class Rpc_UrlConfigRoom {
                 'resid_list' => array(
                     'required' => false,
                     'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'roomcount' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'personcount' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'R007' => array(
+            'name' => '获取酒店房间列表',
+            'method' => 'getRoomList',
+            'auth' => true,
+            'url' => '/Room/getRoomList',
+            'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'room' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'typeid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'floor' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'page' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'limit' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                )
+            )
+        ),
+        'R008' => array(
+            'name' => '添加酒店房间信息',
+            'method' => 'addRoom',
+            'auth' => true,
+            'url' => '/Room/addRoom',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'room' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'typeid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'floor' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'size' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'R009' => array(
+            'name' => '根据id修改酒店房间信息',
+            'method' => 'updateRoomById',
+            'auth' => true,
+            'url' => '/Room/updateRoomById',
+            'param' => array(
+                'id' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'room' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'typeid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'floor' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'size' => array(
+                    'required' => true,
+                    'format' => 'int',
                     'style' => 'interface'
                 ),
             )

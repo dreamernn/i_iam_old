@@ -6,6 +6,35 @@
 class Convertor_Poi extends Convertor_Base {
 
     /**
+     * 分类列表转换器
+     * @param array $list
+     * @return array
+     */
+    public function typeListConvertor($list) {
+        $data = array(
+            'code' => intval($list['code']),
+            'msg' => $list['msg']
+        );
+        if (isset($list['code']) && !$list['code']) {
+            $result = $list['data'];
+            $tmp = array();
+            foreach ($result['list'] as $key => $value) {
+                $dataTemp = array();
+                $dataTemp['id'] = $value['id'];
+                $dataTemp['titleLang1'] = $value['title_lang1'];
+                $dataTemp['titleLang2'] = $value['title_lang2'];
+                $dataTemp['titleLang3'] = $value['title_lang3'];
+                $tmp[] = $dataTemp;
+            }
+            $data['data']['list'] = $tmp;
+            $data['data']['pageData']['page'] = intval($result['page']);
+            $data['data']['pageData']['rowNum'] = intval($result['total']);
+            $data['data']['pageData']['pageNum'] = ceil($result['total'] / $result['limit']);
+        }
+        return $data;
+    }
+
+    /**
      * 标签列表转换器
      * @param array $list
      * @return array
@@ -69,6 +98,8 @@ class Convertor_Poi extends Convertor_Base {
                 $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('ascott', 'enable') : Enum_Lang::getPageText('ascott', 'disable');
                 $dataTemp['typeid'] = $value['typeId'];
                 $dataTemp['typeShow'] = $value['typeName_lang1'];
+                $dataTemp['tagid'] = $value['tagId'];
+                $dataTemp['tagShow'] = $value['tagName_lang1'];
                 $dataTemp['createtime'] = $value['createTime'] ? date('Y-m-d H:i:s', $value['createTime']) : '';
                 $dataTemp['updatetime'] = $value['updateTime'] ? date('Y-m-d H:i:s', $value['updateTime']) : '';
                 $dataTemp['sort'] = $value['sort'];

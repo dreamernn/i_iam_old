@@ -1,14 +1,14 @@
 var iHotel = iHotel || {};
-iHotel.ascottTagList = (function ($, ypGlobal) {
+iHotel.ascottTypeList = (function ($, ypGlobal) {
 
-    var ajax = YP.ajax, tips = YP.alert, tagList = new YP.list, tagForm = new YP.form;
+    var ajax = YP.ajax, tips = YP.alert, typeList = new YP.list, typeForm = new YP.form;
     var searchButton = $("#searchBtn");
 
     /**
      * 初始化列表
      */
     function initList() {
-        tagList.init({
+        typeList.init({
             colCount: 9,
             autoLoad: true,
             listUrl: ypGlobal.listUrl,
@@ -16,7 +16,7 @@ iHotel.ascottTagList = (function ($, ypGlobal) {
             searchButtonDomObject: searchButton,
             listTemplate: 'dataList_tpl',
             listSuccess: function (data) {
-                tagList.writeListData(data);
+                typeList.writeListData(data);
             },
             listFail: function (data) {
                 tips.show('数据加载失败！');
@@ -30,20 +30,20 @@ iHotel.ascottTagList = (function ($, ypGlobal) {
     function initEditor() {
         // 初始化表单保存
         var detailModal = $("#editor");
-        tagForm.init({
+        typeForm.init({
             editorDom: $("#listEditor"),
             saveButtonDom: $("#saveListData"),
             checkParams: eval(ypGlobal.checkParams),
             modelDom: detailModal,
             saveBefore: function (saveParams) {
-                tagForm.updateParams({
+                typeForm.updateParams({
                     saveUrl: saveParams.id > 0 ? ypGlobal.updateUrl : ypGlobal.createUrl
                 });
-                saveParams = tagForm.makeRecord(saveParams, saveParams.id, saveParams.titleLang1);
+                saveParams = typeForm.makeRecord(saveParams, saveParams.id, saveParams.titleLang1);
                 return saveParams;
             },
             saveSuccess: function (data) {
-                tagList.reLoadList();
+                typeList.reLoadList();
             },
             saveFail: function (data) {
                 tips.show(data.msg);
@@ -51,7 +51,7 @@ iHotel.ascottTagList = (function ($, ypGlobal) {
         });
         // 新建产品
         $("#createData").on('click', function () {
-            tagForm.writeEditor({
+            typeForm.writeEditor({
                 editorDom: $("#listEditor")
             });
         });
@@ -65,7 +65,7 @@ iHotel.ascottTagList = (function ($, ypGlobal) {
                     dataList[dataOne.attr('type')] = dataOne.data('value');
                 }
             });
-            tagForm.writeEditor({
+            typeForm.writeEditor({
                 editorDom: $("#listEditor"),
                 writeData: dataList
             });
@@ -84,5 +84,5 @@ iHotel.ascottTagList = (function ($, ypGlobal) {
 })(jQuery, YP_GLOBAL_VARS);
 
 $(function () {
-    iHotel.ascottTagList.init();
+    iHotel.ascottTypeList.init();
 })

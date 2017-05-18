@@ -234,6 +234,11 @@ class Rpc_UrlConfigShopping {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'price' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'sort' => array(
                     'required' => false,
                     'format' => 'int',
@@ -315,6 +320,11 @@ class Rpc_UrlConfigShopping {
                 'detail_lang3' => array(
                     'required' => false,
                     'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'price' => array(
+                    'required' => false,
+                    'format' => 'int',
                     'style' => 'interface'
                 ),
                 'sort' => array(

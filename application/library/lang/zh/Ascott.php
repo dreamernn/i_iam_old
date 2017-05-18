@@ -2,8 +2,8 @@
 
 class Lang_Zh_Ascott {
 
-    const EDITTAGTITLE = '标签编辑';
-    const TAGTITLE = '标签名称';
+    const EDITTYPETITLE = '分类编辑';
+    const TYPETITLE = '分类名称';
 
     const EDITTITLE  = '编辑雅士阁生活信息';
     const ASCOTTTITLE = '标题';

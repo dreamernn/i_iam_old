@@ -28,6 +28,8 @@
                                         <th>ID</th>
                                         <th><?php echo Enum_Lang::getPageText('activity', 'acitvityOrderName'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('activity', 'acitvityOrderPhone'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('activity', 'ACITVITYORDERORDERCOUNT'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('activity', 'ACITVITYORDERREMARK'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('activity', 'createTime'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('activity', 'activity'); ?></th>
                                     </tr>
@@ -65,6 +67,8 @@
         <td type="id" data-value="{{info.id}}">{{info.id}}</td>
         <td type="name" data-value="{{info.name}}">{{info.name}}</td>
         <td type="phone" data-value="{{info.phone}}">{{info.phone}}</td>
+        <td type="ordercount" data-value="{{info.ordercount}}">{{info.ordercount}}</td>
+        <td type="remark" data-value="{{info.remark}}">{{info.remark}}</td>
         <td type="createtime" data-value="{{info.createtime}}">{{info.createtime}}</td>
         <td type="activityid" data-value="{{info.activityid}}">{{info.activityName}}</td>
     </tr>

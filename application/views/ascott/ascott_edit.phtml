@@ -42,12 +42,12 @@
                     </div>
                     <div class="control-group" op="editFiled">
                         <?php $filedName = 'typeid';
-                        $filedTitle = Enum_Lang::getPageText('ascott', 'tagTitle'); ?>
+                        $filedTitle = Enum_Lang::getPageText('ascott', 'typeTitle'); ?>
                         <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
                         <div class="controls">
                             <select id="edit_<?php echo $filedName; ?>" data-title="<?php echo $filedTitle; ?>">
-                                <?php foreach ($tagList as $tag) { ?>
-                                    <option value="<?php echo $tag['id']; ?>"><?php echo $tag['titleLang1']; ?></option>
+                                <?php foreach ($typeList as $type) { ?>
+                                    <option value="<?php echo $type['id']; ?>"><?php echo $type['titleLang1']; ?></option>
                                 <?php } ?>
                             </select>
                         </div>

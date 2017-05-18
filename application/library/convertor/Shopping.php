@@ -63,6 +63,7 @@ class Convertor_Shopping extends Convertor_Base {
                 $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
                 $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
                 $dataTemp['video'] = $value['video'];
+                $dataTemp['price'] = intval($value['price']);
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

@@ -8,7 +8,7 @@ class Lang_Zh_Nav {
     const HOTELFACILITIES = '设施管理';
     const HOTELTRAFFIC = '交通管理';
     const HOTELPANORAMIC = '全景管理';
-    const HOTELPIC = '图片管理';
+    const HOTELPIC = '公寓图片管理';
     const HOTELTITLE = '多语言标题管理';
 
     const ACTIVITY = '活动管理';
@@ -17,11 +17,12 @@ class Lang_Zh_Nav {
     const ACTIVITYORDER = '活动报名信息';
 
     const LIFE = '雅士阁生活';
-    const LIFETAG = '标签管理';
+    const LIFETYPE = '分类管理';
     const LIFELIST = '信息管理';
 
     const POI = '本地攻略';
     const POITAG = '标签管理';
+    const POITYPE = '分类管理';
     const POILIST = '攻略管理';
 
     const PROMOTION = '物业促销';
@@ -30,6 +31,7 @@ class Lang_Zh_Nav {
 
     const ROOM = '客房管理';
     const ROOMTYPE = '房型管理';
+    const ROOMLIST = '房间管理';
     const ROOMRES = '物品管理';
 
     const SHOPPING = '体验购物';

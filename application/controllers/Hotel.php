@@ -42,6 +42,7 @@ class HotelController extends \BaseController {
      * 交通管理
      */
     public function trafficAction() {
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
         $this->_view->display('hotel/traffic.phtml');
     }
 

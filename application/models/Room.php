@@ -54,6 +54,14 @@ class RoomModel extends \BaseModel {
                 break;
             }
 
+            if ($paramList['pic']) {
+                $uploadResult = $this->uploadFile($paramList['pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = '图片上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pic'] = $uploadResult['data']['picKey'];
+            }
             if ($paramList['pdf']) {
                 $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
                 if ($uploadResult['code']) {
@@ -75,13 +83,18 @@ class RoomModel extends \BaseModel {
     /**
      * 获取房型列表
      */
-    public function getRoomTypeList($paramList) {
+    public function getRoomTypeList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
-            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
-            $paramList['title'] ? $params['title'] = $paramList['title'] : false;
-            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
-            $result = $this->rpcClient->getResultRaw('R004', $params);
+            if ($cacheTime == 0) {
+                $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+                $paramList['title'] ? $params['title'] = $paramList['title'] : false;
+                $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            } else {
+                $params['limit'] = 0;
+            }
+            $isCache = $cacheTime != 0 ? true : false;
+            $result = $this->rpcClient->getResultRaw('R004', $params, $isCache, $cacheTime);
         } while (false);
         return (array)$result;
     }
@@ -107,6 +120,8 @@ class RoomModel extends \BaseModel {
             $paramList['bedtype_lang1'] ? $params['bedtype_lang1'] = $paramList['bedtype_lang1'] : false;
             $paramList['bedtype_lang2'] ? $params['bedtype_lang2'] = $paramList['bedtype_lang2'] : false;
             $paramList['bedtype_lang3'] ? $params['bedtype_lang3'] = $paramList['bedtype_lang3'] : false;
+            $paramList['roomcount'] ? $params['roomcount'] = $paramList['roomcount'] : false;
+            $paramList['personcount'] ? $params['personcount'] = $paramList['personcount'] : false;
 
             if (empty($params['title_lang1'])) {
                 break;
@@ -114,6 +129,9 @@ class RoomModel extends \BaseModel {
 
             $interfaceId = $params['id'] ? 'R006' : 'R005';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+            if (!$result['code']) {
+                $this->getRoomTypeList(array('hotelid' => $params['hotelid']), -2);
+            }
         } while (false);
         return $result;
     }
@@ -132,6 +150,54 @@ class RoomModel extends \BaseModel {
                 break;
             }
             $result = $this->rpcClient->getResultRaw('R006', $params);
+        } while (false);
+        return $result;
+    }
+
+    /**
+     * 获取房间列表
+     */
+    public function getRoomList($paramList) {
+        do {
+            $params['hotelid'] = $paramList['hotelid'];
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['room'] ? $params['room'] = $paramList['room'] : false;
+            $paramList['typeid'] ? $params['typeid'] = $paramList['typeid'] : false;
+            $paramList['floor'] ? $params['floor'] = $paramList['floor'] : false;
+            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            $result = $this->rpcClient->getResultRaw('R007', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+    /**
+     * 新建和编辑房间
+     */
+    public function saveRoomDataInfo($paramList) {
+        $params = $this->initParam();
+        do {
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['room'] ? $params['room'] = $paramList['room'] : false;
+            $paramList['typeid'] ? $params['typeid'] = $paramList['typeid'] : false;
+            $paramList['floor'] ? $params['floor'] = $paramList['floor'] : false;
+            $paramList['size'] ? $params['size'] = $paramList['size'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+
+            $checkParams = Enum_Room::getRoomMustInput();
+            foreach ($checkParams as $checkParamOne) {
+                $checkParamOne = str_replace('Lang', '_lang', $checkParamOne);
+                if (empty($params[$checkParamOne])) {
+                    break 2;
+                }
+            }
+
+            $interfaceId = $params['id'] ? 'R009' : 'R008';
+            $result = $this->rpcClient->getResultRaw($interfaceId, $params);
         } while (false);
         return $result;
     }

@@ -5,7 +5,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel"><?php echo Enum_Lang::getPageText('room', 'roomResEditTitle'); ?></h4>
+                <h4 class="modal-title" id="myModalLabel"><?php echo Enum_Lang::getPageText('room', 'roomresedittitle'); ?></h4>
             </div>
             <div class="modal-body" id="detailBody" mf="modalfix">
                 <form class="form-horizontal" id="listEditor">
@@ -29,6 +29,15 @@
                             </div>
                         </div>
                     <?php } ?>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'pic';
+                        $filedTitle = Enum_Lang::getPageText('room', 'pic'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <img src="" id="edit_<?php echo $filedName; ?>_show" style="max-height: 80px;"/>
+                            <input type="file" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span4" data-title="<?php echo $filedTitle; ?>" accept="<?php echo implode(",", $allowTypeImage); ?>">
+                        </div>
+                    </div>
                     <div class="control-group" op="editFiled">
                         <?php $filedName = 'pdf';
                         $filedTitle = Enum_Lang::getPageText('room', 'RESPDF'); ?>

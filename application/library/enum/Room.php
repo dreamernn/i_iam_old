@@ -15,6 +15,13 @@ class Enum_Room {
             'size',
         );
     }
+
+    public static function getRoomMustInput() {
+        return array(
+            'room',
+            'size',
+        );
+    }
 }
 
 ?>

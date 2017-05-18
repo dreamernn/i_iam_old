@@ -2,6 +2,9 @@
 
 class Lang_Zh_Poi {
 
+    const EDITTYPETITLE = '分类编辑';
+    const TYPETITLE = '分类名称';
+
     const EDITTAGTITLE = '标签编辑';
     const TAGTITLE = '标签名称';
 

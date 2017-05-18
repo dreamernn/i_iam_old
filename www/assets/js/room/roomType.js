@@ -154,10 +154,17 @@ iHotel.roomRoomType = (function ($, ypGlobal) {
         });
     }
 
+    function initArticleEditor() {
+        $("#dataList").on('click', 'button[op=editArticle]', function () {
+            window.open('/article/editor?dataid=' + $(this).data('dataid') + '&datatype=' + $(this).data('type') + '&article=' + $(this).data('article'));
+        });
+    }
+
     function init() {
         initList();
         initEditor();
         initEditResList();
+        initArticleEditor();
     }
 
     return {

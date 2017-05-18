@@ -12,7 +12,7 @@
             <div class="cont-mod">
                 <div class="page-header page-header-custom">
                     <h1 class="h1-custom">
-                        <?php echo Enum_Lang::getPageText('nav', 'poiTag'); ?>
+                        <?php echo Enum_Lang::getPageText('nav', 'lifeType'); ?>
                         <button id="createData" class="btn btn-info" style="margin-left: 5px;" type="button"
                                 data-toggle="modal" data-target="#editor"><?php echo Enum_Lang::getPageText('system', 'create'); ?>
                         </button>
@@ -28,7 +28,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <?php foreach ($hotelLanguageList as $index => $language) { ?>
-                                            <th><?php echo Enum_Lang::getPageText('poi', 'tagTitle'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</th>
+                                            <th><?php echo Enum_Lang::getPageText('ascott', 'typeTitle'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</th>
                                         <?php } ?>
                                         <th>操作</th>
                                     </tr>
@@ -44,13 +44,13 @@
         </div>
     </div>
 </div>
-<?php include($webConfig['layoutPath'] . '/poi/tag_edit.phtml'); ?>
+<?php include($webConfig['layoutPath'] . '/ascott/type_edit.phtml'); ?>
 <script type="text/javascript">
     var YP_GLOBAL_VARS = {
-        checkParams: '<?php echo json_encode(Enum_Poi::getTagMustInput());?>',
-        listUrl: '/poiajax/getTagList',
-        createUrl: '/poiajax/createTag',
-        updateUrl: '/poiajax/updateTag',
+        checkParams: '<?php echo json_encode(Enum_Ascott::getTypeMustInput());?>',
+        listUrl: '/ascottajax/getTypeList',
+        createUrl: '/ascottajax/createType',
+        updateUrl: '/ascottajax/updateType',
     };
 </script>
 <?php include($webConfig['layoutPath'] . '/common/list_common.phtml'); ?>
@@ -58,7 +58,7 @@
 <script src="<?php echo $webConfig['imgDomain']; ?>js/common/yp_list.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/common/yp_form.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/art.js"></script>
-<script src="<?php echo $webConfig['imgDomain']; ?>js/poi/tag.js"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/ascott/type.js"></script>
 </body>
 </html>
 <script id="dataList_tpl" type="text/html">

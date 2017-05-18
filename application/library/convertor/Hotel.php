@@ -50,6 +50,7 @@ class Convertor_Hotel extends Convertor_Base {
             foreach ($result['list'] as $key => $value) {
                 $dataTemp = array();
                 $dataTemp['id'] = $value['id'];
+                $dataTemp['icon'] = $value['icon'];
                 $dataTemp['nameLang1'] = $value['name_lang1'];
                 $dataTemp['nameLang2'] = $value['name_lang2'];
                 $dataTemp['nameLang3'] = $value['name_lang3'];
@@ -95,6 +96,10 @@ class Convertor_Hotel extends Convertor_Base {
                 $dataTemp['introductLang1'] = $value['introduct_lang1'];
                 $dataTemp['introductLang2'] = $value['introduct_lang2'];
                 $dataTemp['introductLang3'] = $value['introduct_lang3'];
+                $dataTemp['sort'] = $value['sort'];
+                $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
+                $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
+                $dataTemp['video'] = $value['video'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

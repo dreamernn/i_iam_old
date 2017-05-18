@@ -47,8 +47,8 @@ class Rpc_UrlConfigPoi {
             )
         ),
         'PT002' => array(
-            'name' => '获取tag列表',
-            'method' => 'getTagList',
+            'name' => '获取type列表',
+            'method' => 'getadminpoitypelist',
             'auth' => true,
             'url' => '/poitype/getadminpoitypelist',
             'param' => array(
@@ -70,8 +70,8 @@ class Rpc_UrlConfigPoi {
             )
         ),
         'PT003' => array(
-            'name' => '获取tag详情',
-            'method' => 'getTagInfo',
+            'name' => '获取type详情',
+            'method' => 'getpoitypedetail',
             'auth' => true,
             'url' => '/poitype/getpoitypedetail',
             'param' => array(
@@ -83,8 +83,8 @@ class Rpc_UrlConfigPoi {
             )
         ),
         'PT004' => array(
-            'name' => '修改tag详情',
-            'method' => 'updateTagInfo',
+            'name' => '修改type详情',
+            'method' => 'updatepoitypebyId',
             'auth' => true,
             'url' => '/poitype/updatepoitypebyId',
             'param' => array(
@@ -116,8 +116,8 @@ class Rpc_UrlConfigPoi {
             )
         ),
         'PT005' => array(
-            'name' => '新增tag详情',
-            'method' => 'addTagInfo',
+            'name' => '新增type详情',
+            'method' => 'addpoitype',
             'auth' => true,
             'url' => '/poitype/addpoitype',
             'param' => array(
@@ -160,6 +160,11 @@ class Rpc_UrlConfigPoi {
                     'style' => 'interface'
                 ),
                 'typeid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'tagid' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
@@ -277,6 +282,11 @@ class Rpc_UrlConfigPoi {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'tagid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'name_lang1' => array(
                     'required' => false,
                     'format' => 'string',
@@ -368,6 +378,90 @@ class Rpc_UrlConfigPoi {
                     'style' => 'interface'
                 ),
                 'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'PT008' => array(
+            'name' => '获取tag列表',
+            'method' => 'getAdminPoiTagList',
+            'auth' => true,
+            'url' => '/PoiTag/getAdminPoiTagList',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'page' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'limit' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                )
+            )
+        ),
+        'PT009' => array(
+            'name' => '修改tag详情',
+            'method' => 'updatePoiTagById',
+            'auth' => true,
+            'url' => '/PoiTag/updatePoiTagById',
+            'param' => array(
+                'id' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'title_lang1' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'PT010' => array(
+            'name' => '新增tag详情',
+            'method' => 'addPoiTag',
+            'auth' => true,
+            'url' => '/PoiTag/addPoiTag',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'title_lang1' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang2' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'title_lang3' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

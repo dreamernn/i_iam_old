@@ -10,6 +10,14 @@
             <div class="modal-body" id="detailBody" mf="modalfix">
                 <form class="form-horizontal" id="listEditor">
                     <input type="hidden" id="edit_id" value="0">
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'icon';
+                        $filedTitle = Enum_Lang::getPageText('hotel', 'facilitiesIcon'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <input type="text" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span3" data-title="<?php echo $filedTitle; ?>">
+                        </div>
+                    </div>
                     <?php foreach ($hotelLanguageList as $index => $language) { ?>
                         <?php $filedName = 'nameLang'; ?>
                         <?php $filedTitle = Enum_Lang::getPageText('hotel', 'facilitiesTitle') . '（' . Enum_Lang::getPageText('language', $language) . '）'; ?>

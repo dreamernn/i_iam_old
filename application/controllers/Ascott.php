@@ -12,8 +12,8 @@ class AscottController extends BaseController {
     /**
      * 获取标签列表
      */
-    public function tagListAction() {
-        $this->_view->display('ascott/tag.phtml');
+    public function typeListAction() {
+        $this->_view->display('ascott/type.phtml');
     }
 
     /**
@@ -21,8 +21,8 @@ class AscottController extends BaseController {
      */
     public function listAction() {
         $ascottModel = new AscottModel();
-        $tagList = $ascottModel->getTagList(array('hotelid' => $this->getHotelId()), 3600);
-        $this->_view->assign('tagList', $tagList['data']['list']);
+        $typeList = $ascottModel->getTypeList(array('hotelid' => $this->getHotelId()), 3600);
+        $this->_view->assign('typeList', $typeList['data']['list']);
         $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
         $this->_view->display('ascott/ascott.phtml');
     }

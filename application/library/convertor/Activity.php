@@ -61,6 +61,10 @@ class Convertor_Activity extends Convertor_Base {
                 $dataTemp['sort'] = $value['sort'];
                 $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
                 $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
+                $dataTemp['pic'] = $value['pic'] ? Enum_Img::getPathByKeyAndType($value['pic']) : '';
+                $dataTemp['ordercount'] = $value['ordercount'];
+                $dataTemp['fromdate'] = $value['fromdate'] ? date('Y-m-d', $value['fromdate']) : '';
+                $dataTemp['todate'] = $value['todate'] ? date('Y-m-d', $value['todate']) : '';
                 $dataTemp['video'] = $value['video'];
                 $tmp[] = $dataTemp;
             }
@@ -95,6 +99,8 @@ class Convertor_Activity extends Convertor_Base {
                 $dataTemp['hotelName'] = $value['hotelName'];
                 $dataTemp['activityid'] = $value['activityid'];
                 $dataTemp['activityName'] = $value['activityName'];
+                $dataTemp['ordercount'] = $value['ordercount'];
+                $dataTemp['remark'] = $value['remark'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

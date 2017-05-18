@@ -34,6 +34,7 @@
                                         <th><?php echo Enum_Lang::getPageText('room', 'resName'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'resPdf'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'video'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('room', 'pic'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'sort'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
@@ -88,6 +89,13 @@
             {{if info.video}}
             <a href="{{info.videoShow}}" target="_blank">
                 <?php echo Enum_Lang::getPageText('system', 'view'); ?>
+            </a>
+            {{/if}}
+        </td>
+        <td type="pic" data-value="{{info.pic}}">
+            {{if info.pic}}
+            <a href="{{info.pic}}" target="_blank">
+                <img src="{{info.pic}}" style="max-width: 100px;max-height: 100px;"/>
             </a>
             {{/if}}
         </td>

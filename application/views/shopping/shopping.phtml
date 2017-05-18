@@ -30,6 +30,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th><?php echo Enum_Lang::getPageText('shopping', 'SHOPPINGTITLE'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('shopping', 'price'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('shopping', 'tagTitle'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('shopping', 'pdf'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('shopping', 'video'); ?></th>
@@ -76,6 +77,7 @@
     <tr dataId="{{info.id}}">
         <td type="id" data-value="{{info.id}}">{{info.id}}</td>
         <td type="titleLang1" data-value="{{info.titleLang1}}">{{info.titleLang1}}</td>
+        <td type="price" data-value="{{info.price}}">{{info.price}}</td>
         <td type="tagid" data-value="{{info.tagid}}">{{info.tagShow}}</td>
         <td type="pdf" data-value="{{info.pdf}}">
             {{if info.pdf}}

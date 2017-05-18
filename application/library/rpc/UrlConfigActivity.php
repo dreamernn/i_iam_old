@@ -239,6 +239,26 @@ class Rpc_UrlConfigActivity {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'ordercount' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'fromdate' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'todate' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
             )
         ),
         'GA007' => array(
@@ -305,6 +325,26 @@ class Rpc_UrlConfigActivity {
                 'article_lang3' => array(
                     'required' => false,
                     'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'ordercount' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'fromdate' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'todate' => array(
+                    'required' => false,
+                    'format' => 'int',
                     'style' => 'interface'
                 ),
             )

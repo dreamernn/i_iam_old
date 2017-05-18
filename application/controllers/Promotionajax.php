@@ -92,6 +92,7 @@ class PromotionajaxController extends \BaseController {
         $paramList['pdf'] = $_FILES['pdf'];
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
+        $paramList['url'] = trim($this->getPost("url"));
         return $paramList;
     }
 

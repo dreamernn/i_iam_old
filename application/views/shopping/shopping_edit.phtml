@@ -21,6 +21,14 @@
                         </div>
                     <?php } ?>
                     <div class="control-group" op="editFiled">
+                        <?php $filedName = 'price';
+                        $filedTitle = Enum_Lang::getPageText('shopping', 'price'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <input type="number" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span1" data-title="<?php echo $filedTitle; ?>">
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
                         <label class="control-label" for="edit_tagid"><?php echo Enum_Lang::getPageText('shopping', 'tagTitle'); ?>：</label>
                         <div class="controls">
                             <select id="edit_tagid" data-title="标签">

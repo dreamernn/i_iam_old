@@ -6,9 +6,9 @@
 class AscottModel extends \BaseModel {
 
     /**
-     * 获取tag列表
+     * 获取type列表
      */
-    public function getTagList($paramList, $cacheTime = 0) {
+    public function getTypeList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
             if ($cacheTime == 0) {
@@ -21,9 +21,9 @@ class AscottModel extends \BaseModel {
     }
 
     /**
-     * 新建和编辑tag信息数据
+     * 新建和编辑type信息数据
      */
-    public function saveTagDataInfo($paramList) {
+    public function saveTypeDataInfo($paramList) {
         $params = $this->initParam($paramList);
         do {
             $result = array(
@@ -36,7 +36,7 @@ class AscottModel extends \BaseModel {
             $interfaceId = $params['id'] ? 'LI004' : 'LI005';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);
             if (!$result['code']) {
-                $this->getTagList(array('hotelid' => $params['hotelid']), -2);
+                $this->getTypeList(array('hotelid' => $params['hotelid']), -2);
             }
         } while (false);
         return $result;

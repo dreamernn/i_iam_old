@@ -107,6 +107,11 @@ class Rpc_UrlConfigHotel {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'localpic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
                 'voice_lang1' => array(
                     'required' => false,
                     'format' => 'string',
@@ -294,6 +299,11 @@ class Rpc_UrlConfigHotel {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'icon' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
                 'name' => array(
                     'required' => false,
                     'format' => 'string',
@@ -327,6 +337,11 @@ class Rpc_UrlConfigHotel {
             'auth' => true,
             'url' => '/Facilities/addFacilities',
             'param' => array(
+                'icon' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
                 'name_lang1' => array(
                     'required' => true,
                     'format' => 'string',
@@ -388,6 +403,11 @@ class Rpc_UrlConfigHotel {
                 'id' => array(
                     'required' => true,
                     'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'icon' => array(
+                    'required' => false,
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
                 'name_lang1' => array(
@@ -511,6 +531,21 @@ class Rpc_UrlConfigHotel {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'GH011' => array(
@@ -555,6 +590,21 @@ class Rpc_UrlConfigHotel {
                     'style' => 'interface'
                 ),
                 'detail_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

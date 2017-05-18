@@ -13,6 +13,7 @@ class Lang_Zh_Shopping {
     const SORT = '排序';
     const PDF = 'PDF';
     const VIDEO = '视频';
+    const PRICE = '价格';
 
     const SHOPPING = '物品';
     const SHOPPINGCOUNT = '购买数量';

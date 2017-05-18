@@ -21,21 +21,21 @@ class AscottajaxController extends \BaseController {
     }
 
     /**
-     * 获取tag列表
+     * 获取type列表
      */
-    public function getTagListAction() {
+    public function getTypeListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['limit'] = $this->getPost('limit');
         $paramList['hotelid'] = $this->getHotelId();
-        $result = $this->model->getTagList($paramList);
-        $result = $this->convertor->tagListConvertor($result);
+        $result = $this->model->getTypeList($paramList);
+        $result = $this->convertor->typeListConvertor($result);
         $this->echoJson($result);
     }
 
     /**
-     * 新建和编辑tag信息数据
+     * 新建和编辑type信息数据
      */
-    private function handlerTagSaveParams() {
+    private function handlerTypeSaveParams() {
         $paramList = array();
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
         $paramList['title_lang2'] = trim($this->getPost("titleLang2"));
@@ -45,21 +45,21 @@ class AscottajaxController extends \BaseController {
     }
 
     /**
-     * 新建tag信息
+     * 新建type信息
      */
-    public function createTagAction() {
-        $paramList = $this->handlerTagSaveParams();
-        $result = $this->model->saveTagDataInfo($paramList);
+    public function createTypeAction() {
+        $paramList = $this->handlerTypeSaveParams();
+        $result = $this->model->saveTypeDataInfo($paramList);
         $this->echoJson($result);
     }
 
     /**
-     * 更新tag信息
+     * 更新type信息
      */
-    public function updateTagAction() {
-        $paramList = $this->handlerTagSaveParams();
+    public function updateTypeAction() {
+        $paramList = $this->handlerTypeSaveParams();
         $paramList['id'] = intval($this->getPost("id"));
-        $result = $this->model->saveTagDataInfo($paramList);
+        $result = $this->model->saveTypeDataInfo($paramList);
         $this->echoJson($result);
     }
 

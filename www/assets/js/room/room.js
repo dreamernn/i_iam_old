@@ -1,18 +1,18 @@
 var iHotel = iHotel || {};
-iHotel.poiList = (function ($, ypGlobal) {
+iHotel.roomRoom = (function ($, ypGlobal) {
 
-    var ajax = YP.ajax, tips = YP.alert, poiList = new YP.list, poiForm = new YP.form;
+    var tips = YP.alert, dataList = new YP.list, dataForm = new YP.form;
     var searchButton = $("#searchBtn");
 
     /**
      * 初始化列表
      */
     function initList() {
-        $("#filter_typeid,#filter_tagid").select2({
+        $("#filter_typeid,#filter_floor").select2({
             placeholder: '全部',
             language: 'zh-CN'
         });
-        poiList.init({
+        dataList.init({
             colCount: 9,
             autoLoad: true,
             listUrl: ypGlobal.listUrl,
@@ -20,7 +20,7 @@ iHotel.poiList = (function ($, ypGlobal) {
             searchButtonDomObject: searchButton,
             listTemplate: 'dataList_tpl',
             listSuccess: function (data) {
-                poiList.writeListData(data);
+                dataList.writeListData(data);
             },
             listFail: function (data) {
                 tips.show('数据加载失败！');
@@ -32,27 +32,27 @@ iHotel.poiList = (function ($, ypGlobal) {
      * 初始化编辑新增
      */
     function initEditor() {
-        // 初始化表单保存
-        var detailModal = $("#editor");
-        $("#edit_typeid,#edit_tagid").select2({
+        $("#edit_typeid,#edit_floor").select2({
             placeholder: '全部',
             language: 'zh-CN',
             width: 210
         });
-        poiForm.init({
+        // 初始化表单保存
+        var detailModal = $("#editor");
+        dataForm.init({
             editorDom: $("#listEditor"),
             saveButtonDom: $("#saveListData"),
             checkParams: eval(ypGlobal.checkParams),
             modelDom: detailModal,
             saveBefore: function (saveParams) {
-                poiForm.updateParams({
+                dataForm.updateParams({
                     saveUrl: saveParams.id > 0 ? ypGlobal.updateUrl : ypGlobal.createUrl
                 });
-                saveParams = poiForm.makeRecord(saveParams, saveParams.id, saveParams.nameLang1);
+                saveParams = dataForm.makeRecord(saveParams, saveParams.id, saveParams.titleLang1);
                 return saveParams;
             },
             saveSuccess: function (data) {
-                poiList.reLoadList();
+                dataList.reLoadList();
             },
             saveFail: function (data) {
                 tips.show(data.msg);
@@ -60,8 +60,7 @@ iHotel.poiList = (function ($, ypGlobal) {
         });
         // 新建产品
         $("#createData").on('click', function () {
-            $("#ossfile").html("");
-            poiForm.writeEditor({
+            dataForm.writeEditor({
                 editorDom: $("#listEditor")
             });
         });
@@ -75,25 +74,17 @@ iHotel.poiList = (function ($, ypGlobal) {
                     dataList[dataOne.attr('type')] = dataOne.data('value');
                 }
             });
-            poiForm.writeEditor({
+            dataForm.writeEditor({
                 editorDom: $("#listEditor"),
                 writeData: dataList
             });
-            $("#ossfile").html("");
             detailModal.modal('show');
-        });
-    }
-
-    function initArticleEditor() {
-        $("#dataList").on('click', 'button[op=editArticle]', function () {
-            window.open('/article/editor?dataid=' + $(this).data('dataid') + '&datatype=' + $(this).data('type') + '&article=' + $(this).data('article'));
         });
     }
 
     function init() {
         initList();
         initEditor();
-        initArticleEditor();
     }
 
     return {
@@ -102,5 +93,5 @@ iHotel.poiList = (function ($, ypGlobal) {
 })(jQuery, YP_GLOBAL_VARS);
 
 $(function () {
-    iHotel.poiList.init();
+    iHotel.roomRoom.init();
 })

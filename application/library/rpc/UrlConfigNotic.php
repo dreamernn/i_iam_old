@@ -214,6 +214,11 @@ class Rpc_UrlConfigNotic {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
                 'pdf' => array(
                     'required' => false,
                     'format' => 'string',
@@ -290,6 +295,11 @@ class Rpc_UrlConfigNotic {
                 'sort' => array(
                     'required' => false,
                     'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
                 'pdf' => array(

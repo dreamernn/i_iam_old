@@ -42,6 +42,18 @@
                     </div>
                     <div class="control-group" op="editFiled">
                         <?php $filedName = 'typeid';
+                        $filedTitle = Enum_Lang::getPageText('poi', 'typeTitle'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <select id="edit_<?php echo $filedName; ?>" data-title="<?php echo $filedTitle; ?>">
+                                <?php foreach ($typeList as $type) { ?>
+                                    <option value="<?php echo $type['id']; ?>"><?php echo $type['title_lang1']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'tagid';
                         $filedTitle = Enum_Lang::getPageText('poi', 'tagTitle'); ?>
                         <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
                         <div class="controls">

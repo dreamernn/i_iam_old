@@ -87,6 +87,7 @@ class ShoppingModel extends \BaseModel {
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
             $paramList['sort'] ? $params['sort'] = $paramList['sort'] : false;
             $paramList['video'] ? $params['video'] = $paramList['video'] : false;
+            $paramList['price'] ? $params['price'] = $paramList['price'] : false;
 
             if (empty($params['title_lang1'])) {
                 break;

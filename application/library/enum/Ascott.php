@@ -1,7 +1,7 @@
 <?php
 class Enum_Ascott {
 
-    public static function getTagMustInput() {
+    public static function getTypeMustInput() {
         return array(
             'titleLang1',
         );

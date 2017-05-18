@@ -65,6 +65,14 @@
                         </div>
                     </div>
                     <div class="control-group" op="editFiled">
+                        <?php $filedName = 'url';
+                        $filedTitle = Enum_Lang::getPageText('promotion', 'url'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <input type="text" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span8" data-title="<?php echo $filedTitle; ?>">
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
                         <label class="control-label" for="edit_status"><?php echo Enum_Lang::getPageText('promotion', 'status'); ?>：</label>
                         <div class="controls">
                             <select id="edit_status" data-title="状态">

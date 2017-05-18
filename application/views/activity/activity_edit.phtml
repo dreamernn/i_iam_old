@@ -10,7 +10,6 @@
             <div class="modal-body" id="detailBody" mf="modalfix">
                 <form class="form-horizontal" id="listEditor">
                     <input type="hidden" id="edit_id" value="0">
-
                     <?php foreach ($hotelLanguageList as $index => $language) { ?>
                         <?php $filedTitle = Enum_Lang::getPageText('activity', 'activityTitle') . '（' . Enum_Lang::getPageText('language', $language) . '）'; ?>
                         <?php $filedIndex = $index + 1; ?>
@@ -29,6 +28,15 @@
                                     <option value="<?php echo $tag['id']; ?>"><?php echo $tag['title_lang1']; ?></option>
                                 <?php } ?>
                             </select>
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'pic';
+                        $filedTitle = Enum_Lang::getPageText('activity', 'pic'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <img src="" id="edit_<?php echo $filedName; ?>_show" style="max-height: 80px;"/>
+                            <input type="file" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span4" data-title="楼层图" accept="<?php echo implode(",", $allowTypeImage); ?>">
                         </div>
                     </div>
                     <div class="control-group" op="editFiled">
@@ -60,6 +68,30 @@
                         <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
                         <div class="controls">
                             <input type="number" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span1" data-title="<?php echo $filedTitle; ?>">
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'ordercount';
+                        $filedTitle = Enum_Lang::getPageText('activity', 'ordercount'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <input type="number" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span1" data-title="<?php echo $filedTitle; ?>">
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'fromdate';
+                        $filedTitle = Enum_Lang::getPageText('activity', 'fromdate'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <input type="text" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span2" data-title="<?php echo $filedTitle; ?>">
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'todate';
+                        $filedTitle = Enum_Lang::getPageText('activity', 'todate'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <input type="text" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span2" data-title="<?php echo $filedTitle; ?>">
                         </div>
                     </div>
                     <div class="control-group" op="editFiled">

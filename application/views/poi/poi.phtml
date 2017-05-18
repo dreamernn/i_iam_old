@@ -31,6 +31,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th><?php echo Enum_Lang::getPageText('poi', 'poiTitle'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('poi', 'typeTitle'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('poi', 'tagTitle'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('poi', 'pdf'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('poi', 'video'); ?></th>
@@ -79,6 +80,7 @@
         <td type="id" data-value="{{info.id}}">{{info.id}}</td>
         <td type="nameLang1" data-value="{{info.nameLang1}}">{{info.nameLang1}}</td>
         <td type="typeid" data-value="{{info.typeid}}">{{info.typeShow}}</td>
+        <td type="tagid" data-value="{{info.tagid}}">{{info.tagShow}}</td>
         <td type="pdf" data-value="{{info.pdf}}">
             {{if info.pdf}}
             <a href="{{info.pdf}}" target="_blank">

@@ -76,6 +76,14 @@ class HotelModel extends \BaseModel {
                 }
                 $params['index_background'] = $uploadResult['data']['picKey'];
             }
+            if ($paramList['localpic']) {
+                $uploadResult = $this->uploadFile($paramList['localpic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = 'APP首页背景图上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['localpic'] = $uploadResult['data']['picKey'];
+            }
             if ($paramList['voice_lang1']) {
                 $uploadResult = $this->uploadFile($paramList['voice_lang1'], Enum_Oss::OSS_PATH_VOICE);
                 if ($uploadResult['code']) {
@@ -108,14 +116,19 @@ class HotelModel extends \BaseModel {
     /**
      * 获取楼层列表
      */
-    public function getFloorList($paramList) {
+    public function getFloorList($paramList, $cacheTime = 0) {
         do {
-            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
-            $paramList['floor'] ? $params['floor'] = $paramList['floor'] : false;
-            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
-            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
-            $result = $this->rpcClient->getResultRaw('GH003', $params);
+            if ($cacheTime == 0) {
+                $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+                $paramList['floor'] ? $params['floor'] = $paramList['floor'] : false;
+                isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
+                $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            } else {
+                $params['limit'] = 0;
+            }
+            $isCache = $cacheTime != 0 ? true : false;
+            $result = $this->rpcClient->getResultRaw('GH003', $params, $isCache, $cacheTime);
         } while (false);
         return (array)$result;
     }
@@ -157,6 +170,9 @@ class HotelModel extends \BaseModel {
             }
             $interfaceId = $params['id'] ? 'GH005' : 'GH004';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+            if (!$result['code']) {
+                $this->getFloorList(array('hotelid' => $params['hotelid']), -2);
+            }
         } while (false);
         return $result;
     }
@@ -169,6 +185,7 @@ class HotelModel extends \BaseModel {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
             $paramList['name'] ? $params['name'] = $paramList['name'] : false;
+            $paramList['icon'] ? $params['icon'] = $paramList['icon'] : false;
             isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
             $result = $this->rpcClient->getResultRaw('GH006', $params);
@@ -184,6 +201,7 @@ class HotelModel extends \BaseModel {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['icon'] ? $params['icon'] = $paramList['icon'] : false;
             $paramList['name_lang1'] ? $params['name_lang1'] = $paramList['name_lang1'] : false;
             $paramList['name_lang2'] ? $params['name_lang2'] = $paramList['name_lang2'] : false;
             $paramList['name_lang3'] ? $params['name_lang3'] = $paramList['name_lang3'] : false;
@@ -192,6 +210,18 @@ class HotelModel extends \BaseModel {
             $paramList['introduct_lang3'] ? $params['introduct_lang3'] = $paramList['introduct_lang3'] : false;
             $paramList['video'] ? $params['video'] = $paramList['video'] : false;
             !is_null($paramList['status']) ? $params['status'] = intval($paramList['status']) : false;
+
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+            $checkParams = Enum_Hotel::getFacilitiesInput();
+            foreach ($checkParams as $checkParamOne) {
+                $checkParamOne = str_replace('Lang', '_lang', $checkParamOne);
+                if (empty($params[$checkParamOne])) {
+                    break 2;
+                }
+            }
 
             if ($paramList['pdf']) {
                 $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
@@ -232,6 +262,17 @@ class HotelModel extends \BaseModel {
             $paramList['introduct_lang1'] ? $params['introduct_lang1'] = $paramList['introduct_lang1'] : false;
             $paramList['introduct_lang2'] ? $params['introduct_lang2'] = $paramList['introduct_lang2'] : false;
             $paramList['introduct_lang3'] ? $params['introduct_lang3'] = $paramList['introduct_lang3'] : false;
+            $paramList['sort'] ? $params['sort'] = $paramList['sort'] : false;
+            $paramList['video'] ? $params['video'] = $paramList['video'] : false;
+
+            if ($paramList['pdf']) {
+                $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
+                if ($uploadResult['code']) {
+                    $result['msg'] = 'pdf上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pdf'] = $uploadResult['data']['picKey'];
+            }
 
             $interfaceId = $params['id'] ? 'GH011' : 'GH010';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);

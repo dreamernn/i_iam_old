@@ -88,10 +88,14 @@ class ActivityajaxController extends \BaseController {
         $paramList['title_lang2'] = trim($this->getPost("titleLang2"));
         $paramList['title_lang3'] = trim($this->getPost("titleLang3"));
         $paramList['pdf'] = $_FILES['pdf'];
+        $paramList['pic'] = $_FILES['pic'];
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
         $paramList['tagid'] = intval($this->getPost("tagid"));
         $paramList['status'] = intval($this->getPost("status"));
+        $paramList['ordercount'] = intval($this->getPost("ordercount"));
+        $paramList['fromdate'] = strtotime($this->getPost("fromdate"));
+        $paramList['todate'] = strtotime($this->getPost("todate"));
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['groupid'] = intval($this->getGroupId());
         return $paramList;

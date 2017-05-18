@@ -10,7 +10,7 @@ class Convertor_Ascott extends Convertor_Base {
      * @param array $list
      * @return array
      */
-    public function tagListConvertor($list) {
+    public function typeListConvertor($list) {
         $data = array(
             'code' => intval($list['code']),
             'msg' => $list['msg']

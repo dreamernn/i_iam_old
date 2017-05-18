@@ -28,6 +28,8 @@ iHotel.activityList = (function ($, ypGlobal) {
      * 初始化编辑新增
      */
     function initEditor() {
+        datatimepickerConfig.startDate = new Date();
+        $("#edit_fromdate,#edit_todate").datetimepicker(datatimepickerConfig);
         // 初始化表单保存
         var detailModal = $("#editor");
         activityForm.init({

@@ -15,5 +15,6 @@ class Lang_Zh_Promotion {
     const SORT = '排序';
     const PDF = 'PDF';
     const VIDEO = '视频';
+    const URL = '链接';
 
 }

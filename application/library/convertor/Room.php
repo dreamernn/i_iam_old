@@ -33,6 +33,7 @@ class Convertor_Room extends Convertor_Base {
                 $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('room', 'enable') : Enum_Lang::getPageText('room', 'disable');
                 $dataTemp['sort'] = $value['sort'];
                 $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
+                $dataTemp['pic'] = $value['pic'] ? Enum_Img::getPathByKeyAndType($value['pic']) : '';
                 $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
                 $dataTemp['video'] = $value['video'];
                 $tmp[] = $dataTemp;
@@ -72,6 +73,8 @@ class Convertor_Room extends Convertor_Base {
                 $dataTemp['bedtypeLang3'] = $value['bedtype_lang3'];
                 $dataTemp['createtime'] = $value['createtime'] ? date('Y-m-d H:i:s', $value['createtime']) : '';
                 $dataTemp['residList'] = $value['resid_list'];
+                $dataTemp['roomcount'] = $value['roomCount'];
+                $dataTemp['personcount'] = $value['personCount'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;
@@ -82,6 +85,36 @@ class Convertor_Room extends Convertor_Base {
         return $data;
     }
 
+    /**
+     * 房间列表
+     */
+    public function roomListConvertor($list) {
+        $data = array(
+            'code' => intval($list['code']),
+            'msg' => $list['msg']
+        );
+        if (isset($list['code']) && !$list['code']) {
+            $result = $list['data'];
+            $tmp = array();
+            foreach ($result['list'] as $key => $value) {
+                $dataTemp = array();
+                $dataTemp['id'] = $value['id'];
+                $dataTemp['room'] = $value['room'];
+                $dataTemp['size'] = $value['size'];
+                $dataTemp['typeid'] = $value['typeId'];
+                $dataTemp['typeShow'] = $value['typeName'];
+                $dataTemp['floor'] = $value['floor'];
+                $dataTemp['floorShow'] = $value['floorName'];
+                $dataTemp['createtime'] = $value['createTime'] ? date('Y-m-d H:i:s', $value['createTime']) : '';
+                $tmp[] = $dataTemp;
+            }
+            $data['data']['list'] = $tmp;
+            $data['data']['pageData']['page'] = intval($result['page']);
+            $data['data']['pageData']['rowNum'] = intval($result['total']);
+            $data['data']['pageData']['pageNum'] = ceil($result['total'] / $result['limit']);
+        }
+        return $data;
+    }
 }
 
 ?>

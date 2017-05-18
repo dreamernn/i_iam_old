@@ -29,6 +29,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'facilitiesTitle'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('hotel', 'facilitiesIcon'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'pdf'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'video'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'createTime'); ?></th>
@@ -71,6 +72,7 @@
     <tr dataId="{{info.id}}">
         <td type="id" data-value="{{info.id}}">{{info.id}}</td>
         <td type="nameLang1" data-value="{{info.nameLang1}}">{{info.nameLang1}}</td>
+        <td type="icon" data-value="{{info.icon}}">{{info.icon}}</td>
         <td type="pdf" data-value="{{info.pdf}}">
             {{if info.pdf}}
             <a href="{{info.pdf}}" target="_blank">

@@ -12,7 +12,14 @@ class PoiController extends BaseController {
     /**
      * 标签列表
      */
-    public function tagListAction() {
+    public function typeListAction() {
+        $this->_view->display('poi/type.phtml');
+    }
+
+    /**
+     * 标签列表
+     */
+    public function tagAction() {
         $this->_view->display('poi/tag.phtml');
     }
 
@@ -21,6 +28,8 @@ class PoiController extends BaseController {
      */
     public function listAction() {
         $poiModel = new PoiModel();
+        $typeList = $poiModel->getTypeList(array('hotelid' => $this->getHotelId()), 3600);
+        $this->_view->assign('typeList', $typeList['data']['list']);
         $tagList = $poiModel->getTagList(array('hotelid' => $this->getHotelId()), 3600);
         $this->_view->assign('tagList', $tagList['data']['list']);
         $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');

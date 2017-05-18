@@ -38,6 +38,7 @@ class HotelajaxController extends \BaseController {
         $paramList['website'] = trim($this->getPost("website"));
         $paramList['logo'] = $_FILES['logo'];
         $paramList['index_background'] = $_FILES['indexBackground'];
+        $paramList['localpic'] = $_FILES['localpic'];
         $paramList['voice_lang1'] = $_FILES['voiceLang1'];
         $paramList['voice_lang2'] = $_FILES['voiceLang2'];
         $paramList['voice_lang3'] = $_FILES['voiceLang3'];
@@ -105,6 +106,7 @@ class HotelajaxController extends \BaseController {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['name'] = trim($this->getPost('name'));
+        $paramList['icon'] = trim($this->getPost('icon'));
         $status = $this->getPost('status');
         $status !== 'all' && !is_null($status) ? $paramList['status'] = intval($status) : false;
         $result = $this->hotelModal->getFacilitiesList($paramList);
@@ -118,6 +120,7 @@ class HotelajaxController extends \BaseController {
     private function handlerFacilitiesSaveParams() {
         $paramList = array();
         $paramList['hotelid'] = intval($this->getHotelId());
+        $paramList['icon'] = $this->getPost("icon");
         $paramList['name_lang1'] = $this->getPost("nameLang1");
         $paramList['name_lang2'] = $this->getPost("nameLang2");
         $paramList['name_lang3'] = $this->getPost("nameLang3");
@@ -169,6 +172,9 @@ class HotelajaxController extends \BaseController {
         $paramList['introduct_lang1'] = $this->getPost("introductLang1");
         $paramList['introduct_lang2'] = $this->getPost("introductLang2");
         $paramList['introduct_lang3'] = $this->getPost("introductLang3");
+        $paramList['pdf'] = $_FILES['pdf'];
+        $paramList['video'] = trim($this->getPost("video"));
+        $paramList['sort'] = intval($this->getPost("sort"));
         return $paramList;
     }
 

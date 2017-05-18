@@ -71,6 +71,14 @@ class NoticModel extends \BaseModel {
             if (empty($params['title_lang1']) || empty($params['hotelid'])) {
                 break;
             }
+            if ($paramList['pic']) {
+                $uploadResult = $this->uploadFile($paramList['pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = '图上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pic'] = $uploadResult['data']['picKey'];
+            }
             if ($paramList['pdf']) {
                 $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
                 if ($uploadResult['code']) {

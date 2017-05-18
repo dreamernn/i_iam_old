@@ -20,6 +20,48 @@ class PoiajaxController extends \BaseController {
     }
 
     /**
+     * 获取type列表
+     */
+    public function getTypeListAction() {
+        $paramList['page'] = $this->getPost('page');
+        $paramList['hotelid'] = $this->getHotelId();
+        $result = $this->model->getTypeList($paramList);
+        $result = $this->convertor->typeListConvertor($result);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 新建和编辑type信息数据
+     */
+    private function handlerTypeSaveParams() {
+        $paramList = array();
+        $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
+        $paramList['title_lang2'] = trim($this->getPost("titleLang2"));
+        $paramList['title_lang3'] = trim($this->getPost("titleLang3"));
+        $paramList['hotelid'] = intval($this->getHotelId());
+        return $paramList;
+    }
+
+    /**
+     * 新建type信息
+     */
+    public function createTypeAction() {
+        $paramList = $this->handlerTypeSaveParams();
+        $result = $this->model->saveTypeDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 更新type信息
+     */
+    public function updateTypeAction() {
+        $paramList = $this->handlerTypeSaveParams();
+        $paramList['id'] = intval($this->getPost("id"));
+        $result = $this->model->saveTypeDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    /**
      * 获取tag列表
      */
     public function getTagListAction() {
@@ -95,6 +137,7 @@ class PoiajaxController extends \BaseController {
         $paramList['lat'] = trim($this->getPost("lat"));
         $paramList['lng'] = trim($this->getPost("lng"));
         $paramList['typeid'] = intval($this->getPost("typeid"));
+        $paramList['tagid'] = intval($this->getPost("tagid"));
         $paramList['status'] = intval($this->getPost("status"));
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['groupid'] = intval($this->getGroupId());

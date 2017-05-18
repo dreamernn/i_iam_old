@@ -19,6 +19,7 @@ class Enum_Hotel {
 
     public static function getFacilitiesInput() {
         return array(
+            'icon',
             'nameLang1',
         );
     }

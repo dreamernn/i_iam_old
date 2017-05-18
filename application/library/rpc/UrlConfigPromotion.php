@@ -194,6 +194,11 @@ class Rpc_UrlConfigPromotion {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'url' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
                 'status' => array(
                     'required' => false,
                     'format' => 'int',
@@ -268,6 +273,11 @@ class Rpc_UrlConfigPromotion {
                     'style' => 'interface'
                 ),
                 'article_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'url' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
