@@ -16,6 +16,7 @@ class ShoppingController extends \BaseController {
         $shoppingModel = new ShoppingModel();
         $tagList = $shoppingModel->getTagList(array('hotelid' => $this->getHotelId()), 3600 * 3);
         $this->_view->assign('tagList', $tagList['data']['list']);
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
         $this->_view->display('shopping/shopping.phtml');
     }
 

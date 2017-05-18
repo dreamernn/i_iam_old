@@ -23,6 +23,7 @@ class NoticController extends BaseController {
         $noticModel = new NoticModel();
         $tagList = $noticModel->getTagList(array('hotelid' => $this->getHotelId()), 3600);
         $this->_view->assign('tagList', $tagList['data']['list']);
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
         $this->_view->display('notic/notic.phtml');
     }
 }

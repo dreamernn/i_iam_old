@@ -9,6 +9,9 @@ class Lang_Zh_Activity {
     const STATUS = '状态';
     const ENABLE = '启用';
     const DISABLE = '禁用';
+    const SORT = '排序';
+    const PDF = 'PDF';
+    const VIDEO = '视频';
     const CREATETIME = '创建时间';
     const UPDATETIME = '更新时间';
 

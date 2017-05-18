@@ -71,6 +71,14 @@ class NewsModel extends \BaseModel {
             if (empty($params['title_lang1']) || empty($params['hotelid'])) {
                 break;
             }
+            if ($paramList['pdf']) {
+                $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
+                if ($uploadResult['code']) {
+                    $result['msg'] = 'pdf上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pdf'] = $uploadResult['data']['picKey'];
+            }
             $interfaceId = $params['id'] ? 'NT006' : 'NT007';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);
         } while (false);

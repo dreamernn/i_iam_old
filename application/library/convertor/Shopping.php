@@ -59,6 +59,10 @@ class Convertor_Shopping extends Convertor_Base {
                 $dataTemp['tagid'] = $value['tagid'];
                 $dataTemp['tagShow'] = $value['tagName'];
                 $dataTemp['createtime'] = $value['createtime'] ? date('Y-m-d H:i:s', $value['createtime']) : '';
+                $dataTemp['sort'] = $value['sort'];
+                $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
+                $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
+                $dataTemp['video'] = $value['video'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

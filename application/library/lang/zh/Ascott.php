@@ -12,6 +12,9 @@ class Lang_Zh_Ascott {
     const DISABLE = '禁用';
     const CREATETIME = '创建时间';
     const UPDATETIME = '更新时间';
+    const SORT = '排序';
+    const PDF = 'PDF';
+    const VIDEO = '视频';
 
     const ASCOTTADDRESS = '地址';
     const ASCOTTTEL = '电话';

@@ -93,6 +93,9 @@ class ShoppingajaxController extends \BaseController {
         $paramList['tagid'] = intval($this->getPost("tagid"));
         $paramList['pic'] = $_FILES['pic'];
         $paramList['hotelid'] = intval($this->getHotelId());
+        $paramList['pdf'] = $_FILES['pdf'];
+        $paramList['video'] = trim($this->getPost("video"));
+        $paramList['sort'] = intval($this->getPost("sort"));
         return $paramList;
     }
 

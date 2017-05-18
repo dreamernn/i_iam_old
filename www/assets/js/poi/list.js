@@ -60,6 +60,7 @@ iHotel.poiList = (function ($, ypGlobal) {
         });
         // 新建产品
         $("#createData").on('click', function () {
+            $("#ossfile").html("");
             poiForm.writeEditor({
                 editorDom: $("#listEditor")
             });
@@ -78,6 +79,7 @@ iHotel.poiList = (function ($, ypGlobal) {
                 editorDom: $("#listEditor"),
                 writeData: dataList
             });
+            $("#ossfile").html("");
             detailModal.modal('show');
         });
     }

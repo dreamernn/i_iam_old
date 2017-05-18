@@ -10,6 +10,9 @@ class Lang_Zh_Shopping {
     const SHOPPINGINTRODUCET = '物品介绍';
     const SHOPPINGPIC = '图片';
     const CREATETIME = '创建时间';
+    const SORT = '排序';
+    const PDF = 'PDF';
+    const VIDEO = '视频';
 
     const SHOPPING = '物品';
     const SHOPPINGCOUNT = '购买数量';

@@ -254,6 +254,21 @@ class Rpc_UrlConfigLife {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
     	'LI007' => array(
@@ -358,6 +373,21 @@ class Rpc_UrlConfigLife {
                     'style' => 'interface'
                 ),
                 'updatetime' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

@@ -224,6 +224,21 @@ class Rpc_UrlConfigActivity {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'GA007' => array(
@@ -234,6 +249,11 @@ class Rpc_UrlConfigActivity {
             'param' => array(
                 'id' => array(
                     'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'sort' => array(
+                    'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),
@@ -258,6 +278,16 @@ class Rpc_UrlConfigActivity {
                     'style' => 'interface'
                 ),
                 'title_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

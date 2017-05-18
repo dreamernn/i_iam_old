@@ -71,6 +71,10 @@ class Convertor_Ascott extends Convertor_Base {
                 $dataTemp['typeShow'] = $value['tagName_lang1'];
                 $dataTemp['createtime'] = $value['createTime'] ? date('Y-m-d H:i:s', $value['createTime']) : '';
                 $dataTemp['updatetime'] = $value['updateTime'] ? date('Y-m-d H:i:s', $value['updateTime']) : '';
+                $dataTemp['sort'] = $value['sort'];
+                $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
+                $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
+                $dataTemp['video'] = $value['video'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

@@ -85,6 +85,8 @@ class ShoppingModel extends \BaseModel {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
             $paramList['tagid'] ? $params['tagid'] = $paramList['tagid'] : false;
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['sort'] ? $params['sort'] = $paramList['sort'] : false;
+            $paramList['video'] ? $params['video'] = $paramList['video'] : false;
 
             if (empty($params['title_lang1'])) {
                 break;
@@ -97,6 +99,14 @@ class ShoppingModel extends \BaseModel {
                     break;
                 }
                 $params['pic'] = $uploadResult['data']['picKey'];
+            }
+            if ($paramList['pdf']) {
+                $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
+                if ($uploadResult['code']) {
+                    $result['msg'] = 'pdf上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pdf'] = $uploadResult['data']['picKey'];
             }
             $interfaceId = $params['id'] ? 'GS007' : 'GS006';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);

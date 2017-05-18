@@ -68,9 +68,13 @@ class Convertor_Poi extends Convertor_Base {
                 $dataTemp['status'] = $value['status'];
                 $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('ascott', 'enable') : Enum_Lang::getPageText('ascott', 'disable');
                 $dataTemp['typeid'] = $value['typeId'];
-                $dataTemp['typeShow'] = $value['tagName_lang1'];
+                $dataTemp['typeShow'] = $value['typeName_lang1'];
                 $dataTemp['createtime'] = $value['createTime'] ? date('Y-m-d H:i:s', $value['createTime']) : '';
                 $dataTemp['updatetime'] = $value['updateTime'] ? date('Y-m-d H:i:s', $value['updateTime']) : '';
+                $dataTemp['sort'] = $value['sort'];
+                $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
+                $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
+                $dataTemp['video'] = $value['video'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

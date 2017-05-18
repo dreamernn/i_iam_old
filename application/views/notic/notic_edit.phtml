@@ -32,6 +32,37 @@
                         </div>
                     </div>
                     <div class="control-group" op="editFiled">
+                        <?php $filedName = 'pdf';
+                        $filedTitle = Enum_Lang::getPageText('notic', 'pdf'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <input type="file" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span4" data-title="<?php echo $filedTitle; ?>" accept="<?php echo implode(",", $allowTypePdf); ?>">
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'video';
+                        $filedTitle = Enum_Lang::getPageText('notic', 'video'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <div>
+                                <div id="container">
+                                    <a id="selectfiles" href="javascript:void(0);" class='btn'>选择文件</a>
+                                    <a id="postfiles" href="javascript:void(0);" class='btn'>开始上传</a>
+                                </div>
+                                <div id="ossfile"></div>
+                            </div>
+                            <input id="edit_<?php echo $filedName; ?>" type="hidden" data-title="<?php echo $filedTitle; ?>"/>
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'sort';
+                        $filedTitle = Enum_Lang::getPageText('notic', 'sort'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <input type="number" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span1" data-title="<?php echo $filedTitle; ?>">
+                        </div>
+                    </div>
+                    <div class="control-group" op="editFiled">
                         <label class="control-label" for="edit_status"><?php echo Enum_Lang::getPageText('notic', 'status'); ?>：</label>
                         <div class="controls">
                             <select id="edit_status" data-title="状态">

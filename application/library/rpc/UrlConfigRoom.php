@@ -67,7 +67,17 @@ class Rpc_UrlConfigRoom {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
@@ -130,7 +140,17 @@ class Rpc_UrlConfigRoom {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

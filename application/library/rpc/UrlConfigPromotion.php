@@ -209,6 +209,21 @@ class Rpc_UrlConfigPromotion {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'P007' => array(
@@ -260,6 +275,21 @@ class Rpc_UrlConfigPromotion {
                 'status' => array(
                     'required' => false,
                     'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
+                    'required' => false,
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
             )

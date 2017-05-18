@@ -19,6 +19,7 @@ class ActivityController extends \BaseController {
         $activityModel = new ActivityModel();
         $tagList = $activityModel->getTagList(array('hotelid' => $this->getHotelId()), 3600 * 3);
         $this->_view->assign('tagList', $tagList['data']['list']);
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
         $this->_view->display('activity/activity.phtml');
     }
 

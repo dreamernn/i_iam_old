@@ -35,11 +35,29 @@ iHotel.appShare = (function ($, ypGlobal) {
     function initEditor() {
         enableDataList.sortable({
             connectWith: "[op=shareList]",
-            placeholder: "ui-state-highlight"
+            placeholder: "ui-state-highlight",
+            items: "[op=shareOne]",
+            update: function () {
+                var emptyShare = enableDataList.find("#emptyShare");
+                if (enableDataList.find("[op=shareOne]").length) {
+                    emptyShare.hide();
+                } else {
+                    emptyShare.show();
+                }
+            }
         }).disableSelection();
         disableDataList.sortable({
             connectWith: "[op=shareList]",
-            placeholder: "ui-state-highlight"
+            placeholder: "ui-state-highlight",
+            items: "[op=shareOne]",
+            update: function () {
+                var emptyShare = disableDataList.find("#emptyShare");
+                if (disableDataList.find("[op=shareOne]").length) {
+                    emptyShare.hide();
+                } else {
+                    emptyShare.show();
+                }
+            }
         }).disableSelection();
 
         saveShareData.on('click', function () {

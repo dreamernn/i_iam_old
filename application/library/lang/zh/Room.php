@@ -12,6 +12,9 @@ class Lang_Zh_Room {
     const RESNAME = '物品名称';
     const RESPDF = 'PDF';
     const RESINTRODCT = '物品介绍';
+    const SORT = '排序';
+    const PDF = 'PDF';
+    const VIDEO = '视频';
 
     const TYPETITLE = '房型名称';
     const TYPESIZE = '房型面积';

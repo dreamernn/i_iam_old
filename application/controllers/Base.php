@@ -155,5 +155,9 @@ class BaseController extends \Yaf_Controller_Abstract {
         $this->_view->assign($pageKey, array_keys($allowType['data']['list']));
     }
 
-
+    public function makeOssKeyAction() {
+        $ossModel = new OssModel();
+        $ossKey = $ossModel->makeOssKey();
+        echo json_encode($ossKey);
+    }
 }

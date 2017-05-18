@@ -244,6 +244,21 @@ class Rpc_UrlConfigPoi {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'PT007' => array(
@@ -340,6 +355,21 @@ class Rpc_UrlConfigPoi {
                 'status' => array(
                     'required' => false,
                     'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pdf' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'video' => array(
+                    'required' => false,
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
             )

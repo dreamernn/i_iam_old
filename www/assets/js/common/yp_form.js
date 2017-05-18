@@ -57,7 +57,6 @@ YP.form = function () {
             var $editKey = $editId.split("_");
             $editKey = $editKey[1];
             switch ($editType) {
-                case "hidden":
                 case "number":
                     $writeValue = option.writeData[$editKey] ? option.writeData[$editKey] : 0;
                     $editDom.val($writeValue).data('old', $writeValue);
@@ -76,6 +75,7 @@ YP.form = function () {
                     }
                     $editDom.trigger("change");
                     break;
+                case "hidden":
                 case "text":
                 case "date":
                 case "textarea":

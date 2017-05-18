@@ -23,6 +23,7 @@ class AscottController extends BaseController {
         $ascottModel = new AscottModel();
         $tagList = $ascottModel->getTagList(array('hotelid' => $this->getHotelId()), 3600);
         $this->_view->assign('tagList', $tagList['data']['list']);
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
         $this->_view->display('ascott/ascott.phtml');
     }
 }

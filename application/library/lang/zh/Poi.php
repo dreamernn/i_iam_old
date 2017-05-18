@@ -12,6 +12,9 @@ class Lang_Zh_Poi {
     const DISABLE = '禁用';
     const CREATETIME = '创建时间';
     const UPDATETIME = '更新时间';
+    const SORT = '排序';
+    const PDF = 'PDF';
+    const VIDEO = '视频';
 
     const POIADDRESS = '地址';
     const POITEL = '电话';

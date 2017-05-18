@@ -60,6 +60,7 @@ iHotel.promotionList = (function ($, ypGlobal) {
         });
         // 新建产品
         $("#createData").on('click', function () {
+            $("#ossfile").html("");
             promotionForm.writeEditor({
                 editorDom: $("#listEditor")
             });
@@ -78,6 +79,7 @@ iHotel.promotionList = (function ($, ypGlobal) {
                 editorDom: $("#listEditor"),
                 writeData: dataList
             });
+            $("#ossfile").html("");
             detailModal.modal('show');
         });
     }

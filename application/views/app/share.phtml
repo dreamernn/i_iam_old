@@ -35,7 +35,7 @@
                                         <th><?php echo Enum_Lang::getPageText('app', 'disable'); ?></th>
                                     </tr>
                                     </thead>
-                                    <tbody id="disableDataList" op=" "></tbody>
+                                    <tbody id="disableDataList" op="shareList"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -62,9 +62,12 @@
 </body>
 </html>
 <script id="dataList_tpl" type="text/html">
+    <tr {{if shareList.length}}style="display:none;" {{/if}} id='emptyShare'>
+    <td style="height: 1px;"></td>
+    </tr>
     {{each shareList as share}}
-    <tr>
-        <td data-key="{{share.key}}" op="shareOne">{{share.title}}</td>
+    <tr data-key="{{share.key}}" op="shareOne">
+        <td>{{share.title}}</td>
     </tr>
     {{/each}}
 </script>

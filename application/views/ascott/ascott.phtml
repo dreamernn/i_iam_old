@@ -3,6 +3,7 @@
 <head>
     <?php include($webConfig['layoutPath'] . '/common/meta.phtml') ?>
     <link type="text/css" rel="stylesheet" href="<?php echo $webConfig['imgDomain']; ?>css/select2.min.css"/>
+    <link type="text/css" rel="stylesheet" href="<?php echo $webConfig['imgDomain']; ?>css/video.css"/>
 </head>
 <body>
 <?php include($webConfig['layoutPath'] . '/common/header.phtml') ?>
@@ -31,6 +32,9 @@
                                         <th>ID</th>
                                         <th><?php echo Enum_Lang::getPageText('ascott', 'ascottTitle'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('ascott', 'tagTitle'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('ascott', 'pdf'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('ascott', 'video'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('ascott', 'sort'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('ascott', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('ascott', 'createtime'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('ascott', 'updatetime'); ?></th>
@@ -64,6 +68,8 @@
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/art.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/select2/select2.full.min.js" type="text/javascript"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/select2/zh-CN.js" type="text/javascript"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/lib/plupload/js/plupload.full.min.js" type="text/javascript"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/common/videoUpload.js" type="text/javascript"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/ascott/list.js"></script>
 </body>
 </html>
@@ -73,6 +79,21 @@
         <td type="id" data-value="{{info.id}}">{{info.id}}</td>
         <td type="nameLang1" data-value="{{info.nameLang1}}">{{info.nameLang1}}</td>
         <td type="typeid" data-value="{{info.typeid}}">{{info.typeShow}}</td>
+        <td type="pdf" data-value="{{info.pdf}}">
+            {{if info.pdf}}
+            <a href="{{info.pdf}}" target="_blank">
+                <?php echo Enum_Lang::getPageText('system', 'view'); ?>
+            </a>
+            {{/if}}
+        </td>
+        <td type="video" data-value="{{info.video}}">
+            {{if info.video}}
+            <a href="{{info.videoShow}}" target="_blank">
+                <?php echo Enum_Lang::getPageText('system', 'view'); ?>
+            </a>
+            {{/if}}
+        </td>
+        <td type="sort" data-value="{{info.sort}}">{{info.sort}}</td>
         <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
         <td type="createtime" data-value="{{info.createtime}}">{{info.createtime}}</td>
         <td type="updatetime" data-value="{{info.updatetime}}">{{info.updatetime}}</td>

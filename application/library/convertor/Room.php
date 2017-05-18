@@ -23,7 +23,6 @@ class Convertor_Room extends Convertor_Base {
                 $dataTemp['nameLang1'] = $value['name_lang1'];
                 $dataTemp['nameLang2'] = $value['name_lang2'];
                 $dataTemp['nameLang3'] = $value['name_lang3'];
-                $dataTemp['pdf'] = Enum_Img::getPathByKeyAndType($value['pdf']);
                 $dataTemp['introductLang1'] = $value['introduct_lang1'];
                 $dataTemp['introductLang2'] = $value['introduct_lang2'];
                 $dataTemp['introductLang3'] = $value['introduct_lang3'];
@@ -32,6 +31,10 @@ class Convertor_Room extends Convertor_Base {
                 $dataTemp['detailLang3'] = $value['detail_lang3'];
                 $dataTemp['status'] = $value['status'];
                 $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('room', 'enable') : Enum_Lang::getPageText('room', 'disable');
+                $dataTemp['sort'] = $value['sort'];
+                $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
+                $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
+                $dataTemp['video'] = $value['video'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

@@ -46,6 +46,8 @@ class RoomModel extends \BaseModel {
             $paramList['introduct_lang1'] ? $params['introduct_lang1'] = $paramList['introduct_lang1'] : false;
             $paramList['introduct_lang2'] ? $params['introduct_lang2'] = $paramList['introduct_lang2'] : false;
             $paramList['introduct_lang3'] ? $params['introduct_lang3'] = $paramList['introduct_lang3'] : false;
+            $paramList['sort'] ? $params['sort'] = $paramList['sort'] : false;
+            $paramList['video'] ? $params['video'] = $paramList['video'] : false;
             !is_null($paramList['status']) ? $params['status'] = intval($paramList['status']) : false;
 
             if (empty($params['name_lang1']) || empty($params['icon'])) {
