@@ -57,6 +57,11 @@ class Rpc_UrlConfigFeedback {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'listid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'type' => array(
                     'required' => true,
                     'format' => 'int',
@@ -91,6 +96,11 @@ class Rpc_UrlConfigFeedback {
                     'style' => 'interface'
                 ),
                 'hotelid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'listid' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
@@ -143,6 +153,105 @@ class Rpc_UrlConfigFeedback {
                     'format' => 'int',
                     'style' => 'interface'
                 )
+            )
+        ),
+        'F005' => array(
+            'name' => '获取表单列表',
+            'method' => 'getList',
+            'auth' => true,
+            'url' => '/FeedbackList/getList',
+            'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'name' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'page' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'limit' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                )
+            )
+        ),
+        'F006' => array(
+            'name' => '新建表单',
+            'method' => 'addFeedback',
+            'auth' => true,
+            'url' => '/FeedbackList/addFeedback',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'name' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'F007' => array(
+            'name' => '修改表单',
+            'method' => 'updateFeedbackById',
+            'auth' => true,
+            'url' => '/FeedbackList/updateFeedbackById',
+            'param' => array(
+                'id' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'name' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
             )
         ),
     );

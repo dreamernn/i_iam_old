@@ -16,11 +16,22 @@
             <div class="pull-left control-item">
                 <span class="control-label"><?php echo Enum_Lang::getPageText('feedback', 'questionType'); ?>：</span>
                 <div class="controls">
-                    <select id="filter_type' data-paramkey='type' class="input-medium select-long" op="filterCase">
+                    <select id="filter_type' data-paramkey='type' class=" input-medium select-long" op="filterCase">
+                    <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
+                    <option value="1"><?php echo Enum_Lang::getPageText('feedback', 'questionTypeInput'); ?></option>
+                    <option value="2"><?php echo Enum_Lang::getPageText('feedback', 'questionTypeSelect'); ?></option>
+                    <option value="3"><?php echo Enum_Lang::getPageText('feedback', 'questionTypeMuilt'); ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="pull-left control-item">
+                <span class="control-label"><?php echo Enum_Lang::getPageText('feedback', 'listname'); ?>：</span>
+                <div class="controls">
+                    <select id="filter_listid" data-paramkey='listid' class="input-medium select-long" op="filterCase">
                         <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
-                        <option value="1"><?php echo Enum_Lang::getPageText('feedback', 'questionTypeInput'); ?></option>
-                        <option value="2"><?php echo Enum_Lang::getPageText('feedback', 'questionTypeSelect'); ?></option>
-                        <option value="3"><?php echo Enum_Lang::getPageText('feedback', 'questionTypeMuilt'); ?></option>
+                        <?php foreach ($feedbackList as $feedback) { ?>
+                            <option value="<?php echo $feedback['id']; ?>"><?php echo $feedback['name']; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
             </div>

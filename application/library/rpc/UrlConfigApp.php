@@ -147,7 +147,7 @@ class Rpc_UrlConfigApp {
             'url' => '/push/addPush',
             'param' => array(
                 'platform' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
                 ),

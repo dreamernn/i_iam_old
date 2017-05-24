@@ -56,10 +56,12 @@ class Lang_Zh_Nav {
 
     const FEEDBACK = '调查反馈';
     const FEEDBACKLIST = '反馈表单';
+    const FEEDBACKQUESTION = '反馈问题';
     const FEEDBACKRESULT = '反馈结果';
 
     const APP = 'APP管理';
     const APPPUSH = '物业推送';
+    const APPROOMPUSH = '房间推送';
     const APPSHORTCUT = '快捷入口';
     const APPSHARE = '分享设置';
 

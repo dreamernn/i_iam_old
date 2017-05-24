@@ -2,6 +2,8 @@
 
 class Lang_Zh_App {
 
+    const PUSHUSER = '推送用户';
+
     const EDITTITLE = '物业推送';
     const PUSHRESULT = '推送结果';
     const RESULTSUCCESS = '成功';

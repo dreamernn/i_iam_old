@@ -22,6 +22,38 @@ class AppajaxController extends \BaseController {
     }
 
     /**
+     * 获取房间推送列表
+     */
+    public function getRoomPushListAction() {
+        $paramList['id'] = intval($this->getPost('id'));
+        $paramList['type'] = Enum_App::PUSH_TYPE_USER;
+        $paramList['dataid'] = intval($this->getPost('dataid'));
+        $result = $this->getPost('result');
+        $result !== 'all' && !is_null($result) ? $paramList['result'] = intval($result) : false;
+        $platform = $this->getPost('platform');
+        $platform !== 'all' && !is_null($platform) ? $paramList['platform'] = intval($platform) : false;
+        $result = $this->appModel->getPushList($paramList);
+        $result = $this->appConvertor->roomPushListConvertor($result, $this->getHotelId());
+        $this->echoJson($result);
+    }
+
+    /**
+     * 新建房间推送
+     */
+    public function createRoomPushAction() {
+        $paramList = array();
+        $paramList['type'] = Enum_App::PUSH_TYPE_USER;
+        $paramList['dataid'] = intval($this->getPost('dataid'));
+        $paramList['cn_title'] = trim($this->getPost("cnTitle"));
+        $paramList['cn_value'] = trim($this->getPost("cnValue"));
+        $paramList['en_title'] = trim($this->getPost("enTitle"));
+        $paramList['en_value'] = trim($this->getPost("enValue"));
+        $paramList['url'] = trim($this->getPost("url"));
+        $result = $this->appModel->createPush($paramList);
+        $this->echoJson($result);
+    }
+
+    /**
      * 获取物业推送列表
      */
     public function getPushListAction() {

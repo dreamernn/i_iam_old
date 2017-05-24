@@ -8,6 +8,10 @@ iHotel.feedbackQuestion = (function ($, ypGlobal) {
      * 初始化列表
      */
     function initList() {
+        $("#filter_listid").select2({
+            placeholder: '全部',
+            language: 'zh-CN'
+        });
         dateList.init({
             colCount: 9,
             autoLoad: true,
@@ -31,6 +35,11 @@ iHotel.feedbackQuestion = (function ($, ypGlobal) {
         var questionTypeEdit = $("#questionTypeEdit");
         // 初始化表单保存
         var detailModal = $("#editor");
+        $("#edit_listid").select2({
+            placeholder: '全部',
+            language: 'zh-CN',
+            width: 210
+        });
         dataFrom.init({
             editorDom: $("#listEditor"),
             saveButtonDom: $("#saveListData"),

@@ -14,8 +14,15 @@ class Enum_Feedback {
         );
     }
 
+    public static function getFeedbackListMustInput() {
+        return array(
+            'name',
+        );
+    }
+
     public static function getFeedbackMustInput() {
         return array(
+            'listid',
             'question',
         );
     }

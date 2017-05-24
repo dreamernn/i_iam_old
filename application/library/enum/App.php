@@ -2,6 +2,7 @@
 
 class Enum_App {
 
+    const PUSH_TYPE_USER = 1;
     const PUSH_TYPE_HOTEL = 4;
 
     public static function getShareNameKeyList() {

@@ -22,6 +22,52 @@ class FeedbackajaxController extends \BaseController {
     }
 
     /**
+     * 获取表单列表
+     */
+    public function getListAction() {
+        $paramList['page'] = $this->getPost('page');
+        $paramList['hotelid'] = $this->getHotelId();
+        $paramList['id'] = intval($this->getPost('id'));
+        $paramList['name'] = trim($this->getPost('name'));
+        $status = $this->getPost('status');
+        $status !== 'all' && !is_null($status) ? $paramList['status'] = intval($status) : false;
+        $result = $this->feedbackModel->getList($paramList);
+        $result = $this->feedbackConvertor->listConvertor($result);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 新建编辑表单信息
+     */
+    private function handlerListSaveParams() {
+        $paramList = array();
+        $paramList['name'] = trim($this->getPost("name"));
+        $paramList['sort'] = intval($this->getPost('sort'));
+        $paramList['hotelid'] = intval($this->getHotelId());
+        $paramList['status'] = intval($this->getPost('status'));
+        return $paramList;
+    }
+
+    /**
+     * 新建表单
+     */
+    public function createListAction() {
+        $paramList = $this->handlerListSaveParams();
+        $result = $this->feedbackModel->saveListDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 编辑表单
+     */
+    public function updateListAction() {
+        $paramList = $this->handlerListSaveParams();
+        $paramList['id'] = intval($this->getPost("id"));
+        $result = $this->feedbackModel->saveListDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    /**
      * 获取问题列表
      */
     public function getQuestionListAction() {
@@ -45,6 +91,7 @@ class FeedbackajaxController extends \BaseController {
         $paramList['question'] = trim($this->getPost("question"));
         $paramList['type'] = intval($this->getPost('type'));
         $paramList['sort'] = intval($this->getPost('sort'));
+        $paramList['listid'] = intval($this->getPost('listid'));
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['status'] = intval($this->getPost('status'));
         return $paramList;

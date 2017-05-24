@@ -6,6 +6,35 @@
 class Convertor_Feedback extends Convertor_Base {
 
     /**
+     * 问卷调查表单列表
+     */
+    public function listConvertor($list) {
+        $data = array(
+            'code' => intval($list['code']),
+            'msg' => $list['msg']
+        );
+        if (isset($list['code']) && !$list['code']) {
+            $result = $list['data'];
+            $tmp = array();
+            foreach ($result['list'] as $key => $value) {
+                $dataTemp = array();
+                $dataTemp['id'] = $value['id'];
+                $dataTemp['name'] = $value['name'];
+                $dataTemp['option'] = $value['option'];
+                $dataTemp['sort'] = $value['sort'];
+                $dataTemp['status'] = $value['status'];
+                $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('feedback', 'enable') : Enum_Lang::getPageText('feedback', 'disable');
+                $tmp[] = $dataTemp;
+            }
+            $data['data']['list'] = $tmp;
+            $data['data']['pageData']['page'] = intval($result['page']);
+            $data['data']['pageData']['rowNum'] = intval($result['total']);
+            $data['data']['pageData']['pageNum'] = ceil($result['total'] / $result['limit']);
+        }
+        return $data;
+    }
+
+    /**
      * 问卷调查问题列表
      */
     public function questionListConvertor($list) {
@@ -26,7 +55,9 @@ class Convertor_Feedback extends Convertor_Base {
                 $dataTemp['option'] = $value['option'];
                 $dataTemp['sort'] = $value['sort'];
                 $dataTemp['status'] = $value['status'];
-                $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('room', 'enable') : Enum_Lang::getPageText('room', 'disable');
+                $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('feedback', 'enable') : Enum_Lang::getPageText('feedback', 'disable');
+                $dataTemp['listid'] = $value['listid'];
+                $dataTemp['listShow'] = $value['listName'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

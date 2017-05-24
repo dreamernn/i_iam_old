@@ -6,6 +6,10 @@ class Lang_Zh_Feedback {
     const ENABLE = '启用';
     const DISABLE = '禁用';
 
+    const LISTNAME = '表单名称';
+    const LISTSORT = '排序';
+    const LISTEDITTITLE = '修改表单信息';
+
     const QUESTION = '问题';
     const ANSWER = '回答';
     const QUESTIONTYPE = '问题类型';
