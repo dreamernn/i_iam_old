@@ -51,7 +51,7 @@ class ArticleController extends \BaseController {
         if ($uploadResult['code']) {
             echo "window.parent.CKEDITOR.tools.callFunction(" . $callBack . ",'','" . $uploadResult['msg'] . "');";
         } else {
-            echo "window.parent.CKEDITOR.tools.callFunction(" . $callBack . ",'" . Enum_Img::getPathByKeyAndType($uploadResult['data']['picKey']) . "','')";
+            echo "window.parent.CKEDITOR.tools.callFunction(" . $callBack . ",'" . Enum_Img::getPathByKeyAndType($uploadResult['data']['picKey'], Enum_Oss::PIC_TYPE_KEY_WIDTH750) . "','')";
         }
         echo '</script>';
     }
