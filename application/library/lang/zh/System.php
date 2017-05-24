@@ -20,5 +20,6 @@ class Lang_Zh_System {
     const SAVE = '保存';
     const SAVEING = '保存中...';
     const CLOSE = '关闭';
+    const ARTICLELINK = '文章链接';
 
 }

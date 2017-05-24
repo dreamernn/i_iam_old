@@ -56,9 +56,20 @@ iHotel.articleEditor = (function ($, ypGlobal) {
         });
     }
 
+    function initViewLink() {
+        $("#viewLink").on('click', function () {
+            var viewLink = $(this).data('link');
+            if (viewLink) {
+                $("#linkContent").val(viewLink);
+                $("#linkView").modal('show');
+            }
+        });
+    }
+
     function init() {
         initEditor();
         initSaveContent();
+        initViewLink();
     }
 
     return {

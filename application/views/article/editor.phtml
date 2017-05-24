@@ -9,8 +9,12 @@
 <textarea id="article" rows="10" style="width:100%;"><?php echo $articleContent; ?></textarea>
 <div class="modal-footer" style="text-align:center;">
     <button type="button" class="btn btn-warning" id="saveListData" data-loading-text="<?php echo Enum_Lang::getPageText('system', 'saveing'); ?>"><?php echo Enum_Lang::getPageText('system', 'save'); ?></button>
+    <?php if ($articleLink) { ?>
+        <button type="button" class="btn btn-primary" id='viewLink' data-link="<?php echo $articleLink; ?>"><?php echo Enum_Lang::getPageText('system', 'articleLink'); ?></button>
+    <?php } ?>
     <button type="button" class="btn btn-primary" id='closeEditor'><?php echo Enum_Lang::getPageText('system', 'close'); ?></button>
 </div>
+<?php include($webConfig['layoutPath'] . '/article/link.phtml'); ?>
 <script type="text/javascript">
     var YP_GLOBAL_VARS = {
         language: '<?php echo Enum_Lang::getSystemLang();?>',

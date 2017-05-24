@@ -22,6 +22,7 @@ class ArticleController extends \BaseController {
         $this->_view->assign('datatype', $dataType);
         $this->_view->assign('articleContent', $articleContent);
         $this->_view->assign('article', $article);
+        $this->_view->assign('articleLink', $articleLink);
         $this->_view->display('article/editor.phtml');
     }
 
@@ -51,7 +52,7 @@ class ArticleController extends \BaseController {
         if ($uploadResult['code']) {
             echo "window.parent.CKEDITOR.tools.callFunction(" . $callBack . ",'','" . $uploadResult['msg'] . "');";
         } else {
-            echo "window.parent.CKEDITOR.tools.callFunction(" . $callBack . ",'" . Enum_Img::getPathByKeyAndType($uploadResult['data']['picKey'], Enum_Oss::PIC_TYPE_KEY_WIDTH750) . "','')";
+            echo "window.parent.CKEDITOR.tools.callFunction(" . $callBack . ",'" . Enum_Img::getPathByKeyAndType($uploadResult['data']['picKey'], Enum_Img::PIC_TYPE_KEY_WIDTH750) . "','')";
         }
         echo '</script>';
     }
