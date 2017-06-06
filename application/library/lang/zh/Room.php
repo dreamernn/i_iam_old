@@ -25,6 +25,7 @@ class Lang_Zh_Room {
     const ROOMTYPERESEDITTITLE = '房型物品修改';
     const ROOMCOUNT = '房间数量';
     const PERSONCOUNT = '可住人数';
+    const LASTUSERFULLNAME = '最后入住人';
 
     const ROOMNO = '房间号';
     const ROOMFLOOR = '所在楼层';

@@ -121,9 +121,11 @@ iHotel.feedbackQuestion = (function ($, ypGlobal) {
             }
             var saveParams = {id: saveOption.data('questionid'), option: optionList}
 
+            var oldOption = saveOption.data('old');
+            oldOption = oldOption ? oldOption : [];
             recordLog = ypRecord.getEditLog({
                 modelName: '房型物品',
-                value: [{title: '问题选项', from: saveOption.data('old').join(','), to: optionList.join(',')}]
+                value: [{title: '问题选项', from: oldOption.join(','), to: optionList.join(',')}]
             });
             saveParams[YP_RECORD_VARS.recordPostId] = saveParams.id;
             saveParams[YP_RECORD_VARS.recordPostVar] = recordLog;
