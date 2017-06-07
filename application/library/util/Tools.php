@@ -4,7 +4,7 @@ class Util_Tools {
 
     /**
      *
-     * @param unknown $url            
+     * @param unknown $url
      */
     public static function redirect302($url) {
         header("HTTP/1.1 302 Found");
@@ -16,20 +16,20 @@ class Util_Tools {
         $str = null;
         $strPol = "0123456789";
         $max = strlen($strPol) - 1;
-        
-        for ($i = 0; $i < $length; $i ++) {
+
+        for ($i = 0; $i < $length; $i++) {
             $str .= $strPol[rand(0, $max)];
         }
         if ($num == 1)
             return $str;
         else {
-            for ($i = 0; $i < $num; $i ++) {
+            for ($i = 0; $i < $num; $i++) {
                 $charArr[] = self::getRandChar($length);
             }
             return $charArr;
         }
     }
-    
+
     // 把秒转换成"1小时50分"的格式
     public static function secondTimeToStr($iTime) {
         $minites = abs($iTime) / 60;
@@ -50,11 +50,11 @@ class Util_Tools {
     public static function validateRequest() {
         // 获取发起请求的页面地址
         $referer = empty($_SERVER["HTTP_REFERER"]) ? "" : trim($_SERVER["HTTP_REFERER"]);
-        
+
         // 获取当前页面的域名
         $pattern = "/" . preg_quote($_SERVER['SERVER_NAME']) . "/i";
-        
-        if (empty($referer) || ! preg_match($pattern, $referer, $matches)) {
+
+        if (empty($referer) || !preg_match($pattern, $referer, $matches)) {
             // $this->alertAndClose("错误：非法URL提交页面！");
             return false;
         }
@@ -68,7 +68,7 @@ class Util_Tools {
      *            提示的信息
      */
     public static function alert($msg) {
-        if (! empty($msg)) {
+        if (!empty($msg)) {
             $script = "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />";
             $script .= "<script type='text/javascript'>\n";
             $script .= "alert('" . trim($msg) . "');\n";
@@ -85,7 +85,7 @@ class Util_Tools {
      *            提示的信息
      */
     public static function alertAndGoBack($msg) {
-        if (! empty($msg)) {
+        if (!empty($msg)) {
             $script = "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />";
             $script .= "<script type='text/javascript'>\n";
             $script .= "alert('" . trim($msg) . "');\n";
@@ -107,10 +107,10 @@ class Util_Tools {
      *            跳出框架
      */
     public static function alertAndRedirect($msg, $url, $top = '') {
-        if (! empty($msg) || ! empty($url)) {
+        if (!empty($msg) || !empty($url)) {
             $script = "<HTML><meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><body>";
             $script .= "<script type='text/javascript'>\n";
-            if (! empty($msg)) {
+            if (!empty($msg)) {
                 $script .= "alert('" . trim($msg) . "');\n";
             }
             $script .= $top . "location.href='" . trim($url) . "';";
@@ -127,7 +127,7 @@ class Util_Tools {
      *            跳转的页面地址
      */
     public static function scriptRedirect($url) {
-        if (! empty($url)) {
+        if (!empty($url)) {
             $script = "<HTML><meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><body>";
             $script .= "<script type='text/javascript'>\n";
             $script .= " location.href='" . trim($url) . "';";
@@ -144,7 +144,7 @@ class Util_Tools {
      *            提示的信息
      */
     public static function alertAndClose($msg) {
-        if (! empty($msg)) {
+        if (!empty($msg)) {
             $script = "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />";
             $script .= "<script language='javascript' type='text/javascript'>\n";
             $script .= "alert('" . trim($msg) . "');\n";
@@ -162,7 +162,7 @@ class Util_Tools {
      *            要跳转的url
      */
     public static function redirect($url) {
-        if (! headers_sent()) {
+        if (!headers_sent()) {
             header('Location: ' . $url);
             exit();
         }
@@ -190,8 +190,8 @@ class Util_Tools {
     /**
      * 字符串加密
      *
-     * @param type $encstr,加密的原文            
-     * @param type $decstr，当为空时，函数功能为加密，非空时为密文校验            
+     * @param type $encstr ,加密的原文
+     * @param type $decstr，当为空时，函数功能为加密，非空时为密文校验
      * @return string|boolean 当函数为加密供能时返回密文，当为校验功能时返回INT型的bool值
      */
     public static function tokencode($encstr, $decstr = "") {
@@ -236,30 +236,30 @@ class Util_Tools {
         $key = md5($key ? $key : CRYPT_CODE_KEY);
         $keya = md5(substr($key, 0, 16));
         $keyb = md5(substr($key, 16, 16));
-        $keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length) : substr(md5(microtime()), - $ckey_length)) : '';
-        
+        $keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length) : substr(md5(microtime()), -$ckey_length)) : '';
+
         $cryptkey = $keya . md5($keya . $keyc);
         $key_length = strlen($cryptkey);
-        
+
         $string = $operation == 'DECODE' ? base64_decode(substr($string, $ckey_length)) : sprintf('%010d', $expiry ? $expiry + time() : 0) . substr(md5($string . $keyb), 0, 16) . $string;
         $string_length = strlen($string);
-        
+
         $result = '';
         $box = range(0, 255);
-        
+
         $rndkey = array();
-        for ($i = 0; $i <= 255; $i ++) {
+        for ($i = 0; $i <= 255; $i++) {
             $rndkey[$i] = ord($cryptkey[$i % $key_length]);
         }
-        
-        for ($j = $i = 0; $i < 256; $i ++) {
+
+        for ($j = $i = 0; $i < 256; $i++) {
             $j = ($j + $box[$i] + $rndkey[$i]) % 256;
             $tmp = $box[$i];
             $box[$i] = $box[$j];
             $box[$j] = $tmp;
         }
-        
-        for ($a = $j = $i = 0; $i < $string_length; $i ++) {
+
+        for ($a = $j = $i = 0; $i < $string_length; $i++) {
             $a = ($a + 1) % 256;
             $j = ($j + $box[$a]) % 256;
             $tmp = $box[$a];
@@ -267,7 +267,7 @@ class Util_Tools {
             $box[$j] = $tmp;
             $result .= chr(ord($string[$i]) ^ ($box[($box[$a] + $box[$j]) % 256]));
         }
-        
+
         if ($operation == 'DECODE') {
             if ((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() > 0) && substr($result, 10, 16) == substr(md5(substr($result, 26) . $keyb), 0, 16)) {
                 return substr($result, 26);
@@ -291,7 +291,7 @@ class Util_Tools {
     public static function write_file($fileName, $file_con) {
         $re_info = "";
         if (is_writable($fileName)) {
-            if (! $handle = fopen($fileName, 'w')) {
+            if (!$handle = fopen($fileName, 'w')) {
                 $re_info = "不能打开文件 $fileName";
             } else {
                 if (fwrite($handle, $file_con) === FALSE) {
@@ -320,7 +320,7 @@ class Util_Tools {
      *            return str
      */
     public static function random_code($figure, $en_num = '', $char_num = '') {
-        if ((int) $en_num + (int) $char_num > (int) $figure) {
+        if ((int)$en_num + (int)$char_num > (int)$figure) {
             return false;
         }
         if (empty($figure)) {
@@ -328,7 +328,7 @@ class Util_Tools {
         }
         $newstr = "";
         $newcharstr = "";
-        if (! empty($en_num)) {
+        if (!empty($en_num)) {
             $zmstr = array(
                 "c",
                 "d",
@@ -356,7 +356,7 @@ class Util_Tools {
             shuffle($zmstr);
             $newstr = substr(implode("", $zmstr), 0, $en_num);
         }
-        if (! empty($char_num)) {
+        if (!empty($char_num)) {
             $charstr = array(
                 "@",
                 "#",
@@ -368,7 +368,7 @@ class Util_Tools {
         $digital_num = $figure - $en_num - $char_num;
         $small_str = 2;
         $big_str = 9;
-        for ($i = 1; $i < $digital_num; $i ++) {
+        for ($i = 1; $i < $digital_num; $i++) {
             $small_str .= 0;
             $big_str .= 9;
         }
@@ -386,7 +386,7 @@ class Util_Tools {
      */
     public static function getMoreMonth() {
         $monthList = array();
-        for ($i = 1; $i <= 12; $i ++) {
+        for ($i = 1; $i <= 12; $i++) {
             $monthList[$i] = date("Y-m", mktime(0, 0, 0, date("m") + $i, 0, date("Y")));
         }
         return $monthList;
@@ -399,7 +399,7 @@ class Util_Tools {
     }
 
     public static function cal_days_in_month_write($month, $year) {
-        if (! function_exists('cal_days_in_month')) {
+        if (!function_exists('cal_days_in_month')) {
             $lastDay = date('t', mktime(0, 0, 0, $month, 1, $year));
         } else {
             $lastDay = cal_days_in_month(CAL_GREGORIAN, $month, $year);
@@ -479,7 +479,7 @@ class Util_Tools {
     /**
      * ip转为int
      *
-     * @param string $ip            
+     * @param string $ip
      * @return number
      */
     public static function ipton($ip) {
@@ -497,7 +497,7 @@ class Util_Tools {
     /**
      * 还原ip
      *
-     * @param int $n            
+     * @param int $n
      * @return string
      */
     public static function ntoip($n) {
@@ -516,6 +516,47 @@ class Util_Tools {
             $ip[] = hexdec($ippart);
         }
         return implode('.', $ip);
+    }
+
+    /**
+     * 导出excel(csv)
+     * @data 导出数据
+     * @headlist 第一行,列名
+     * @fileName 输出Excel文件名
+     */
+    public static function csv_export($data = array(), $headlist = array(), $fileName) {
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="' . $fileName . '.csv"');
+        header('Cache-Control: max-age=0');
+        //打开PHP文件句柄,php://output 表示直接输出到浏览器
+        $fp = fopen('php://output', 'a');
+        //输出Excel列名信息
+        foreach ($headlist as $key => $value) {
+            //CSV的Excel支持GBK编码，一定要转换，否则乱码
+            $headlist[$key] = iconv('utf-8', 'gbk', $value);
+        }
+        //将数据通过fputcsv写到文件句柄
+        fputcsv($fp, $headlist);
+        //计数器
+        $num = 0;
+        //每隔$limit行，刷新一下输出buffer，不要太大，也不要太小
+        $limit = 100000;
+        //逐行取出数据，不浪费内存
+        $count = count($data);
+        for ($i = 0; $i < $count; $i++) {
+            $num++;
+            //刷新一下输出buffer，防止由于数据过多造成问题
+            if ($limit == $num) {
+                ob_flush();
+                flush();
+                $num = 0;
+            }
+            $row = $data[$i];
+            foreach ($row as $key => $value) {
+                $row[$key] = iconv('utf-8', 'gbk', $value);
+            }
+            fputcsv($fp, $row);
+        }
     }
 }
 

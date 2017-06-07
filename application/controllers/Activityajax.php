@@ -125,7 +125,7 @@ class ActivityajaxController extends \BaseController {
      */
     public function getOrderListAction() {
         $paramList['id'] = intval($this->getPost('id'));
-        $paramList['name'] = trim($this->getPost('name'));
+        $paramList['name'] = trim($this->getPost('title'));
         $paramList['phone'] = trim($this->getPost('phone'));
         $paramList['activityid'] = intval($this->getPost('activityid'));
         $paramList['hotelid'] = intval($this->getHotelId());

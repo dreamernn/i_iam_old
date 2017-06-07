@@ -27,8 +27,24 @@ iHotel.activityAcitivityUserList = (function ($, ypGlobal) {
         });
     }
 
+    function initExport() {
+        var exportButton = $("#exportBtn");
+        exportButton.on('click', function () {
+            exportButton.button('loading');
+            filterParams = acitivityUserList.getFilterParams();
+            var url = '/activity/export?';
+            var params = [];
+            $.each(filterParams, function (key, value) {
+                params.push(key + '=' + value);
+            });
+            window.open(url + params.join('&'));
+            exportButton.button('reset');
+        });
+    }
+
     function init() {
         initAcitivityUserList();
+        initExport();
     }
 
     return {

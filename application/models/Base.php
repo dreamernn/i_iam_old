@@ -28,9 +28,11 @@ class BaseModel {
      * @param number $limitDefault
      */
     protected function setPageParam(&$params, $page, $limit, $limitDefault = 4) {
-        $limit = intval($limit);
-        $params['limit'] = $limit ? $limit : $limitDefault;
-        $params['page'] = empty($page) ? 1 : intval($page);
+        if ($limit !== 0) {
+            $limit = intval($limit);
+            $params['limit'] = $limit ? $limit : $limitDefault;
+            $params['page'] = empty($page) ? 1 : intval($page);
+        }
     }
 
     /**

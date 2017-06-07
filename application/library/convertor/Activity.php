@@ -99,7 +99,7 @@ class Convertor_Activity extends Convertor_Base {
                 $dataTemp['hotelName'] = $value['hotelName'];
                 $dataTemp['activityid'] = $value['activityid'];
                 $dataTemp['activityName'] = $value['activityName'];
-                $dataTemp['ordercount'] = $value['ordercount'];
+                $dataTemp['ordercount'] = $value['orderCount'];
                 $dataTemp['remark'] = $value['remark'];
                 $tmp[] = $dataTemp;
             }

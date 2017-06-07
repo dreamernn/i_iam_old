@@ -221,7 +221,7 @@ YP.form = function () {
             var editValue = [];
             $.each(params, function (key, value) {
                 var editDom = $("#edit_" + key);
-                if (editDom.length == 0) {
+                if (editDom.length === 0) {
                     return true;
                 }
                 var editType = editDom.attr('type'), editTagName = editDom.prop('tagName').toLowerCase();

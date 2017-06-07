@@ -11,7 +11,7 @@
             <div class="pull-left control-item">
                 <span class="control-label"><?php echo Enum_Lang::getPageText('activity', 'acitvityOrderName'); ?>：</span>
                 <div class="controls">
-                    <input id="filter_name" data-paramkey='name' type="text" class="form-control input-medium" op="filterCase"/>
+                    <input id="filter_name" data-paramkey='title' type="text" class="form-control input-medium" op="filterCase"/>
                 </div>
             </div>
             <div class="pull-left control-item">
@@ -31,9 +31,11 @@
                     </select>
                 </div>
             </div>
-            <button id="searchBtn" class="mgtop5 pull-left btn btn-primary" type="button"
-                    data-loading-text="<?php echo Enum_Lang::getPageText('system', 'searching'); ?>">
+            <button id="searchBtn" class="mgtop5 pull-left btn btn-primary" type="button" data-loading-text="<?php echo Enum_Lang::getPageText('system', 'searching'); ?>">
                 <?php echo Enum_Lang::getPageText('system', 'search'); ?>
+            </button>
+            <button id="exportBtn" class="mgtop5 mgleft5 pull-left btn btn-primary" type="button" data-loading-text="<?php echo Enum_Lang::getPageText('system', 'exporting'); ?>">
+                <?php echo Enum_Lang::getPageText('system', 'export'); ?>
             </button>
         </div>
     </form>
