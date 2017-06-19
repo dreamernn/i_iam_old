@@ -4,5 +4,5 @@ var datatimepickerConfig = {
     autoclose : true,
     todayBtn : true,
     weekStart : 1,
-    minView : 2,
+    minView : 2
 };

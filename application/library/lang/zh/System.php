@@ -21,6 +21,8 @@ class Lang_Zh_System {
     const SAVEING = '保存中...';
     const CLOSE = '关闭';
     const ARTICLELINK = '文章链接';
+    const DELETE = '删除';
+    const DELETEING = '删除中...';
 
     const EXPORT = '导出';
     const EXPORTING = '导出中...';

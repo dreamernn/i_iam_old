@@ -36,4 +36,12 @@ class RoomController extends \BaseController {
         $this->_view->assign('roomTypeList', $roomTypeList['data']['list']);
         $this->_view->display('room/room.phtml');
     }
+
+    /**
+     * 账单管理
+     */
+    public function billListAction() {
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
+        $this->_view->display('room/bill.phtml');
+    }
 }

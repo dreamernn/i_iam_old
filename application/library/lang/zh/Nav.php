@@ -33,6 +33,7 @@ class Lang_Zh_Nav {
     const ROOMTYPE = '房型管理';
     const ROOMLIST = '房间管理';
     const ROOMRES = '物品管理';
+    const BILLLIST = '账单管理';
 
     const SHOPPING = '体验购物';
     const SHOPPINGTAG = '标签管理';

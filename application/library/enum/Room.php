@@ -22,6 +22,15 @@ class Enum_Room {
             'size',
         );
     }
+
+    public static function getBillMustInput() {
+        return array(
+            'room',
+            'name',
+            'pdf',
+            'date'
+        );
+    }
 }
 
 ?>

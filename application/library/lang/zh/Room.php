@@ -6,6 +6,7 @@ class Lang_Zh_Room {
     const ENABLE = '启用';
     const DISABLE = '禁用';
     const CREATETIME = '创建时间';
+    const UPDATETIME = '更新时间';
 
     const ROOMRESEDITTITLE = '编辑物品信息';
     const RESICON = 'ICON标识';
@@ -30,4 +31,8 @@ class Lang_Zh_Room {
     const ROOMNO = '房间号';
     const ROOMFLOOR = '所在楼层';
     const ROOMSIZE = '房间面积';
+
+    const BILLDATE = '账单日期';
+    const BILLPDF = '账单PDF';
+    const BILLNAME = '账单人姓名';
 }

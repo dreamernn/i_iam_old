@@ -184,4 +184,58 @@ class RoomajaxController extends \BaseController {
         $result = $this->roomModel->saveRoomDataInfo($paramList);
         $this->echoJson($result);
     }
+
+    /**
+     * 获取账单列表
+     */
+    public function getUserBillListAction() {
+        $paramList['page'] = $this->getPost('page');
+        $paramList['hotelid'] = $this->getHotelId();
+        $paramList['id'] = intval($this->getPost('id'));
+        $paramList['room'] = $this->getPost('room');
+        $paramList['date'] = strtotime($this->getPost('date'));
+        $result = $this->roomModel->getUserBillList($paramList);
+        $result = $this->roomConvertor->userBillListConvertor($result);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 新建和编辑账单
+     */
+    private function handlerUserBillSaveParams() {
+        $paramList = array();
+        $paramList['room'] = trim($this->getPost("room"));
+        $paramList['name'] = trim($this->getPost("name"));
+        $paramList['pdf'] = $_FILES['pdf'];
+        $paramList['date'] = strtotime($this->getPost("date"));
+        $paramList['hotelid'] = intval($this->getHotelId());
+        return $paramList;
+    }
+
+    /**
+     * 新建账单
+     */
+    public function createUserBillAction() {
+        $paramList = $this->handlerUserBillSaveParams();
+        $result = $this->roomModel->saveUserBillDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 更新账单
+     */
+    public function updateUserBillAction() {
+        $paramList = $this->handlerUserBillSaveParams();
+        $paramList['id'] = intval($this->getPost("id"));
+        $result = $this->roomModel->saveUserBillDataInfo($paramList);
+        $this->echoJson($result);
+    }
+
+    public function deleteUserBillAction() {
+        $paramList = array();
+        $paramList['id'] = intval($this->getPost("id"));
+        $paramList['status'] = 0;
+        $result = $this->roomModel->deleteUserBill($paramList);
+        $this->echoJson($result);
+    }
 }

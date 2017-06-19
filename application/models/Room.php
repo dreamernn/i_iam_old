@@ -201,4 +201,80 @@ class RoomModel extends \BaseModel {
         } while (false);
         return $result;
     }
+
+    /**
+     * 获取账单列表
+     */
+    public function getUserBillList($paramList) {
+        do {
+            $params['hotelid'] = $paramList['hotelid'];
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['room'] ? $params['room'] = $paramList['room'] : false;
+            $paramList['date'] ? $params['date'] = $paramList['date'] : false;
+            $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            $result = $this->rpcClient->getResultRaw('R010', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+    /**
+     * 新建和编辑账单
+     */
+    public function saveUserBillDataInfo($paramList) {
+        $params = $this->initParam();
+        do {
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['room'] ? $params['room'] = $paramList['room'] : false;
+            $paramList['name'] ? $params['name'] = $paramList['name'] : false;
+            $paramList['date'] ? $params['date'] = $paramList['date'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+
+            if ($paramList['pdf']) {
+                $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
+                if ($uploadResult['code']) {
+                    $result['msg'] = 'pdf上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pdf'] = $uploadResult['data']['picKey'];
+            }
+
+            $checkParams = Enum_Room::getBillMustInput();
+            foreach ($checkParams as $checkParamOne) {
+                if (empty($params[$checkParamOne])) {
+                    break 2;
+                }
+            }
+
+            $interfaceId = $params['id'] ? 'R012' : 'R011';
+            $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+        } while (false);
+        return $result;
+    }
+
+    /**
+     * 删除账单
+     */
+    public function deleteUserBill($paramList) {
+        $params = $this->initParam();
+        do {
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
+
+            if (empty($params['id'])) {
+                break;
+            }
+            $result = $this->rpcClient->getResultRaw('R012', $params);
+        } while (false);
+        return $result;
+    }
 }
