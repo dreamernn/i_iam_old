@@ -16,5 +16,6 @@ class Lang_Zh_Promotion {
     const PDF = 'PDF';
     const VIDEO = '视频';
     const URL = '链接';
+    const PIC = '图片';
 
 }

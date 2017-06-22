@@ -129,6 +129,7 @@ class HotelajaxController extends \BaseController {
         $paramList['introduct_lang3'] = $this->getPost("introductLang3");
         $paramList['status'] = intval($this->getPost("status"));
         $paramList['pdf'] = $_FILES['pdf'];
+        $paramList['pic'] = $_FILES['pic'];
         $paramList['video'] = trim($this->getPost("video"));
         return $paramList;
     }

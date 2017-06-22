@@ -392,6 +392,11 @@ class Rpc_UrlConfigHotel {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'GH008' => array(
@@ -471,6 +476,11 @@ class Rpc_UrlConfigHotel {
                     'style' => 'interface'
                 ),
                 'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

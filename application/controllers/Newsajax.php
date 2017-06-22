@@ -86,6 +86,7 @@ class NewsajaxController extends \BaseController {
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['groupid'] = intval($this->getGroupId());
         $paramList['pdf'] = $_FILES['pdf'];
+        $paramList['pic'] = $_FILES['pic'];
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
         return $paramList;

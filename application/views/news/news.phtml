@@ -34,6 +34,7 @@
                                         <th><?php echo Enum_Lang::getPageText('news', 'tagTitle'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('news', 'pdf'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('news', 'video'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('news', 'pic'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('news', 'sort'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('news', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('news', 'createtime'); ?></th>
@@ -90,6 +91,13 @@
             {{if info.video}}
             <a href="{{info.videoShow}}" target="_blank">
                 <?php echo Enum_Lang::getPageText('system', 'view'); ?>
+            </a>
+            {{/if}}
+        </td>
+        <td type="pic" data-value="{{info.pic}}">
+            {{if info.pic}}
+            <a href="{{info.pic}}" target="_blank">
+                <img src="{{info.pic}}" style="max-width: 100px;max-height: 100px;"/>
             </a>
             {{/if}}
         </td>

@@ -269,6 +269,11 @@ class Rpc_UrlConfigLife {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
     	'LI007' => array(
@@ -388,6 +393,11 @@ class Rpc_UrlConfigLife {
                     'style' => 'interface'
                 ),
                 'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

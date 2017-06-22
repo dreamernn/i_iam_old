@@ -264,6 +264,11 @@ class Rpc_UrlConfigPoi {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'PT007' => array(
@@ -378,6 +383,11 @@ class Rpc_UrlConfigPoi {
                     'style' => 'interface'
                 ),
                 'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

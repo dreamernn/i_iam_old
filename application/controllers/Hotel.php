@@ -34,6 +34,7 @@ class HotelController extends \BaseController {
      * 物业设施管理
      */
     public function facilitiesAction() {
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_IMAGE, 'allowTypeImage');
         $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
         $this->_view->display('hotel/facilities.phtml');
     }

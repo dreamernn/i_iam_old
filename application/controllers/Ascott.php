@@ -24,6 +24,7 @@ class AscottController extends BaseController {
         $typeList = $ascottModel->getTypeList(array('hotelid' => $this->getHotelId()), 3600);
         $this->_view->assign('typeList', $typeList['data']['list']);
         $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_IMAGE, 'allowTypeImage');
         $this->_view->display('ascott/ascott.phtml');
     }
 }

@@ -18,6 +18,7 @@ class Lang_Zh_Poi {
     const SORT = '排序';
     const PDF = 'PDF';
     const VIDEO = '视频';
+    const PIC = '图片';
 
     const POIADDRESS = '地址';
     const POITEL = '电话';

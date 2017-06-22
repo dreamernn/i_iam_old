@@ -15,6 +15,7 @@ class Lang_Zh_Ascott {
     const SORT = '排序';
     const PDF = 'PDF';
     const VIDEO = '视频';
+    const PIC = '图片';
 
     const ASCOTTADDRESS = '地址';
     const ASCOTTTEL = '电话';

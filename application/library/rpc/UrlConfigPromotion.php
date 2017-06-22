@@ -229,6 +229,11 @@ class Rpc_UrlConfigPromotion {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'P007' => array(
@@ -298,6 +303,11 @@ class Rpc_UrlConfigPromotion {
                     'style' => 'interface'
                 ),
                 'video' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

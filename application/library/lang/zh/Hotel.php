@@ -30,6 +30,7 @@ class Lang_Zh_Hotel {
     const CREATETIME = '创建时间';
     const PDF = 'PDF';
     const VIDEO = '视频';
+    const PIC = '图片';
     const FACILITIESICON = 'APP ICON标识';
 
     const TRAFFICEDITTITLE = '编辑交通信息';

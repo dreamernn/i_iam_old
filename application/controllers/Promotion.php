@@ -24,6 +24,7 @@ class PromotionController extends BaseController {
         $tagList = $promotionModel->getTagList(array('hotelid' => $this->getHotelId()), 3600);
         $this->_view->assign('tagList', $tagList['data']['list']);
         $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_IMAGE, 'allowTypeImage');
         $this->_view->display('promotion/promotion.phtml');
     }
 }
