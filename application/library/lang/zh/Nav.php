@@ -65,6 +65,7 @@ class Lang_Zh_Nav {
     const APPROOMPUSH = '房间推送';
     const APPSHORTCUT = '快捷入口';
     const APPSHARE = '分享设置';
+    const APPRSS = 'RSS管理';
 
     const COMMENT = '评论管理';
     const COMMENTLIST = '评论列表';

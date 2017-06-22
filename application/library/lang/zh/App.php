@@ -22,4 +22,9 @@ class Lang_Zh_App {
     const SHORTCUTKEY = '快捷图标标识';
     const SHORTCUTTITLE = '标题';
     const SHORTCUTSORT = '排序';
+
+    const RSSNAME = 'RSS标题';
+    const RSS = 'RSS';
+    const RSSTYPE = 'RSS类型';
+    const INSERTRSS = '新增RSS';
 }

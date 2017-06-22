@@ -72,6 +72,9 @@ class Interceptor_RecordConfig {
                 'createroomtype' => 3,
                 'updateroomtype' => 4,
                 'updateroomtyperes' => 5,
+                'createuserbill' => 6,
+                'updateuserbill' => 7,
+                'deleteuserbill' => 8,
             )
         ),
         'Shoppingajax' => array(

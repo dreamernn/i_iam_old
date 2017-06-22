@@ -137,6 +137,34 @@ class Convertor_App extends Convertor_Base {
         }
         return $data;
     }
+
+    public function rssListConvertor($list, $selectRss) {
+        $data = array(
+            'code' => intval($list['code']),
+            'msg' => $list['msg']
+        );
+        $selectRssIdList = array_column($selectRss['data']['list'], 'id');
+        if (isset($list['code']) && !$list['code']) {
+            $result = $list['data'];
+            $tmp = array();
+            foreach ($result['list'] as $key => $value) {
+                if (in_array($value['id'], $selectRssIdList)) {
+                    continue;
+                }
+                $dataTemp = array();
+                $dataTemp['id'] = $value['id'];
+                $dataTemp['name'] = Enum_Lang::getSystemLang() == 'zh' ? $value['name_zh'] : $value['name_en'];
+                $dataTemp['rss'] = $value['rss'];
+                $dataTemp['typename'] = $value['typename'];
+                $tmp[] = $dataTemp;
+            }
+            $data['data']['list'] = $tmp;
+            $data['data']['pageData']['page'] = intval($result['page']);
+            $data['data']['pageData']['rowNum'] = intval($result['total']);
+            $data['data']['pageData']['pageNum'] = ceil($result['total'] / $result['limit']);
+        }
+        return $data;
+    }
 }
 
 ?>

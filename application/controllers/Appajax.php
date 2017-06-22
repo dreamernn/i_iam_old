@@ -148,4 +148,39 @@ class AppajaxController extends \BaseController {
         $result = $this->appModel->updateShare($paramList);
         $this->echoJson($result);
     }
+
+    /**
+     * 获取物业RSS列表
+     */
+    public function getHotelRssListAction() {
+        $paramList['hotelid'] = $this->getHotelId();
+        $paramList['lang'] = Enum_Lang::getSystemLang();
+        $result = $this->appModel->getHotelRssList($paramList);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 获取RSS列表
+     */
+    public function getRssListAction() {
+        $paramList['id'] = intval($this->getPost('id'));
+        $paramList['typeid'] = intval($this->getPost('typeid'));
+        $paramList['status'] = 1;
+        $result = $this->appModel->getRssList($paramList);
+        $paramList['hotelid'] = $this->getHotelId();
+        $paramList['lang'] = Enum_Lang::getSystemLang();
+        $selectRss = $this->appModel->getHotelRssList($paramList);
+        $result = $this->appConvertor->rssListConvertor($result, $selectRss);
+        $this->echoJson($result);
+    }
+
+    /**
+     * 根据物业ID修改物业的RSS列表
+     */
+    public function updateHotelRssListAction() {
+        $paramList['rss'] = Util_Tools::filterIdListString($this->getPost('rsslist'));
+        $paramList['hotelid'] = $this->getHotelId();
+        $result = $this->appModel->updateHotelRss($paramList);
+        $this->echoJson($result);
+    }
 }

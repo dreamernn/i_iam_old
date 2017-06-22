@@ -123,4 +123,54 @@ class AppModel extends \BaseModel {
         } while (false);
         return $result;
     }
+
+    /**
+     * 获取物业RSS列表
+     */
+    public function getHotelRssList($paramList) {
+        $params = $this->initParam();
+        do {
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $paramList['lang'] ? $params['lang'] = $paramList['lang'] : false;
+            $result = $this->rpcClient->getResultRaw('APP008', $params);
+        } while (false);
+        return $result;
+    }
+
+    public function getRssTypeList($paramList, $cacheTime = 0) {
+        do {
+            if ($cacheTime == 0) {
+                $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
+            } else {
+                $params['limit'] = 0;
+            }
+            $isCache = $cacheTime != 0 ? true : false;
+            $result = $this->rpcClient->getResultRaw('APP009', $params, $isCache, $cacheTime);
+        } while (false);
+        return (array)$result;
+    }
+
+    public function getRssList($paramList) {
+        do {
+            $paramList['id'] ? $params['id'] = $paramList['id'] : false;
+            $paramList['typeid'] ? $params['typeid'] = $paramList['typeid'] : false;
+            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
+            $result = $this->rpcClient->getResultRaw('APP010', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+    /**
+     * 根据物业ID修改物业的RSS列表
+     * @param $paramList
+     * @return array
+     */
+    public function updateHotelRss($paramList) {
+        do {
+            $paramList['rss'] ? $params['rss'] = $paramList['rss'] : false;
+            $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $result = $this->rpcClient->getResultRaw('APP011', $params);
+        } while (false);
+        return (array)$result;
+    }
 }

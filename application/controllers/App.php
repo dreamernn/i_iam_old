@@ -41,4 +41,14 @@ class AppController extends \BaseController {
         $this->_view->assign('hotelId', $this->getHotelId());
         $this->_view->display('app/share.phtml');
     }
+
+    /**
+     * RSS管理
+     */
+    public function rssAction() {
+        $appModel = new AppModel();
+        $rssTypeList = $appModel->getRssTypeList(array(), 3600);
+        $this->_view->assign('rssTypeList', $rssTypeList['data']['list']);
+        $this->_view->display('app/rss.phtml');
+    }
 }

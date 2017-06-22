@@ -290,6 +290,7 @@ class HotelajaxController extends \BaseController {
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['key'] = trim($this->getPost('key'));
+        $paramList['page'] = intval($this->getPost('page'));
         $result = $this->hotelModal->getTitleList($paramList);
         $result = $this->hotelConvertor->titleListConvertor($result);
         $this->echoJson($result);

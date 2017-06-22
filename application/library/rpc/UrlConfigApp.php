@@ -219,6 +219,72 @@ class Rpc_UrlConfigApp {
                 ),
             )
         ),
+        'APP008' => array(
+            'name' => '根据物业ID获取物业的RSS列表',
+            'method' => 'getHotelRssList',
+            'auth' => true,
+            'url' => '/Rss/getHotelRssList',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'lang' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'APP009' => array(
+            'name' => '获取RSS类别列表',
+            'method' => 'getHotelRssList',
+            'auth' => true,
+            'url' => '/RssType/getRssTypeList',
+            'param' => array()
+        ),
+        'APP010' => array(
+            'name' => '获取RSS列表',
+            'method' => 'getRssList',
+            'auth' => true,
+            'url' => '/Rss/getRssList',
+            'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'typeid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+        'APP011' => array(
+            'name' => '根据物业ID修改物业的RSS列表',
+            'method' => 'updateHotelRssList',
+            'auth' => true,
+            'url' => '/Rss/updateHotelRssList',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'rss' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+            )
+        ),
     );
 
     /**
