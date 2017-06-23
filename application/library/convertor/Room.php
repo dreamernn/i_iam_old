@@ -75,6 +75,7 @@ class Convertor_Room extends Convertor_Base {
                 $dataTemp['residList'] = $value['resid_list'];
                 $dataTemp['roomcount'] = $value['roomCount'];
                 $dataTemp['personcount'] = $value['personCount'];
+                $dataTemp['pic'] = $value['pic'] ? Enum_Img::getPathByKeyAndType($value['pic']) : '';
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

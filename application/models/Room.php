@@ -126,6 +126,15 @@ class RoomModel extends \BaseModel {
             if (empty($params['title_lang1'])) {
                 break;
             }
+            unset($params['pic']);
+            if ($paramList['pic']) {
+                $uploadResult = $this->uploadFile($paramList['pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = '图片上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pic'] = $uploadResult['data']['picKey'];
+            }
 
             $interfaceId = $params['id'] ? 'R006' : 'R005';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);

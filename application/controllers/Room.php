@@ -12,6 +12,7 @@ class RoomController extends \BaseController {
         $roomModel = new RoomModel();
         $resList = $roomModel->getRoomResList(array('hotelid' => $this->getHotelId()), 3600);
         $this->_view->assign('resList', $resList['data']['list']);
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_IMAGE, 'allowTypeImage');
         $this->_view->display('room/roomType.phtml');
     }
 

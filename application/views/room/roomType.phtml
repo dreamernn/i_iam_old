@@ -34,6 +34,7 @@
                                         <th><?php echo Enum_Lang::getPageText('room', 'typeBed'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'roomCount'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'typePanoramic'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('room', 'pic'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'createtime'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
                                     </tr>
@@ -81,6 +82,13 @@
             {{if info.panoramic}}
             <a href="{{info.panoramic}}" target="_blank">
                 {{info.panoramic}}
+            </a>
+            {{/if}}
+        </td>
+        <td type="pic" data-value="{{info.pic}}">
+            {{if info.pic}}
+            <a href="{{info.pic}}" target="_blank">
+                <img src="{{info.pic}}" style="max-width: 100px;max-height: 100px;"/>
             </a>
             {{/if}}
         </td>

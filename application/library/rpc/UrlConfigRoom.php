@@ -306,6 +306,11 @@ class Rpc_UrlConfigRoom {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'R006' => array(
@@ -392,6 +397,11 @@ class Rpc_UrlConfigRoom {
                 'personcount' => array(
                     'required' => false,
                     'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
             )
