@@ -70,7 +70,7 @@ class BaseModel {
                     break;
             }
         } else {
-            $result = $this->rpcClient->getResultRaw('B003', array('uploadfile' => $file, 'type' => $path, 'oldfilekey' => $oldFileKey));
+            $result = $this->rpcClient->getResultRaw('B003', array('uploadfile' => $file, 'type' => $path, 'oldfilekey' => $oldFileKey), false, -1, true, 100);
         }
         return $result;
     }
