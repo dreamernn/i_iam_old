@@ -10,5 +10,6 @@ CKEDITOR.editorConfig = function (config) {
     config.image_previewText = ' ';
     config.filebrowserImageUploadUrl = '/Article/uploadImage';
     config.extraPlugins = 'uploadimage';
-    config.uploadUrl = '/Article/uploadImage'
+    config.uploadUrl = '/Article/uploadImage';
+    config.allowedContent = true;
 };
