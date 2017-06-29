@@ -105,9 +105,9 @@ class Convertor_App extends Convertor_Base {
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;
-            $data['data']['pageData']['page'] = intval($result['page']);
-            $data['data']['pageData']['rowNum'] = intval($result['total']);
-            $data['data']['pageData']['pageNum'] = ceil($result['total'] / $result['limit']);
+            //            $data['data']['pageData']['page'] = intval($result['page']);
+            //            $data['data']['pageData']['rowNum'] = intval($result['total']);
+            //            $data['data']['pageData']['pageNum'] = ceil($result['total'] / $result['limit']);
         }
         return $data;
     }
