@@ -70,7 +70,11 @@
             </a>
             {{/if}}
         </td>
-        <td type="typename" data-value="{{info.typename}}">{{info.typename}}</td>
+        <?php if (Enum_Lang::getSystemLang() == Enum_Lang::LANG_KEY_CHINESE) { ?>
+            <td type="typename" data-value="{{info.typename}}">{{info.typename}}</td>
+        <?php } else { ?>
+            <td type="typeenname" data-value="{{info.typeenname}}">{{info.typeenname}}</td>
+        <?php } ?>
         <td>
             <button op="deleteRss" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}"><?php echo Enum_Lang::getPageText('system', 'delete'); ?></button>
         </td>

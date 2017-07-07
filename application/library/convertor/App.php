@@ -153,9 +153,9 @@ class Convertor_App extends Convertor_Base {
                 }
                 $dataTemp = array();
                 $dataTemp['id'] = $value['id'];
-                $dataTemp['name'] = Enum_Lang::getSystemLang() == 'zh' ? $value['name_zh'] : $value['name_en'];
+                $dataTemp['name'] = Enum_Lang::getSystemLang() == Enum_Lang::LANG_KEY_CHINESE ? $value['name_zh'] : $value['name_en'];
                 $dataTemp['rss'] = $value['rss'];
-                $dataTemp['typename'] = $value['typename'];
+                $dataTemp['typename'] = Enum_Lang::getSystemLang() == Enum_Lang::LANG_KEY_CHINESE ? $value['typename'] : $value['typeenname'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;
