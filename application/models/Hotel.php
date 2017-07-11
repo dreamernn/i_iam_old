@@ -210,6 +210,7 @@ class HotelModel extends \BaseModel {
             $paramList['introduct_lang3'] ? $params['introduct_lang3'] = $paramList['introduct_lang3'] : false;
             $paramList['video'] ? $params['video'] = $paramList['video'] : false;
             !is_null($paramList['status']) ? $params['status'] = intval($paramList['status']) : false;
+            !is_null($paramList['sort']) ? $params['sort'] = intval($paramList['sort']) : false;
 
             $result = array(
                 'code' => 1,

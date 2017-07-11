@@ -67,6 +67,7 @@ class Convertor_Hotel extends Convertor_Base {
                 $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
                 $dataTemp['video'] = $value['video'];
                 $dataTemp['pic'] = $value['pic'] ? Enum_Img::getPathByKeyAndType($value['pic']) : '';
+                $dataTemp['sort'] = $value['sort'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

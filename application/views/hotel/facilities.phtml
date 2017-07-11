@@ -35,6 +35,7 @@
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'pic'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'createTime'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'status'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('hotel', 'sort'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
                                     </tr>
                                     </thead>
@@ -97,6 +98,7 @@
         </td>
         <td>{{info.createtime}}</td>
         <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
+        <td type="sort" data-value="{{info.sort}}">{{info.sort}}</td>
         <td type="nameLang2" data-value="{{info.nameLang2}}" style="display: none;"></td>
         <td type="nameLang3" data-value="{{info.nameLang3}}" style="display: none;"></td>
         <td type="introductLang1" data-value='{{info.introductLang1}}' style="display: none;"></td>
