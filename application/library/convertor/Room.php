@@ -108,7 +108,7 @@ class Convertor_Room extends Convertor_Base {
                 $dataTemp['floorShow'] = $value['floorName'];
                 $dataTemp['createtime'] = $value['createTime'] ? date('Y-m-d H:i:s', $value['createTime']) : '';
                 $dataTemp['lastUser'] = array(
-                    'fullname' => $value['lastUser']['fullname'],
+                    'fullname' => $value['lastUser'] ? $value['lastUser']['fullname'] : '',
                 );
                 $tmp[] = $dataTemp;
             }

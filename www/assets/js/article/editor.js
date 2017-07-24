@@ -10,7 +10,7 @@ iHotel.articleEditor = (function ($, ypGlobal) {
             language: language,
             height: $(window).height() - 225
         });
-        CKEDITOR.replace('textarea_id', {allowedContent: true});
+        // CKEDITOR.replace('textarea_id', {allowedContent: true});
 
         $("#closeEditor").on('click', function () {
             if (confirm("您确定要关闭本页吗？")) {
