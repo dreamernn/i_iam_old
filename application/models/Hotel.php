@@ -52,6 +52,7 @@ class HotelModel extends \BaseModel {
             $paramList['introduction_lang1'] ? $params['introduction_lang1'] = $paramList['introduction_lang1'] : false;
             $paramList['introduction_lang2'] ? $params['introduction_lang2'] = $paramList['introduction_lang2'] : false;
             $paramList['introduction_lang3'] ? $params['introduction_lang3'] = $paramList['introduction_lang3'] : false;
+            $paramList['pdf'] ? $params['pdf'] = $paramList['pdf'] : false;
             !is_null($paramList['status']) ? $params['status'] = $paramList['status'] : false;
 
             $checkParams = Enum_Hotel::getHotelMustInput();
@@ -107,6 +108,14 @@ class HotelModel extends \BaseModel {
                     break;
                 }
                 $params['voice_lang3'] = $uploadResult['data']['picKey'];
+            }
+            if ($paramList['pdf']) {
+                $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
+                if ($uploadResult['code']) {
+                    $result['msg'] = '客信PDF上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pdf'] = $uploadResult['data']['picKey'];
             }
             $result = $this->rpcClient->getResultRaw('GH002', $params);
         } while (false);
