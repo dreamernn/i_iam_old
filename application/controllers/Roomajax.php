@@ -159,7 +159,7 @@ class RoomajaxController extends \BaseController {
      */
     private function handlerRoomSaveParams() {
         $paramList = array();
-        $paramList['room'] = intval($this->getPost("room"));
+        $paramList['room'] = trim($this->getPost("room"));
         $paramList['typeid'] = intval($this->getPost("typeid"));
         $paramList['floor'] = intval($this->getPost("floor"));
         $paramList['size'] = floatval($this->getPost("size"));

@@ -462,7 +462,7 @@ class Rpc_UrlConfigRoom {
                 ),
                 'room' => array(
                     'required' => true,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
                 'typeid' => array(
@@ -500,7 +500,7 @@ class Rpc_UrlConfigRoom {
                 ),
                 'room' => array(
                     'required' => true,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
                 'typeid' => array(
