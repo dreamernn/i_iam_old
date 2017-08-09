@@ -25,6 +25,8 @@ class AppajaxController extends \BaseController {
      * 获取房间推送列表
      */
     public function getRoomPushListAction() {
+        $paramList['page'] = $this->getPost('page');
+        $paramList['limit'] = $this->getPost('limit');
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['type'] = Enum_App::PUSH_TYPE_USER;
         $paramList['dataid'] = intval($this->getPost('dataid'));
@@ -57,6 +59,8 @@ class AppajaxController extends \BaseController {
      * 获取物业推送列表
      */
     public function getPushListAction() {
+        $paramList['page'] = $this->getPost('page');
+        $paramList['limit'] = $this->getPost('limit');
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['type'] = Enum_App::PUSH_TYPE_HOTEL;
         $paramList['dataid'] = $this->getHotelId();
@@ -163,6 +167,8 @@ class AppajaxController extends \BaseController {
      * 获取RSS列表
      */
     public function getRssListAction() {
+        $paramList['page'] = $this->getPost('page');
+        $paramList['limit'] = $this->getPost('limit');
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['typeid'] = intval($this->getPost('typeid'));
         $paramList['status'] = 1;

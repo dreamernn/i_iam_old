@@ -14,7 +14,7 @@ class UserModel extends \BaseModel {
             if ($cacheTime == 0) {
                 $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
             } else {
-                $paramList['limit'] = 0;
+                $params['limit'] = 0;
             }
             $isCache = $cacheTime != 0 ? true : false;
             $result = $this->rpcClient->getResultRaw('U001', $params, $isCache, $cacheTime);
