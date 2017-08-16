@@ -29,6 +29,7 @@ class AppajaxController extends \BaseController {
         $paramList['limit'] = $this->getPost('limit');
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['type'] = Enum_App::PUSH_TYPE_USER;
+        $paramList['content_type'] = Enum_App::PUSH_CONTENT_TYPE_URL;
         $paramList['dataid'] = intval($this->getPost('dataid'));
         $result = $this->getPost('result');
         $result !== 'all' && !is_null($result) ? $paramList['result'] = intval($result) : false;
@@ -63,6 +64,7 @@ class AppajaxController extends \BaseController {
         $paramList['limit'] = $this->getPost('limit');
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['type'] = Enum_App::PUSH_TYPE_HOTEL;
+        $paramList['content_type'] = Enum_App::PUSH_CONTENT_TYPE_URL;
         $paramList['dataid'] = $this->getHotelId();
         $result = $this->getPost('result');
         $result !== 'all' && !is_null($result) ? $paramList['result'] = intval($result) : false;

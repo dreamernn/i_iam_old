@@ -13,6 +13,7 @@ class AppModel extends \BaseModel {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
             $paramList['type'] ? $params['type'] = $paramList['type'] : false;
             $paramList['dataid'] ? $params['dataid'] = $paramList['dataid'] : false;
+            $paramList['content_type'] ? $params['content_type'] = $paramList['content_type'] : false;
             isset($paramList['result']) ? $params['result'] = $paramList['result'] : false;
             isset($paramList['platform']) ? $params['platform'] = $paramList['platform'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);

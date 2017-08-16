@@ -29,7 +29,7 @@ class Convertor_App extends Convertor_Base {
                 $dataTemp['userRoomNo'] = $userList[$dataTemp['dataid']]['room_no'];
                 $dataTemp['cn_title'] = $value['cn_title'];
                 $dataTemp['en_title'] = $value['en_title'];
-                $dataTemp['url'] = $value['url'];
+                $dataTemp['url'] = $value['content_value'];
                 $dataTemp['result'] = $value['result'];
                 $dataTemp['resultShow'] = $value['result'] ? Enum_Lang::getPageText('app', 'resultFail') : Enum_Lang::getPageText('app', 'resultSuccess');
                 $dataTemp['platform'] = $value['platform'];
@@ -65,7 +65,7 @@ class Convertor_App extends Convertor_Base {
                 $dataTemp['dataid'] = $value['dataid'];
                 $dataTemp['cn_title'] = $value['cn_title'];
                 $dataTemp['en_title'] = $value['en_title'];
-                $dataTemp['url'] = $value['url'];
+                $dataTemp['url'] = $value['content_value'];
                 $dataTemp['result'] = $value['result'];
                 $dataTemp['resultShow'] = $value['result'] ? Enum_Lang::getPageText('app', 'resultFail') : Enum_Lang::getPageText('app', 'resultSuccess');
                 $dataTemp['platform'] = $value['platform'];
