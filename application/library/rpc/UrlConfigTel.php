@@ -57,6 +57,11 @@ class Rpc_UrlConfigTel {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'title_lang1' => array(
                     'required' => true,
                     'format' => 'string',
@@ -91,6 +96,11 @@ class Rpc_UrlConfigTel {
                     'style' => 'interface'
                 ),
                 'islogin' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'

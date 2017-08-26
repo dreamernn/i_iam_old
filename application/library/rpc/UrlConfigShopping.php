@@ -244,6 +244,11 @@ class Rpc_UrlConfigShopping {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'pdf' => array(
                     'required' => false,
                     'format' => 'string',
@@ -328,6 +333,11 @@ class Rpc_UrlConfigShopping {
                     'style' => 'interface'
                 ),
                 'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'

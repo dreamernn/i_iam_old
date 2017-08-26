@@ -97,6 +97,7 @@ class ShoppingajaxController extends \BaseController {
         $paramList['pdf'] = $_FILES['pdf'];
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
+        $paramList['status'] = intval($this->getPost("status"));
         return $paramList;
     }
 

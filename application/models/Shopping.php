@@ -88,6 +88,7 @@ class ShoppingModel extends \BaseModel {
             $paramList['sort'] ? $params['sort'] = $paramList['sort'] : false;
             $paramList['video'] ? $params['video'] = $paramList['video'] : false;
             $paramList['price'] ? $params['price'] = $paramList['price'] : false;
+            $paramList['status'] ? $params['status'] = $paramList['status'] : false;
 
             if (empty($params['title_lang1'])) {
                 break;

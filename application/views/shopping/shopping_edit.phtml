@@ -89,6 +89,15 @@
                             </div>
                         </div>
                     <?php } ?>
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label" for="edit_status"><?php echo Enum_Lang::getPageText('shopping', 'status'); ?>：</label>
+                        <div class="controls">
+                            <select id="edit_status" data-title="状态">
+                                <option value="0"><?php echo Enum_Lang::getPageText('shopping', 'disable'); ?></option>
+                                <option value="1"><?php echo Enum_Lang::getPageText('shopping', 'enable'); ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

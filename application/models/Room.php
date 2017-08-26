@@ -116,7 +116,7 @@ class RoomModel extends \BaseModel {
             $paramList['title_lang3'] ? $params['title_lang3'] = $paramList['title_lang3'] : false;
             $paramList['size'] ? $params['size'] = $paramList['size'] : false;
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
-            $paramList['panoramic'] ? $params['panoramic'] = $paramList['panoramic'] : false;
+            $params['panoramic'] = $paramList['panoramic'];
             $paramList['bedtype_lang1'] ? $params['bedtype_lang1'] = $paramList['bedtype_lang1'] : false;
             $paramList['bedtype_lang2'] ? $params['bedtype_lang2'] = $paramList['bedtype_lang2'] : false;
             $paramList['bedtype_lang3'] ? $params['bedtype_lang3'] = $paramList['bedtype_lang3'] : false;

@@ -24,6 +24,8 @@ class Convertor_Tel extends Convertor_Base {
                 $dataTemp['titleLang1'] = $value['title_lang1'];
                 $dataTemp['titleLang2'] = $value['title_lang2'];
                 $dataTemp['titleLang3'] = $value['title_lang3'];
+                $dataTemp['status'] = $value['status'];
+                $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('tel', 'enable') : Enum_Lang::getPageText('tel', 'disable');
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

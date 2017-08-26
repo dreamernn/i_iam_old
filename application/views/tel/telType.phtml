@@ -31,6 +31,7 @@
                                             <th><?php echo Enum_Lang::getPageText('tel', 'telTypeTitle'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</th>
                                         <?php } ?>
                                         <th><?php echo Enum_Lang::getPageText('tel', 'telTypeIsLogin'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('tel', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
                                     </tr>
                                     </thead>
@@ -70,6 +71,7 @@
             <td type="titleLang<?php echo $index + 1; ?>" data-value="{{info.titleLang<?php echo $index + 1; ?>}}">{{info.titleLang<?php echo $index + 1; ?>}}</td>
         <?php } ?>
         <td type="islogin" data-value="{{info.islogin}}">{{info.isloginShow}}</td>
+        <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
         <td>
             <button op="editDataOne" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}"><?php echo Enum_Lang::getPageText('system', 'edit'); ?></button>
         </td>

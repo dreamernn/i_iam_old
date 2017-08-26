@@ -37,6 +37,7 @@
                                         <th><?php echo Enum_Lang::getPageText('shopping', 'sort'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('shopping', 'shoppingPic'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('shopping', 'createtime'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('shopping', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
                                     </tr>
                                     </thead>
@@ -102,6 +103,7 @@
             {{/if}}
         </td>
         <td type="createtime" data-value="{{info.createtime}}">{{info.createtime}}</td>
+        <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
         <td type="titleLang2" data-value="{{info.titleLang2}}" style="display:none;"></td>
         <td type="titleLang3" data-value="{{info.titleLang3}}" style="display:none;"></td>
         <td type="introductLang1" data-value="{{info.introductLang1}}" style="display:none;"></td>

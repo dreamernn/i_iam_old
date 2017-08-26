@@ -32,6 +32,17 @@
                             </select>
                         </div>
                     </div>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'status';
+                        $filedTitle = Enum_Lang::getPageText('tel', 'status'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <select id="edit_<?php echo $filedName; ?>" data-title="<?php echo $filedTitle; ?>">
+                                <option value="0"><?php echo Enum_Lang::getPageText('tel', 'disable'); ?></option>
+                                <option value="1"><?php echo Enum_Lang::getPageText('tel', 'enable'); ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

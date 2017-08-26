@@ -45,6 +45,7 @@ class TelajaxController extends \BaseController {
         $paramList['title_lang2'] = trim($this->getPost("titleLang2"));
         $paramList['title_lang3'] = trim($this->getPost("titleLang3"));
         $paramList['islogin'] = intval($this->getPost("islogin"));
+        $paramList['status'] = intval($this->getPost("status"));
         $paramList['hotelid'] = intval($this->getHotelId());
         return $paramList;
     }

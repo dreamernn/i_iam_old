@@ -9,7 +9,7 @@ iHotel.shoppingList = (function ($, ypGlobal) {
      */
     function initList() {
         dataList.init({
-            colCount: 9,
+            colCount: 11,
             autoLoad: true,
             listUrl: ypGlobal.listUrl,
             listDomObject: $("#dataList"),
