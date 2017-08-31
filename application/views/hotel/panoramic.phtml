@@ -31,6 +31,7 @@
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'panormaicTitle'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'panormaicPic'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'panormaicUrl'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('hotel', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
                                     </tr>
                                     </thead>
@@ -83,6 +84,7 @@
             </a>
             {{/if}}
         </td>
+        <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
         <td>
             <button op="editDataOne" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}"><?php echo Enum_Lang::getPageText('system', 'edit'); ?></button>
         </td>

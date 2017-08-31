@@ -33,6 +33,7 @@
                                         <th><?php echo Enum_Lang::getPageText('room', 'roomFloor'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'roomSize'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'lastUserFullName'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('room', 'lastLoginTime'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('room', 'createtime'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
                                     </tr>
@@ -76,6 +77,7 @@
         <td type="floor" data-value="{{info.floor}}">{{info.floorShow}}</td>
         <td type="size" data-value="{{info.size}}">{{info.size}}</td>
         <td type="fullname" data-value="{{info.lastUser.fullname}}">{{info.lastUser.fullname}}</td>
+        <td type="lastUserFullName" data-value="{{info.lastUser.lastLoginTime}}">{{info.lastUser.lastLoginTime}}</td>
         <td type="createtime">{{info.createtime}}</td>
         <td>
             <button op="editDataOne" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}"><?php echo Enum_Lang::getPageText('system', 'edit'); ?></button>

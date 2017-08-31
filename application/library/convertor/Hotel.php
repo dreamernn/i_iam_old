@@ -102,6 +102,8 @@ class Convertor_Hotel extends Convertor_Base {
                 $dataTemp['pdf'] = $value['pdf'] ? Enum_Img::getPathByKeyAndType($value['pdf']) : '';
                 $dataTemp['videoShow'] = $value['video'] ? Enum_Img::getPathByKeyAndType($value['video']) : '';
                 $dataTemp['video'] = $value['video'];
+                $dataTemp['status'] = $value['status'];
+                $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('hotel', 'enable') : Enum_Lang::getPageText('hotel', 'disable');
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;
@@ -131,6 +133,8 @@ class Convertor_Hotel extends Convertor_Base {
                 $dataTemp['titleLang2'] = $value['title_lang2'];
                 $dataTemp['titleLang3'] = $value['title_lang3'];
                 $dataTemp['pic'] = Enum_Img::getPathByKeyAndType($value['pic']);
+                $dataTemp['status'] = $value['status'];
+                $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('hotel', 'enable') : Enum_Lang::getPageText('hotel', 'disable');
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

@@ -31,6 +31,7 @@
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'tafficIntroduct'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'pdf'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'video'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('hotel', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('hotel', 'sort'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
                                     </tr>
@@ -84,6 +85,7 @@
             </a>
             {{/if}}
         </td>
+        <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
         <td type="sort" data-value="{{info.sort}}">{{info.sort}}</td>
         <td type="introductLang2" data-value="{{info.introductLang2}}" style="display: none;"></td>
         <td type="introductLang3" data-value="{{info.introductLang3}}" style="display: none;"></td>

@@ -15,6 +15,7 @@ class Lang_Zh_Shopping {
     const VIDEO = '视频';
     const PRICE = '价格';
 
+    const ROOM = '房间号';
     const SHOPPING = '物品';
     const SHOPPINGCOUNT = '购买数量';
     const SHOPPINGSTATUS = '订单状态';

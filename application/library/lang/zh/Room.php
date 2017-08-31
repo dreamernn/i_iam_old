@@ -27,6 +27,7 @@ class Lang_Zh_Room {
     const ROOMCOUNT = '房间数量';
     const PERSONCOUNT = '可住人数';
     const LASTUSERFULLNAME = '最后入住人';
+    const LASTLOGINTIME = '最后入住时间';
 
     const ROOMNO = '房间号';
     const ROOMFLOOR = '所在楼层';

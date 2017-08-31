@@ -12,7 +12,7 @@ iHotel.activityAcitivityUserList = (function ($, ypGlobal) {
             language: 'zh-CN'
         });
         acitivityUserList.init({
-            colCount: 5,
+            colCount: 7,
             autoLoad: true,
             listUrl: ypGlobal.listUrl,
             listDomObject: $("#dataList"),

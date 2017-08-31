@@ -91,6 +91,7 @@ class Convertor_Shopping extends Convertor_Base {
                 $dataTemp = array();
                 $dataTemp['id'] = $value['id'];
                 $dataTemp['userid'] = $value['userid'];
+                $dataTemp['userRoom'] = $value['userInfo']['room'];
                 $dataTemp['count'] = $value['count'];
                 $dataTemp['createtime'] = $value['createtime'] ? date('Y-m-d H:i:s', $value['createtime']) : '';
                 $dataTemp['status'] = $value['statusName'];

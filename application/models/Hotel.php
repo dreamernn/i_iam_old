@@ -263,6 +263,7 @@ class HotelModel extends \BaseModel {
         do {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
             $result = $this->rpcClient->getResultRaw('GH009', $params);
         } while (false);
@@ -282,6 +283,7 @@ class HotelModel extends \BaseModel {
             $paramList['introduct_lang3'] ? $params['introduct_lang3'] = $paramList['introduct_lang3'] : false;
             $paramList['sort'] ? $params['sort'] = $paramList['sort'] : false;
             $paramList['video'] ? $params['video'] = $paramList['video'] : false;
+            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
 
             if ($paramList['pdf']) {
                 $uploadResult = $this->uploadFile($paramList['pdf'], Enum_Oss::OSS_PATH_PDF);
@@ -306,6 +308,7 @@ class HotelModel extends \BaseModel {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
             $paramList['title'] ? $params['title'] = $paramList['title'] : false;
+            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
             $result = $this->rpcClient->getResultRaw('GH012', $params);
         } while (false);
@@ -329,6 +332,7 @@ class HotelModel extends \BaseModel {
             $paramList['title_lang1'] ? $params['title_lang1'] = $paramList['title_lang1'] : false;
             $paramList['title_lang2'] ? $params['title_lang2'] = $paramList['title_lang2'] : false;
             $paramList['title_lang3'] ? $params['title_lang3'] = $paramList['title_lang3'] : false;
+            isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
 
             if (empty($params['title_lang1'])) {
                 break;

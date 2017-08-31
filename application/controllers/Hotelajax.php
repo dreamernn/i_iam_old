@@ -160,6 +160,8 @@ class HotelajaxController extends \BaseController {
     public function getTrafficListAction() {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['hotelid'] = intval($this->getHotelId());
+        $status = $this->getPost('status');
+        $status !== 'all' && !is_null($status) ? $paramList['status'] = intval($status) : false;
         $result = $this->hotelModal->getTrafficList($paramList);
         $result = $this->hotelConvertor->trafficListConvertor($result);
         $this->echoJson($result);
@@ -177,6 +179,7 @@ class HotelajaxController extends \BaseController {
         $paramList['pdf'] = $_FILES['pdf'];
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
+        $paramList['status'] = intval($this->getPost("status"));
         return $paramList;
     }
 
@@ -206,6 +209,8 @@ class HotelajaxController extends \BaseController {
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['title'] = trim($this->getPost('title'));
         $paramList['hotelid'] = intval($this->getHotelId());
+        $status = $this->getPost('status');
+        $status !== 'all' && !is_null($status) ? $paramList['status'] = intval($status) : false;
         $result = $this->hotelModal->getPanoramicList($paramList);
         $result = $this->hotelConvertor->PanoramicListConvertor($result);
         $this->echoJson($result);
@@ -222,6 +227,7 @@ class HotelajaxController extends \BaseController {
         $paramList['title_lang2'] = $this->getPost("titleLang2");
         $paramList['title_lang3'] = $this->getPost("titleLang3");
         $paramList['pic'] = $_FILES['pic'];
+        $paramList['status'] = intval($this->getPost("status"));
         return $paramList;
     }
 

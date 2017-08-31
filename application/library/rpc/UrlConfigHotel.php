@@ -518,6 +518,11 @@ class Rpc_UrlConfigHotel {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'page' => array(
                     'required' => false,
                     'format' => 'int',
@@ -557,6 +562,11 @@ class Rpc_UrlConfigHotel {
                     'style' => 'interface'
                 ),
                 'sort' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
@@ -624,6 +634,11 @@ class Rpc_UrlConfigHotel {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'pdf' => array(
                     'required' => false,
                     'format' => 'string',
@@ -657,6 +672,11 @@ class Rpc_UrlConfigHotel {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'page' => array(
                     'required' => false,
                     'format' => 'int',
@@ -688,6 +708,11 @@ class Rpc_UrlConfigHotel {
                 'pic' => array(
                     'required' => false,
                     'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
                     'style' => 'interface'
                 ),
                 'title_lang1' => array(
@@ -731,6 +756,11 @@ class Rpc_UrlConfigHotel {
                 'pic' => array(
                     'required' => false,
                     'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
                     'style' => 'interface'
                 ),
                 'title_lang1' => array(

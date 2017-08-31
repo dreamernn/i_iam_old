@@ -52,6 +52,17 @@
                             <input type="number" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span1" data-title="<?php echo $filedTitle; ?>">
                         </div>
                     </div>
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'status';
+                        $filedTitle = Enum_Lang::getPageText('hotel', 'status'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
+                        <div class="controls">
+                            <select id="edit_<?php echo $filedName; ?>" data-title="<?php echo $filedTitle; ?>">
+                                <option value="0"><?php echo Enum_Lang::getPageText('hotel', 'disable'); ?></option>
+                                <option value="1"><?php echo Enum_Lang::getPageText('hotel', 'enable'); ?></option>
+                            </select>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
