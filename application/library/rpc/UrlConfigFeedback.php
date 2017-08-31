@@ -29,6 +29,11 @@ class Rpc_UrlConfigFeedback {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'listid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'status' => array(
                     'required' => false,
                     'format' => 'int',

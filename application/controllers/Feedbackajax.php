@@ -74,6 +74,7 @@ class FeedbackajaxController extends \BaseController {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
         $paramList['id'] = intval($this->getPost('id'));
+        $paramList['listid'] = intval($this->getPost('listid'));
         $paramList['question'] = trim($this->getPost('question'));
         $paramList['type'] = trim($this->getPost('type'));
         $status = $this->getPost('status');

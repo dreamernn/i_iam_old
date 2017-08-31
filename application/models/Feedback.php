@@ -67,6 +67,7 @@ class FeedbackModel extends \BaseModel {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
             $paramList['question'] ? $params['question'] = $paramList['question'] : false;
             $paramList['type'] ? $params['type'] = $paramList['type'] : false;
+            $paramList['listid'] ? $params['listid'] = $paramList['listid'] : false;
             isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
             $result = $this->rpcClient->getResultRaw('F001', $params);
