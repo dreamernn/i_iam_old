@@ -424,7 +424,7 @@ class Rpc_UrlConfigRoom {
                 ),
                 'room' => array(
                     'required' => false,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
                 'typeid' => array(
