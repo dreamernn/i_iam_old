@@ -102,6 +102,7 @@ class AppModel extends \BaseModel {
     public function getShareList($paramList) {
         do {
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+            $params['limit'] = 0;
             $result = $this->rpcClient->getResultRaw('APP006', $params);
         } while (false);
         return (array)$result;

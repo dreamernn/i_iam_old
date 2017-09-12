@@ -204,6 +204,11 @@ class Rpc_UrlConfigApp {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'limit' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
             )
         ),
         'APP007' => array(
