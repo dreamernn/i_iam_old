@@ -16,6 +16,7 @@ class ArticleController extends \BaseController {
         $articleContent = '';
         if ($article) {
             $articleLink = Enum_Img::getPathByKeyAndType($article);
+            $articleLink = strpos('http', $articleLink) === false ? 'http:' . $articleLink : $articleLink;
             $articleContent = Util_Http::fileGetContentsWithTimeOut($articleLink, 10);
         }
         $this->_view->assign('dataid', $dataId);
