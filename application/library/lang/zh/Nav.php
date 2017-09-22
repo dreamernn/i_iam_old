@@ -16,7 +16,7 @@ class Lang_Zh_Nav {
     const ACTIVITYLIST = '物业活动';
     const ACTIVITYORDER = '活动报名信息';
 
-    const LIFE = '雅士阁生活';
+    const LIFE = '物业生活';
     const LIFETYPE = '分类管理';
     const LIFELIST = '信息管理';
 

@@ -5,7 +5,7 @@ class Lang_Zh_Ascott {
     const EDITTYPETITLE = '分类编辑';
     const TYPETITLE = '分类名称';
 
-    const EDITTITLE  = '编辑雅士阁生活信息';
+    const EDITTITLE  = '编辑物业生活信息';
     const ASCOTTTITLE = '标题';
     const STATUS = '状态';
     const ENABLE = '启用';

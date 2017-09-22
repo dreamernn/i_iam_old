@@ -21,7 +21,7 @@ class Lang_Zh_Comment {
     const DATATYPEHOTELFLOOR = '楼层信息';
     const DATATYPEHOTELFACILITIES = '设施信息';
     const DATATYPEHOTELTRAFFIC = '交通信息';
-    const DATATYPEHOTELLIFE = '雅士阁生活';
+    const DATATYPEHOTELLIFE = '物业生活';
     const DATATYPEHOTELPOI = '本地攻略';
     const DATATYPEHOTELPROMOTION = '物业促销';
     const DATATYPEHOTELROOMTYPE = '房型信息';
