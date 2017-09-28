@@ -124,6 +124,7 @@ class ShoppingajaxController extends \BaseController {
      * 获取体验购物订单列表
      */
     public function getOrderListAction() {
+        $paramList['page'] = $this->getPost('page');
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['shoppingid'] = intval($this->getPost('shoppingid'));
         $paramList['hotelid'] = intval($this->getHotelId());
