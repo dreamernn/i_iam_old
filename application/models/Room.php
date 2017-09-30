@@ -111,17 +111,17 @@ class RoomModel extends \BaseModel {
             );
 
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
-            $paramList['title_lang1'] ? $params['title_lang1'] = $paramList['title_lang1'] : false;
-            $paramList['title_lang2'] ? $params['title_lang2'] = $paramList['title_lang2'] : false;
-            $paramList['title_lang3'] ? $params['title_lang3'] = $paramList['title_lang3'] : false;
-            $paramList['size'] ? $params['size'] = $paramList['size'] : false;
+            isset($paramList['title_lang1']) ? $params['title_lang1'] = $paramList['title_lang1'] : false;
+            isset($paramList['title_lang2']) ? $params['title_lang2'] = $paramList['title_lang2'] : false;
+            isset($paramList['title_lang3']) ? $params['title_lang3'] = $paramList['title_lang3'] : false;
+            isset($paramList['size']) ? $params['size'] = $paramList['size'] : false;
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
             $params['panoramic'] = $paramList['panoramic'];
-            $paramList['bedtype_lang1'] ? $params['bedtype_lang1'] = $paramList['bedtype_lang1'] : false;
-            $paramList['bedtype_lang2'] ? $params['bedtype_lang2'] = $paramList['bedtype_lang2'] : false;
-            $paramList['bedtype_lang3'] ? $params['bedtype_lang3'] = $paramList['bedtype_lang3'] : false;
-            $paramList['roomcount'] ? $params['roomcount'] = $paramList['roomcount'] : false;
-            $paramList['personcount'] ? $params['personcount'] = $paramList['personcount'] : false;
+            isset($paramList['bedtype_lang1']) ? $params['bedtype_lang1'] = $paramList['bedtype_lang1'] : false;
+            isset($paramList['bedtype_lang2']) ? $params['bedtype_lang2'] = $paramList['bedtype_lang2'] : false;
+            isset($paramList['bedtype_lang3']) ? $params['bedtype_lang3'] = $paramList['bedtype_lang3'] : false;
+            isset($paramList['roomcount']) ? $params['roomcount'] = $paramList['roomcount'] : false;
+            isset($paramList['personcount']) ? $params['personcount'] = $paramList['personcount'] : false;
 
             if (empty($params['title_lang1'])) {
                 break;
