@@ -53,6 +53,8 @@ class HotelModel extends \BaseModel {
             $paramList['introduction_lang2'] ? $params['introduction_lang2'] = $paramList['introduction_lang2'] : false;
             $paramList['introduction_lang3'] ? $params['introduction_lang3'] = $paramList['introduction_lang3'] : false;
             $paramList['pdf'] ? $params['pdf'] = $paramList['pdf'] : false;
+            $paramList['flighturl'] ? $params['flighturl'] = $paramList['flighturl'] : false;
+            $paramList['surveyurl'] ? $params['surveyurl'] = $paramList['surveyurl'] : false;
             !is_null($paramList['status']) ? $params['status'] = $paramList['status'] : false;
 
             $checkParams = Enum_Hotel::getHotelMustInput();

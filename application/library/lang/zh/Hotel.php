@@ -17,6 +17,8 @@ class Lang_Zh_Hotel {
     const INTRODUCTION = '物业介绍';
     const BOOKURL = '预定URL';
     const HOTELPDF = '客信PDF';
+    const FLIGHTURL = '航班查询URL';
+    const SURVEYURL = '住客调查URL';
 
     const FLOOREDITTITLE = '编辑楼层信息';
     const FLOOR = '楼层名称';

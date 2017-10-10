@@ -177,6 +177,16 @@ class Rpc_UrlConfigHotel {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'flighturl' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'surveyurl' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
         ),
         'GH003' => array(
