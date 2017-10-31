@@ -59,11 +59,113 @@ class ShoppingModel extends \BaseModel {
             } else {
                 $params['limit'] = 0;
             }
+            if($paramList['nopage']){
+                $params['nopage'] = true;
+                unset($params['limit']);
+                unset($params['page']);
+            }
             $isCache = $cacheTime != 0 ? true : false;
             $result = $this->rpcClient->getResultRaw('GS001', $params, $isCache, $cacheTime);
         } while (false);
         return (array)$result;
     }
+
+    /**
+     * Get user list from shopping order list.
+     *
+     * @param $paramList
+     * @param int $cacheTime
+     * @return array
+     */
+    public function getShoppingOrderFilterList($paramList, $cacheTime = 0) {
+
+        $params['hotelid'] = $paramList['hotelid'];
+        $isCache = $cacheTime != 0 ? true : false;
+        $result = $this->rpcClient->getResultRaw('GS009', $params, $isCache, $cacheTime);
+        return (array)$result;
+    }
+
+    /**
+     * Call robot to the specified destination
+     *
+     * @param $paramList
+     * @return array
+     */
+    public function callRobot($paramList)
+    {
+        do {
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+
+            $params['hotelid'] = intval($paramList['hotelid']);
+            if ($params['hotelid'] <= 0) {
+                break;
+            }
+
+            $params['dest'] = intval($paramList['dest']);
+            if ($params['dest'] <= 0) {
+                break;
+            }
+
+            $params['userid'] = intval($paramList['userid']);
+            if ($params['userid'] <= 0) {
+                break;
+            }
+
+            $result = $this->rpcClient->getResultRaw('GS010', $params);
+        } while (false);
+        return (array)$result;
+    }
+
+
+    /**
+     * Call robot to deliver the products to the guest's room
+     *
+     * @param $paramList
+     * @return array
+     */
+    public function deliverRobot($paramList)
+    {
+        do {
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+
+            $params['hotelid'] = intval($paramList['hotelid']);
+            if ($params['hotelid'] <= 0) {
+                break;
+            }
+
+            if(!is_array($paramList['itemlist']) || count($paramList['itemlist']) <= 0) break;
+            foreach ($paramList['itemlist'] as &$item) {
+                $orderId = intval($item);
+                if ($orderId <= 0) {
+                    break 2;
+                } else {
+                    $item = $orderId;
+                }
+            }
+            $params['itemlist'] = json_encode($paramList['itemlist']);
+
+            $params['start'] = intval($paramList['start']);
+            if ($params['start'] <= 0) {
+                break;
+            }
+
+            $params['userid'] = intval($paramList['userid']);
+            if ($params['userid'] <= 0) {
+                break;
+            }
+
+            $result = $this->rpcClient->getResultRaw('GS011', $params);
+        } while (false);
+
+        return (array)$result;
+    }
+
 
     /**
      * 新建和编辑体验购物信息
@@ -127,9 +229,27 @@ class ShoppingModel extends \BaseModel {
             $paramList['id'] ? $params['id'] = $paramList['id'] : false;
             $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
             $paramList['shoppingid'] ? $params['shoppingid'] = $paramList['shoppingid'] : false;
+            $paramList['userid'] ? $params['userid'] = $paramList['userid'] : false;
+            $paramList['status'] ? $params['status'] = $paramList['status'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
             $result = $this->rpcClient->getResultRaw('GS008', $params);
         } while (false);
         return (array)$result;
+    }
+
+
+    /**
+     * @param int $hotelid
+     * @return array|null
+     */
+    public static function getRobotDest(int $hotelid){
+        $info = array(
+            1 => array(
+                1 => '仓库1',
+                2 => '仓库2',
+                3 => '前台',
+            ),
+        );
+        return $info[intval($hotelid)];
     }
 }

@@ -127,6 +127,8 @@ class ShoppingajaxController extends \BaseController {
         $paramList['page'] = $this->getPost('page');
         $paramList['id'] = intval($this->getPost('id'));
         $paramList['shoppingid'] = intval($this->getPost('shoppingid'));
+        $paramList['userid'] = intval($this->getPost('userid'));
+        $paramList['status'] = intval($this->getPost('status'));
         $paramList['hotelid'] = intval($this->getHotelId());
         $result = $this->shoppingModel->getOrderList($paramList);
         $result = $this->shoppingConvertor->orderListConvertor($result);

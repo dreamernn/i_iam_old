@@ -46,7 +46,6 @@ class Enum_Lang {
      * 从语言文件获取文本信息
      */
     private static function getConstantText($language, $page, $key) {
-        $text = '';
         $languageFile = "Lang_" . ucwords($language) . '_' . ucwords($page);
         if (!self::$languageFileCache[$languageFile]) {
             $sysConfig = Yaf_Registry::get('sysConfig');

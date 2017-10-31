@@ -70,4 +70,8 @@ class Lang_Zh_Nav {
     const COMMENT = '评论管理';
     const COMMENTLIST = '评论列表';
 
+
+    const SERVICE = '互动服务';
+    const ROBOTSHOPPING = '机器人购物';
+
 }

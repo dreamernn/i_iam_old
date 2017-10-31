@@ -97,6 +97,8 @@ class Convertor_Shopping extends Convertor_Base {
                 $dataTemp['status'] = $value['statusName'];
                 $dataTemp['shopping'] = $value['shoppingName'];
                 $dataTemp['admin'] = $value['adminName'];
+                $dataTemp['robotstatus'] = $value['robotStatus'];
+                $dataTemp['robotstatusname'] = $value['robotStatusName'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

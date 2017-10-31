@@ -43,7 +43,11 @@ class Rpc_UrlConfigShopping {
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
-                )
+                ),
+                'nopage' => array(
+                    'format' => 'bool',
+                    'style' => 'interface'
+                ),
             )
         ),
         'GS002' => array(
@@ -375,6 +379,16 @@ class Rpc_UrlConfigShopping {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'userid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'page' => array(
                     'required' => false,
                     'format' => 'int',
@@ -385,6 +399,73 @@ class Rpc_UrlConfigShopping {
                     'format' => 'int',
                     'style' => 'interface'
                 )
+            )
+        ),
+
+        'GS009' => array(
+            'name' => 'Get user list from shopping order table',
+            'method' => 'getShoppingUserOrderList',
+            'auth' => true,
+            'url' => '/shoppingOrder/getOrderFilterList',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+
+        'GS010' => array(
+            'name' => 'Call robot to the position',
+            'method' => 'callRobot',
+            'auth' => true,
+            'url' => '/service/callRobot',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'userid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'dest' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            )
+        ),
+
+        'GS011' => array(
+            'name' => 'Send the robot to deliver',
+            'method' => 'deliverRobot',
+            'auth' => true,
+            'url' => '/service/deliverRobot',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'userid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'start' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'itemlist' => array(
+                    'required' => true,
+                    'format' => 'string',
+                    'style' => 'interface',
+                ),
             )
         ),
     );
