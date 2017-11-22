@@ -24,7 +24,7 @@ class Rpc_HttpDao {
      * @param boolean $isCache
      * @param int $cacheTime
      *            缓存时间单位是毫秒，如果不需要缓存则为-1,-2是代表不读但是需要写缓存
-     * @return Ambigous <Ambigous, boolean, mixed, NULL>
+     * @return mixed <Ambigous, boolean, mixed, NULL>
      */
     public function getResultRaw($interfaceId, $params, $isCache = false, $cacheTime = -1, $isJsonDecode = true, $httpTimeout = 10) {
         $interfaceConfig = Enum_Request::getUrlConfigById($interfaceId);

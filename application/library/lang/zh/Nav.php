@@ -72,6 +72,6 @@ class Lang_Zh_Nav {
 
 
     const SERVICE = '互动服务';
-    const ROBOTSHOPPING = '机器人购物';
+    const ROBOTPOSITION = '点位管理';
 
 }
