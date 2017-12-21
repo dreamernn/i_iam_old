@@ -3,6 +3,7 @@
 class Lang_Zh_Service
 {
     const PARENTCATEGORY = "父级类别";
+    const CATEGORYICON = '类别图标';
 
 
     const TASKNAME = '服务名称';

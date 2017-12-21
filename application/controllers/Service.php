@@ -17,6 +17,7 @@ class ServiceController extends \BaseController
 
     public function taskCategoryAction()
     {
+        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_IMAGE, 'allowTypeImage');
         $this->_view->display('service/task_category.phtml');
     }
 
@@ -25,7 +26,7 @@ class ServiceController extends \BaseController
         $serviceModel = new ServiceModel();
         $hotelModel = new HotelModel();
         $convertor = new Convertor_Service();
-        $categoryList = $serviceModel->getTaskCategoryList(array('hotelid' => $this->getHotelId()), 6 * 3600);
+        $categoryList = $serviceModel->getTaskCategoryList(array('hotelid' => $this->getHotelId()), 0);
         $departmentAndLevel = $hotelModel->getDepartmentAndLevelListAction(array('hotelid' => $this->getHotelId()), 6 * 3600);
         $staffList = $hotelModel->getHotelAdministratorList(array(
             'hotelid' => $this->getHotelId(),
@@ -37,7 +38,6 @@ class ServiceController extends \BaseController
         $this->_view->assign('departmentList', $departmentAndLevel['data']['department']);
         $this->_view->assign('levelList', $departmentAndLevel['data']['level']);
         $this->_view->assign('staffList', $staffList['data']['list']);
-        $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_PDF, 'allowTypePdf');
         $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_IMAGE, 'allowTypeImage');
 
         $this->_view->display('service/task.phtml');
@@ -50,7 +50,7 @@ class ServiceController extends \BaseController
         $userModel = new UserModel();
 
         $convertor = new Convertor_Service();
-        $categoryList = $serviceModel->getTaskCategoryList(array('hotelid' => $this->getHotelId()), 6 * 3600);
+        $categoryList = $serviceModel->getTaskCategoryList(array('hotelid' => $this->getHotelId()), 0);
         $taskList = $serviceModel->getTaskList(array(
             'hotelid' => $this->getHotelId(),
             'limit' => 0

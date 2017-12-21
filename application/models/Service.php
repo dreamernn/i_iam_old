@@ -55,6 +55,14 @@ class ServiceModel extends \BaseModel
     public function saveCategory($params = array())
     {
         try {
+            if (!is_null($params['pic'])) {
+                $uploadResult = $this->uploadFile($params['pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $errorMsg = '图上传失败:' . $uploadResult['msg'];
+                    $this->throwException($errorMsg, $uploadResult['code']);
+                }
+                $params['pic'] = $uploadResult['data']['picKey'];
+            }
             $interfaceId = $params['id'] ? 'IS003' : 'IS002';
             if (empty($params['title_lang1']) && empty($params['title_lang2'])) {
                 $this->throwException("Lack of param", 1);

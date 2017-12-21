@@ -79,7 +79,7 @@ class BaseController extends \Yaf_Controller_Abstract {
         $rpcClient = Rpc_HttpDao::getInstance();
         $list = $rpcClient->getResultRaw('AU007', array(
             'type' => Enum_Service::PERMISSION_TYPE_TASK,
-        ), true, 6 * 3600);
+        ), true, 0);
         $taskCategory = $list['data']['list'];
         foreach ($taskCategory as $item) {
             if (in_array($item['id'], $taskPermissionList)) {

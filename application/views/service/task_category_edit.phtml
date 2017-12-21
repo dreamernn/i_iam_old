@@ -27,6 +27,21 @@
                     <?php } ?>
 
                     <div class="control-group" op="editFiled">
+                        <?php $filedName = 'pic';
+                        $filedTitle = Enum_Lang::getPageText('service', 'categoryIcon'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>
+                            ：</label>
+                        <div class="controls">
+                            <img src="" id="edit_<?php echo $filedName; ?>_show" style="max-height: 80px;"/>
+                            <input type="file" id="edit_<?php echo $filedName; ?>"
+                                   placeholder="<?php echo $filedTitle; ?>" class="span4"
+                                   data-title="<?php echo $filedTitle; ?>"
+                                   accept="<?php echo implode(",", $allowTypeImage); ?>">
+                        </div>
+                    </div>
+
+
+                    <div class="control-group" op="editFiled">
                         <label class="control-label"
                                for="edit_parentId"><?php echo Enum_Lang::getPageText('service', 'parentCategory'); ?>
                             ：</label>

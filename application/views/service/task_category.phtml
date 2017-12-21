@@ -33,6 +33,7 @@
                                                 （<?php echo Enum_Lang::getPageText('language', $language); ?>）
                                             </th>
                                         <?php } ?>
+                                        <th><?php echo Enum_Lang::getPageText('service', 'categoryIcon'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('service', 'parentCategory'); ?></th>
                                         <th>操作</th>
                                     </tr>
@@ -74,6 +75,13 @@
                 {{info.titleLang<?php echo $index + 1; ?>}}
             </td>
         <?php } ?>
+        <td type="pic" data-value="{{info.pic}}">
+            {{if info.pic}}
+            <a href="{{info.pic}}" target="_blank">
+                <img src="{{info.pic}}" style="max-width: 100px;max-height: 100px;"/>
+            </a>
+            {{/if}}
+        </td>
         <td type="parentId" data-value="{{info.parentId}}">{{info.parentId}}</td>
         <td>
             <button op="editDataOne" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}">修改</button>

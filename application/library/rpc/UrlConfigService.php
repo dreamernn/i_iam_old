@@ -55,6 +55,11 @@ class Rpc_UrlConfigService
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
                 'parentid' => array(
                     'required' => false,
                     'format' => 'int',
@@ -84,6 +89,11 @@ class Rpc_UrlConfigService
                     'style' => 'interface'
                 ),
                 'title_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

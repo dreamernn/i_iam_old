@@ -113,6 +113,8 @@ class ServiceajaxController extends \BaseController
         $params['title_lang2'] = trim($this->getPost('titleLang2'));
         $params['parentid'] = intval($this->getPost('parentId'));
         $params['hotelid'] = $this->getHotelId();
+        $params['pic'] = $_FILES['pic'];
+
         $result = $this->_serviceModel->saveCategory($params);
         $this->echoJson($result);
     }
@@ -127,6 +129,8 @@ class ServiceajaxController extends \BaseController
         $params['title_lang2'] = $this->getPost('titleLang2');
         $params['parentid'] = intval($this->getPost('parentId'));
         $params['id'] = $this->getPost('id');
+        $params['pic'] = $_FILES['pic'];
+
         $result = $this->_serviceModel->saveCategory($params);
         $this->echoJson($result);
     }

@@ -73,7 +73,7 @@
                             <?php
                             foreach ($levelList as $value => $name) {
                                 $label = sprintf("<label style='float: left; width: 20px;' for='edit_%s'>%s: </label>", $filedName . $value, $value);
-                                $input = sprintf("<input op='edit_levelinterval' type='text' id='edit_%s' placeholder='单位(秒/seconds)' class='span2'>", $filedName . $value);
+                                $input = sprintf("<input op='edit_levelinterval' type='text' id='edit_%s' placeholder='单位(分钟/minutes)' class='span2'>", $filedName . $value);
                                 echo '<div style="padding: 2px;">' . $label . $input . '</div>';
                             }
                             ?>
