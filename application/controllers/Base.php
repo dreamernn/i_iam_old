@@ -15,6 +15,7 @@ class BaseController extends \Yaf_Controller_Abstract {
         $this->userInfo = Yaf_Registry::get('loginInfo');
         $this->setPageHeaderInfo($this->userInfo);
         $this->setPermission($this->userInfo);
+        $this->_setTaskPermission($this->userInfo);
         $this->setHotelLanguage($this->userInfo);
     }
 
@@ -65,6 +66,29 @@ class BaseController extends \Yaf_Controller_Abstract {
         $permissionList = explode(",", $loginInfo['permission']);
         $this->_view->assign('permssionList', $permissionList);
     }
+
+    /**
+     * Set task permission list
+     *
+     * @param $loginInfo
+     */
+    private function _setTaskPermission($loginInfo)
+    {
+        $taskPermissionList = explode(",", $loginInfo['taskpermission']);
+        $result = array();
+        $rpcClient = Rpc_HttpDao::getInstance();
+        $list = $rpcClient->getResultRaw('AU007', array(
+            'type' => Enum_Service::PERMISSION_TYPE_TASK,
+        ), true, 6 * 3600);
+        $taskCategory = $list['data']['list'];
+        foreach ($taskCategory as $item) {
+            if (in_array($item['id'], $taskPermissionList)) {
+                $result[] = $item;
+            }
+        }
+        $this->_view->assign('taskPermissionList', $result);
+    }
+
 
     /**
      * 设置物业语言

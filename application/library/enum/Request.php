@@ -9,26 +9,28 @@ class Enum_Request {
 
     const RPC_REQUEST_UA = "Iservice/1.0(iam;)";
 
-    public static function getUrlConfigById($interfaceId) {
+    public static function getUrlConfigById($interfaceId)
+    {
         $config = array(
-            'B' => 'Rpc_UrlConfigBase',
-            'AU' => 'Rpc_UrlConfigAdmin',
-            'GH' => 'Rpc_UrlConfigHotel',
-            'GA' => 'Rpc_UrlConfigActivity',
             'APP' => 'Rpc_UrlConfigApp',
-            'LI' => 'Rpc_UrlConfigLife',
-            'R' => 'Rpc_UrlConfigRoom',
+            'AU' => 'Rpc_UrlConfigAdmin',
+            'B' => 'Rpc_UrlConfigBase',
+            'C' => 'Rpc_UrlConfigComment',
+            'F' => 'Rpc_UrlConfigFeedback',
+            'GA' => 'Rpc_UrlConfigActivity',
+            'GH' => 'Rpc_UrlConfigHotel',
             'GS' => 'Rpc_UrlConfigShopping',
             'GSH' => 'Rpc_UrlConfigShowing',
-            'F' => 'Rpc_UrlConfigFeedback',
-            'T' => 'Rpc_UrlConfigTel',
+            'IS' => 'Rpc_UrlConfigService',
+            'LI' => 'Rpc_UrlConfigLife',
+            'N' => 'Rpc_UrlConfigNotic',
+            'NT' => 'Rpc_UrlConfigNews',
             'P' => 'Rpc_UrlConfigPromotion',
             'PT' => 'Rpc_UrlConfigPoi',
-            'NT' => 'Rpc_UrlConfigNews',
-            'N' => 'Rpc_UrlConfigNotic',
-            'U' => 'Rpc_UrlConfigUser',
-            'C' => 'Rpc_UrlConfigComment',
+            'R' => 'Rpc_UrlConfigRoom',
             'RT' => 'Rpc_UrlConfigRobot',
+            'T' => 'Rpc_UrlConfigTel',
+            'U' => 'Rpc_UrlConfigUser',
         );
         $fileKey = preg_replace('/\d+/', '', $interfaceId);
         $fileNameKey = $config[$fileKey];
