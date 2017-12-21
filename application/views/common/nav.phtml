@@ -137,7 +137,7 @@
                     <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'feedback'); ?>
                 </span>
                     <ul class="nav nav-list nav-li-list hide">
-                        <li><a href="/feedback/list"><?php echo Enum_Lang::getPageText('nav', 'feedbackList'); ?></a></li>
+                        <li><a href="/feedback/list"><?php echo Enum_Lang::getPageText('nav', 'feedbackList'); ?></a></li>f
                         <li><a href="/feedback/question"><?php echo Enum_Lang::getPageText('nav', 'feedbackQuestion'); ?></a></li>
                         <li><a href="/feedback/result"><?php echo Enum_Lang::getPageText('nav', 'feedbackResult'); ?></a></li>
                     </ul>
@@ -174,7 +174,12 @@
                     <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'service'); ?>
                 </span>
                     <ul class="nav nav-list nav-li-list hide">
-                        <li><a href="/service/robotPosition"><?php echo Enum_Lang::getPageText('nav', 'robotPosition'); ?></a></li>
+                    <?php
+                        foreach ($taskPermissionList as $taskPermission){
+                            $li = sprintf('<li><a href="%s">%s</a></li>', $taskPermission['url'], $taskPermission['name_lang1']);
+                            echo $li;
+                        }
+                    ?>
                     </ul>
                 </li>
             <?php } ?>
