@@ -1,6 +1,7 @@
 <?php
 
-class Enum_Lang {
+class Enum_Lang
+{
 
     /**
      * 中文key
@@ -14,7 +15,8 @@ class Enum_Lang {
     /**
      * 获取语言名称列表
      */
-    public static function getLangeNameList() {
+    public static function getLangeNameList()
+    {
         $langNameList = array(
             self::LANG_KEY_CHINESE => '中文',
             self::LANG_KEY_ENGLISH => 'English',
@@ -22,20 +24,34 @@ class Enum_Lang {
         return $langNameList;
     }
 
+    public static $langIndexList = array(
+        self::LANG_KEY_CHINESE => 1,
+        self::LANG_KEY_ENGLISH => 2,
+    );
+
     /**
      * 获取当前使用的语言
      */
-    public static function getSystemLang() {
+    public static function getSystemLang($isIndex = false)
+    {
         $language = self::LANG_KEY_CHINESE;
         $cookieLanguage = Util_Http::getCookie('systemLang');
         $cookieLanguage && $language = $cookieLanguage;
+        if ($isIndex) {
+            if (isset(self::$langIndexList[$language])) {
+                return self::$langIndexList[$language];
+            } else {
+                throw new Exception("Language index not exist", 1);
+            }
+        }
         return $language;
     }
 
     /**
      * 设置使用的语言
      */
-    public static function setSystemLang($language) {
+    public static function setSystemLang($language)
+    {
         $expire = time() + 86400 * 365;
         return Util_Http::setCookie('systemLang', $language, $expire);
     }
@@ -45,7 +61,8 @@ class Enum_Lang {
     /**
      * 从语言文件获取文本信息
      */
-    private static function getConstantText($language, $page, $key) {
+    private static function getConstantText($language, $page, $key)
+    {
         $languageFile = "Lang_" . ucwords($language) . '_' . ucwords($page);
         if (!self::$languageFileCache[$languageFile]) {
             $sysConfig = Yaf_Registry::get('sysConfig');
@@ -62,7 +79,8 @@ class Enum_Lang {
     /**
      * 获取页面展示文本信息
      */
-    public static function getPageText($page, $key) {
+    public static function getPageText($page, $key)
+    {
         $key = strtoupper($key);
         $language = self::getSystemLang();
         $text = self::getConstantText($language, $page, $key);
@@ -85,7 +103,8 @@ class Enum_Lang {
     /**
      * 获取错误信息文本
      */
-    public static function getErrorText($errorLangKey, $code) {
+    public static function getErrorText($errorLangKey, $code)
+    {
         if ($code == 1) {
             $errorText = self::getPageText('system', 'systemError');
         } else {

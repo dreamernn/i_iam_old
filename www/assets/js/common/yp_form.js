@@ -96,6 +96,10 @@ YP.form = function () {
                         $("#" + $editId + "_show").hide();
                     }
                     break;
+                case "checkbox":
+                    $writeValue = option.writeData[$editKey] ? option.writeData[$editKey] : 0;
+                    $editDom.prop("checked", $writeValue);
+                    break;
             }
         });
     }

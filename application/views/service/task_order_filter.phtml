@@ -1,0 +1,72 @@
+<div class="hero-unit hero-unit-custom hero-unit-mgdbtm clearfix" id="listFilter">
+    <form class="form-horizontal">
+        <div class="control-group control-group-block">
+            <div class="pull-left control-item">
+                <span class="control-label">ID：</span>
+                <div class="controls">
+                    <input id="filter_id" data-paramkey='id' type="number" class="form-control input-medium"
+                           op="filterCase" value=''/>
+                </div>
+            </div>
+            <div class="pull-left control-item">
+                <span class="control-label"><?php echo Enum_Lang::getPageText('service', 'taskCategory'); ?>：</span>
+                <div class="controls">
+                    <select id="filter_categoryid" data-paramkey='category_id' op="filterCase"
+                            data-title="<?php echo Enum_Lang::getPageText('service', 'taskCategory'); ?>">
+                        <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
+                        <?php
+                        foreach ($categoryList as $category) {
+                            $output = "";
+                            $language = Enum_Lang::getSystemLang(true);
+                            if (is_null($category['subCategory'])) {
+                                $output = sprintf("<option value='%s'>%s</option>", $category['id'], $category['title_lang' . $language]);
+                            } else {
+                                foreach ($category['subCategory'] as $subCategory) {
+                                    $option = sprintf("<option value='%s'>%s</option>", $subCategory['id'], $subCategory['title_lang' . $language]);
+                                    $output .= $option;
+                                }
+                                $output = sprintf('<optgroup label="%s">%s</optgroup>', $category['title_lang' . $language], $output);
+                            }
+                            echo $output;
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="pull-left control-item">
+                <span class="control-label"><?php echo Enum_Lang::getPageText('service', 'status'); ?>：</span>
+                <div class="controls">
+                    <select id="filter_status" data-paramkey='status' class="input-medium select-long" op="filterCase">
+                        <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
+                        <?php
+                        foreach ($statusList as $value => $name) {
+                            $option = sprintf("<option value=\"%s\">%s</option>", $value, $name);
+                            echo $option;
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="pull-left control-item">
+                <span class="control-label"><?php echo Enum_Lang::getPageText('service', 'roomNo'); ?>：</span>
+                <div class="controls">
+                    <select id="filter_userid" data-paramkey='user_id' class="input-medium select-long" op="filterCase">
+                        <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
+                        <?php
+                        foreach ($guestList as $guest) {
+                            $option = sprintf("<option value=\"%s\">%s</option>", intval($guest['id']), htmlentities($guest['room_no']));
+                            echo $option;
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+            <button id="searchBtn" class="mgtop5 pull-left btn btn-primary" type="button"
+                    data-loading-text="<?php echo Enum_Lang::getPageText('system', 'searching'); ?>">
+                <?php echo Enum_Lang::getPageText('system', 'search'); ?>
+            </button>
+        </div>
+    </form>
+</div>

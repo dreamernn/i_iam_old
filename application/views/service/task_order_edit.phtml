@@ -1,0 +1,95 @@
+<div class="modal hide fade yulong" id="editor" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     mf="modalfix" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"
+                    id="myModalLabel"><?php echo Enum_Lang::getPageText('service', 'editTaskOrder'); ?></h4>
+            </div>
+            <div class="modal-body" id="detailBody" mf="modalfix">
+                <form class="form-horizontal" id="listEditor">
+                    <input type="hidden" id="edit_id" value="0">
+
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label"
+                               for="edit_taskid"><?php echo Enum_Lang::getPageText('service', 'taskName'); ?>：</label>
+                        <div class="controls">
+                            <select id="edit_taskid"
+                                    data-title="<?php echo Enum_Lang::getPageText('service', 'taskName'); ?>">
+                                <?php
+                                foreach ($taskList as $task) {
+                                    $option = sprintf("<option value=\"%s\">%s</option>", intval($task['id']), htmlentities($task['title_lang1']));
+                                    echo $option;
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label"
+                               for="edit_userid"><?php echo Enum_Lang::getPageText('service', 'roomNo'); ?>：</label>
+                        <div class="controls">
+                            <select id="edit_userid"
+                                    data-title="<?php echo Enum_Lang::getPageText('service', 'roomNo'); ?>">
+                                <option value="">--</option>
+                                <?php
+                                foreach ($guestList as $guest) {
+                                    $option = sprintf("<option value=\"%s\">%s</option>", intval($guest['id']), htmlentities($guest['room_no']));
+                                    echo $option;
+                                }
+                                ?>
+                            </select>
+                            <input id="edit_roomno" type="text"
+                                   placeholder="<?php echo Enum_Lang::getPageText('service', 'roomDesc'); ?>">
+                        </div>
+                    </div>
+
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label"
+                               for="edit_count"><?php echo Enum_Lang::getPageText('service', 'count'); ?>：</label>
+                        <div class="controls">
+                            <input id="edit_count" type="number" value="1" placeholder="1">
+                        </div>
+                    </div>
+
+
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label"
+                               for="edit_adminid"><?php echo Enum_Lang::getPageText('service', 'staff'); ?>：</label>
+                        <div class="controls">
+                            <select id="edit_adminid" data-title="状态">
+                                <?php
+                                foreach ($staffList as $staff) {
+                                    $option = sprintf("<option value=\"%s\">%s</option>", intval($staff['id']), htmlentities($staff['realName']));
+                                    echo $option;
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label"
+                               for="edit_memo"><?php echo Enum_Lang::getPageText('service', 'memo'); ?>：</label>
+                        <div class="controls">
+                            <textarea rows="3" id="edit_memo" class="span6"
+                                      data-title="<?php echo Enum_Lang::getPageText('service', 'memo'); ?>"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" id="saveListData"
+                        data-loading-text="<?php echo Enum_Lang::getPageText('system', 'saveing'); ?>"><?php echo Enum_Lang::getPageText('system', 'save'); ?></button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        id='closeEditor'><?php echo Enum_Lang::getPageText('system', 'close'); ?></button>
+            </div>
+        </div>
+    </div>
+</div>

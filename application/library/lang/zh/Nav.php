@@ -74,5 +74,7 @@ class Lang_Zh_Nav {
     const SERVICE = '互动服务';
     const ROBOTPOSITION = '机器人点位管理';
     const CATEGORYMGMT = '类别管理';
+    const TASKMGMT = '详细条目';
+    const TASKORDERMGMT = '服务定单管理';
 
 }

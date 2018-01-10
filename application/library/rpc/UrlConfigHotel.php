@@ -968,25 +968,58 @@ class Rpc_UrlConfigHotel {
                 ),
             )
         ),
+        'GH021' => array(
+            'name' => 'Get department list and level list',
+            'method' => 'getDepartmentAndLevelList',
+            'auth' => true,
+            'url' => '/HotelAdministrator/getDepartmentAndLevelList',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => true,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            ),
+        ),
+        'GH022' => array(
+            'name' => '获取管理员列表',
+            'method' => 'getAdministratorList',
+            'auth' => true,
+            'url' => '/HotelAdministrator/getHotelAdministratorList',
+            'param' => array(
+                'id' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'hotelid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'username' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'page' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'limit' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                )
+            )
+        ),
     );
 
-    /**
-     * 根据接口编号获取接口配置
-     *
-     * @param string $interfaceId
-     * @param string $configKey
-     * @return multitype:multitype:string multitype:multitype:boolean string
-     *         |boolean
-     */
-    public static function getConfig($interfaceId, $configKey = '') {
-        if (isset(self::$config[$interfaceId])) {
-            if (strlen($configKey) && isset(self::$config[$interfaceId][$configKey])) {
-                return self::$config[$interfaceId][$configKey];
-            } else {
-                return self::$config[$interfaceId];
-            }
-        } else {
-            return false;
-        }
-    }
+    use Rpc_TraitGetConfig;
 }
