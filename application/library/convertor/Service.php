@@ -86,7 +86,7 @@ class Convertor_Service extends Convertor_Base
                 $item['titleLang1'] = $value['title_lang1'];
                 $item['titleLang2'] = $value['title_lang2'];
                 $item['titleLang3'] = $value['title_lang3'];
-                $item['pic'] = Enum_Img::getPathByKeyAndType($value['pic']);
+                $item['pic'] = $value['pic'];
                 $item['parentId'] = $value['parentid'];
                 $tmp[] = $item;
             }
@@ -139,7 +139,7 @@ class Convertor_Service extends Convertor_Base
                 $item['titleLang2'] = $value['title_lang2'];
                 $item['titleLang3'] = $value['title_lang3'];
                 $item['price'] = $value['price'];
-                $item['pic'] = Enum_Img::getPathByKeyAndType($value['pic']);;
+                $item['pic'] = $value['pic'];;
                 $item['category_id'] = $value['category_id'];
                 $item['category_title1'] = $value['category_title1'];
                 $item['category_title2'] = $value['category_title2'];
@@ -178,7 +178,7 @@ class Convertor_Service extends Convertor_Base
 
                 $item['count'] = $value['count'];
                 $item['price'] = $value['price'];
-                $item['pic'] = Enum_Img::getPathByKeyAndType($value['tasks_pic']);
+                $item['pic'] = $value['tasks_pic'];
 
                 $item['created_at'] = $value['created_at'];
                 $item['updated_at'] = $value['updated_at'];
