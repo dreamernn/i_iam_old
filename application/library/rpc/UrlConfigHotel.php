@@ -1019,6 +1019,30 @@ class Rpc_UrlConfigHotel {
                 )
             )
         ),
+
+        'GH023' => array(
+            'name' => '获取员工列表',
+            'method' => 'getStaffList',
+            'auth' => true,
+            'url' => '/Staff/getStaffList',
+            'param' => array(
+                'hotelid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'page' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'limit' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                )
+            )
+        ),
     );
 
     use Rpc_TraitGetConfig;

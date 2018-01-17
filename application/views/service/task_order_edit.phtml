@@ -65,7 +65,7 @@
                             <select id="edit_adminid" data-title="状态">
                                 <?php
                                 foreach ($staffList as $staff) {
-                                    $option = sprintf("<option value=\"%s\">%s</option>", intval($staff['id']), htmlentities($staff['realName']));
+                                    $option = sprintf("<option value=\"%s\">%s</option>", intval($staff['id']), htmlentities($staff['realname']));
                                     echo $option;
                                 }
                                 ?>

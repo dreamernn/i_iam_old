@@ -486,4 +486,21 @@ class HotelModel extends \BaseModel
         } while (false);
         return (array)$result;
     }
+
+    /**
+     * Get hotel staff list
+     *
+     * @param array $paramList
+     * @param int $cacheTime
+     * @return array
+     */
+    public function getHotelStaffList(array $paramList, int $cacheTime = 0): array
+    {
+        $params = array();
+        $paramList['hotelid'] ? $params['hotelid'] = $paramList['hotelid'] : false;
+        $isCache = $cacheTime != 0 ? true : false;
+        $result = $this->rpcClient->getResultRaw('GH023', $params, $isCache, $cacheTime);
+        return $result;
+    }
+
 }

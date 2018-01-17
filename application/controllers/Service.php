@@ -28,7 +28,7 @@ class ServiceController extends \BaseController
         $convertor = new Convertor_Service();
         $categoryList = $serviceModel->getTaskCategoryList(array('hotelid' => $this->getHotelId()), 0);
         $departmentAndLevel = $hotelModel->getDepartmentAndLevelListAction(array('hotelid' => $this->getHotelId()), 6 * 3600);
-        $staffList = $hotelModel->getHotelAdministratorList(array(
+        $staffList = $hotelModel->getHotelStaffList(array(
             'hotelid' => $this->getHotelId(),
             'limit' => 0, //without pagination
         ), 6 * 3600);
@@ -60,7 +60,7 @@ class ServiceController extends \BaseController
         $statusListFilter = $serviceModel->getTaskOrderStatusArr();
 
         $departmentAndLevel = $hotelModel->getDepartmentAndLevelListAction(array('hotelid' => $this->getHotelId()), 6 * 3600);
-        $staffList = $hotelModel->getHotelAdministratorList(array(
+        $staffList = $hotelModel->getHotelStaffList(array(
             'hotelid' => $this->getHotelId(),
             'limit' => 0, //without pagination
         ), 6 * 3600);
