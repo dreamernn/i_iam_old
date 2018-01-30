@@ -200,6 +200,13 @@
                                 <input type="text" id="edit_surveyurl" placeholder="<?php echo Enum_Lang::getPageText('hotel', 'surveyurl'); ?>" class="span8" data-title="<?php echo Enum_Lang::getPageText('hotel', 'surveyurl'); ?>" value="<?php echo $hotelInfo['surveyurl']; ?>" data-old="<?php echo $hotelInfo['surveyurl']; ?>">
                             </div>
                         </div>
+
+                        <div class="control-group" op="editFiled">
+                            <label class="control-label" style="width:130px;" for="edit_invoiceId"><?php echo Enum_Lang::getPageText('hotel', 'invoiceId'); ?>：</label>
+                            <div class="controls">
+                                <input type="text" id="edit_invoiceId" placeholder="<?php echo Enum_Lang::getPageText('hotel', 'invoiceId'); ?>" class="span8" data-title="<?php echo Enum_Lang::getPageText('hotel', 'invoiceId'); ?>" value="<?php echo $hotelInfo['invoice_id']; ?>" data-old="<?php echo $hotelInfo['invoice_id']; ?>">
+                            </div>
+                        </div>
                     </form>
 
                     <button type="button" style="margin-left: 130px;" class="btn btn-warning" id="saveListData"

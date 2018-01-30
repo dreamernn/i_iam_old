@@ -58,6 +58,7 @@ class HotelModel extends \BaseModel
             $paramList['pdf'] ? $params['pdf'] = $paramList['pdf'] : false;
             $paramList['flighturl'] ? $params['flighturl'] = $paramList['flighturl'] : false;
             $paramList['surveyurl'] ? $params['surveyurl'] = $paramList['surveyurl'] : false;
+            $paramList['invoice_id'] ? $params['invoice_id'] = $paramList['invoice_id'] : false;
             !is_null($paramList['status']) ? $params['status'] = $paramList['status'] : false;
 
             $checkParams = Enum_Hotel::getHotelMustInput();

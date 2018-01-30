@@ -46,6 +46,7 @@ class HotelajaxController extends \BaseController {
         $paramList['bookurl'] = trim($this->getPost("bookurl"));
         $paramList['flighturl'] = trim($this->getPost('flighturl'));
         $paramList['surveyurl'] = trim($this->getPost('surveyurl'));
+        $paramList['invoice_id'] = trim($this->getPost('invoiceId'));
         $paramList['address_lang1'] = trim($this->getPost("addressLang1"));
         $paramList['address_lang2'] = trim($this->getPost("addressLang2"));
         $paramList['address_lang3'] = trim($this->getPost("addressLang3"));
