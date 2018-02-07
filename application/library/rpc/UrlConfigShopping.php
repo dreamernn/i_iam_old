@@ -240,7 +240,7 @@ class Rpc_UrlConfigShopping {
                 ),
                 'price' => array(
                     'required' => false,
-                    'format' => 'int',
+                    'format' => 'float',
                     'style' => 'interface'
                 ),
                 'sort' => array(
@@ -333,7 +333,7 @@ class Rpc_UrlConfigShopping {
                 ),
                 'price' => array(
                     'required' => false,
-                    'format' => 'int',
+                    'format' => 'float',
                     'style' => 'interface'
                 ),
                 'sort' => array(

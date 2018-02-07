@@ -90,7 +90,7 @@ class ShoppingajaxController extends \BaseController {
         $paramList['introduct_lang1'] = trim($this->getPost("introductLang1"));
         $paramList['introduct_lang2'] = trim($this->getPost("introductLang2"));
         $paramList['introduct_lang3'] = trim($this->getPost("introductLang3"));
-        $paramList['price'] = intval($this->getPost("price"));
+        $paramList['price'] = floatval($this->getPost("price"));
         $paramList['tagid'] = intval($this->getPost("tagid"));
         $paramList['pic'] = $_FILES['pic'];
         $paramList['hotelid'] = intval($this->getHotelId());
