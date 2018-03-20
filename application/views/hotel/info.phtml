@@ -207,6 +207,17 @@
                                 <input type="text" id="edit_invoiceId" placeholder="<?php echo Enum_Lang::getPageText('hotel', 'invoiceId'); ?>" class="span8" data-title="<?php echo Enum_Lang::getPageText('hotel', 'invoiceId'); ?>" value="<?php echo $hotelInfo['invoice_id']; ?>" data-old="<?php echo $hotelInfo['invoice_id']; ?>">
                             </div>
                         </div>
+
+                        <div class="control-group" op="editFiled">
+                            <label class="control-label" style="width:130px;" for="edit_hasrobot"><?php echo Enum_Lang::getPageText('hotel', 'robot'); ?>：</label>
+                            <div class="controls">
+                                <select id="edit_hasrobot" data-old="<?php echo $hotelInfo['hasRobot']; ?>">
+                                    <option value="1" <?php if(1 == $hotelInfo['hasRobot']) echo 'selected'; ?>><?php echo Enum_Lang::getPageText('hotel', 'enable'); ?></option>
+                                    <option value="0" <?php if(0 == $hotelInfo['hasRobot']) echo 'selected'; ?>><?php echo Enum_Lang::getPageText('hotel', 'disable'); ?></option>
+                                </select>
+                            </div>
+                        </div>
+
                     </form>
 
                     <button type="button" style="margin-left: 130px;" class="btn btn-warning" id="saveListData"
