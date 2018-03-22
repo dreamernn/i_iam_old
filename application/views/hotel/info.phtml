@@ -89,6 +89,7 @@
                                     <a href="<?php echo $logoImg; ?>" target="_blank">
                                         <img src="<?php echo $logoImg; ?>" id="edit_logo_show" style="max-height: 80px;"/>
                                     </a>
+                                    <img src="<?php  echo $webConfig['imgDomain'];?>/img/icons/cross.png" class="deleteFile" data-for="edit_logo" data-show="edit_logo_show">
                                 <?php } ?>
                                 <input type="file" id="edit_logo" data-title="物业LOGO" accept="<?php echo implode(",", $allowTypeImage); ?>">
                             </div>
@@ -102,6 +103,7 @@
                                     <a href="<?php echo $index_background; ?>" target="_blank">
                                         <img src="<?php echo $index_background; ?>" id="edit_indexBackground_show" style="max-height: 80px;"/>
                                     </a>
+                                    <img src="<?php  echo $webConfig['imgDomain'];?>/img/icons/cross.png" class="deleteFile" data-for="edit_indexBackground" data-show="edit_indexBackground_show">
                                 <?php } ?>
                                 <input type="file" id="edit_indexBackground" data-title="物业LOGO" accept="<?php echo implode(",", $allowTypeImage); ?>">
                             </div>
@@ -115,10 +117,28 @@
                                     <a href="<?php echo $index_background; ?>" target="_blank">
                                         <img src="<?php echo $index_background; ?>" id="edit_localpic_show" style="max-height: 80px;"/>
                                     </a>
+                                    <img src="<?php  echo $webConfig['imgDomain'];?>/img/icons/cross.png" class="deleteFile" data-for="edit_localpic" data-show="edit_localpic_show">
                                 <?php } ?>
                                 <input type="file" id="edit_localpic" data-title="物业位置图" accept="<?php echo implode(",", $allowTypeImage); ?>">
                             </div>
                         </div>
+
+                        <div class="control-group" op="editFiled">
+                            <label class="control-label" style="width:130px;" for="edit_robotpic"><?php echo Enum_Lang::getPageText('hotel', 'robot'); ?>：</label>
+                            <div class="controls">
+                                <?php if ($hotelInfo['robot_pic']) {
+                                    $robotPic = Enum_Img::getPathByKeyAndType($hotelInfo['robot_pic']);
+                                    ?>
+                                    <a href="<?php echo $robotPic; ?>" target="_blank">
+                                        <img src="<?php echo $robotPic; ?>" id="edit_robotpic_show" style="max-height: 80px;"/>
+                                    </a>
+                                    <img src="<?php  echo $webConfig['imgDomain'];?>/img/icons/cross.png" class="deleteFile" data-for="edit_robotpic" data-show="edit_robotpic_show">
+                                <?php } ?>
+                                <input type="file" id="edit_robotpic" data-title="物业位置图" accept="<?php echo implode(",", $allowTypeImage); ?>">
+                            </div>
+                        </div>
+
+
                         <?php foreach ($hotelLanguageList as $index => $language) { ?>
                             <?php
                             $filed = 'voice';
@@ -133,6 +153,7 @@
                                         ?>
                                         <audio src="<?php echo $voice; ?>" id="<?php echo $filedKey; ?>_show" controls="controls"></audio>
                                         <br/>
+                                        <img src="<?php  echo $webConfig['imgDomain'];?>/img/icons/cross.png" class="deleteFile" data-for="<?php echo $filedKey; ?>" data-show="<?php echo $filedKey; ?>_show">
                                     <?php } ?>
                                     <input type="file" id="<?php echo $filedKey; ?>" data-title="<?php echo $filedTitle; ?>"
                                            accept="<?php echo implode(",", $allowTypeVoice); ?>">
@@ -179,9 +200,10 @@
                                 <?php if ($hotelInfo['pdf']) {
                                     $index_pdf = Enum_Img::getPathByKeyAndType($hotelInfo['pdf']);
                                     ?>
-                                    <a href="<?php echo $index_pdf; ?>" target="_blank">
+                                    <a href="<?php echo $index_pdf; ?>" target="_blank" id="edit_pdf_show">
                                         查看
                                     </a>
+                                    <img src="<?php  echo $webConfig['imgDomain'];?>/img/icons/cross.png" class="deleteFile" data-for="edit_pdf" data-show="edit_pdf_show">
                                 <?php } ?>
                                 <input type="file" id="edit_pdf" data-title="物业LOGO" accept="<?php echo implode(",", $allowTypePdf); ?>">
                             </div>
@@ -208,16 +230,6 @@
                             </div>
                         </div>
 
-                        <div class="control-group" op="editFiled">
-                            <label class="control-label" style="width:130px;" for="edit_hasrobot"><?php echo Enum_Lang::getPageText('hotel', 'robot'); ?>：</label>
-                            <div class="controls">
-                                <select id="edit_hasrobot" data-old="<?php echo $hotelInfo['hasRobot']; ?>">
-                                    <option value="1" <?php if(1 == $hotelInfo['hasRobot']) echo 'selected'; ?>><?php echo Enum_Lang::getPageText('hotel', 'enable'); ?></option>
-                                    <option value="0" <?php if(0 == $hotelInfo['hasRobot']) echo 'selected'; ?>><?php echo Enum_Lang::getPageText('hotel', 'disable'); ?></option>
-                                </select>
-                            </div>
-                        </div>
-
                     </form>
 
                     <button type="button" style="margin-left: 130px;" class="btn btn-warning" id="saveListData"
@@ -237,6 +249,7 @@
 <?php include($webConfig['layoutPath'] . '/common/record.phtml') ?>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/common/yp_list.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/common/yp_form.js"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/common/form_ext.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/art.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/hotel/info.js"></script>
 </body>

@@ -55,11 +55,9 @@ class HotelModel extends \BaseModel
             $paramList['introduction_lang1'] ? $params['introduction_lang1'] = $paramList['introduction_lang1'] : false;
             $paramList['introduction_lang2'] ? $params['introduction_lang2'] = $paramList['introduction_lang2'] : false;
             $paramList['introduction_lang3'] ? $params['introduction_lang3'] = $paramList['introduction_lang3'] : false;
-            $paramList['pdf'] ? $params['pdf'] = $paramList['pdf'] : false;
             $paramList['flighturl'] ? $params['flighturl'] = $paramList['flighturl'] : false;
             $paramList['surveyurl'] ? $params['surveyurl'] = $paramList['surveyurl'] : false;
             $paramList['invoice_id'] ? $params['invoice_id'] = $paramList['invoice_id'] : false;
-            !is_null($paramList['hasrobot']) ? $params['hasrobot'] = intval($paramList['hasrobot']) : false;
             !is_null($paramList['status']) ? $params['status'] = $paramList['status'] : false;
 
             $checkParams = Enum_Hotel::getHotelMustInput();
@@ -91,6 +89,14 @@ class HotelModel extends \BaseModel
                     break;
                 }
                 $params['localpic'] = $uploadResult['data']['picKey'];
+            }
+            if ($paramList['robot_pic']) {
+                $uploadResult = $this->uploadFile($paramList['robot_pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = 'robot图上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['robot_pic'] = $uploadResult['data']['picKey'];
             }
             if ($paramList['voice_lang1']) {
                 $uploadResult = $this->uploadFile($paramList['voice_lang1'], Enum_Oss::OSS_PATH_VOICE);

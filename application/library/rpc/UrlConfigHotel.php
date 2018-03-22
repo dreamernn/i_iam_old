@@ -192,9 +192,9 @@ class Rpc_UrlConfigHotel {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
-                'hasrobot' => array(
+                'robot_pic' => array(
                     'required' => false,
-                    'format' => 'int',
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
             )

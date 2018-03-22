@@ -171,6 +171,23 @@ class BaseController extends \Yaf_Controller_Abstract {
     }
 
     /**
+     * @param $key
+     * @return string|null|array  false as delete
+     */
+    protected function getFile($key)
+    {
+        $result = $_FILES[$key];
+        if (!$result) {
+            $url = parse_url(trim($_POST[$key]));
+            if ($url && $url['path']) {
+                $path = substr($url['path'], 1);
+                $result = str_replace('/', '_', $path);
+            }
+        }
+        return $result;
+    }
+
+    /**
      * 设置允许上传文件类型
      */
     protected function setAllowUploadFileType($type, $pageKey) {
