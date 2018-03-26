@@ -13,7 +13,7 @@ iHotel.ascottList = (function ($, ypGlobal) {
             language: 'zh-CN'
         });
         ascottList.init({
-            colCount: 9,
+            colCount: 11,
             autoLoad: true,
             listUrl: ypGlobal.listUrl,
             listDomObject: $("#dataList"),
@@ -61,6 +61,10 @@ iHotel.ascottList = (function ($, ypGlobal) {
         // 新建产品
         $("#createData").on('click', function () {
             $("#ossfile").html("");
+            $("#listEditor").find('img.deleteFile').each(function (key, value) {
+                var element = $(value);
+                fileReset(element);
+            });
             ascottForm.writeEditor({
                 editorDom: $("#listEditor")
             });
@@ -74,6 +78,10 @@ iHotel.ascottList = (function ($, ypGlobal) {
                 if (dataOne.attr('type')) {
                     dataList[dataOne.attr('type')] = dataOne.data('value');
                 }
+            });
+            $("#listEditor").find('img.deleteFile').each(function (key, value) {
+                var element = $(value);
+                fileReset(element);
             });
             ascottForm.writeEditor({
                 editorDom: $("#listEditor"),

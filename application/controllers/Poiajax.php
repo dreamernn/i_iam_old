@@ -141,8 +141,8 @@ class PoiajaxController extends \BaseController {
         $paramList['status'] = intval($this->getPost("status"));
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['groupid'] = intval($this->getGroupId());
-        $paramList['pdf'] = $_FILES['pdf'];
-        $paramList['pic'] = $_FILES['pic'];
+        $paramList['pdf'] = $this->getFile('pdf');
+        $paramList['pic'] = $this->getFile('pic');
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
         return $paramList;

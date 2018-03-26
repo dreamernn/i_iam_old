@@ -51,8 +51,8 @@ class RoomajaxController extends \BaseController {
         $paramList['introduct_lang3'] = trim($this->getPost("introductLang3"));
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['status'] = intval($this->getPost('status'));
-        $paramList['pic'] = $_FILES['pic'];
-        $paramList['pdf'] = $_FILES['pdf'];
+        $paramList['pic'] = $this->getFile('pic');
+        $paramList['pdf'] = $this->getFile('pdf');
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
         return $paramList;

@@ -26,7 +26,9 @@
                         $filedTitle = Enum_Lang::getPageText('hotel', 'pdf'); ?>
                         <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>：</label>
                         <div class="controls">
+                            <a href="" id="edit_<?php echo $filedName; ?>_show">查看</a>
                             <input type="file" id="edit_<?php echo $filedName; ?>" placeholder="<?php echo $filedTitle; ?>" class="span4" data-title="<?php echo $filedTitle; ?>" accept="<?php echo implode(",", $allowTypePdf); ?>">
+                            <img src="<?php echo $webConfig['imgDomain'];?>/img/icons/cross.png" class="deleteFile" data-for="edit_<?php echo $filedName; ?>" data-show="edit_<?php echo $filedName; ?>_show">
                         </div>
                     </div>
                     <div class="control-group" op="editFiled">

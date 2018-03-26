@@ -134,8 +134,8 @@ class HotelajaxController extends \BaseController {
         $paramList['introduct_lang3'] = $this->getPost("introductLang3");
         $paramList['status'] = intval($this->getPost("status"));
         $paramList['sort'] = intval($this->getPost("sort"));
-        $paramList['pdf'] = $_FILES['pdf'];
-        $paramList['pic'] = $_FILES['pic'];
+        $paramList['pdf'] = $this->getFile('pdf');
+        $paramList['pic'] = $this->getFile('pic');
         $paramList['video'] = trim($this->getPost("video"));
         return $paramList;
     }
@@ -181,7 +181,7 @@ class HotelajaxController extends \BaseController {
         $paramList['introduct_lang1'] = $this->getPost("introductLang1");
         $paramList['introduct_lang2'] = $this->getPost("introductLang2");
         $paramList['introduct_lang3'] = $this->getPost("introductLang3");
-        $paramList['pdf'] = $_FILES['pdf'];
+        $paramList['pdf'] = $this->getFile('pdf');
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
         $paramList['status'] = intval($this->getPost("status"));

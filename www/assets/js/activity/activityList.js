@@ -54,6 +54,10 @@ iHotel.activityList = (function ($, ypGlobal) {
         // 新建产品
         $("#createData").on('click', function () {
             $("#ossfile").html("");
+            $("#listEditor").find('img.deleteFile').each(function (key, value) {
+                var element = $(value);
+                fileReset(element);
+            });
             activityForm.writeEditor({
                 editorDom: $("#listEditor")
             });
@@ -67,6 +71,10 @@ iHotel.activityList = (function ($, ypGlobal) {
                 if (dataOne.attr('type')) {
                     dataList[dataOne.attr('type')] = dataOne.data('value');
                 }
+            });
+            $("#listEditor").find('img.deleteFile').each(function (key, value) {
+                var element = $(value);
+                fileReset(element);
             });
             activityForm.writeEditor({
                 editorDom: $("#listEditor"),

@@ -54,6 +54,10 @@ iHotel.hotelTrafficList = (function ($, ypGlobal) {
             dataForm.writeEditor({
                 editorDom: $("#listEditor")
             });
+            $("#listEditor").find('img.deleteFile').each(function (key, value) {
+                var element = $(value);
+                fileReset(element);
+            });
         });
         // 编辑产品
         $("#dataList").on('click', 'button[op=editDataOne]', function () {
@@ -64,6 +68,10 @@ iHotel.hotelTrafficList = (function ($, ypGlobal) {
                 if (dataOne.attr('type')) {
                     dataList[dataOne.attr('type')] = dataOne.data('value');
                 }
+            });
+            $("#listEditor").find('img.deleteFile').each(function (key, value) {
+                var element = $(value);
+                fileReset(element);
             });
             dataForm.writeEditor({
                 editorDom: $("#listEditor"),
