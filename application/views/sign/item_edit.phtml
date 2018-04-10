@@ -7,13 +7,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title"
-                    id="myModalLabel"><?php echo Enum_Lang::getPageText('nav', 'sign'); ?></h4>
+                    id="myModalLabel"><?php echo Enum_Lang::getPageText('nav', 'signItem'); ?></h4>
             </div>
             <div class="modal-body" id="detailBody" mf="modalfix">
                 <form class="form-horizontal" id="listEditor">
                     <input type="hidden" id="edit_id" value="0">
                     <?php foreach ($hotelLanguageList as $index => $language) { ?>
-                        <?php $filedTitle = Enum_Lang::getPageText('sign', 'categoryName') . '（' . Enum_Lang::getPageText('language', $language) . '）'; ?>
+                        <?php $filedTitle = Enum_Lang::getPageText('sign', 'itemName') . '（' . Enum_Lang::getPageText('language', $language) . '）'; ?>
                         <?php $filedIndex = $index + 1; ?>
                         <div class="control-group" op="editFiled">
                             <label class="control-label"
@@ -27,28 +27,39 @@
                     <?php } ?>
 
                     <div class="control-group" op="editFiled">
-                        <?php $filedName = 'pic';
-                        $filedTitle = Enum_Lang::getPageText('sign', 'categoryIcon'); ?>
-                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>
+                        <label class="control-label"
+                               for="edit_categoryid"><?php echo Enum_Lang::getPageText('sign', 'categoryName'); ?>
                             ：</label>
                         <div class="controls">
-                            <img src="" id="edit_<?php echo $filedName; ?>_show" style="max-height: 80px;"/>
-                            <input type="file" id="edit_<?php echo $filedName; ?>"
-                                   placeholder="<?php echo $filedTitle; ?>" class="span4"
-                                   data-title="<?php echo $filedTitle; ?>"
-                                   accept="<?php echo implode(",", $allowTypeImage); ?>">
+                            <select id="edit_categoryid"
+                                    data-title="<?php echo Enum_Lang::getPageText('sign', 'categoryName'); ?>">
+                                <?php
+                                foreach ($categoryList as $category) {
+                                    $output = "";
+                                    $language = Enum_Lang::getSystemLang(true);
+                                    if (is_null($category['subCategory'])) {
+                                        $output = sprintf("<option value='%s'>%s</option>", $category['id'], $category['title_lang' . $language]);
+                                    } else {
+                                        foreach ($category['subCategory'] as $subCategory) {
+                                            $option = sprintf("<option value='%s'>%s</option>", $subCategory['id'], $subCategory['title_lang' . $language]);
+                                            $output .= $option;
+                                        }
+                                        $output = sprintf('<optgroup label="%s">%s</optgroup>', $category['title_lang' . $language], $output);
+                                    }
+                                    echo $output;
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
 
-
                     <div class="control-group" op="editFiled">
                         <label class="control-label"
-                               for="edit_status"><?php echo Enum_Lang::getPageText('sign', 'status'); ?>
-                            ：</label>
+                               for="edit_status"><?php echo Enum_Lang::getPageText('shopping', 'status'); ?>：</label>
                         <div class="controls">
                             <select id="edit_status" data-title="状态">
-                                <option value="0"><?php echo Enum_Lang::getPageText('sign', 'enable'); ?></option>
-                                <option value="1"><?php echo Enum_Lang::getPageText('sign', 'disable'); ?></option>
+                                <option value="0"><?php echo Enum_Lang::getPageText('service', 'enable'); ?></option>
+                                <option value="1"><?php echo Enum_Lang::getPageText('service', 'disable'); ?></option>
                             </select>
                         </div>
                     </div>

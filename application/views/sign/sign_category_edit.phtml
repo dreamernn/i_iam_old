@@ -7,13 +7,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title"
-                    id="myModalLabel"><?php echo Enum_Lang::getPageText('nav', 'sign'); ?></h4>
+                    id="myModalLabel"><?php echo Enum_Lang::getPageText('nav', 'categoryMgmt'); ?></h4>
             </div>
             <div class="modal-body" id="detailBody" mf="modalfix">
                 <form class="form-horizontal" id="listEditor">
                     <input type="hidden" id="edit_id" value="0">
                     <?php foreach ($hotelLanguageList as $index => $language) { ?>
-                        <?php $filedTitle = Enum_Lang::getPageText('sign', 'categoryName') . '（' . Enum_Lang::getPageText('language', $language) . '）'; ?>
+                        <?php $filedTitle = Enum_Lang::getPageText('shopping', 'tagTitle') . '（' . Enum_Lang::getPageText('language', $language) . '）'; ?>
                         <?php $filedIndex = $index + 1; ?>
                         <div class="control-group" op="editFiled">
                             <label class="control-label"
@@ -28,7 +28,7 @@
 
                     <div class="control-group" op="editFiled">
                         <?php $filedName = 'pic';
-                        $filedTitle = Enum_Lang::getPageText('sign', 'categoryIcon'); ?>
+                        $filedTitle = Enum_Lang::getPageText('service', 'categoryIcon'); ?>
                         <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>
                             ：</label>
                         <div class="controls">
@@ -43,13 +43,13 @@
 
                     <div class="control-group" op="editFiled">
                         <label class="control-label"
-                               for="edit_status"><?php echo Enum_Lang::getPageText('sign', 'status'); ?>
+                               for="edit_parentId"><?php echo Enum_Lang::getPageText('service', 'parentCategory'); ?>
                             ：</label>
                         <div class="controls">
-                            <select id="edit_status" data-title="状态">
-                                <option value="0"><?php echo Enum_Lang::getPageText('sign', 'enable'); ?></option>
-                                <option value="1"><?php echo Enum_Lang::getPageText('sign', 'disable'); ?></option>
-                            </select>
+                            <input type="text" id="edit_parentId"
+                                   placeholder="<?php echo Enum_Lang::getPageText('service', 'parentCategory'); ?>"
+                                   class="span3"
+                                   data-title="<?php echo Enum_Lang::getPageText('service', 'parentCategory'); ?>">
                         </div>
                     </div>
                 </form>

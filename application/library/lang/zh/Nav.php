@@ -1,7 +1,7 @@
 <?php
 
-class Lang_Zh_Nav {
-
+class Lang_Zh_Nav
+{
     const HOTEL = '物业管理';
     const HOTELINFO = '基本信息';
     const HOTELFLOOR = '楼层管理';
@@ -76,5 +76,9 @@ class Lang_Zh_Nav {
     const CATEGORYMGMT = '类别管理';
     const TASKMGMT = '详细条目';
     const TASKORDERMGMT = '服务定单管理';
+
+    const SIGN = '签到系统';
+    const SIGNCATEGORY = '签到类别';
+    const SIGNITEM = '签到条目';
 
 }

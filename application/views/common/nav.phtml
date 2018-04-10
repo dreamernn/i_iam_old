@@ -183,6 +183,19 @@
                     </ul>
                 </li>
             <?php } ?>
+
+            <?php if (in_array(16, $permssionList)) { ?>
+                <li class="nav-header">
+                <span class="nav-header-open">
+                    <i class="icon-plus icon-plus-opacity pull-right"></i><?php echo Enum_Lang::getPageText('nav', 'sign'); ?>
+                </span>
+                    <ul class="nav nav-list nav-li-list hide">
+                        <li><a href="/sign/category"><?php echo Enum_Lang::getPageText('nav', 'signCategory'); ?></a>
+                        </li>
+                        <li><a href="/sign/item"><?php echo Enum_Lang::getPageText('nav', 'signItem'); ?></a></li>
+                    </ul>
+                </li>
+            <?php } ?>
         </ul>
     </div>
 </div>
