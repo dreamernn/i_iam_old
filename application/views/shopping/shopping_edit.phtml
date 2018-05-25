@@ -32,9 +32,23 @@
                         <label class="control-label" for="edit_tagid"><?php echo Enum_Lang::getPageText('shopping', 'tagTitle'); ?>：</label>
                         <div class="controls">
                             <select id="edit_tagid" data-title="标签">
-                                <?php foreach ($tagList as $tag) { ?>
-                                    <option value="<?php echo $tag['id']; ?>"><?php echo $tag['title_lang1']; ?></option>
-                                <?php } ?>
+                                <?php
+                                foreach ($tagList as $tag) {
+                                    $output = "";
+                                    $language = Enum_Lang::getSystemLang(true);
+                                    if (empty($tag['children'])) {
+                                        $output = sprintf("<option value='%s'>%s</option>", $tag['id'], $tag['title_lang' . $language]);
+                                    } else {
+                                        $output = sprintf("<option value='%s'>%s</option>", $tag['id'], $tag['title_lang' . $language]);
+                                        foreach ($tag['children'] as $child) {
+                                            $option = sprintf("<option value='%s'>%s</option>", $child['id'], $child['title_lang' . $language]);
+                                            $output .= $option;
+                                        }
+                                        $output = sprintf('<optgroup label="%s">%s</optgroup>', $tag['title_lang' . $language], $output);
+                                    }
+                                    echo $output;
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>

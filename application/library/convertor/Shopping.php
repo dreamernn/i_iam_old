@@ -18,10 +18,37 @@ class Convertor_Shopping extends Convertor_Base {
             $tmp = array();
             foreach ($result['list'] as $key => $value) {
                 $dataTemp = array();
+                $children = array();
                 $dataTemp['id'] = $value['id'];
                 $dataTemp['titleLang1'] = $value['title_lang1'];
                 $dataTemp['titleLang2'] = $value['title_lang2'];
                 $dataTemp['titleLang3'] = $value['title_lang3'];
+                $dataTemp['parentid'] = $value['parentid'];
+                $dataTemp['pic'] = $value['pic'];
+                $dataTemp['status'] = $value['status'];
+                if ($value['status'] == 0) {
+                    $dataTemp['statusShow'] = Enum_Lang::getPageText('shopping', 'enable');
+                } else {
+                    $dataTemp['statusShow'] = Enum_Lang::getPageText('shopping', 'disable');
+                }
+                $dataTemp['is_robot'] = $value['is_robot'];
+                if ($value['is_robot'] == 0) {
+                    $dataTemp['robotShow'] = Enum_Lang::getPageText('shopping', 'enable');
+                } else {
+                    $dataTemp['robotShow'] = Enum_Lang::getPageText('shopping', 'disable');
+                }
+                if (is_array($value['children'])) {
+                    foreach ($value['children'] as $child) {
+                        $childTemp = array();
+                        $childTemp['id'] = $child['id'];
+                        $childTemp['titleLang1'] = $child['titleLang1'];
+                        $childTemp['titleLang2'] = $child['titleLang2'];
+                        $childTemp['titleLang3'] = $child['titleLang3'];
+                        $childTemp['status'] = $child['status'];
+                        $children[] = $childTemp;
+                    }
+                }
+                $dataTemp['children'] = $children;
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

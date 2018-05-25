@@ -1,6 +1,6 @@
 <?php
 
-class Lang_Zh_Shopping {
+class Lang_En_Shopping {
 
     const CALLROBOT = 'Call Robot';
     const ROBOTDELIVER = 'Robot Deliver';

@@ -114,6 +114,21 @@ class Rpc_UrlConfigShopping {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'parentid' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'withchild' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'page' => array(
                     'required' => false,
                     'format' => 'int',
@@ -152,6 +167,27 @@ class Rpc_UrlConfigShopping {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'parentid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'is_robot' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+
             )
         ),
         'GS005' => array(
@@ -181,6 +217,26 @@ class Rpc_UrlConfigShopping {
                     'style' => 'interface'
                 ),
                 'title_lang3' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'parentid' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'status' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'is_robot' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'pic' => array(
                     'required' => false,
                     'format' => 'string',
                     'style' => 'interface'

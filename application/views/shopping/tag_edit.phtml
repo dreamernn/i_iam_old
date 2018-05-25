@@ -20,6 +20,66 @@
                             </div>
                         </div>
                     <?php } ?>
+
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'pic';
+                        $filedTitle = Enum_Lang::getPageText('shopping', 'categoryIcon'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>
+                            ：</label>
+                        <div class="controls">
+                            <img src="" id="edit_<?php echo $filedName; ?>_show" style="max-height: 80px;"/>
+                            <input type="file" id="edit_<?php echo $filedName; ?>"
+                                   placeholder="<?php echo $filedTitle; ?>" class="span4"
+                                   data-title="<?php echo $filedTitle; ?>"
+                                   accept="<?php echo implode(",", $allowTypeImage); ?>">
+                            <img src="<?php echo $webConfig['imgDomain'];?>/img/icons/cross.png" class="deleteFile" data-for="edit_<?php echo $filedName; ?>" data-show="edit_<?php echo $filedName; ?>_show">
+                        </div>
+                    </div>
+
+                    <div class="control-group" op="editFiled">
+                        <?php $filedName = 'parentid';
+                        $filedTitle = Enum_Lang::getPageText('shopping', 'parentCategory'); ?>
+                        <label class="control-label" for="edit_<?php echo $filedName; ?>"><?php echo $filedTitle; ?>
+                            ：</label>
+                        <div class="controls">
+                            <select id="edit_<?php echo $filedName; ?>" data-title="<?php echo $filedName; ?>">
+                                <option value="0">-</option>
+                                <?php
+                                    $langIndex = Enum_Lang::getSystemLang(true);
+                                    foreach ($firstLevelTag as $parent) {
+                                        $option = sprintf("<option value='%s'>%s</option>", $parent['id'], $parent['title_lang'.$langIndex]);
+                                        echo $option;
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label"
+                               for="edit_robot"><?php echo Enum_Lang::getPageText('shopping', 'robotDeliver'); ?>
+                            ：</label>
+                        <div class="controls">
+                            <select id="edit_robot" data-title="<?php echo Enum_Lang::getPageText('shopping', 'robotDeliver'); ?>">
+                                <option value="0"><?php echo Enum_Lang::getPageText('shopping', 'enable'); ?></option>
+                                <option value="1"><?php echo Enum_Lang::getPageText('shopping', 'disable'); ?></option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label"
+                               for="edit_status"><?php echo Enum_Lang::getPageText('shopping', 'status'); ?>
+                            ：</label>
+                        <div class="controls">
+                            <select id="edit_status" data-title="状态">
+                                <option value="0"><?php echo Enum_Lang::getPageText('shopping', 'enable'); ?></option>
+                                <option value="1"><?php echo Enum_Lang::getPageText('shopping', 'disable'); ?></option>
+                            </select>
+                        </div>
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">

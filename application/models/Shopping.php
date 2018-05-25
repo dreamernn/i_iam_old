@@ -11,6 +11,9 @@ class ShoppingModel extends \BaseModel {
     public function getTagList($paramList, $cacheTime = 0) {
         do {
             $params['hotelid'] = $paramList['hotelid'];
+            $params['parentid'] = $paramList['parentid'];
+            $params['status'] = $paramList['status'];
+            $params['withchild'] = $paramList['withchild'];
             if ($cacheTime == 0) {
                 $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
             } else {
@@ -34,6 +37,14 @@ class ShoppingModel extends \BaseModel {
             );
             if (empty($params['title_lang1']) || empty($params['hotelid'])) {
                 break;
+            }
+            if ($paramList['pic']) {
+                $uploadResult = $this->uploadFile($paramList['pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = '图片上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pic'] = $uploadResult['data']['picKey'];
             }
             $interfaceId = $params['id'] ? 'GS005' : 'GS004';
             $result = $this->rpcClient->getResultRaw($interfaceId, $params);

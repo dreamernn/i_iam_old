@@ -4,6 +4,7 @@ class Enum_System
 {
 
     const RPC_REQUEST_PACKAGE = 'iam';
+    const ALL = 'all';
 
     private static $_apiDomain;
 

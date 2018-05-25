@@ -30,6 +30,10 @@
                                         <?php foreach ($hotelLanguageList as $index => $language) { ?>
                                             <th><?php echo Enum_Lang::getPageText('shopping', 'tagTitle'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</th>
                                         <?php } ?>
+                                        <th><?php echo Enum_Lang::getPageText('shopping', 'categoryIcon'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('shopping', 'parentCategory'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('shopping', 'status'); ?></th>
+                                        <th><?php echo Enum_Lang::getPageText('shopping', 'robotDeliver'); ?></th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
@@ -59,6 +63,7 @@
 <script src="<?php echo $webConfig['imgDomain']; ?>js/common/yp_form.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/art.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/shopping/tag.js"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/common/form_ext.js"></script>
 </body>
 </html>
 <script id="dataList_tpl" type="text/html">
@@ -68,6 +73,16 @@
         <?php foreach ($hotelLanguageList as $index => $language) { ?>
             <td type="titleLang<?php echo $index + 1; ?>" data-value="{{info.titleLang<?php echo $index + 1; ?>}}">{{info.titleLang<?php echo $index + 1; ?>}}</td>
         <?php } ?>
+        <td type="pic" data-value="{{info.pic}}">
+            {{if info.pic}}
+            <a href="{{info.pic}}" target="_blank">
+                <img src="{{info.pic}}" style="max-width: 100px;max-height: 100px;"/>
+            </a>
+            {{/if}}
+        </td>
+        <td type="parentid" data-value="{{info.parentid}}">{{info.parentid}}</td>
+        <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
+        <td type="status" data-value="{{info.is_robot}}">{{info.robotShow}}</td>
         <td>
             <button op="editDataOne" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}">修改</button>
         </td>

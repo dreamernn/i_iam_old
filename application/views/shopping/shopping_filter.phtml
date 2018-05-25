@@ -16,11 +16,25 @@
             <div class="pull-left control-item">
                 <span class="control-label"><?php echo Enum_Lang::getPageText('shopping', 'tagTitle'); ?>：</span>
                 <div class="controls">
-                    <select id="filter_tag" data-paramkey='tag' class="input-medium select-long" op="filterCase">
+                    <select id="filter_tagid" data-title="标签" data-paramkey='tag' class="input-medium select-long" op="filterCase">
                         <option value="all"><?php echo Enum_Lang::getPageText('system', 'all'); ?></option>
-                        <?php foreach ($tagList as $tag) { ?>
-                            <option value="<?php echo $tag['id']; ?>"><?php echo $tag['title_lang1']; ?></option>
-                        <?php } ?>
+                        <?php
+                        foreach ($tagList as $tag) {
+                            $output = "";
+                            $language = Enum_Lang::getSystemLang(true);
+                            if (empty($tag['children'])) {
+                                $output = sprintf("<option value='%s'>%s</option>", $tag['id'], $tag['title_lang' . $language]);
+                            } else {
+                                $output = sprintf("<option value='%s'>%s(一级标签)</option>", $tag['id'], $tag['title_lang' . $language]);
+                                foreach ($tag['children'] as $child) {
+                                    $option = sprintf("<option value='%s'>%s</option>", $child['id'], $child['title_lang' . $language]);
+                                    $output .= $option;
+                                }
+                                $output = sprintf('<optgroup label="%s">%s</optgroup>', $tag['title_lang' . $language], $output);
+                            }
+                            echo $output;
+                        }
+                        ?>
                     </select>
                 </div>
             </div>

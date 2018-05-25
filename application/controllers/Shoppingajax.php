@@ -27,6 +27,8 @@ class ShoppingajaxController extends \BaseController {
     public function getTagListAction() {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
+        $paramList['parentid'] = Enum_System::ALL;
+        $paramList['status'] = Enum_System::ALL;
         $result = $this->shoppingModel->getTagList($paramList);
         $result = $this->shoppingConvertor->shoppingTagListConvertor($result);
         $this->echoJson($result);
@@ -40,6 +42,10 @@ class ShoppingajaxController extends \BaseController {
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
         $paramList['title_lang2'] = trim($this->getPost("titleLang2"));
         $paramList['title_lang3'] = trim($this->getPost("titleLang3"));
+        $paramList['pic'] = $this->getFile('pic');
+        $paramList['parentid'] = intval($this->getPost("parentid"));
+        $paramList['status'] = intval($this->getPost("status"));
+        $paramList['is_robot'] = intval($this->getPost("robot"));
         $paramList['hotelid'] = intval($this->getHotelId());
         return $paramList;
     }

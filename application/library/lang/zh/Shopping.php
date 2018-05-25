@@ -42,4 +42,8 @@ class Lang_Zh_Shopping {
     const ROBOT_GUEST_NOT_FETCH = '客户未取物品';
     const ROBOT_CANCELLED = '取消送货';
 
+
+    const CATEGORYICON = '类别图标';
+    const PARENTCATEGORY = '父级类别';
+
 }
