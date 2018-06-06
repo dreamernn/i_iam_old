@@ -53,14 +53,19 @@ class ShoppingController extends \BaseController {
     /**
      * 体验购物订单管理
      */
-    public function orderAction() {
-        $shoppingList = $this->model->getShoppingList(array('hotelid' => $this->getHotelId()), 3600);
-        $this->_view->assign('shoppingList', $shoppingList['data']['list']);
-
+    public function orderAction()
+    {
         $filterList = $this->model->getShoppingOrderFilterList(array('hotelid' => $this->getHotelId()), 3600);
+        $shoppingList = $this->model->getShoppingList(array('hotelid' => $this->getHotelId()), 3600);
+
+        $this->_view->assign('shoppingList', $shoppingList['data']['list']);
+        $this->_view->assign('userId', $this->userInfo['id']);
+        $this->_view->assign('userName', $this->userInfo['lname']);
         $this->_view->assign('userList', $filterList['data']['userlist']);
         $this->_view->assign('statusList', $filterList['data']['statuslist']);
+        $this->_view->assign('noDeliver', false);
 
         $this->_view->display('shopping/order.phtml');
+
     }
 }

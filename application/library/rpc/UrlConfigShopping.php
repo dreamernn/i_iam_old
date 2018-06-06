@@ -418,7 +418,7 @@ class Rpc_UrlConfigShopping {
             'name' => '获取购物报名列表',
             'method' => 'getShoppingOrderList',
             'auth' => true,
-            'url' => '/shoppingOrder/getOrderList',
+            'url' => '/shoppingOrder/getHotelOrderList',
             'param' => array(
                 'id' => array(
                     'required' => false,

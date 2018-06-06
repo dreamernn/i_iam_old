@@ -117,15 +117,21 @@ class Convertor_Shopping extends Convertor_Base {
             foreach ($result['list'] as $key => $value) {
                 $dataTemp = array();
                 $dataTemp['id'] = $value['id'];
+                $dataTemp['ordersProductsId'] = $value['orders_products_id'];
                 $dataTemp['userid'] = $value['userid'];
                 $dataTemp['userRoom'] = $value['userInfo']['room'];
                 $dataTemp['count'] = $value['count'];
                 $dataTemp['createtime'] = $value['createtime'] ? date('Y-m-d H:i:s', $value['createtime']) : '';
                 $dataTemp['status'] = $value['statusName'];
+                $dataTemp['statusid'] = $value['status'];
                 $dataTemp['shopping'] = $value['shoppingName'];
                 $dataTemp['admin'] = $value['adminName'];
+                $dataTemp['adminid'] = $value['adminid'];
+                $dataTemp['memo'] = $value['memo'];
                 $dataTemp['robotstatus'] = $value['robotStatus'];
                 $dataTemp['robotstatusname'] = $value['robotStatusName'];
+                $dataTemp['productstatus'] = $value['productStatus'];
+                $dataTemp['productstatusname'] = $value['productStatusName'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;
