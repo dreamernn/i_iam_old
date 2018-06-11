@@ -138,6 +138,16 @@
                             </div>
                         </div>
 
+                        <div class="control-group" op="editFiled">
+                            <label class="control-label" style="width:130px;" for="edit_washingmachine"><?php echo Enum_Lang::getPageText('hotel', 'washingMachine'); ?>：</label>
+                            <div class="controls">
+                                <select id="edit_washingmachine" data-title="城市" data-old="<?php echo $hotelInfo['cityid']; ?>">
+                                    <option value="1" <?php if(1 == $hotelInfo['washing_machine']) echo 'selected'; ?>><?php echo Enum_Lang::getPageText('hotel', 'enable'); ?></option>
+                                    <option value="0" <?php if(0 == $hotelInfo['washing_machine']) echo 'selected'; ?>><?php echo Enum_Lang::getPageText('hotel', 'disable'); ?></option>
+                                </select>
+                            </div>
+                        </div>
+
 
                         <?php foreach ($hotelLanguageList as $index => $language) { ?>
                             <?php

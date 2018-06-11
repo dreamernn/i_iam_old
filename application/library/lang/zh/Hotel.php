@@ -21,6 +21,7 @@ class Lang_Zh_Hotel {
     const SURVEYURL = '住客调查URL';
     const INVOICEID = '发票编号';
     const ROBOT = '机器人位置图';
+    const WASHINGMACHINE = '洗衣功能';
 
     const FLOOREDITTITLE = '编辑楼层信息';
     const FLOOR = '楼层名称';

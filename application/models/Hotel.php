@@ -59,6 +59,7 @@ class HotelModel extends \BaseModel
             $paramList['surveyurl'] ? $params['surveyurl'] = $paramList['surveyurl'] : false;
             $paramList['invoice_id'] ? $params['invoice_id'] = $paramList['invoice_id'] : false;
             !is_null($paramList['status']) ? $params['status'] = $paramList['status'] : false;
+            !is_null($paramList['washing_machine']) ? $params['washing_machine'] = intval($paramList['washing_machine']) : false;
 
             $checkParams = Enum_Hotel::getHotelMustInput();
             foreach ($checkParams as $checkParamOne) {

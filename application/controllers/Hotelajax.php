@@ -45,6 +45,7 @@ class HotelajaxController extends \BaseController {
         $paramList['voice_lang2'] = $this->getFile('voiceLang2');
         $paramList['voice_lang3'] = $this->getFile('voiceLang3');
         $paramList['robot_pic'] = $this->getFile('robotpic');
+        $paramList['washing_machine'] = intval($this->getPost('washingmachine'));
         $paramList['bookurl'] = trim($this->getPost("bookurl"));
         $paramList['flighturl'] = trim($this->getPost('flighturl'));
         $paramList['surveyurl'] = trim($this->getPost('surveyurl'));
