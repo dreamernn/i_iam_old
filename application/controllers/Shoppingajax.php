@@ -46,6 +46,12 @@ class ShoppingajaxController extends \BaseController {
         $paramList['parentid'] = intval($this->getPost("parentid"));
         $paramList['status'] = intval($this->getPost("status"));
         $paramList['is_robot'] = intval($this->getPost("robot"));
+
+        if (!empty(trim($this->getPost("staffList")))) {
+            $paramList = array();
+            $paramList['staff_list'] = trim($this->getPost("staffList"));
+        }
+
         $paramList['hotelid'] = intval($this->getHotelId());
         return $paramList;
     }

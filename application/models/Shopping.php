@@ -35,7 +35,7 @@ class ShoppingModel extends \BaseModel {
                 'code' => 1,
                 'msg' => '参数错误'
             );
-            if (empty($params['title_lang1']) || empty($params['hotelid'])) {
+            if ((empty($params['title_lang1']) && empty($params['staff_list'])) || empty($params['hotelid'])) {
                 break;
             }
             if ($paramList['pic']) {

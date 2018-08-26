@@ -191,4 +191,29 @@ class AppajaxController extends \BaseController {
         $result = $this->appModel->updateHotelRss($paramList);
         $this->echoJson($result);
     }
+
+    /**
+     * Get staff list
+     */
+    public function getStaffListAction()
+    {
+        $staffModel = new StaffModel();
+        $result = $staffModel->getStaffList(array(
+            'hotelid' => $this->getHotelId(),
+            'limit' => $this->getPost('limit'),
+            'page' => intval($this->getPost('page')),
+        ));
+        $result = $this->appConvertor->staffConvertor($result);
+        $this->echoJson($result);
+    }
+
+    public function updateStaffScheduleAction()
+    {
+        $params = array();
+        $params['id'] = $this->getPost('id');
+        $params['schedule'] = $this->getPost('timelist');
+        $staffModel = new StaffModel();
+        $result = $staffModel->updateStaffSchedule($params);
+        $this->echoJson($result);
+    }
 }

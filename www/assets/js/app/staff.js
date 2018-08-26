@@ -85,15 +85,15 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
         var staffModal = $("#staffListEditor"), staffEditorList = $("#staffEditorList"), saveStaff = $("#saveStaffList");
         $("#dataList").on('click', 'button[op=editStaffList]', function () {
             var $editId = $(this).data('dataid'), $dataDom = $("#dataList").find("[dataId=" + $editId + "]");
-            var staffList = [];
-            $.each($dataDom.find('td[type=staffList]').data('value').toString().split(','), function (key, value) {
+            var timeList = [];
+            $.each($dataDom.find('td[type=schedule]').data('value').toString().split(','), function (key, value) {
                 if (value) {
-                    staffList.push(parseInt(value));
+                    timeList.push(parseInt(value));
                 }
             });
             staffEditorList.find('[op=edit_staffList]').each(function (key, value) {
                 var staffOne = $(value), staffId = parseInt(staffOne.attr('value'));
-                if ($.inArray(staffId, staffList) >= 0) {
+                if ($.inArray(staffId, timeList) >= 0) {
                     staffOne.prop('checked', true).data('old', 1);
                 } else {
                     staffOne.prop('checked', false).data('old', 0);
@@ -114,10 +114,10 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
                     staffList.push(staffOne.attr('value'));
                 }
                 if (staffOne.prop('checked') && staffOne.data('old') == 0) {
-                    staffInsert.push(staffOne.data('title'));
+                    staffInsert.push(staffOne.attr('value'));
                 }
                 if (!staffOne.prop('checked') && staffOne.data('old') == 1) {
-                    staffDelete.push(staffOne.data('title'));
+                    staffDelete.push(staffOne.attr('value'));
                 }
             });
             var statusRecord = '';
@@ -134,16 +134,16 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
             }
             var saveParams = {};
             saveParams.id = saveStaff.data('tagid');
-            saveParams.staffList = staffList.join(',');
+            saveParams.timelist = staffList.join(',');
             recordLog = ypRecord.getCreateLog({
-                modelName: '购物分类员工处理管理',
+                modelName: '员工推送配置',
                 value: statusRecord
             });
             saveParams[YP_RECORD_VARS.recordPostId] = saveParams.id;
             saveParams[YP_RECORD_VARS.recordPostVar] = recordLog;
 
             var xhr = ajax.ajax({
-                url: '/shoppingajax/updateTag',
+                url: ypGlobal.updateUrl,
                 type: "POST",
                 data: saveParams,
                 cache: false,

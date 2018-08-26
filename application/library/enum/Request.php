@@ -30,6 +30,7 @@ class Enum_Request {
             'R' => 'Rpc_UrlConfigRoom',
             'RT' => 'Rpc_UrlConfigRobot',
             'S' => 'Rpc_UrlConfigSign',
+            'SF' => 'Rpc_UrlConfigStaff',
             'T' => 'Rpc_UrlConfigTel',
             'U' => 'Rpc_UrlConfigUser',
         );

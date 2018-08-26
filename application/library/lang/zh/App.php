@@ -27,4 +27,6 @@ class Lang_Zh_App {
     const RSS = 'RSS';
     const RSSTYPE = 'RSS类型';
     const INSERTRSS = '新增RSS';
+
+    const STAFFNAME = '员工名称';
 }

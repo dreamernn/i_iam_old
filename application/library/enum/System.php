@@ -5,6 +5,7 @@ class Enum_System
 
     const RPC_REQUEST_PACKAGE = 'iam';
     const ALL = 'all';
+    const COMMA_SEPARATOR = ',';
 
     private static $_apiDomain;
 

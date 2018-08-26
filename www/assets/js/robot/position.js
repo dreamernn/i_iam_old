@@ -40,6 +40,7 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
                     saveUrl: saveParams.id > 0 ? ypGlobal.updateUrl : ypGlobal.createUrl
                 });
                 saveParams = tagForm.makeRecord(saveParams, saveParams.id, saveParams.titleLang1);
+                YP_RECORD_VARS.isChange = true;
                 return saveParams;
             },
             saveSuccess: function (data) {

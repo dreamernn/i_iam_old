@@ -18,7 +18,6 @@ class ShoppingController extends \BaseController {
 
     public function tagAction() {
 
-
         $this->setAllowUploadFileType(Enum_Oss::OSS_PATH_IMAGE, 'allowTypeImage');
         $firstLevelTag = $this->model->getTagList(
             array(
@@ -28,7 +27,14 @@ class ShoppingController extends \BaseController {
                 'limit' => 0,
             )
         );
+        $staffModel = new StaffModel();
+        $staffList = $staffModel->getStaffList(array(
+            'hotelid' => $this->getHotelId(),
+            'limit' => 0
+        ));
+        $staffList = array_column($staffList['data']['list'], 'lname', 'id');
         $this->_view->assign('firstLevelTag', $firstLevelTag['data']['list']);
+        $this->_view->assign('staffList', $staffList);
         $this->_view->display('shopping/tag.phtml');
     }
 

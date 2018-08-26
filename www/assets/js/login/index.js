@@ -33,7 +33,7 @@ iHotel.loginIndex = (function ($, ypRecordVar) {
             data: params,
             cache: false,
             dataType: 'json',
-            timeout: 10000
+            timeout: 100000
         });
         xhr.done(function () {
             location.href = "/index/index";

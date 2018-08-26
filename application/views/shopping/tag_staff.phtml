@@ -1,0 +1,33 @@
+<div class="modal hide fade yulong" id="staffListEditor" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" mf="modalfix" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">处理员工管理</h4>
+            </div>
+            <div class="modal-body" id="detailBodyt" mf="modalfix">
+                <form class="form-horizontal" id="staffEditorList">
+                    <?php foreach ($staffList as $id => $name) { ?>
+                        <div class="control-group" op="editFiled">
+                            <label class="control-label"
+                                   for="edit_staffList<?php echo $id; ?>"><?php echo $name; ?>：</label>
+                            <div class="controls">
+                                <input type="checkbox" op="edit_staffList"
+                                       id="edit_staffList<?php echo $id; ?>" value="<?php echo $id; ?>"
+                                       data-title="<?php echo $name; ?>">
+                            </div>
+                        </div>
+                    <?php } ?>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" id="saveStaffList" data-loading-text="保存中...">保存
+                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id='closeEditor'>关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

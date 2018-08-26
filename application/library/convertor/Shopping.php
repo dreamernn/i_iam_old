@@ -25,6 +25,7 @@ class Convertor_Shopping extends Convertor_Base {
                 $dataTemp['titleLang3'] = $value['title_lang3'];
                 $dataTemp['parentid'] = $value['parentid'];
                 $dataTemp['pic'] = $value['pic'];
+                $dataTemp['staffList'] = implode(Enum_System::COMMA_SEPARATOR, $value['staff_list']);
                 $dataTemp['status'] = $value['status'];
                 if ($value['status'] == 0) {
                     $dataTemp['statusShow'] = Enum_Lang::getPageText('shopping', 'enable');

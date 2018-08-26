@@ -51,4 +51,9 @@ class AppController extends \BaseController {
         $this->_view->assign('rssTypeList', $rssTypeList['data']['list']);
         $this->_view->display('app/rss.phtml');
     }
+
+
+    public function staffAction() {
+        $this->_view->display('app/staff.phtml');
+    }
 }

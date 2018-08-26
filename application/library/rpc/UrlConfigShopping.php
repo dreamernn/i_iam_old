@@ -207,7 +207,7 @@ class Rpc_UrlConfigShopping {
                     'style' => 'interface'
                 ),
                 'title_lang1' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
@@ -224,6 +224,11 @@ class Rpc_UrlConfigShopping {
                 'parentid' => array(
                     'required' => false,
                     'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'staff_list' => array(
+                    'required' => false,
+                    'format' => 'string',
                     'style' => 'interface'
                 ),
                 'status' => array(
@@ -526,23 +531,5 @@ class Rpc_UrlConfigShopping {
         ),
     );
 
-    /**
-     * 根据接口编号获取接口配置
-     *
-     * @param string $interfaceId
-     * @param string $configKey
-     * @return multitype:multitype:string multitype:multitype:boolean string
-     *         |boolean
-     */
-    public static function getConfig($interfaceId, $configKey = '') {
-        if (isset(self::$config[$interfaceId])) {
-            if (strlen($configKey) && isset(self::$config[$interfaceId][$configKey])) {
-                return self::$config[$interfaceId][$configKey];
-            } else {
-                return self::$config[$interfaceId];
-            }
-        } else {
-            return false;
-        }
-    }
+    use Rpc_TraitGetConfig;
 }

@@ -49,6 +49,7 @@
     </div>
 </div>
 <?php include($webConfig['layoutPath'] . '/shopping/tag_edit.phtml'); ?>
+<?php include($webConfig['layoutPath'] . '/shopping/tag_staff.phtml'); ?>
 <script type="text/javascript">
     var YP_GLOBAL_VARS = {
         checkParams: '<?php echo json_encode(Enum_Activity::getTagMustInput());?>',
@@ -83,8 +84,10 @@
         <td type="parentid" data-value="{{info.parentid}}">{{info.parentid}}</td>
         <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
         <td type="status" data-value="{{info.is_robot}}">{{info.robotShow}}</td>
+        <td type="staffList" data-value="{{info.staffList}}" style="display: none"></td>
         <td>
             <button op="editDataOne" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}">修改</button>
+            <button op="editStaffList" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}">处理员工管理</button>
         </td>
     </tr>
     {{/each}}
