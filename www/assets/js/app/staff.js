@@ -49,43 +49,15 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
                 tips.show(data.msg);
             }
         });
-        // 新建产品
-        $("#createData").on('click', function () {
-            $("#listEditor").find('img.deleteFile').each(function (key, value) {
-                var element = $(value);
-                fileReset(element);
-            });
-            tagForm.writeEditor({
-                editorDom: $("#listEditor")
-            });
-        });
-        // 编辑产品
-        $("#dataList").on('click', 'button[op=editDataOne]', function () {
-            var $editId = $(this).data('dataid'), $dataDom = $("#dataList").find("[dataId=" + $editId + "]");
-            var dataList = {};
-            $dataDom.find('td').each(function (key, value) {
-                var dataOne = $(value);
-                if (dataOne.attr('type')) {
-                    dataList[dataOne.attr('type')] = dataOne.data('value');
-                }
-            });
-            $("#listEditor").find('img.deleteFile').each(function (key, value) {
-                var element = $(value);
-                fileReset(element);
-            });
-            tagForm.writeEditor({
-                editorDom: $("#listEditor"),
-                writeData: dataList
-            });
-            detailModal.modal('show');
-        });
     }
 
     function initStaffList() {
+        bindButton();
         var staffModal = $("#staffListEditor"), staffEditorList = $("#staffEditorList"), saveStaff = $("#saveStaffList");
         $("#dataList").on('click', 'button[op=editStaffList]', function () {
             var $editId = $(this).data('dataid'), $dataDom = $("#dataList").find("[dataId=" + $editId + "]");
             var timeList = [];
+            var washing = $dataDom.find('td[type=washing]').data('value');
             $.each($dataDom.find('td[type=schedule]').data('value').toString().split(','), function (key, value) {
                 if (value) {
                     timeList.push(parseInt(value));
@@ -99,6 +71,7 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
                     staffOne.prop('checked', false).data('old', 0);
                 }
             });
+            staffEditorList.find('input[op=edit_staffWashing]').prop('checked', washing).data('old', washing);
             saveStaff.data('tagid', $editId);
             staffModal.modal('show');
         });
@@ -120,6 +93,8 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
                     staffDelete.push(staffOne.attr('value'));
                 }
             });
+            var washing = staffEditorList.find('input[op=edit_staffWashing]');
+
             var statusRecord = '';
             if (staffInsert.length > 0) {
                 statusRecord += '增加了' + staffInsert.join(",") + ';';
@@ -127,7 +102,10 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
             if (staffDelete.length > 0) {
                 statusRecord += '减少了' + staffDelete.join(",") + ';';
             }
-            if (staffInsert.length == 0 && staffDelete.length == 0) {
+            if (washing.data('old') != washing.prop('checked')) {
+                statusRecord += ('washing 变为 ' + washing.prop('checked'));
+            }
+            if (staffInsert.length == 0 && staffDelete.length == 0 && washing.data('old') == washing.prop('checked')) {
                 saveStaff.button('reset');
                 staffModal.modal('hide');
                 return false;
@@ -135,6 +113,13 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
             var saveParams = {};
             saveParams.id = saveStaff.data('tagid');
             saveParams.timelist = staffList.join(',');
+            if (washing.data('old') != washing.prop('checked')) {
+                if (washing.prop('checked')) {
+                    saveParams.washing = 1;
+                } else {
+                    saveParams.washing = 0;
+                }
+            }
             recordLog = ypRecord.getCreateLog({
                 modelName: '员工推送配置',
                 value: statusRecord
@@ -159,6 +144,18 @@ iHotel.shoppingTagList = (function ($, ypGlobal) {
                 saveStaff.button('reset');
             });
         });
+    }
+
+    function bindButton() {
+        $('button.week').each(function (key, value) {
+            var weekButton = $(value);
+            weekButton.on('click', function () {
+                var week = $(this).data('week');
+                $('input.' + week).each(function (key, value) {
+                    $(value).prop('checked', true);
+                });
+            });
+        })
     }
 
     function init() {

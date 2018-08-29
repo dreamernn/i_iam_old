@@ -212,6 +212,7 @@ class AppajaxController extends \BaseController {
         $params = array();
         $params['id'] = $this->getPost('id');
         $params['schedule'] = $this->getPost('timelist');
+        $params['washing_push'] = $this->getPost('washing');
         $staffModel = new StaffModel();
         $result = $staffModel->updateStaffSchedule($params);
         $this->echoJson($result);

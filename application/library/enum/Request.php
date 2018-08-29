@@ -16,6 +16,7 @@ class Enum_Request {
             'AU' => 'Rpc_UrlConfigAdmin',
             'B' => 'Rpc_UrlConfigBase',
             'C' => 'Rpc_UrlConfigComment',
+            'CG' => 'Rpc_UrlConfigConfig',
             'F' => 'Rpc_UrlConfigFeedback',
             'GA' => 'Rpc_UrlConfigActivity',
             'GH' => 'Rpc_UrlConfigHotel',

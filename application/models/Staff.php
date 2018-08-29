@@ -44,12 +44,16 @@ class StaffModel extends \BaseModel
                 'msg' => '参数错误'
             );
 
-            if (intval($paramList['id']) <= 0 || is_null($paramList['schedule'])) {
+            if (intval($paramList['id']) <= 0) {
+                break;
+            }
+            if (is_null($paramList['schedule']) && is_null($paramList['washing'])) {
                 break;
             }
             $params = array();
             $params['id'] = intval($paramList['id']);
-            $params['schedule'] = trim($paramList['schedule']);
+            !is_null($paramList['schedule']) ? $params['schedule'] = trim($paramList['schedule']) : false;
+            !is_null($paramList['washing_push']) ? $params['washing_push'] = intval($paramList['washing_push']) : false;
             $result = $this->rpcClient->getResultRaw('SF003', $params);
 
         } while (false);

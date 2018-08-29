@@ -179,7 +179,8 @@ class Convertor_App extends Convertor_Base {
                 $dataTemp = array();
                 $dataTemp['id'] = $value['id'];
                 $dataTemp['name'] = $value['lname'];
-                $dataTemp['schedule'] =$value['schedule'];
+                $dataTemp['schedule'] = $value['schedule'];
+                $dataTemp['washing'] = $value['washing_push'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

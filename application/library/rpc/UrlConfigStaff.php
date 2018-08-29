@@ -61,10 +61,15 @@ class Rpc_UrlConfigStaff {
                     'style' => 'interface'
                 ),
                 'schedule' => array(
-                    'required' => true,
+                    'required' => false,
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'washing_push' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                )
             )
         ),
     );
