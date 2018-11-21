@@ -64,7 +64,8 @@ class PromotionajaxController extends \BaseController {
     /**
      * 获取物业促销列表
      */
-    public function getListAction() {
+    public function getListAction()
+    {
         $paramList['page'] = $this->getPost('page');
         $paramList['hotelid'] = $this->getHotelId();
         $paramList['id'] = intval($this->getPost('id'));
@@ -72,6 +73,13 @@ class PromotionajaxController extends \BaseController {
         $paramList['title'] = $this->getPost('title');
         $status = $this->getPost('status');
         $status !== 'all' && !is_null($status) ? $paramList['status'] = intval($status) : false;
+        $lang = $this->getPost('lang');
+        if ($lang !== 'all' && !is_null($lang)) {
+            $key = Enum_Lang::$langIndexList[$lang];
+            if ($key > 0) {
+                $paramList['lang'] = $lang;
+            }
+        }
         $result = $this->model->getPromotionList($paramList);
         $result = $this->convertor->getListConvertor($result);
         $this->echoJson($result);
@@ -80,13 +88,17 @@ class PromotionajaxController extends \BaseController {
     /**
      * 新建和编辑物业促销
      */
-    private function handlerSaveParams() {
+    private function handlerSaveParams()
+    {
         $paramList = array();
         $paramList['title_lang1'] = trim($this->getPost("titleLang1"));
         $paramList['title_lang2'] = trim($this->getPost("titleLang2"));
         $paramList['title_lang3'] = trim($this->getPost("titleLang3"));
         $paramList['tagid'] = intval($this->getPost("tagid"));
         $paramList['status'] = intval($this->getPost("status"));
+        $paramList['enable_lang1'] = trim($this->getPost("enableLang1"));
+        $paramList['enable_lang2'] = trim($this->getPost("enableLang2"));
+        $paramList['enable_lang3'] = trim($this->getPost("enableLang3"));
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['groupid'] = intval($this->getGroupId());
         $paramList['pdf'] = $this->getFile('pdf');

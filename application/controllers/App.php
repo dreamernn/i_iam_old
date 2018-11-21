@@ -56,4 +56,15 @@ class AppController extends \BaseController {
     public function staffAction() {
         $this->_view->display('app/staff.phtml');
     }
+
+    /**
+     * Staff permission page
+     */
+    public function permissionAction()
+    {
+        $staffModel = new StaffModel();
+        $permissionList = $staffModel->getStaffAdministratorList(3600);
+        $this->_view->assign('permissionList', $permissionList['data']['list']);
+        $this->_view->display('app/permission.phtml');
+    }
 }

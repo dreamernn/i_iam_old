@@ -34,6 +34,11 @@ class Rpc_UrlConfigPromotion {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'lang' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
                 'page' => array(
                     'required' => false,
                     'format' => 'int',
@@ -194,6 +199,21 @@ class Rpc_UrlConfigPromotion {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'enable_lang1' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'enable_lang2' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'enable_lang3' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'url' => array(
                     'required' => false,
                     'format' => 'string',
@@ -282,6 +302,21 @@ class Rpc_UrlConfigPromotion {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'enable_lang1' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'enable_lang2' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'enable_lang3' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
                 'url' => array(
                     'required' => false,
                     'format' => 'string',
@@ -316,23 +351,5 @@ class Rpc_UrlConfigPromotion {
         ),
     );
 
-    /**
-     * 根据接口编号获取接口配置
-     *
-     * @param string $interfaceId
-     * @param string $configKey
-     * @return multitype:multitype:string multitype:multitype:boolean string
-     *         |boolean
-     */
-    public static function getConfig($interfaceId, $configKey = '') {
-        if (isset(self::$config[$interfaceId])) {
-            if (strlen($configKey) && isset(self::$config[$interfaceId][$configKey])) {
-                return self::$config[$interfaceId][$configKey];
-            } else {
-                return self::$config[$interfaceId];
-            }
-        } else {
-            return false;
-        }
-    }
+    use Rpc_TraitGetConfig;
 }

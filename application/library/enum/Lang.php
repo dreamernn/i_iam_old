@@ -13,6 +13,11 @@ class Enum_Lang
     const LANG_KEY_ENGLISH = 'en';
 
     /**
+     * 日语key
+     */
+    const LANG_KEY_JAPANESE = 'jp';
+
+    /**
      * 获取语言名称列表
      */
     public static function getLangeNameList()
@@ -20,6 +25,7 @@ class Enum_Lang
         $langNameList = array(
             self::LANG_KEY_CHINESE => '中文',
             self::LANG_KEY_ENGLISH => 'English',
+            self::LANG_KEY_JAPANESE => 'Japanese',
         );
         return $langNameList;
     }
@@ -27,6 +33,25 @@ class Enum_Lang
     public static $langIndexList = array(
         self::LANG_KEY_CHINESE => 1,
         self::LANG_KEY_ENGLISH => 2,
+        self::LANG_KEY_JAPANESE => 3,
+    );
+
+    public static $langNameDict = array(
+        self::LANG_KEY_CHINESE => array(
+            self::LANG_KEY_CHINESE => '中文',
+            self::LANG_KEY_ENGLISH => '英语',
+            self::LANG_KEY_JAPANESE => '日语'
+        ),
+        self::LANG_KEY_ENGLISH => array(
+            self::LANG_KEY_CHINESE => 'Chinese',
+            self::LANG_KEY_ENGLISH => 'English',
+            self::LANG_KEY_JAPANESE => 'Japanese'
+        ),
+        self::LANG_KEY_JAPANESE => array(
+            self::LANG_KEY_CHINESE => '中文',
+            self::LANG_KEY_ENGLISH => '英语',
+            self::LANG_KEY_JAPANESE => '日语'
+        ),
     );
 
     /**
@@ -115,5 +140,17 @@ class Enum_Lang
             }
         }
         return $errorText;
+    }
+
+    public static function getLangDisplayName($lang, $displayLang = self::LANG_KEY_CHINESE)
+    {
+        if (empty(self::$langNameDict[$displayLang])) {
+            $displayLang = self::LANG_KEY_CHINESE;
+        }
+        $tmp = self::$langNameDict[$displayLang];
+        if (empty($tmp[$lang])) {
+            $lang = self::LANG_KEY_CHINESE;
+        }
+        return $tmp[$lang];
     }
 }

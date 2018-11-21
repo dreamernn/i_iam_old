@@ -181,6 +181,7 @@ class Convertor_App extends Convertor_Base {
                 $dataTemp['name'] = $value['lname'];
                 $dataTemp['schedule'] = $value['schedule'];
                 $dataTemp['washing'] = $value['washing_push'];
+                $dataTemp['permission'] = $value['permission'];
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;
@@ -191,5 +192,3 @@ class Convertor_App extends Convertor_Base {
         return $data;
     }
 }
-
-?>

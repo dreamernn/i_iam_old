@@ -56,6 +56,9 @@ class Convertor_Promotion extends Convertor_Base {
                 $dataTemp['articleLang1'] = $value['article_lang1'];
                 $dataTemp['articleLang2'] = $value['article_lang2'];
                 $dataTemp['articleLang3'] = $value['article_lang3'];
+                $dataTemp['enableLang1'] = $value['enable_lang1'];
+                $dataTemp['enableLang2'] = $value['enable_lang2'];
+                $dataTemp['enableLang3'] = $value['enable_lang3'];
                 $dataTemp['status'] = $value['status'];
                 $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('promotion', 'enable') : Enum_Lang::getPageText('promotion', 'disable');
                 $dataTemp['tagid'] = $value['tagId'];
@@ -79,4 +82,3 @@ class Convertor_Promotion extends Convertor_Base {
     }
 }
 
-?>

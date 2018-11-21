@@ -52,6 +52,7 @@ class NewsModel extends \BaseModel {
             $paramList['tagid'] ? $params['tagid'] = $paramList['tagid'] : false;
             $paramList['title'] ? $params['title'] = $paramList['title'] : false;
             isset($paramList['status']) ? $params['status'] = $paramList['status'] : false;
+            isset($paramList['lang']) ? $params['lang'] = $paramList['lang'] : false;
             $this->setPageParam($params, $paramList['page'], $paramList['limit'], 15);
             $result = $this->rpcClient->getResultRaw('NT001', $params);
         } while (false);

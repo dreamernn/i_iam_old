@@ -51,7 +51,7 @@ class Rpc_UrlConfigStaff {
         ),
         'SF003' => array(
             'name' => 'update staff detail',
-            'method' => 'getStaffList',
+            'method' => 'updateStaffById',
             'auth' => true,
             'url' => '/Staff/updateStaffById',
             'param' => array(
@@ -69,8 +69,26 @@ class Rpc_UrlConfigStaff {
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'
-                )
+                ),
+                'permission' => array(
+                    'required' => false,
+                    'format' => 'string',
+                    'style' => 'interface'
+                ),
             )
+        ),
+        'SF004' => array(
+            'name' => '获取物业后台管理员帐号权限列表',
+            'method' => 'getStaffPermission',
+            'auth' => true,
+            'url' => '/HotelAdministrator/getStaffPermission',
+            'param' => array(
+                'type' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+            ),
         ),
     );
 

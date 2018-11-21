@@ -93,6 +93,20 @@
                             </select>
                         </div>
                     </div>
+
+
+                    <?php foreach ($hotelLanguageList as $index => $language) { ?>
+                        <?php $filedTitle = Enum_Lang::getPageText('promotion', 'status') . '（' . Enum_Lang::getPageText('language', $language) . '）'; ?>
+                        <?php $filedIndex = $index + 1; ?>
+                        <div class="control-group" op="editFiled">
+                            <label class="control-label" for="edit_enableLang<?php echo $filedIndex; ?>"><?php echo $filedTitle; ?>：</label>
+                            <select id="edit_enableLang<?php echo $filedIndex; ?>" data-title="状态">
+                                <option value="0"><?php echo Enum_Lang::getPageText('news', 'disable'); ?></option>
+                                <option value="1"><?php echo Enum_Lang::getPageText('news', 'enable'); ?></option>
+                            </select>
+                        </div>
+                    <?php } ?>
+
                 </form>
             </div>
             <div class="modal-footer">

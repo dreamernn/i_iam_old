@@ -59,4 +59,30 @@ class StaffModel extends \BaseModel
         } while (false);
         return $result;
     }
+
+    public function updateStaffPermission($paramList)
+    {
+        try {
+            $params['permission'] = $paramList['permission'];
+            $paramList['id'] ? $params['id'] = intval($paramList['id']) : $this->throwException("Lack param[id]", 1);
+            $result = $this->rpcClient->getResultRaw('SF003', $params);
+        } catch (Exception $e) {
+            $result = array(
+                'code' => $e->getCode(),
+                'msg' => $e->getMessage()
+            );
+        }
+        return $result;
+    }
+
+
+    public function getStaffAdministratorList($cacheTime = 0): array
+    {
+        do {
+            $params = array();
+            $isCache = $cacheTime != 0 ? true : false;
+            $result = $this->rpcClient->getResultRaw('SF004', $params, $isCache, $cacheTime);
+        } while (false);
+        return (array)$result;
+    }
 }

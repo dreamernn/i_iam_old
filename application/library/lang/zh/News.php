@@ -16,4 +16,6 @@ class Lang_Zh_News {
     const PDF = 'PDF';
     const VIDEO = '视频';
     const PIC = '图片';
+
+    const LANGUAGE = '语言';
 }
