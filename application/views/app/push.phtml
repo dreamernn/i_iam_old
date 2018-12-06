@@ -2,6 +2,7 @@
 <html>
 <head>
     <?php include($webConfig['layoutPath'] . '/common/meta.phtml') ?>
+    <link type="text/css" rel="stylesheet" href="<?php echo $webConfig['imgDomain']; ?>css/datetimepicker.css"/>
 </head>
 <body>
 <?php include($webConfig['layoutPath'] . '/common/header.phtml') ?>
@@ -61,6 +62,9 @@
 <script src="<?php echo $webConfig['imgDomain']; ?>js/common/yp_form.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/lib/art.js"></script>
 <script src="<?php echo $webConfig['imgDomain']; ?>js/app/push.js"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/lib/bootstrap-datetimepicker.js" type="text/javascript"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/lib/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+<script src="<?php echo $webConfig['imgDomain']; ?>js/common/datatimepicker.config.js" type="text/javascript"></script>
 </body>
 </html>
 <script id="dataList_tpl" type="text/html">

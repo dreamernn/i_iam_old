@@ -8,12 +8,15 @@ class Lang_Zh_App {
     const PUSHRESULT = '推送结果';
     const RESULTSUCCESS = '成功';
     const RESULTFAIL = '失败';
+    const UNSEND = '未发送';
 
     const TITLE = '标题';
     const CONTENT = '内容';
     const REDIRECTURL = '跳转URL';
     const CREATETIME = '创建时间';
     const PLATFORMTYPE = '设备类型';
+    const SENDTIME = "发送时间";
+    const TIMER = "定时发送";
 
     const ENABLE = '启用';
     const DISABLE = '禁用';

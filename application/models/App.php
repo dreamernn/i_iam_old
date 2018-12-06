@@ -33,6 +33,17 @@ class AppModel extends \BaseModel {
                 'msg' => '参数错误'
             );
 
+            //check if the msg has timer
+            if (isset($paramList['send_time'])) {
+                $time = strtotime($paramList['send_time']);
+                if ($time < time()) {
+                    $result['msg'] = "Send time is past";
+                    break;
+                } else {
+                    $params['send_time'] = $time;
+                }
+            }
+
             $paramList['platform'] ? $params['platform'] = $paramList['platform'] : false;
             $paramList['type'] ? $params['type'] = $paramList['type'] : false;
             $paramList['dataid'] ? $params['dataid'] = $paramList['dataid'] : false;

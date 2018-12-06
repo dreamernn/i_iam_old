@@ -52,6 +52,11 @@ class AppajaxController extends \BaseController {
         $paramList['en_title'] = trim($this->getPost("enTitle"));
         $paramList['en_value'] = trim($this->getPost("enValue"));
         $paramList['url'] = trim($this->getPost("url"));
+        $is_delay = (intval($this->getPost('timer')) == 0);
+        if ($is_delay) {
+            $timeStr = trim($this->getPost('time'));
+            $paramList['send_time'] = $timeStr;
+        }
         $result = $this->appModel->createPush($paramList);
         $this->echoJson($result);
     }
@@ -88,6 +93,11 @@ class AppajaxController extends \BaseController {
         $paramList['en_title'] = trim($this->getPost("enTitle"));
         $paramList['en_value'] = trim($this->getPost("enValue"));
         $paramList['url'] = trim($this->getPost("url"));
+        $is_delay = (intval($this->getPost('timer')) == 0);
+        if ($is_delay) {
+            $timeStr = trim($this->getPost('time'));
+            $paramList['send_time'] = $timeStr;
+        }
         $result = $this->appModel->createPush($paramList);
         $this->echoJson($result);
     }

@@ -63,9 +63,43 @@ iHotel.appRoomPush = (function ($, ypGlobal) {
         });
     }
 
+
+    function initTimer() {
+        //初始化日期输入框
+        var datatimepickerConfig = {
+            language: 'zh-CN',
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true,
+            weekStart: 1,
+            minView: 1
+        };
+        $("#edit_time").datetimepicker(datatimepickerConfig);
+
+        var is_timer = $('#edit_timer');
+        var editor_time = $('#editor_time');
+        if(is_timer.val() == 0){
+            editor_time.show();
+        } else {
+            editor_time.hide();
+        }
+
+        is_timer.change(function () {
+            var is_timer = $(this);
+            var editor_time = $('#editor_time');
+            if(is_timer.val() == 0){
+                editor_time.show();
+            } else {
+                editor_time.hide();
+            }
+        })
+
+    }
+
     function init() {
         initpushList();
         initEditor();
+        initTimer();
     }
 
     return {

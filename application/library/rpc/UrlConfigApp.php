@@ -191,6 +191,11 @@ class Rpc_UrlConfigApp {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'send_time' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
             )
         ),
         'APP006' => array(

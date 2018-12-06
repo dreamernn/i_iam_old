@@ -57,6 +57,25 @@
                             <input type="text" id="edit_url" placeholder="<?php echo Enum_Lang::getPageText('app', 'redirectUrl'); ?>" class="span8" data-title="落地URL">
                         </div>
                     </div>
+
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label" for="edit_timer"><?php echo Enum_Lang::getPageText('app', 'timer'); ?>：</label>
+                        <div class="controls">
+                            <select id="edit_timer" data-title="is timer">
+                                <option value="1"><?php echo Enum_Lang::getPageText('app', 'disable'); ?></option>
+                                <option value="0"><?php echo Enum_Lang::getPageText('app', 'enable'); ?></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group" op="editFiled" id="editor_time">
+                        <label class="control-label" for="edit_time"><?php echo Enum_Lang::getPageText('app', 'sendTime'); ?>：</label>
+                        <div class="controls">
+                                <input id="edit_time" data-paramkey='date' type="text" class="form-control input-medium"
+                                       value=''/>
+                        </div>
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
