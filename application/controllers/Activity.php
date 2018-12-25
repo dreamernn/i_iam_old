@@ -34,6 +34,13 @@ class ActivityController extends \BaseController {
         $this->_view->display('activity/order.phtml');
     }
 
+    public function albumAction() {
+        $activityModel = new ActivityModel();
+        $activityList = $activityModel->getActivityList(array('hotelid' => $this->getHotelId()), 3600);
+        $this->_view->assign('activityList', $activityList['data']['list']);
+        $this->_view->display('activity/album.phtml');
+    }
+
     /**
      * 导出为Excel
      */

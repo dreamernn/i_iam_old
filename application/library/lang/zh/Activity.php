@@ -24,4 +24,7 @@ class Lang_Zh_Activity {
     const ACITVITYORDERORDERCOUNT = '报名人数';
     const ACITVITYORDERREMARK = '备注';
     const ACTIVITY = '活动';
+
+    const HEADER = '相册头部';
+    const FOOTER = '相册尾部';
 }

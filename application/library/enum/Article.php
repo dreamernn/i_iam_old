@@ -3,6 +3,8 @@
 class Enum_Article {
 
     const ARTICLE_TYPE_ACTIVITY = 'activity';
+    const ARTICLE_TYPE_ACTIVITY_HEADER = 'activityHeader';
+    const ARTICLE_TYPE_ACTIVITY_FOOTER = 'activityFooter';
     const ARTICLE_TYPE_FLOOR = 'floor';
     const ARTICLE_TYPE_FACILITIES = 'facilities';
     const ARTICLE_TYPE_TRAFFIC = 'traffic';
@@ -19,6 +21,14 @@ class Enum_Article {
         self::ARTICLE_TYPE_ACTIVITY => array(
             'interfaceId' => 'GA007',
             'field' => 'article_lang'
+        ),
+        self::ARTICLE_TYPE_ACTIVITY_HEADER => array(
+            'interfaceId' => 'GA007',
+            'field' => 'header_lang'
+        ),
+        self::ARTICLE_TYPE_ACTIVITY_FOOTER => array(
+            'interfaceId' => 'GA007',
+            'field' => 'footer_lang'
         ),
         self::ARTICLE_TYPE_FLOOR => array(
             'interfaceId' => 'GH005',

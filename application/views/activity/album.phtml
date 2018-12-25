@@ -15,13 +15,13 @@
             <div class="cont-mod">
                 <div class="page-header page-header-custom">
                     <h1 class="h1-custom">
-                        <?php echo Enum_Lang::getPageText('nav', 'activityList'); ?>
+                        <?php echo Enum_Lang::getPageText('nav', 'activityAlbum'); ?>
                         <button id="createData" class="btn btn-info" style="margin-left: 5px;" type="button"
                                 data-toggle="modal" data-target="#editor"><?php echo Enum_Lang::getPageText('system', 'create'); ?>
                         </button>
                     </h1>
                 </div>
-                <?php include($webConfig['layoutPath'] . '/activity/activity_filter.phtml') ?>
+                <?php include($webConfig['layoutPath'] . '/activity/album_filter.phtml') ?>
                 <div class="cont-mod">
                     <div class="page-header page-header-custom"></div>
                     <div class="reservation">
@@ -31,17 +31,11 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th><?php echo Enum_Lang::getPageText('activity', 'activityTitle'); ?></th>
-                                        <th><?php echo Enum_Lang::getPageText('activity', 'tagTitle'); ?></th>
-                                        <th><?php echo Enum_Lang::getPageText('activity', 'pdf'); ?></th>
-                                        <th><?php echo Enum_Lang::getPageText('activity', 'video'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('activity', 'pic'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('activity', 'sort'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('activity', 'status'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('activity', 'updatetime'); ?></th>
                                         <th><?php echo Enum_Lang::getPageText('system', 'option'); ?></th>
-                                        <th><?php echo Enum_Lang::getPageText('activity', 'header'); ?></th>
-                                        <th><?php echo Enum_Lang::getPageText('activity', 'footer'); ?></th>
                                     </tr>
                                     </thead>
                                     <tbody id="dataList"></tbody>
@@ -55,13 +49,13 @@
         </div>
     </div>
 </div>
-<?php include($webConfig['layoutPath'] . '/activity/activity_edit.phtml'); ?>
+<?php include($webConfig['layoutPath'] . '/activity/album_edit.phtml'); ?>
 <script type="text/javascript">
     var YP_GLOBAL_VARS = {
         checkParams: '<?php echo json_encode(Enum_Activity::getActivityMustInput());?>',
-        listUrl: '/activityajax/getActivityList',
-        createUrl: '/activityajax/createActivity',
-        updateUrl: '/activityajax/updateActivity',
+        listUrl: '/activityajax/getPhotosList',
+        createUrl: '/activityajax/addPhoto',
+        updateUrl: '/activityajax/updatePhoto',
     };
 </script>
 <?php include($webConfig['layoutPath'] . '/common/list_common.phtml'); ?>
@@ -84,22 +78,6 @@
     {{each list as info i}}
     <tr dataId="{{info.id}}">
         <td type="id" data-value="{{info.id}}">{{info.id}}</td>
-        <td type="titleLang1" data-value="{{info.titleLang1}}">{{info.titleLang1}}</td>
-        <td type="tagid" data-value="{{info.tagid}}">{{info.tagShow}}</td>
-        <td type="pdf" data-value="{{info.pdf}}">
-            {{if info.pdf}}
-            <a href="{{info.pdf}}" target="_blank">
-                <?php echo Enum_Lang::getPageText('system', 'view'); ?>
-            </a>
-            {{/if}}
-        </td>
-        <td type="video" data-value="{{info.video}}">
-            {{if info.video}}
-            <a href="{{info.videoShow}}" target="_blank">
-                <?php echo Enum_Lang::getPageText('system', 'view'); ?>
-            </a>
-            {{/if}}
-        </td>
         <td type="pic" data-value="{{info.pic}}">
             {{if info.pic}}
             <a href="{{info.pic}}" target="_blank">
@@ -110,27 +88,10 @@
         <td type="sort" data-value="{{info.sort}}">{{info.sort}}</td>
         <td type="status" data-value="{{info.status}}">{{info.statusShow}}</td>
         <td type="createtime" data-value="{{info.createtime}}">{{info.createtime}}</td>
-        <td type="titleLang2" data-value="{{info.titleLang2}}" style="display:none;"></td>
-        <td type="titleLang3" data-value="{{info.titleLang3}}" style="display:none;"></td>
-        <td type="fromdate" data-value="{{info.fromdate}}" style="display:none;"></td>
-        <td type="todate" data-value="{{info.todate}}" style="display:none;"></td>
-        <td type="ordercount" data-value="{{info.ordercount}}" style="display:none;"></td>
+
+        <td type="activityid" data-value="{{info.activityid}}" style="display:none;"></td>
         <td>
             <button op="editDataOne" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}"><?php echo Enum_Lang::getPageText('system', 'edit'); ?></button>
-            <?php foreach ($hotelLanguageList as $index => $language) { ?>
-                <button op="editArticle" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}" data-type="<?php echo Enum_Article::ARTICLE_TYPE_ACTIVITY; ?>_<?php echo $index + 1; ?>" data-article="{{info.articleLang<?php echo $index + 1; ?>}}"><?php echo Enum_Lang::getPageText('system', 'article'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</button>
-            <?php } ?>
-        </td>
-
-        <td>
-            <?php foreach ($hotelLanguageList as $index => $language) { ?>
-                <button op="editArticle" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}" data-type="<?php echo Enum_Article::ARTICLE_TYPE_ACTIVITY_HEADER; ?>_<?php echo $index + 1; ?>" data-article="{{info.headerLang<?php echo $index + 1; ?>}}"><?php echo Enum_Lang::getPageText('system', 'article'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</button>
-            <?php } ?>
-        </td>
-        <td>
-            <?php foreach ($hotelLanguageList as $index => $language) { ?>
-                <button op="editArticle" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}" data-type="<?php echo Enum_Article::ARTICLE_TYPE_ACTIVITY_FOOTER; ?>_<?php echo $index + 1; ?>" data-article="{{info.Lang<?php echo $index + 1; ?>}}"><?php echo Enum_Lang::getPageText('system', 'article'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</button>
-            <?php } ?>
         </td>
     </tr>
     {{/each}}

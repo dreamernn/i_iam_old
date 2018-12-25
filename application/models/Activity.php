@@ -117,4 +117,47 @@ class ActivityModel extends \BaseModel {
         } while (false);
         return (array)$result;
     }
+
+    public function getPhotosList($params)
+    {
+
+        $paramList['hotelid'] = $params['hotelid'];
+        is_null($params['activity_id']) ? false : $paramList['activity_id'] = $params['activity_id'];
+        is_null($params['status']) ? false : $paramList['status'] = $params['status'];
+        $this->setPageParam($paramList, $params['page'], $params['limit'], 15);
+
+        $result = $this->rpcClient->getResultRaw('GA011', $paramList);
+        return (array)$result;
+
+    }
+
+    public function saveActvityPhotoInfo($paramList) {
+        $params = $this->initParam($paramList);
+        do {
+            $result = array(
+                'code' => 1,
+                'msg' => '参数错误'
+            );
+            if (empty($params['id'])) {
+                if (empty($params['pic']) || empty($params['activity_id'])) {
+                    break;
+                }
+                $interfaceId = 'GA009';
+            } else {
+                $interfaceId = 'GA010';
+            }
+
+            if ($paramList['pic']) {
+                $uploadResult = $this->uploadFile($paramList['pic'], Enum_Oss::OSS_PATH_IMAGE);
+                if ($uploadResult['code']) {
+                    $result['msg'] = '图片上传失败:' . $uploadResult['msg'];
+                    break;
+                }
+                $params['pic'] = $uploadResult['data']['picKey'];
+            }
+
+            $result = $this->rpcClient->getResultRaw($interfaceId, $params);
+        } while (false);
+        return $result;
+    }
 }

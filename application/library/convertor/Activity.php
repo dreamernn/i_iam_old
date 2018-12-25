@@ -52,6 +52,12 @@ class Convertor_Activity extends Convertor_Base {
                 $dataTemp['articleLang1'] = $value['article_lang1'];
                 $dataTemp['articleLang2'] = $value['article_lang2'];
                 $dataTemp['articleLang3'] = $value['article_lang3'];
+                $dataTemp['headerLang1'] = $value['header_lang1'];
+                $dataTemp['headerLang2'] = $value['header_lang2'];
+                $dataTemp['headerLang3'] = $value['header_lang3'];
+                $dataTemp['footerLang1'] = $value['footer_lang1'];
+                $dataTemp['footerLang2'] = $value['footer_lang2'];
+                $dataTemp['footerLang3'] = $value['footer_lang3'];
                 $dataTemp['status'] = $value['status'];
                 $dataTemp['statusShow'] = $value['status'] ? Enum_Lang::getPageText('activity', 'enable') : Enum_Lang::getPageText('activity', 'disable');
                 $dataTemp['tagid'] = $value['tagid'];
@@ -110,6 +116,34 @@ class Convertor_Activity extends Convertor_Base {
         }
         return $data;
     }
-}
 
-?>
+    public function photosListConvertor(array $data) : array
+    {
+        $result = array();
+        $result['code'] = $data['code'];
+        $result['msg'] = $data['msg'];
+        if (isset($data['code']) && !$data['code']) {
+            $tmp = array();
+            foreach ($data['data']['list'] as $item) {
+                $dataTemp = array();
+                $dataTemp['id'] = $item['id'];
+                $dataTemp['activityid'] = $item['activity_id'];
+                $dataTemp['pic'] = Enum_Img::getPathByKeyAndType($item['pic']);
+                $dataTemp['sort'] = $item['sort'];
+                $dataTemp['status'] = $item['status'];
+                $dataTemp['statusShow'] = $item['status'] ? Enum_Lang::getPageText('activity', 'enable') : Enum_Lang::getPageText('activity', 'disable');
+                $dataTemp['createtime'] = $item['createtime'];
+                $tmp[] = $dataTemp;
+            }
+            $result['data']['list'] = $tmp;
+
+        }
+
+        $result['data']['pageData']['page'] = $data['data']['page'];
+        $result['data']['pageData']['rowNum'] = $data['data']['nextPage'];
+        $result['data']['pageData']['pageNum'] = ceil($data['data']['total'] / $data['data']['limit']);
+        return $result;
+    }
+
+
+}

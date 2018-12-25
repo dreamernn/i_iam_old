@@ -15,6 +15,7 @@ class Lang_Zh_Nav
     const ACTIVITYTAG = '标签管理';
     const ACTIVITYLIST = '物业活动';
     const ACTIVITYORDER = '活动报名信息';
+    const ACTIVITYALBUM = '活动相册';
 
     const LIFE = '物业生活';
     const LIFETYPE = '分类管理';

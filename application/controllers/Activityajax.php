@@ -134,4 +134,53 @@ class ActivityajaxController extends \BaseController {
         $result = $this->activityConvertor->orderListConvertor($result);
         $this->echoJson($result);
     }
+
+    public function getPhotosListAction()
+    {
+        $params = array();
+        $params['hotelid'] = $this->getHotelId();
+
+        if($this->getPost('activityid') != 'all') {
+            $params['activity_id'] = intval($this->getPost('activityid'));
+        }
+        if ($this->getPost('status') != 'all') {
+            $params['status'] = intval($this->getPost('status'));
+        }
+        if (!is_null($this->getPost('limit'))) {
+            $params['limit'] = intval($this->getPost('limit'));
+            $params['page'] = intval($this->getPost('page'));
+        }
+
+        $result = $this->activityModel->getPhotosList($params);
+        $result = $this->activityConvertor->photosListConvertor($result);
+        $this->echoJson($result);
+
+    }
+
+    public function addPhotoAction()
+    {
+        $params = array();
+        $params['hotelid'] = $this->getHotelId();
+        $params['pic'] = $this->getFile('pic');
+        $params['activity_id'] = intval($this->getPost('activityid'));
+        $params['sort'] = intval($this->getPost('sort'));
+        $params['status'] = intval($this->getPost('status'));
+
+        $result = $this->activityModel->saveActvityPhotoInfo($params);
+        $this->echoJson($result);
+    }
+
+    public function updatePhotoAction()
+    {
+        $params = array();
+        $params['id'] = intval($this->getPost('id'));
+        $params['pic'] = $this->getFile('pic');
+        $params['activity_id'] = intval($this->getPost('activityid'));
+        $params['sort'] = intval($this->getPost('sort'));
+        $params['status'] = intval($this->getPost('status'));
+
+        $result = $this->activityModel->saveActvityPhotoInfo($params);
+        $this->echoJson($result);
+
+    }
 }

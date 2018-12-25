@@ -35,7 +35,7 @@ class Rpc_HttpDao {
             );
         }
         $interfaceConfig['httpMethod'] = isset($interfaceConfig['httpMethod']) ? $interfaceConfig['httpMethod'] : 'POST';
-        if (Enum_System::isDev()) {
+        if (Enum_System::isDev() && $interfaceId != "B003") {
             $interfaceConfig['httpMethod'] = 'GET';
         }
         $requestUrl = $this->getRequestUrl($interfaceConfig, $params);
