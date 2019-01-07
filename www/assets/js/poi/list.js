@@ -39,6 +39,19 @@ iHotel.poiList = (function ($, ypGlobal) {
             language: 'zh-CN',
             width: 210
         });
+
+        // 初始化时间控件
+        var datatimepickerConfig = {
+            language : 'zh-CN',
+            format : 'yyyy-mm-dd hh:ii:ss',
+            autoclose : true,
+            todayBtn : true,
+            weekStart : 1,
+            minView : 0,
+            startDate: new Date()
+        };
+        $("#edit_startTime,#edit_endTime").datetimepicker(datatimepickerConfig);
+        
         poiForm.init({
             editorDom: $("#listEditor"),
             saveButtonDom: $("#saveListData"),
@@ -48,6 +61,11 @@ iHotel.poiList = (function ($, ypGlobal) {
                 poiForm.updateParams({
                     saveUrl: saveParams.id > 0 ? ypGlobal.updateUrl : ypGlobal.createUrl
                 });
+                //是否首页展示
+                if($("#edit_homeShow").is(":checked")){
+                    saveParams.homeShow = 1;
+                }
+
                 saveParams = poiForm.makeRecord(saveParams, saveParams.id, saveParams.nameLang1);
                 return saveParams;
             },
@@ -74,6 +92,7 @@ iHotel.poiList = (function ($, ypGlobal) {
             var $editId = $(this).data('dataid'), $dataDom = $("#dataList").find("[dataId=" + $editId + "]");
             var dataList = {};
             $dataDom.find('td').each(function (key, value) {
+                console.log(value);
                 var dataOne = $(value);
                 if (dataOne.attr('type')) {
                     dataList[dataOne.attr('type')] = dataOne.data('value');
