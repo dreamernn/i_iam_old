@@ -129,7 +129,7 @@
         </td>
         <td>
             <?php foreach ($hotelLanguageList as $index => $language) { ?>
-                <button op="editArticle" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}" data-type="<?php echo Enum_Article::ARTICLE_TYPE_ACTIVITY_FOOTER; ?>_<?php echo $index + 1; ?>" data-article="{{info.Lang<?php echo $index + 1; ?>}}"><?php echo Enum_Lang::getPageText('system', 'article'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</button>
+                <button op="editArticle" type="button" class="btn btn-info btn-sm" data-dataid="{{info.id}}" data-type="<?php echo Enum_Article::ARTICLE_TYPE_ACTIVITY_FOOTER; ?>_<?php echo $index + 1; ?>" data-article="{{info.footerLang<?php echo $index + 1; ?>}}"><?php echo Enum_Lang::getPageText('system', 'article'); ?>（<?php echo Enum_Lang::getPageText('language', $language); ?>）</button>
             <?php } ?>
         </td>
     </tr>
