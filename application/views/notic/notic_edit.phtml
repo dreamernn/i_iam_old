@@ -83,6 +83,15 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="control-group" op="editFiled">
+                        <label class="control-label" >首页展示：</label>
+                        <div class="controls">
+                            <input type="checkbox" id="edit_homeShow" value="0"/>
+                            <input id="edit_startTime" data-paramkey='date' type="text" class="form-control input-medium" style="margin-left:30px;width:115px;" placeholder="展示开始时间" readonly="true" data-title="<?php echo $filedTitle; ?>"/>-
+                            <input id="edit_endTime" data-paramkey='date' type="text" class="form-control input-medium" style="width:115px;" placeholder="展示结束时间" readonly="true" data-title="<?php echo $filedTitle; ?>"/>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

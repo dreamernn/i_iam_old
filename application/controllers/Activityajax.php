@@ -98,6 +98,10 @@ class ActivityajaxController extends \BaseController {
         $paramList['todate'] = strtotime($this->getPost("todate"));
         $paramList['hotelid'] = intval($this->getHotelId());
         $paramList['groupid'] = intval($this->getGroupId());
+
+        $paramList['homeShow'] = intval($this->getPost("homeShow"));
+        $paramList['startTime'] = strtotime($this->getPost("startTime"));
+        $paramList['endTime'] = strtotime($this->getPost("endTime"));
         return $paramList;
     }
 

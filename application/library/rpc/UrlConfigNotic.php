@@ -229,6 +229,21 @@ class Rpc_UrlConfigNotic {
                     'format' => 'string',
                     'style' => 'interface'
                 ),
+                'homeShow' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'startTime' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'endTime' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
             )
         ),
     	'N007' => array(
@@ -310,6 +325,21 @@ class Rpc_UrlConfigNotic {
                 'video' => array(
                     'required' => false,
                     'format' => 'string',
+                    'style' => 'interface'
+                ),
+                'homeShow' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'startTime' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'endTime' => array(
+                    'required' => false,
+                    'format' => 'int',
                     'style' => 'interface'
                 ),
             )

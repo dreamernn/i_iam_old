@@ -249,6 +249,21 @@ class Rpc_UrlConfigNews {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'homeShow' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'startTime' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'endTime' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
             )
         ),
         'NT007' => array(
@@ -343,6 +358,21 @@ class Rpc_UrlConfigNews {
                     'style' => 'interface'
                 ),
                 'enable_lang3' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'homeShow' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'startTime' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'endTime' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'

@@ -259,6 +259,21 @@ class Rpc_UrlConfigActivity {
                     'format' => 'int',
                     'style' => 'interface'
                 ),
+                'homeShow' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'startTime' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'endTime' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
             )
         ),
         'GA007' => array(
@@ -373,6 +388,21 @@ class Rpc_UrlConfigActivity {
                     'style' => 'interface'
                 ),
                 'todate' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'homeShow' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'startTime' => array(
+                    'required' => false,
+                    'format' => 'int',
+                    'style' => 'interface'
+                ),
+                'endTime' => array(
                     'required' => false,
                     'format' => 'int',
                     'style' => 'interface'

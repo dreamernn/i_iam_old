@@ -89,6 +89,10 @@ class NoticajaxController extends \BaseController {
         $paramList['pdf'] = $this->getFile('pdf');
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
+
+        $paramList['homeShow'] = intval($this->getPost("homeShow"));
+        $paramList['startTime'] = strtotime($this->getPost("startTime"));
+        $paramList['endTime'] = strtotime($this->getPost("endTime"));
         return $paramList;
     }
 
