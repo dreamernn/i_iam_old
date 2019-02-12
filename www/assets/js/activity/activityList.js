@@ -28,8 +28,21 @@ iHotel.activityList = (function ($, ypGlobal) {
      * 初始化编辑新增
      */
     function initEditor() {
-        datatimepickerConfig.startDate = new Date();
+        // 初始化时间控件
+        var datatimepickerConfig = {
+            language : 'zh-CN',
+            format : 'yyyy-mm-dd hh:ii:ss',
+            autoclose : true,
+            todayBtn : true,
+            weekStart : 1,
+            minView : 0,
+            startDate: new Date()
+        };
         $("#edit_fromdate,#edit_todate").datetimepicker(datatimepickerConfig);
+
+        
+        $("#edit_startTime,#edit_endTime").datetimepicker(datatimepickerConfig);
+
         // 初始化表单保存
         var detailModal = $("#editor");
         activityForm.init({
@@ -41,6 +54,11 @@ iHotel.activityList = (function ($, ypGlobal) {
                 activityForm.updateParams({
                     saveUrl: saveParams.id > 0 ? ypGlobal.updateUrl : ypGlobal.createUrl
                 });
+                //是否首页展示
+                if($("#edit_homeShow").is(":checked")){
+                    saveParams.homeShow = 1;
+                }
+                
                 saveParams = activityForm.makeRecord(saveParams, saveParams.id, saveParams.titleLang1);
                 return saveParams;
             },

@@ -103,6 +103,10 @@ class NewsajaxController extends \BaseController {
         $paramList['pic'] = $this->getFile('pic');
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
+
+        $paramList['homeShow'] = intval($this->getPost("homeShow"));
+        $paramList['startTime'] = strtotime($this->getPost("startTime"));
+        $paramList['endTime'] = strtotime($this->getPost("endTime"));
         return $paramList;
     }
 

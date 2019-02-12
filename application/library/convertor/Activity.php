@@ -72,6 +72,11 @@ class Convertor_Activity extends Convertor_Base {
                 $dataTemp['fromdate'] = $value['fromdate'] ? date('Y-m-d', $value['fromdate']) : '';
                 $dataTemp['todate'] = $value['todate'] ? date('Y-m-d', $value['todate']) : '';
                 $dataTemp['video'] = $value['video'];
+
+                $dataTemp ['homeShow'] = $value ['homeShow'];
+                $dataTemp ['startTime'] = $value ['startTime'];
+                $dataTemp ['endTime'] = $value ['endTime'];
+                
                 $tmp[] = $dataTemp;
             }
             $data['data']['list'] = $tmp;

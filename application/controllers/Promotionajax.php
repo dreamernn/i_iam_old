@@ -106,6 +106,10 @@ class PromotionajaxController extends \BaseController {
         $paramList['video'] = trim($this->getPost("video"));
         $paramList['sort'] = intval($this->getPost("sort"));
         $paramList['url'] = trim($this->getPost("url"));
+
+        $paramList['homeShow'] = intval($this->getPost("homeShow"));
+        $paramList['startTime'] = strtotime($this->getPost("startTime"));
+        $paramList['endTime'] = strtotime($this->getPost("endTime"));
         return $paramList;
     }
 
