@@ -7,8 +7,8 @@ class OssModel extends BaseModel {
     }
 
     public function makeOssKey($dir = "video") {
-        $id = 'kpvFToLkzKcom2PS';
-        $key = 'dDwpEhEjvjeFWuftGXqp5FDRqyuCxG';
+        $id = 'LTAIDpG9thIv01m4';
+        $key = '039ElqSwtAQj1LUqusAxV90FR5uIoW';
         $host = 'http://iservice.oss-cn-beijing.aliyuncs.com';
 
         $fileNameList = array(

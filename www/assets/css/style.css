@@ -959,3 +959,17 @@ div.wysiwyg iframe {
     clear: left;
     width: 97.5% !important;
 }
+
+
+.container.container-footer{
+    text-align: center;
+    display: block;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+}
+
+.container.container-footer a{
+    color: #fff;
+    text-align: center;
+}
